@@ -22,7 +22,7 @@ export const useProjects = () => {
                 const response = await axios.get(WP_API_URL);
                 setProjects(response.data);
                 setLoading(false);
-            } catch (err) {
+            } catch {
                 setError('Failed to fetch projects');
                 setLoading(false);
                 // Fallback for demo purposes if WP is not running
