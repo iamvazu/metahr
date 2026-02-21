@@ -395,7 +395,7 @@ const Home = () => {
                                     <Zap />
                                 </div>
                                 <h4 className="text-2xl font-black text-white mb-6 tracking-tight">Leadership Excellence</h4>
-                                <p className="text-white/70 leading-relaxed mb-10 min-h-[100px]">
+                                <p className="text-white/80 leading-relaxed mb-10 min-h-[100px]">
                                     Developing leaders who inspire high performance. Our telemetry platform tracks behavior shift across five exemplary practices.
                                 </p>
 
@@ -565,9 +565,9 @@ const Home = () => {
                                     "Strength-Based Team Workshops",
                                     "High-Performance Individual Coaching"
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-center space-x-4 text-white font-bold text-sm tracking-tight">
+                                    <li key={i} className="flex items-center space-x-4 text-white font-bold text-sm tracking-tight text-white/90">
                                         <div className="w-2 h-2 rounded-full bg-teal"></div>
-                                        <span className="uppercase tracking-widest">{item}</span>
+                                        <span className="uppercase tracking-widest text-white">{item}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -598,14 +598,14 @@ const Home = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: i * 0.1 }}
-                                className="p-12 border border-navy/5 rounded-[4rem] bg-white hover:bg-navy hover:text-white transition-all duration-500 group relative overflow-hidden shadow-2xl shadow-navy/5"
+                                className={`p-12 border border-navy/5 rounded-[4rem] transition-all duration-500 group relative overflow-hidden shadow-2xl shadow-navy/5 ${i === 1 ? 'bg-navy text-white' : 'bg-white text-navy hover:bg-navy hover:text-white'}`}
                             >
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-teal/5 rounded-full -mr-12 -mt-12 group-hover:bg-teal/20 transition-all duration-700"></div>
-                                <div className="w-20 h-20 rounded-3xl bg-beige flex items-center justify-center text-teal mb-10 mx-auto group-hover:bg-white/10 group-hover:text-white transition-all duration-500">
+                                <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mb-10 mx-auto transition-all duration-500 ${i === 1 ? 'bg-white/10 text-white' : 'bg-beige text-teal group-hover:bg-white/10 group-hover:text-white'}`}>
                                     {format.icon}
                                 </div>
-                                <h4 className="text-2xl font-black mb-6 tracking-tight group-hover:text-white transition-colors">{format.title}</h4>
-                                <p className="text-navy/40 group-hover:text-white/70 leading-relaxed font-medium transition-colors">{format.desc}</p>
+                                <h4 className={`text-2xl font-black mb-6 tracking-tight transition-colors ${i === 1 ? 'text-white' : 'text-navy group-hover:text-white'}`}>{format.title}</h4>
+                                <p className={`leading-relaxed font-medium transition-colors ${i === 1 ? 'text-white/70' : 'text-navy/40 group-hover:text-white/70'}`}>{format.desc}</p>
                             </motion.div>
                         ))}
                     </div>
