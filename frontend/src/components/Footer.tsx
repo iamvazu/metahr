@@ -60,7 +60,10 @@ const Footer = () => {
                 <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center text-white/20 text-[10px] font-mono tracking-widest uppercase">
                     <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
                         <p>© 2024 MetaHR. All rights reserved.</p>
-                        <Link to="/terms" className="hover:text-teal transition-colors hover:-translate-y-[1px] transform">Terms_of_Service</Link>
+                        <div className="flex space-x-6">
+                            <Link to="/terms" className="hover:text-teal transition-colors hover:-translate-y-[1px] transform">Terms_of_Service</Link>
+                            <Link to="/privacy" className="hover:text-teal transition-colors hover:-translate-y-[1px] transform">Privacy_Policy</Link>
+                        </div>
                     </div>
                     <div className="flex space-x-8 mt-6 md:mt-0">
                         <span>26 Years of Excellence</span>
