@@ -6,7 +6,7 @@
     "node": "22.x"
   },
   "scripts": {
-    "install-frontend": "cd frontend && npm install",
+    "install-frontend": "cd frontend && npm install --include=dev",
     "build-frontend": "cd frontend && npm run build",
     "heroku-postbuild": "npm run install-frontend && npm run build-frontend",
     "start": "cd frontend && npm run preview -- --port $PORT --host"
