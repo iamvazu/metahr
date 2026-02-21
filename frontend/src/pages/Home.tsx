@@ -204,7 +204,7 @@ const Home = () => {
                     >
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative group">
                             <Link to="/solutions" className="bg-teal text-white px-10 py-4 rounded-full font-bold flex items-center group overflow-hidden relative shadow-2xl shadow-teal/30 transition-all duration-300">
-                                <span className="relative z-10 text-base uppercase tracking-widest font-black">Our Solutions</span>
+                                <span className="relative z-10 text-base uppercase tracking-widest font-black group-hover:text-navy transition-colors duration-500">Our Solutions</span>
                                 <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                                 <span className="relative z-20 ml-3 group-hover:text-navy transition-colors duration-500"><ArrowRight size={18} /></span>
                             </Link>
