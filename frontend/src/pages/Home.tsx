@@ -249,13 +249,13 @@ const Home = () => {
                                     </div>
                                     <div className="bg-navy p-10 rounded-[3rem] shadow-2xl shadow-navy/20 text-white border border-white/10 group hover:bg-white transition-all duration-500">
                                         <span className="text-5xl font-black text-teal block mb-3">4+</span>
-                                        <span className="text-white/40 font-mono font-bold uppercase tracking-widest text-[10px] group-hover:text-navy transition-colors">Continents</span>
+                                        <span className="text-white/70 font-mono font-bold uppercase tracking-widest text-[10px] group-hover:text-navy transition-colors">Continents</span>
                                     </div>
                                 </div>
                                 <div className="space-y-6">
                                     <div className="bg-teal p-10 rounded-[3rem] shadow-2xl shadow-teal/20 text-white border border-white/10 group hover:bg-navy transition-all duration-500">
                                         <span className="text-5xl font-black text-white block mb-3">500+</span>
-                                        <span className="text-white/40 font-mono font-bold uppercase tracking-widest text-[10px] group-hover:text-teal transition-colors">Leaders_Coached</span>
+                                        <span className="text-white/70 font-mono font-bold uppercase tracking-widest text-[10px] group-hover:text-teal transition-colors">Leaders_Coached</span>
                                     </div>
                                     <div className="bg-white p-10 rounded-[3rem] shadow-2xl shadow-navy/5 border border-navy/5 group hover:bg-navy transition-all duration-500">
                                         <span className="text-5xl font-black text-teal block mb-3 group-hover:text-white transition-colors">100%</span>
@@ -394,8 +394,8 @@ const Home = () => {
                                 <div className="w-16 h-16 bg-teal text-white rounded-2xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-500 shadow-xl shadow-teal/20">
                                     <Zap />
                                 </div>
-                                <h4 className="text-2xl font-black mb-6 tracking-tight">Leadership Excellence</h4>
-                                <p className="text-white/40 leading-relaxed mb-10 min-h-[100px]">
+                                <h4 className="text-2xl font-black text-white mb-6 tracking-tight">Leadership Excellence</h4>
+                                <p className="text-white/70 leading-relaxed mb-10 min-h-[100px]">
                                     Developing leaders who inspire high performance. Our telemetry platform tracks behavior shift across five exemplary practices.
                                 </p>
 
@@ -449,8 +449,8 @@ const Home = () => {
                     <div className="grid lg:grid-cols-12 gap-20 items-start">
                         <div className="lg:col-span-5 sticky top-32">
                             <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Methodology.01 // The_Stack</span>
-                            <h3 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter leading-none">The Six <br /><span className="text-teal font-serif italic">Disciplines.</span></h3>
-                            <p className="text-white/40 text-xl font-light leading-relaxed max-w-sm mb-12">
+                            <h3 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-none">The Six <br /><span className="text-teal font-serif italic">Disciplines.</span></h3>
+                            <p className="text-white/70 text-xl font-light leading-relaxed max-w-sm mb-12">
                                 Breakthrough learning only counts when it translates into measurable business results.
                             </p>
                             <Link to="/solutions" className="bg-white text-navy px-10 py-5 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-teal hover:text-white transition-all shadow-2xl shadow-white/5 inline-block">
@@ -479,8 +479,8 @@ const Home = () => {
                                         <span className="text-[10px] font-mono font-bold text-teal">0{i + 1} // PROTOCOL</span>
                                         <div className={`w-3 h-3 rounded-full ${d.accent || 'bg-white/40'}`}></div>
                                     </div>
-                                    <h4 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter uppercase">{d.step}</h4>
-                                    <p className="text-white/60 text-lg font-light leading-relaxed mb-6">{d.desc}</p>
+                                    <h4 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tighter uppercase">{d.step}</h4>
+                                    <p className="text-white/70 text-lg font-light leading-relaxed mb-6">{d.desc}</p>
 
                                     <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden relative">
                                         {d.scan && (
@@ -553,10 +553,10 @@ const Home = () => {
                             className="p-16 border border-navy/5 bg-navy rounded-[4rem] text-white hover:shadow-3xl transition-all duration-700 group"
                         >
                             <div className="flex justify-between items-start mb-12">
-                                <h3 className="text-4xl font-black tracking-tight">CliftonStrengths®</h3>
+                                <h3 className="text-4xl font-black text-white tracking-tight">CliftonStrengths®</h3>
                                 <div className="w-4 h-4 rounded-full bg-teal shadow-[0_0_15px_#567C8D]"></div>
                             </div>
-                            <p className="text-white/40 text-xl font-light mb-12 leading-relaxed">
+                            <p className="text-white/70 text-xl font-light mb-12 leading-relaxed">
                                 Moving from a "fix-it" mentality to a strengths-based approach. Unlocking what you do best.
                             </p>
                             <ul className="space-y-6 mb-16">
@@ -604,8 +604,8 @@ const Home = () => {
                                 <div className="w-20 h-20 rounded-3xl bg-beige flex items-center justify-center text-teal mb-10 mx-auto group-hover:bg-white/10 group-hover:text-white transition-all duration-500">
                                     {format.icon}
                                 </div>
-                                <h4 className="text-2xl font-black mb-6 tracking-tight">{format.title}</h4>
-                                <p className="text-navy/40 group-hover:text-white/40 leading-relaxed font-medium">{format.desc}</p>
+                                <h4 className="text-2xl font-black mb-6 tracking-tight group-hover:text-white transition-colors">{format.title}</h4>
+                                <p className="text-navy/40 group-hover:text-white/70 leading-relaxed font-medium transition-colors">{format.desc}</p>
                             </motion.div>
                         ))}
                     </div>
