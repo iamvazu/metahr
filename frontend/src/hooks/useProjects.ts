@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Change this to your WordPress REST API URL
-const WP_API_URL = 'http://localhost/wp-json/wp/v2/projects';
+const WP_API_URL = 'https://metahr.co.in/wp-json/wp/v2/projects';
 
 export interface Project {
     id: number;

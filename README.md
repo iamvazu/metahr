@@ -1,105 +1,53 @@
-# MetaHR // Precision Human Capital Solutions
+# MetaHR - High-Performance Headless CMS Website
 
-![MetaHR Banner](https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1200)
+A state-of-the-art, premium corporate website for **MetaHR**, built with a **Headless Architecture** that combines a cutting-edge React/Vite frontend with a robust WordPress backend.
 
-> **Tailored HR solutions that drive behavioral change and organizational growth.**
+## 🚀 Live Site
+**Domain:** [metahr.co.in](https://metahr.co.in)
 
-MetaHR is a high-performance HR consultancy platform designed as a "Digital Instrument"—a precision tool for senior leadership to diagnose, align, and accelerate organizational excellence.
+## 🛠️ Technology Stack
+- **Frontend**: React 18, Vite, TypeScript, Tailwind CSS, Framer Motion (for animations), Lucide React (icons).
+- **Backend**: WordPress (Headless), REST API integration.
+- **Hosting**: GoDaddy Managed WordPress.
+- **Routing**: Client-side Hash Routing (to bypass server-side redirection conflicts).
 
-## 💎 Design Philosophy: The "Digital Instrument"
-The platform identity is built on a **Precision-First** aesthetic, moving away from generic corporate visuals toward a sophisticated, data-driven look:
-- **Navy & Teal Palette:** Deep space backgrounds with vibrant tactical accents.
-- **Micro-Animations:** "Beating" status indicators that signal real-time organizational vitality.
-- **Glassmorphism:** High-blur overlays and floating "Artifact" badges.
-- **Centric Layout:** A perfectly balanced navigation system for effortless strategic exploration.
+## ✨ Key Features
+- **Digital Instrument Aesthetic**: A premium "Glassmorphism" and "Cyber-Corporate" design system featuring high-contrast typography, subtle micro-animations, and a dark/navy professional color palette.
+- **Dynamic Projects Showcase**: Powered by a custom **Projects** post type in WordPress. Projects are fetched via REST API and displayed in a high-fidelity diagnostic-style grid.
+- **Intelligence Feed (Blog)**: Real-time integration with WordPress **Posts**. The Resources page dynamically fetches and displays the latest thinking with loading skeletons and smooth hover transitions.
+- **Headless Bridge Architecture**: A custom PHP-based bridge (`index.php` in the WordPress theme) that injects the React application directly into the WordPress environment, bypassing common server-side security blocks.
+- **Mobile First**: Fully responsive design optimized for desktop, tablet, and mobile devices.
 
----
+## 📁 Architecture & Integration
+MetaHR uses a unique **Themed-Bridge** deployment strategy:
+1.  The React app is built into a single set of uniquely named assets (`meta-logic.js`, `meta-styles.css`) to prevent aggressive CDN caching.
+2.  The WordPress theme (`headless-theme`) acts as the delivery vehicle, manually enqueuing the React assets via `index.php`.
+3.  WordPress REST API handles all content management, allowing non-technical users to update the site via the `/wp-admin/` panel.
 
-## 🚀 Core Methodology
-MetaHR isn't just about policy; it's about the science of performance.
+## 🛠️ Development & Deployment
 
-### 1. The Three-Chord Tapestry
-We believe excellence happens at the intersection of:
-- **People:** Unlocking potential through behavioral science (DiSC, Hogan, CliftonStrengths).
-- **Culture:** Creating high-trust environments based on Lencioni’s **Five Behaviors®**.
-- **Strategy:** Aligning human capital with business objectives for sustainable ROI.
-
-### 2. The Six Disciplines (6Ds®)
-Every intervention is structured for impact:
-- **Define** Business Outcomes
-- **Design** the Complete Experience
-- **Deliver** for Application
-- **Drive** Learning Transfer
-- **Deploy** Performance Support
-- **Document** Results
-
----
-
-## 🛠 Tech Stack
-| Component | Technology |
-| :--- | :--- |
-| **Frontend** | React 19 + Vite |
-| **Styling** | Tailwind CSS 4 + Framer Motion |
-| **Icons** | Lucide React |
-| **Backend** | Headless WordPress (Custom PHP Theme) |
-| **Deployment** | Heroku (Node.js Buildpack) |
-| **CI/CD** | GitHub + Heroku Automated Deploys |
-
----
-
-## 📂 Project Structure
-```text
-metahr-project/
-├── frontend/             # React Application (Vite)
-│   ├── src/
-│   │   ├── pages/       # Home, Solutions, About, Resources, Contact
-│   │   ├── components/  # Navbar, Footer, UI Badges
-│   │   └── index.css    # Global "Digital Instrument" design tokens
-├── headless-theme/       # Custom WordPress PHP Theme
-└── package.json         # Heroku Monorepo Root Config
-```
-
----
-
-## ⚙️ Local Development
-
-### 1. Prerequisites
-- Node.js 22.x
-- Git
-
-### 2. Setup
+### Local Development
 ```bash
-# Clone the repository
-git clone https://github.com/iamvazu/metahr.git
-cd metahr
-
-# Install frontend dependencies
+# Navigate to frontend
 cd frontend
+
+# Install dependencies
 npm install
 
-# Run the development server
+# Run dev server
 npm run dev
 ```
 
----
+### Building for Production
+```bash
+# Generate optimized build
+npm run build
+```
 
-## 🚢 Deployment (Heroku)
-The project is configured for seamless deployment to Heroku-24.
+### Deployment to GoDaddy
+1.  Upload `meta-logic.js` and `meta-styles.css` from the `/dist` folder to `/wp-content/themes/headless-theme/`.
+2.  Ensure the `index.php` in the theme folder includes the asset injection logic.
+3.  **Flush Cache** in the GoDaddy Managed WordPress dashboard to apply changes.
 
-1. **Root package.json:** Orchestrates the build by delegating to the `frontend` folder.
-2. **Heroku Postbuild:** Automatically runs `npm install --include=dev` and `npm run build` within the frontend.
-3. **Vite Preview:** The site is served via Vite's precision preview server with `allowedHosts` configured for the Heroku domain.
-
-**Deployment URL:** [https://metahr-be351678c30d.herokuapp.com/](https://metahr-be351678c30d.herokuapp.com/)
-
----
-
-## ✨ Key Features Implemented
-- **Dynamic Navbar:** Centered link distribution with a "Premium White" scroll transition.
-- **Status Beating Badges:** Custom CSS animations (`status-beat`) for indicating "Initializing_Potential" and "Outcome // Achieved".
-- **Responsive "Impact" Sections:** High-resolution imagery with hover-triggered strategic overlays.
-- **ROI Diagnostics:** Interactive 10-step ROI methodology visualization.
-
----
-
-**Developed with Precision by Antigravity AI for MetaHR.**
+## 📄 License
+Custom Project for MetaHR. All rights reserved.

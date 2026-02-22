@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Award, Zap, Brain, MessageSquare, BookOpen, Globe, Users, Target } from 'lucide-react';
+import { usePosts } from '../hooks/usePosts';
 
 const Resources = () => {
+    const { posts, loading: loadingPosts } = usePosts();
+
     const credentials = [
         "SHRM - Senior Certified Professional (SHRM-SCP)",
         "Gallup Global Strengths Coach",
@@ -103,12 +106,89 @@ const Resources = () => {
                     ))}
                 </div>
 
+                {/* Latest Thinking (Dynamic from WordPress) */}
+                <div className="mb-40">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                        <div>
+                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Intelligence_Feed // LATEST_THINKING</span>
+                            <h2 className="text-4xl md:text-6xl font-black text-navy tracking-tighter leading-tight">Global Leadership <br /><span className="text-teal font-serif italic text-gradient uppercase">Insights.</span></h2>
+                        </div>
+                        <a href="https://9z4.7b6.myftpupload.com/wp-admin/edit.php" target="_blank" rel="noreferrer" className="inline-flex items-center space-x-3 text-navy/40 hover:text-teal transition-colors group">
+                            <span className="text-[10px] font-mono font-bold tracking-widest uppercase">Admin: Manage_Posts</span>
+                            <Zap size={14} className="group-hover:animate-pulse" />
+                        </a>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {loadingPosts ? (
+                            // Loading Skeletons
+                            [1, 2, 3].map((n) => (
+                                <div key={n} className="animate-pulse bg-beige/10 rounded-[3rem] p-10 h-[500px] border border-navy/5">
+                                    <div className="bg-navy/5 w-full h-48 rounded-2xl mb-8"></div>
+                                    <div className="bg-navy/5 w-2/3 h-6 rounded-full mb-6"></div>
+                                    <div className="bg-navy/5 w-full h-4 rounded-full mb-3"></div>
+                                    <div className="bg-navy/5 w-full h-4 rounded-full mb-3"></div>
+                                    <div className="bg-navy/5 w-1/2 h-4 rounded-full"></div>
+                                </div>
+                            ))
+                        ) : posts && posts.length > 0 ? (
+                            posts.map((post, i) => (
+                                <motion.div
+                                    key={post.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="group relative h-full flex flex-col bg-white border border-navy/5 rounded-[3rem] overflow-hidden hover:border-teal/30 hover:shadow-3xl transition-all duration-700"
+                                >
+                                    <div className="h-48 overflow-hidden relative">
+                                        {post._embedded?.['wp:featuredmedia']?.[0]?.source_url ? (
+                                            <img
+                                                src={post._embedded['wp:featuredmedia'][0].source_url}
+                                                alt={post.title.rendered}
+                                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full bg-navy/5 flex items-center justify-center text-navy/10">
+                                                <Zap size={48} />
+                                            </div>
+                                        )}
+                                        <div className="absolute top-6 left-6">
+                                            <span className="px-4 py-1.5 bg-black/60 backdrop-blur-md text-teal text-[9px] font-mono font-bold tracking-widest uppercase rounded-full">
+                                                POST_ID.{post.id}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="p-10 flex flex-col flex-grow">
+                                        <div className="flex items-center space-x-3 mb-6">
+                                            <div className="w-1 h-4 bg-teal"></div>
+                                            <span className="text-[10px] font-mono font-bold text-navy/30 uppercase tracking-widest">
+                                                {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-xl font-black text-navy mb-6 group-hover:text-teal transition-colors leading-tight" dangerouslySetInnerHTML={{ __html: post.title.rendered }}></h3>
+                                        <div className="text-navy/50 text-sm leading-relaxed mb-8 font-medium line-clamp-3" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}></div>
+                                        <div className="mt-auto pt-8 border-t border-navy/5 flex items-center justify-between">
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-navy group-hover:translate-x-2 transition-transform duration-500">Read_Protocol »</span>
+                                            <Award size={18} className="text-navy/10 group-hover:text-teal transition-colors" />
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))
+                        ) : (
+                            <div className="col-span-full py-20 text-center bg-beige/10 rounded-[4rem] border-2 border-dashed border-navy/5">
+                                <p className="text-navy/40 font-mono text-sm tracking-widest uppercase">No insights detected in database. Check WP-ADMIN // POSTS</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
                 {/* Engagement Formats */}
                 <div className="bg-navy rounded-[5rem] p-16 md:p-32 text-white relative overflow-hidden mb-40 ring-1 ring-white/10">
                     <div className="relative z-10 grid lg:grid-cols-2 gap-24 items-center">
                         <div>
                             <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Partnership.Models // ENGAGEMENT_MATRIX</span>
-                            <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-tighter leading-none">How We <br /><span className="text-teal font-serif italic text-gradient uppercase">Partner.</span></h2>
+                            <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-tighter leading-none">How We <br /><span className="text-teal font-serif italic uppercase">Partner.</span></h2>
                             <p className="text-white/40 text-xl font-light mb-16 max-w-xl leading-relaxed">
                                 We offer flexible engagement models designed to meet your team where they are, whether global or hyper-local.
                             </p>
@@ -154,7 +234,7 @@ const Resources = () => {
                 <div className="bg-white text-center">
                     <div className="max-w-5xl mx-auto">
                         <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-10 block">Benchmarked_Wisdom // CREDENTIALS</span>
-                        <h2 className="text-4xl md:text-7xl font-black text-navy mb-16 tracking-tighter leading-none">Professional <br /><span className="text-teal font-serif italic text-gradient uppercase">Accreditations.</span></h2>
+                        <h2 className="text-4xl md:text-7xl font-black text-navy mb-16 tracking-tighter leading-none">Professional <br /><span className="text-teal font-serif italic uppercase text-gradient">Accreditations.</span></h2>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                             {credentials.map((c, i) => (
                                 <motion.div
