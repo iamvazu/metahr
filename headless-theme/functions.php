@@ -7,36 +7,21 @@
 // 1. Register Custom Post Type: Projects
 function metahr_register_projects_cpt() {
     $labels = array(
-        'name'               => _x( 'Projects', 'post type general name', 'metahr' ),
-        'singular_name'      => _x( 'Project', 'post type singular name', 'metahr' ),
-        'menu_name'          => _x( 'Projects', 'admin menu', 'metahr' ),
-        'name_admin_bar'     => _x( 'Project', 'add new on admin bar', 'metahr' ),
-        'add_new'            => _x( 'Add New', 'project', 'metahr' ),
-        'add_new_item'       => __( 'Add New Project', 'metahr' ),
-        'new_item'           => __( 'New Project', 'metahr' ),
-        'edit_item'          => __( 'Edit Project', 'metahr' ),
-        'view_item'          => __( 'View Project', 'metahr' ),
-        'all_items'          => __( 'All Projects', 'metahr' ),
-        'search_items'       => __( 'Search Projects', 'metahr' ),
-        'parent_item_colon'  => __( 'Parent Projects:', 'metahr' ),
-        'not_found'          => __( 'No projects found.', 'metahr' ),
-        'not_found_in_trash' => __( 'No projects found in Trash.', 'metahr' ),
+        'name'               => 'Projects',
+        'singular_name'      => 'Project',
+        'menu_name'          => 'Projects',
+        'add_new'            => 'Add New',
+        'add_new_item'       => 'Add New Project',
+        'all_items'          => 'All Projects',
     );
 
     $args = array(
         'labels'             => $labels,
         'public'             => true,
-        'publicly_queryable' => true,
         'show_ui'            => true,
         'show_in_menu'       => true,
-        'query_var'          => true,
-        'rewrite'            => array( 'slug' => 'projects' ),
-        'capability_type'    => 'post',
-        'has_archive'        => true,
-        'hierarchical'       => false,
-        'menu_position'      => 5,
         'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
-        'show_in_rest'       => true, // Essential for Headless
+        'show_in_rest'       => true,
         'rest_base'          => 'projects',
     );
 
@@ -44,56 +29,90 @@ function metahr_register_projects_cpt() {
 }
 add_action( 'init', 'metahr_register_projects_cpt' );
 
-// 2. Enable CORS for React Frontend
-function metahr_cors_allow_origin() {
-    register_rest_route( 'metahr/v1', '/options', array(
-        'methods' => 'GET',
-        'callback' => 'metahr_get_options',
-        'permission_callback' => '__return_true',
-    ));
-}
-add_action( 'rest_api_init', 'metahr_cors_allow_origin' );
+// 2. Register Custom Post Type: Leads (Contact Inquiries)
+function metahr_register_leads_cpt() {
+    $labels = array(
+        'name'               => 'Leads',
+        'singular_name'      => 'Lead',
+        'menu_name'          => 'Leads (Inquiries)',
+        'all_items'          => 'View All Leads',
+        'add_new'            => 'Add Lead Manually',
+    );
 
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_icon'          => 'dashicons-email-alt',
+        'supports'           => array( 'title', 'editor', 'custom-fields' ),
+        'show_in_rest'       => true,
+    );
+
+    register_post_type( 'leads', $args );
+}
+add_action( 'init', 'metahr_register_leads_cpt' );
+
+// 3. Consolidated CORS and REST Security
 add_action( 'rest_api_init', function() {
+    // Allow React to talk to WordPress
     remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
     add_filter( 'rest_pre_serve_request', function( $value ) {
         header( 'Access-Control-Allow-Origin: *' );
-        header( 'Access-Control-Allow-Methods: GET' );
+        header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
         header( 'Access-Control-Allow-Credentials: true' );
-        header( 'Access-Control-Expose-Headers: Link', false );
+        header( 'Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With' );
         return $value;
     } );
-}, 15 );
 
-// 3. Add Custom Fields to REST API (if using ACF, this is usually handled by the ACF to REST API plugin)
-// But we can add specific meta here if needed.
-add_action( 'rest_api_init', function() {
-    register_rest_field( 'projects', 'featured_image_url', array(
-        'get_callback' => function( $post_arr ) {
-            $id = $post_arr['id'];
-            $img_id = get_post_thumbnail_id( $id );
-            return $img_id ? wp_get_attachment_image_url( $img_id, 'full' ) : null;
-        },
-        'update_callback' => null,
-        'schema'          => null,
+    // Register the Contact Submission Route
+    register_rest_route( 'metahr/v1', '/submit-contact', array(
+        'methods' => 'POST',
+        'callback' => 'metahr_handle_contact_submission',
+        'permission_callback' => '__return_true', // Public form
     ));
 });
 
-// 4. Custom Endpoint for Brand Colors/Settings
-function metahr_get_options() {
+// 4. Handle Contact Submission
+function metahr_handle_contact_submission( $request ) {
+    $params = $request->get_params();
+    
+    $full_name = sanitize_text_field( $params['name'] );
+    $email     = sanitize_email( $params['email'] );
+    $company   = sanitize_text_field( $params['company'] );
+    $phone     = sanitize_text_field( $params['phone'] );
+    $message   = sanitize_textarea_field( $params['message'] );
+
+    if ( empty( $full_name ) || empty( $email ) ) {
+        return array( 'success' => false, 'message' => 'Validation failed: Name and Email are required.' );
+    }
+
+    // Save Lead to DB
+    $lead_id = wp_insert_post( array(
+        'post_title'   => "New Lead: " . $full_name,
+        'post_type'    => 'leads',
+        'post_status'  => 'publish',
+        'post_content' => "Company: $company\nEmail: $email\nPhone: $phone\n\nNotes: $message",
+    ));
+
+    if ( is_wp_error( $lead_id ) ) {
+         return array( 'success' => false, 'message' => 'Database error.' );
+    }
+
+    // Meta Data
+    update_post_meta( $lead_id, '_lead_email', $email );
+    update_post_meta( $lead_id, '_lead_company', $company );
+
+    // Email Notifications (Using standard WP Mail)
+    $to = get_option( 'admin_email' );
+    $subject = "MetaHR Lead: $full_name";
+    $body = "New inquiry from $full_name at $company.\nEmail: $email\nMessage: $message";
+    wp_mail( $to, $subject, $body );
+
     return array(
-        'colors' => array(
-            'navy' => '#2F4156',
-            'teal' => '#567C8D',
-            'skyBlue' => '#C8D9E6',
-            'beige' => '#F5EFEB',
-            'white' => '#FFFFFF',
-        ),
-        'logo' => 'MetaHR 2.ai', // Placeholder for logo identification
-        'quote' => array(
-            'text' => 'Titles are granted, but it’s your behavior that earns you respect.',
-            'author' => 'The Leadership Challenge'
-        )
+        'success' => true, 
+        'message' => 'Transmission Complete. MetaHR will contact you shortly.',
+        'id' => $lead_id
     );
 }
 
@@ -101,26 +120,5 @@ function metahr_get_options() {
 function metahr_theme_setup() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
-    add_theme_support( 'menus' );
-    add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
-    
-    register_nav_menus( array(
-        'primary' => __( 'Primary Menu', 'metahr' ),
-    ) );
 }
 add_action( 'after_setup_theme', 'metahr_theme_setup' );
-
-// 6. Handle ACF Fields in REST API (Optional but helpful)
-// Note: Requires ACF to REST API plugin or manual registration
-add_action( 'rest_api_init', function() {
-    register_rest_field( 'projects', 'acf', array(
-        'get_callback' => function( $post_arr ) {
-            if ( function_exists( 'get_fields' ) ) {
-                return get_fields( $post_arr['id'] );
-            }
-            return null;
-        },
-        'update_callback' => null,
-        'schema'          => null,
-    ));
-});
