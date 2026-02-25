@@ -124,10 +124,21 @@ const Home = () => {
                     style={{ y: backgroundY }}
                     className="absolute inset-0 z-0"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/90 to-black/90"></div>
+                    {/* Background Video Layer */}
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                        <iframe
+                            className="absolute top-1/2 left-1/2 min-w-full min-h-full w-[177.77vh] h-[56.25vw] -translate-x-1/2 -translate-y-1/2 opacity-40 scale-110"
+                            src="https://www.youtube.com/embed/eOP3vloZYMo?autoplay=1&mute=1&loop=1&playlist=eOP3vloZYMo&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
+                            allow="autoplay; encrypted-media"
+                            title="Hero Background Video"
+                            frameBorder="0"
+                        ></iframe>
+                    </div>
+
+                    <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-navy/60 to-navy z-10"></div>
 
                     {/* Perspective Grid/Laser Lines */}
-                    <div className="absolute inset-0 opacity-20"
+                    <div className="absolute inset-0 opacity-20 z-20"
                         style={{
                             backgroundImage: 'linear-gradient(to right, #567C8D 1px, transparent 1px), linear-gradient(to bottom, #567C8D 1px, transparent 1px)',
                             backgroundSize: '100px 100px',
