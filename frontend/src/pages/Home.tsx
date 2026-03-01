@@ -193,9 +193,9 @@ const Home = () => {
                         initial={{ opacity: 0, y: 30, z: -100 }}
                         animate={{ opacity: 1, y: 0, z: 0 }}
                         transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-                        className="text-2xl md:text-4xl font-serif italic text-white/90 mb-8 tracking-tight group"
+                        className="text-2xl md:text-4xl font-serif italic !text-white mb-8 tracking-tight group"
                     >
-                        Elevate <span className="group-hover:text-teal transition-colors duration-500">Organizations.</span>
+                        Elevate <span className="group-hover:!text-teal transition-colors duration-500">Organizations.</span>
                     </motion.h2>
 
                     <motion.p
