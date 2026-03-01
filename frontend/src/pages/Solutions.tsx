@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, Users, Settings, ShieldCheck, CheckCircle2, ArrowRight, BarChart3, Globe, Search, FileText } from 'lucide-react';
+import { Target, Users, Settings, ShieldCheck, CheckCircle2, ArrowRight, BarChart3, Globe, Search, FileText, Briefcase, TrendingUp, Lightbulb, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Solutions = () => {
@@ -96,18 +96,18 @@ const Solutions = () => {
                 </div>
             </section>
 
-            {/* Service Grid - Tiered Services */}
+            {/* Service Grid - Core Services */}
             <div className="bg-beige/10">
                 <section className="container mx-auto px-6 py-40">
                     <div className="text-center mb-32">
                         <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Ecosystem.Module // Strategic_Offerings</span>
-                        <h2 className="text-4xl md:text-7xl font-black text-navy mb-6 tracking-tighter">Our Strategic Ecosystem.</h2>
-                        <p className="text-navy/40 text-xl font-light">Comprehensive solutions designed for senior-level execution.</p>
+                        <h2 className="text-4xl md:text-7xl font-black text-navy mb-6 tracking-tighter">Our Core Services.</h2>
+                        <p className="text-navy/40 text-xl font-light max-w-2xl mx-auto">Comprehensive solutions designed for sustainable impact and senior-level execution.</p>
                     </div>
 
                     <div className="space-y-48">
-                        {/* A. Cohesive Team Development */}
-                        <div id="teams" className="grid lg:grid-cols-2 gap-24 items-center">
+                        {/* 1. Leadership Development */}
+                        <div id="leadership-development" className="grid lg:grid-cols-2 gap-24 items-center">
                             <motion.div
                                 initial={{ opacity: 0, x: -30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -115,54 +115,69 @@ const Solutions = () => {
                             >
                                 <div className="flex items-center space-x-4 mb-8">
                                     <div className="w-16 h-16 rounded-2xl bg-teal flex items-center justify-center text-white shadow-xl shadow-teal/20">
-                                        <Users size={32} />
+                                        <Award size={32} />
                                     </div>
                                     <div>
-                                        <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block">PROT_TEAMS</span>
-                                        <span className="text-navy font-bold text-sm uppercase tracking-widest">Team Cohesion</span>
+                                        <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block">PROT_01</span>
+                                        <span className="text-navy font-bold text-sm uppercase tracking-widest">Leadership Development</span>
                                     </div>
                                 </div>
-                                <h3 className="text-4xl md:text-6xl font-black text-navy mb-10 leading-tight tracking-tighter">
-                                    High-Performing <br />
-                                    Teams Don’t <span className="text-teal font-serif italic">Drift</span> <br />
-                                    Into Cohesion.
+                                <h3 className="text-4xl md:text-5xl font-black text-navy mb-8 leading-tight tracking-tighter">
+                                    Develop Leaders Who <br />
+                                    Drive <span className="text-teal font-serif italic">Strategic Impact.</span>
                                 </h3>
-                                <p className="text-xl text-navy/50 leading-relaxed mb-10 font-light">
-                                    Grounded in **The Five Behaviors®** framework by Patrick Lencioni, we help intact teams move from silos and politics to clarity and collective ownership.
-                                    <span className="block mt-6 font-bold text-navy italic border-l-4 border-teal pl-6">"Cohesion is not about chemistry—it’s about behavior."</span>
+                                <p className="text-lg text-navy/60 leading-relaxed mb-6 font-medium">
+                                    Grounded in The Leadership Challenge, we develop leaders who model values, inspire a shared vision, challenge the process, enable others to act, and encourage the heart.
                                 </p>
-                                <div className="space-y-8 mb-12">
-                                    <div className="p-8 bg-white border border-navy/5 rounded-3xl shadow-xl shadow-navy/5">
-                                        <p className="text-navy/60 leading-relaxed"><span className="font-black text-navy uppercase text-xs tracking-widest block mb-2">The Methodology</span> We combine the Lencioni model with Everything DiSC® or CliftonStrengths to gain behavioral clarity and performance acceleration.</p>
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        {["Trust Building", "Healthy Conflict", "Commitment", "Accountability", "Collective Results"].map(item => (
-                                            <div key={item} className="flex items-center space-x-3 text-navy/60 font-bold text-[10px] uppercase tracking-widest">
-                                                <div className="w-2 h-2 rounded-full bg-teal" />
-                                                <span>{item}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                <Link to="/contact" className="inline-flex items-center px-12 py-6 bg-navy text-white rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-teal transition-all group shadow-3xl shadow-navy/20">
-                                    Request the Cohesion Snapshot <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
+                                <p className="text-lg text-navy/60 leading-relaxed mb-8 font-light">
+                                    But leadership today requires more than inspiration — it requires <span className="font-bold underline decoration-teal/40 decoration-2 underline-offset-4">execution</span>.
+                                </p>
+                                <h4 className="text-sm font-black text-navy tracking-widest uppercase mb-4">We integrate:</h4>
+                                <ul className="space-y-4 mb-8">
+                                    <li className="flex items-start text-navy/60 font-medium">
+                                        <CheckCircle2 className="text-teal shrink-0 mr-3 mt-1" size={18} />
+                                        <span><strong>Everything DiSC Work of Leaders</strong> to help leaders craft vision, build alignment, and champion execution.</span>
+                                    </li>
+                                    <li className="flex items-start text-navy/60 font-medium">
+                                        <CheckCircle2 className="text-teal shrink-0 mr-3 mt-1" size={18} />
+                                        <span><strong>Strengths-Based Leadership</strong> powered by Gallup to amplify natural talent and increase leadership effectiveness.</span>
+                                    </li>
+                                    <li className="flex items-start text-navy/60 font-medium">
+                                        <CheckCircle2 className="text-teal shrink-0 mr-3 mt-1" size={18} />
+                                        <span><strong>High-Impact Performance Labs</strong> using experiential learning with MTa Insights to translate insight into real-world behavioral change.</span>
+                                    </li>
+                                </ul>
+                                <p className="text-lg text-navy/60 leading-relaxed mb-10 font-medium italic">
+                                    Through immersive workshops, executive dialogue, assessment-driven insight, and structured follow-through, we build leaders who move strategy forward — not just manage tasks.
+                                </p>
+                                <Link to="/contact" className="inline-flex items-center px-10 py-5 bg-navy text-white rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-teal transition-all group shadow-3xl shadow-navy/20">
+                                    Schedule a Leadership Strategy Conversation <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
                                 </Link>
                             </motion.div>
                             <div className="grid grid-cols-1 gap-8 relative">
                                 <div className="bg-white p-12 rounded-[4rem] border border-navy/5 shadow-3xl shadow-navy/10 hover:translate-x-4 transition-transform duration-700">
-                                    <h4 className="text-2xl font-black text-navy mb-4 tracking-tight">Five Dysfunctions Diagnostic</h4>
-                                    <p className="text-navy/40 leading-relaxed font-medium">Identifying the core barriers to team performance through data-driven behavioral analysis.</p>
+                                    <span className="text-teal font-black text-[10px] tracking-widest block mb-4 uppercase">Expected_Impact</span>
+                                    <h4 className="text-2xl font-black text-navy mb-6 tracking-tight">Outcomes You Can Expect:</h4>
+                                    <ul className="space-y-4 text-navy/60 font-medium text-sm">
+                                        <li className="flex items-center"><CheckCircle2 className="text-teal mr-3" size={16} /> Greater strategic clarity and direction</li>
+                                        <li className="flex items-center"><CheckCircle2 className="text-teal mr-3" size={16} /> Stronger alignment across functions</li>
+                                        <li className="flex items-center"><CheckCircle2 className="text-teal mr-3" size={16} /> Improved decision-making under pressure</li>
+                                        <li className="flex items-center"><CheckCircle2 className="text-teal mr-3" size={16} /> Higher ownership and accountability</li>
+                                        <li className="flex items-center"><CheckCircle2 className="text-teal mr-3" size={16} /> Measurable improvement in leadership effectiveness</li>
+                                    </ul>
                                 </div>
-                                <div className="bg-navy p-12 rounded-[4rem] text-white shadow-3xl shadow-navy/30 -rotate-2 hover:rotate-0 transition-transform duration-700">
-                                    <span className="text-teal font-black text-[10px] tracking-widest block mb-4 uppercase">System_Active</span>
-                                    <h4 className="text-2xl font-black mb-4 tracking-tight">Behavioral Acceleration</h4>
-                                    <p className="text-white/40 leading-relaxed font-light">Intensive, workshop-led interventions that transform siloes into cross-functional powerhouses.</p>
+                                <div className="bg-navy p-10 rounded-[3rem] text-white shadow-3xl shadow-navy/30 -rotate-1 hover:rotate-0 transition-transform duration-700">
+                                    <p className="text-white/80 leading-relaxed font-light mb-4">
+                                        At MetaHR, leadership development isn’t a one-day event. It’s a performance system designed for sustained impact.
+                                    </p>
+                                    <p className="text-white font-black uppercase text-sm tracking-wide mb-4 text-teal">Leadership Isn’t Optional. High Performance Isn’t Accidental.</p>
+                                    <p className="text-white/60 text-sm font-light">If your leaders aren’t aligned, your strategy will stall. Let’s build leadership capability that drives measurable business impact.</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* B. Leadership Excellence */}
-                        <div id="leadership" className="grid lg:grid-cols-2 gap-24 items-center">
+                        {/* 2. Team Development */}
+                        <div id="team-development" className="grid lg:grid-cols-2 gap-24 items-center">
                             <div className="lg:order-2">
                                 <motion.div
                                     initial={{ opacity: 0, x: 30 }}
@@ -171,63 +186,237 @@ const Solutions = () => {
                                 >
                                     <div className="flex items-center space-x-4 mb-8">
                                         <div className="w-16 h-16 rounded-2xl bg-teal flex items-center justify-center text-white shadow-xl shadow-teal/20">
-                                            <Target size={32} />
+                                            <Users size={32} />
                                         </div>
                                         <div>
-                                            <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block">PROT_LEAD</span>
-                                            <span className="text-navy font-bold text-sm uppercase tracking-widest">Leadership Performance</span>
+                                            <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block">PROT_02</span>
+                                            <span className="text-navy font-bold text-sm uppercase tracking-widest">Team Development</span>
                                         </div>
                                     </div>
-                                    <h3 className="text-4xl md:text-6xl font-black text-navy mb-10 leading-tight tracking-tighter">
-                                        Leading by <span className="text-teal font-serif italic leading-tight">Example</span> is <br />
-                                        Leading by <span className="text-navy font-serif italic text-gradient">Command.</span>
+                                    <h3 className="text-4xl md:text-5xl font-black text-navy mb-8 leading-tight tracking-tighter">
+                                        Build Aligned, <br />
+                                        <span className="text-teal font-serif italic">High-Performing Teams.</span>
                                     </h3>
-                                    <p className="text-xl text-navy/50 leading-relaxed mb-6 italic font-light">
-                                        "Leadership is Everyone's Business."
+                                    <p className="text-lg text-navy/60 leading-relaxed mb-8 font-medium">
+                                        Using <strong>The Five Behaviors of a Cohesive Team</strong> framework, we help teams build deep trust, engage in healthy conflict, commit to clear decisions, hold one another accountable, and focus relentlessly on collective results.
                                     </p>
-                                    <p className="text-lg text-navy/50 leading-relaxed mb-10 font-medium">
-                                        We partner with emerging leaders and senior executives to strengthen leadership capability through evidence-based frameworks, specifically **The Five Practices of Exemplary Leadership®**.
+                                    <p className="text-lg text-navy/60 leading-relaxed mb-6 font-bold">
+                                        But we don’t stop at theory.
                                     </p>
-                                    <div className="grid gap-6 mb-12">
+                                    <h4 className="text-sm font-black text-navy tracking-widest uppercase mb-4">We integrate:</h4>
+                                    <div className="grid gap-6 mb-8">
                                         {[
-                                            { title: "The Work of Leaders", desc: "Crafting Vision, building Alignment, and driving Execution." },
-                                            { title: "Leadership Performance Labs", desc: "Experiential learning simulations that translate insight into immediate action." }
+                                            { title: "DiSC", desc: "To improve communication, reduce friction, and strengthen collaboration." },
+                                            { title: "Strengths-based team coaching", desc: "Powered by Gallup insights to help individuals leverage their natural talents for team success." }
                                         ].map((item, i) => (
-                                            <div key={i} className="bg-white p-8 rounded-[2rem] border border-navy/5 shadow-2xl shadow-navy/5 hover:border-teal/30 transition-all">
-                                                <h4 className="font-black text-navy mb-2 tracking-tight uppercase text-sm">{item.title}</h4>
-                                                <p className="text-navy/40 text-sm font-medium">{item.desc}</p>
+                                            <div key={i} className="bg-white p-6 rounded-[2rem] border border-navy/5 shadow-xl shadow-navy/5 hover:border-teal/30 transition-all flex items-start">
+                                                <Target className="text-teal shrink-0 mr-4 mt-1" size={24} />
+                                                <div>
+                                                    <h4 className="font-black text-navy mb-1 tracking-tight">{item.title}</h4>
+                                                    <p className="text-navy/50 text-sm font-medium leading-relaxed">{item.desc}</p>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
-                                    <Link to="/contact" className="inline-flex items-center px-12 py-6 bg-teal text-white rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-navy transition-all group shadow-3xl shadow-teal/20">
-                                        Book Your Alignment Call <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
+                                    <p className="text-lg text-navy/60 leading-relaxed mb-10 font-light italic">
+                                        Through facilitated dialogue, experiential learning, and structured accountability systems, we transform groups of individuals into aligned, high-performing teams.
+                                    </p>
+                                    <Link to="/contact" className="inline-flex items-center px-10 py-5 bg-teal text-white rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-navy transition-all group shadow-3xl shadow-teal/20">
+                                        Schedule a Strategy Conversation <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
                                     </Link>
                                 </motion.div>
                             </div>
                             <div className="lg:order-1 relative">
                                 <div className="absolute inset-0 bg-teal/10 rounded-[5rem] rotate-3 scale-105"></div>
-                                <div className="bg-white p-16 rounded-[5rem] relative z-10 border border-navy/5 shadow-[0_40px_100px_rgba(47,65,86,0.1)]">
-                                    <span className="text-[10px] font-mono font-bold text-teal tracking-widest block mb-8 uppercase">Framework // THE_FIVE_PRACTICES</span>
-                                    <div className="space-y-6">
+                                <div className="bg-white p-16 rounded-[4rem] relative z-10 border border-navy/5 shadow-[0_40px_100px_rgba(47,65,86,0.1)]">
+                                    <span className="text-[10px] font-mono font-bold text-teal tracking-widest block mb-8 uppercase">Performance_Metrics</span>
+                                    <h4 className="text-2xl font-black text-navy mb-8 tracking-tight">Outcomes You Can Expect:</h4>
+                                    <div className="space-y-6 mb-10">
                                         {[
-                                            "Model the Way",
-                                            "Inspire a Shared Vision",
-                                            "Challenge the Process",
-                                            "Enable Others to Act",
-                                            "Encourage the Heart"
-                                        ].map((practice, i) => (
-                                            <div key={i} className="flex items-center space-x-6 p-6 rounded-3xl group hover:bg-beige/40 transition-all duration-500">
-                                                <span className="text-teal font-black text-2xl group-hover:scale-125 transition-transform">0{i + 1}</span>
-                                                <span className="text-navy font-black text-lg tracking-tight uppercase">{practice}</span>
+                                            "Increased trust and psychological safety",
+                                            "Constructive conflict instead of avoidance",
+                                            "Clearer decision-making and ownership",
+                                            "Stronger cross-functional collaboration",
+                                            "Measurable improvement in team performance"
+                                        ].map((expected, i) => (
+                                            <div key={i} className="flex items-center space-x-4 p-4 rounded-2xl group hover:bg-beige/40 transition-all duration-500 bg-beige/10">
+                                                <CheckCircle2 className="text-teal shrink-0" size={20} />
+                                                <span className="text-navy font-bold text-sm tracking-wide">{expected}</span>
                                             </div>
                                         ))}
+                                    </div>
+                                    <div className="border-t border-navy/10 pt-8 mt-8">
+                                        <p className="text-navy/80 font-bold mb-2">At MetaHR, we don’t just improve teamwork —</p>
+                                        <p className="text-teal font-medium mb-4">we build teams that execute strategy with clarity and confidence.</p>
+                                        <p className="text-navy/60 text-sm italic">Ready to Build a High-Performing Team? If your team isn’t aligned, your strategy won’t execute. Let’s design a team experience that drives trust, accountability, and measurable results.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* C. Organizational Effectiveness */}
-                        <div id="strategy" className="grid lg:grid-cols-2 gap-24 items-center">
+                        {/* 3. Executive & Performance Coaching */}
+                        <div id="coaching" className="grid lg:grid-cols-2 gap-24 items-center">
+                            <motion.div
+                                initial={{ opacity: 0, x: -30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                            >
+                                <div className="flex items-center space-x-4 mb-8">
+                                    <div className="w-16 h-16 rounded-2xl bg-teal flex items-center justify-center text-white shadow-xl shadow-teal/20">
+                                        <Briefcase size={32} />
+                                    </div>
+                                    <div>
+                                        <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block">PROT_03</span>
+                                        <span className="text-navy font-bold text-sm uppercase tracking-widest">Executive Coaching</span>
+                                    </div>
+                                </div>
+                                <h3 className="text-4xl md:text-5xl font-black text-navy mb-8 leading-tight tracking-tighter">
+                                    Unlock Leadership Potential <br />
+                                    <span className="text-teal font-serif italic leading-tight">at the Individual Level.</span>
+                                </h3>
+                                <p className="text-lg text-navy/60 leading-relaxed mb-6 font-medium">
+                                    Our executive coaching is data-driven, insight-rich, and performance-focused.
+                                </p>
+                                <p className="text-lg text-navy/60 leading-relaxed mb-6 font-light">
+                                    We integrate strengths-based development powered by Gallup with science-backed insights from Hogan Assessments to accelerate leadership growth at both conscious and unconscious levels.
+                                </p>
+                                <p className="text-lg text-navy/80 leading-relaxed mb-8 font-bold border-l-4 border-teal pl-4">
+                                    But insight alone doesn’t create transformation — application does.
+                                </p>
+                                <h4 className="text-sm font-black text-navy tracking-widest uppercase mb-4">Our coaching methodology includes:</h4>
+                                <div className="space-y-4 mb-10">
+                                    {[
+                                        { title: "Strengths-Based Coaching", desc: "To amplify natural talent and increase confidence under pressure." },
+                                        { title: "Hogan personality insights", desc: "To uncover derailers, motivators, and values." },
+                                        { title: "DiSC 363 for Leaders", desc: "A multi-rater behavioral feedback tool providing 360° insight into leadership impact and blind spots." },
+                                        { title: "Neuro-Linguistic Programming (NLP)", desc: "Techniques to shift mindset, strengthen influence, and improve executive presence." }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-start p-4 rounded-xl hover:bg-beige/20 transition-colors">
+                                            <div className="w-2 h-2 rounded-full bg-teal mt-2 mr-4 shrink-0" />
+                                            <div>
+                                                <span className="font-bold text-navy text-sm block mb-1">{item.title}</span>
+                                                <span className="text-navy/60 text-sm font-medium">{item.desc}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <Link to="/contact" className="inline-flex items-center px-10 py-5 border-2 border-navy text-navy rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-navy hover:text-white transition-all group">
+                                    Book an Executive Coaching Consultation <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
+                                </Link>
+                            </motion.div>
+                            <div className="relative">
+                                <div className="bg-skyBlue/10 p-16 rounded-[4rem] border border-white shadow-3xl backdrop-blur-sm">
+                                    <span className="text-[10px] font-mono font-bold text-navy/40 tracking-widest block mb-8 uppercase">Velocity // GROWTH_MARKERS</span>
+                                    <p className="text-navy/80 font-medium mb-8">Through structured goal-setting, behavioral experimentation, and measurable performance tracking, we help leaders:</p>
+                                    <ul className="space-y-6 mb-10">
+                                        {[
+                                            "Increase strategic clarity",
+                                            "Improve decision-making under pressure",
+                                            "Strengthen stakeholder influence",
+                                            "Enhance executive presence",
+                                            "Sustain performance during growth and change"
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-center space-x-4">
+                                                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-teal shadow-md">
+                                                    <CheckCircle2 size={16} />
+                                                </div>
+                                                <span className="text-navy font-black text-sm tracking-tight">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <div className="bg-white p-8 rounded-3xl shadow-xl shadow-navy/5">
+                                        <p className="text-navy/80 font-bold mb-4 italic">"This is not developmental coaching alone — it is performance acceleration aligned to business outcomes."</p>
+                                        <p className="text-sm text-navy/60 font-medium">At MetaHR, executive coaching is where self-awareness meets execution. High-performing organizations don’t leave leadership to chance. They invest in measurable growth.</p>
+                                    </div>
+                                </div>
+                                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-teal/20 rounded-full blur-[80px] -z-10"></div>
+                            </div>
+                        </div>
+
+                        {/* 4. Individual & High-Potential Development */}
+                        <div id="individual-development" className="grid lg:grid-cols-2 gap-24 items-center">
+                            <div className="lg:order-2">
+                                <motion.div
+                                    initial={{ opacity: 0, x: 30 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <div className="flex items-center space-x-4 mb-8">
+                                        <div className="w-16 h-16 rounded-2xl bg-teal flex items-center justify-center text-white shadow-xl shadow-teal/20">
+                                            <TrendingUp size={32} />
+                                        </div>
+                                        <div>
+                                            <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block">PROT_04</span>
+                                            <span className="text-navy font-bold text-sm uppercase tracking-widest">High-Potential Development</span>
+                                        </div>
+                                    </div>
+                                    <h3 className="text-4xl md:text-5xl font-black text-navy mb-8 leading-tight tracking-tighter">
+                                        Build the Leaders <br />
+                                        <span className="text-teal font-serif italic">Your Future Demands.</span>
+                                    </h3>
+                                    <p className="text-lg text-navy/60 leading-relaxed mb-6 font-bold">
+                                        Today’s emerging talent cannot be developed with yesterday’s training models.
+                                    </p>
+                                    <p className="text-lg text-navy/60 leading-relaxed mb-6 font-medium">
+                                        At MetaHR, we design strengths-based development journeys inspired by Strengths-Based Leadership to prepare high-potential professionals for expanded responsibility, strategic thinking, and enterprise impact.
+                                    </p>
+                                    <p className="text-lg text-navy/60 leading-relaxed mb-10 font-medium border-l-4 border-teal pl-4">
+                                        We combine science-backed assessments with immersive experiential learning to create measurable growth — not just inspiration.
+                                    </p>
+                                    <h4 className="text-sm font-black text-navy tracking-widest uppercase mb-6">Our Integrated Development Approach Includes:</h4>
+                                    <ul className="space-y-4 mb-10">
+                                        <li className="flex items-start text-navy/60 font-medium">
+                                            <CheckCircle2 className="text-teal shrink-0 mr-3 mt-1" size={18} />
+                                            <span><strong>Strengths-based development</strong> grounded in insights from Gallup to amplify natural talent and build confidence.</span>
+                                        </li>
+                                        <li className="flex items-start text-navy/60 font-medium">
+                                            <CheckCircle2 className="text-teal shrink-0 mr-3 mt-1" size={18} />
+                                            <span><strong>Behavioral awareness and adaptability</strong> using DiSC frameworks.</span>
+                                        </li>
+                                        <li className="flex items-start text-navy/60 font-medium">
+                                            <CheckCircle2 className="text-teal shrink-0 mr-3 mt-1" size={18} />
+                                            <span><strong>Personality and potential insights</strong> from Hogan Assessments to identify motivators, values, and potential derailers.</span>
+                                        </li>
+                                        <li className="flex items-start text-navy/60 font-medium">
+                                            <CheckCircle2 className="text-teal shrink-0 mr-3 mt-1" size={18} />
+                                            <span><strong>High-impact experiential learning</strong> simulations powered by MTa Learning to translate insight into behavior.</span>
+                                        </li>
+                                    </ul>
+                                    <Link to="/contact" className="inline-flex items-center px-10 py-5 bg-navy text-white rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-teal transition-all group shadow-3xl shadow-navy/20">
+                                        Design Your High-Potential Strategy <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
+                                    </Link>
+                                </motion.div>
+                            </div>
+                            <div className="lg:order-1 relative">
+                                <div className="absolute inset-0 bg-navy/5 rounded-[5rem] rotate-2 scale-105"></div>
+                                <div className="bg-white p-16 rounded-[4rem] relative z-10 border border-navy/5 shadow-[0_40px_100px_rgba(47,65,86,0.1)]">
+                                    <span className="text-[10px] font-mono font-bold text-teal tracking-widest block mb-8 uppercase">Transformation_Yield</span>
+                                    <h4 className="text-3xl font-black text-navy mb-8 tracking-tight">Participants Develop:</h4>
+                                    <div className="space-y-5 mb-10">
+                                        {[
+                                            "Strategic thinking capability",
+                                            "Executive communication presence",
+                                            "Cross-functional collaboration skills",
+                                            "Emotional intelligence & resilience",
+                                            "Accountability and performance ownership"
+                                        ].map((expected, i) => (
+                                            <div key={i} className="flex items-center space-x-4 p-4 rounded-2xl group hover:bg-beige/40 transition-all duration-500 bg-beige/10">
+                                                <Target className="text-teal shrink-0" size={20} />
+                                                <span className="text-navy font-bold text-sm tracking-wide">{expected}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="bg-navy p-8 rounded-3xl text-white">
+                                        <p className="font-bold text-sm mb-2 text-teal uppercase tracking-widest">This is not generic leadership training.</p>
+                                        <p className="text-white/80 font-medium text-sm mb-4">It is a structured pipeline strategy to prepare high-potential talent for larger roles — faster and more sustainably.</p>
+                                        <p className="text-white/60 text-xs italic mb-4">At MetaHR, we don’t just develop individuals. We future-proof your leadership bench. Your future leaders are already in your organization. The question is — are they being prepared intentionally?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 5. Organizational Effectiveness */}
+                        <div id="organizational-effectiveness" className="grid lg:grid-cols-2 gap-24 items-center">
                             <motion.div
                                 initial={{ opacity: 0, x: -30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -238,58 +427,73 @@ const Solutions = () => {
                                         <Settings size={32} />
                                     </div>
                                     <div>
-                                        <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block">PROT_STRAT</span>
-                                        <span className="text-navy font-bold text-sm uppercase tracking-widest">HR Strategy</span>
+                                        <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block">PROT_05</span>
+                                        <span className="text-navy font-bold text-sm uppercase tracking-widest">Organizational Effectiveness</span>
                                     </div>
                                 </div>
-                                <h3 className="text-4xl md:text-6xl font-black text-navy mb-10 leading-tight tracking-tighter">
-                                    Aligning People Strategy with <br />
-                                    <span className="text-teal font-serif italic leading-tight">Business Growth.</span>
+                                <h3 className="text-4xl md:text-5xl font-black text-navy mb-6 leading-tight tracking-tighter">
+                                    Align Strategy. <br />
+                                    Activate Culture. <span className="text-teal font-serif italic leading-tight">Execute with Discipline.</span>
                                 </h3>
-                                <p className="text-xl text-navy/50 leading-relaxed mb-10 font-light">
-                                    We provide proactive consulting to build scalable, sustainable HR foundations that minimize risk and maximize talent ROI.
+                                <p className="text-lg text-navy/80 leading-relaxed mb-6 font-bold">
+                                    Strategy fails not because it is wrong — but because leadership behaviors, culture, and systems are misaligned.
                                 </p>
-                                <div className="space-y-6 mb-12">
-                                    {[
-                                        { title: "Talent Strategy", desc: "Attracting and hiring top-tier talent through employer branding and strategic sourcing.", icon: <Search size={24} /> },
-                                        { title: "Performance Management", desc: "Empowering teams through structured coaching frameworks rather than just fixing weaknesses.", icon: <BarChart3 size={24} /> },
-                                        { title: "Compliance & Risk", desc: "Ensuring HR processes meet regulatory standards and minimize legal exposure.", icon: <ShieldCheck size={24} /> }
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center space-x-6 p-10 rounded-[3rem] bg-white border border-navy/5 hover:border-teal/30 shadow-3xl shadow-navy/5 transition-all group">
-                                            <div className="text-teal group-hover:scale-110 transition-transform">{item.icon}</div>
-                                            <div>
-                                                <h4 className="font-black text-navy tracking-tight uppercase text-sm mb-1">{item.title}</h4>
-                                                <p className="text-navy/40 text-sm font-medium leading-relaxed">{item.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
+                                <p className="text-lg text-navy/60 leading-relaxed mb-8 font-light">
+                                    At MetaHR, we help organizations close the gap between intent and execution by aligning leadership capability, team dynamics, performance systems, and cultural behaviors with strategic priorities.
+                                </p>
+                                <p className="text-xl text-teal leading-relaxed mb-10 font-bold font-serif italic">
+                                    Organizational effectiveness is not a workshop. It is an integrated transformation journey.
+                                </p>
+
+                                <h4 className="text-sm font-black text-navy tracking-widest uppercase mb-6">Our Approach:</h4>
+                                <div className="space-y-8 mb-12">
+                                    <div>
+                                        <h5 className="font-bold text-navy text-lg mb-2">1️⃣ Strategic Alignment & Leadership Calibration</h5>
+                                        <p className="text-sm text-navy/60 mb-2">We work with senior leadership teams to clarify strategic priorities, role clarity, required leadership behaviors, and accountability structures. Grounded in frameworks such as The Leadership Challenge, we translate values into observable leadership behaviors.</p>
+                                    </div>
+                                    <div>
+                                        <h5 className="font-bold text-navy text-lg mb-2">2️⃣ Culture & Team Effectiveness</h5>
+                                        <p className="text-sm text-navy/60 mb-2">Culture is shaped by what leaders tolerate, measure, and reward. Using tools such as The Five Behaviors of a Cohesive Team and DiSC, we help organizations build trust, encourage healthy conflict, and reduce silos.</p>
+                                    </div>
+                                    <div>
+                                        <h5 className="font-bold text-navy text-lg mb-2">3️⃣ Talent & Systems Alignment</h5>
+                                        <p className="text-sm text-navy/60 mb-2">Execution requires systems that reinforce the right behaviors. We align leadership pipelines, performance systems, and competency models. We integrate psychometric insights from Hogan Assessments to ensure cultural fit.</p>
+                                    </div>
                                 </div>
-                                <Link to="/contact" className="inline-flex items-center px-12 py-6 border-2 border-navy text-navy rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-navy hover:text-white transition-all group">
-                                    View Strategic Frameworks <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
+
+                                <Link to="/contact" className="inline-flex items-center px-12 py-6 bg-teal text-white rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-navy transition-all group shadow-3xl shadow-teal/20">
+                                    Book a Strategic Alignment Session <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
                                 </Link>
                             </motion.div>
                             <div className="relative">
-                                <div className="bg-skyBlue/10 p-16 rounded-[5rem] border border-white shadow-3xl backdrop-blur-sm">
+                                <div className="bg-skyBlue/10 p-16 rounded-[4rem] border border-white shadow-3xl backdrop-blur-sm">
                                     <span className="text-[10px] font-mono font-bold text-navy/40 tracking-widest block mb-10 uppercase">Registry // OPTIMIZATION_PATH</span>
-                                    <ul className="space-y-8">
+                                    <h4 className="text-2xl font-black text-navy mb-8 tracking-tight">What Organizations Experience:</h4>
+                                    <ul className="space-y-6 mb-12">
                                         {[
-                                            "Employer Brand Audit",
-                                            "Strategic Talent Sourcing",
-                                            "Coaching-Centric Performance Reviews",
-                                            "Regulatory Compliance Guardrails"
+                                            "Faster strategic execution",
+                                            "Stronger leadership alignment",
+                                            "Reduced internal friction",
+                                            "Higher engagement and ownership",
+                                            "Sustainable performance growth"
                                         ].map((item, i) => (
                                             <li key={i} className="flex items-center space-x-6">
                                                 <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-teal shadow-xl shadow-navy/5">
                                                     <CheckCircle2 size={16} />
                                                 </div>
-                                                <span className="text-navy font-black text-base tracking-tight uppercase">{item}</span>
+                                                <span className="text-navy font-black text-base tracking-tight">{item}</span>
                                             </li>
                                         ))}
                                     </ul>
+                                    <div className="bg-navy p-8 rounded-3xl text-white text-center">
+                                        <p className="font-bold text-lg mb-2 text-teal">Stop managing symptoms.<br />Fix the system.</p>
+                                        <p className="text-white/60 font-light text-sm">Organizational effectiveness is not about adding programs. It is about removing misalignment. We help you build an organization where behavior, culture, and systems work in one direction — toward strategic impact.</p>
+                                    </div>
                                 </div>
                                 <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-teal/10 rounded-full blur-[80px]"></div>
                             </div>
                         </div>
+
                     </div>
                 </section>
             </div>
