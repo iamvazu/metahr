@@ -6,38 +6,50 @@ const About = () => {
     return (
         <div className="bg-white">
             {/* 1. About Us (Hero) */}
-            <section className="relative overflow-hidden bg-navy min-h-[80vh] flex items-center pt-32 pb-20">
+            <section className="bg-navy pt-32 pb-16 relative overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="mb-8"
+                    >
+                        <span className="px-6 py-2 rounded-full border border-teal/60 text-teal text-[10px] font-mono font-bold tracking-[0.4em] uppercase bg-black/40 backdrop-blur-xl animate-status-beat">
+                            INTRODUCTION // ABOUT_US
+                        </span>
+                    </motion.div>
+
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-7xl font-black !text-white mb-8 tracking-tighter leading-none"
+                    >
+                        Maximize Potential. <br />
+                        <span className="text-teal font-serif italic">Elevate Organizations.</span>
+                    </motion.h1>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-lg md:text-xl !text-beige/60 font-light max-w-3xl mx-auto leading-relaxed"
+                    >
+                        At MetaHR, we believe Human Resources is more than a function — it is the foundation of organizational success.
+                    </motion.p>
+                </div>
+                {/* Decorative Laser Lines */}
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
+            </section>
+
+            {/* Extended About Us Text */}
+            <section className="py-24 bg-white relative overflow-hidden border-b border-navy/5">
                 <div className="container mx-auto px-6">
                     <div className="max-w-4xl mx-auto text-center">
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="mb-8"
-                        >
-                            <span className="px-6 py-2 rounded-full border border-teal/60 text-teal text-[10px] font-mono font-bold tracking-[0.4em] uppercase bg-black/40 backdrop-blur-xl animate-status-beat">
-                                INTRODUCTION // ABOUT_US
-                            </span>
-                        </motion.div>
-
-                        <motion.h1
                             initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-4xl md:text-7xl font-black mb-10 leading-tight tracking-tighter text-white"
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="space-y-8 text-lg md:text-xl text-navy/70 font-light leading-relaxed font-medium"
                         >
-                            Maximize Potential. <br />
-                            <span className="font-serif italic text-teal">Elevate Organizations.</span>
-                        </motion.h1>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="space-y-8 text-lg md:text-xl text-beige/80 font-light leading-relaxed max-w-3xl mx-auto"
-                        >
-                            <p>
-                                At MetaHR, we believe Human Resources is more than a function — it is the foundation of organizational success.
-                            </p>
                             <p>
                                 The word <strong>Meta</strong> means <span className="text-teal italic">beyond</span>. And that is exactly how we approach HR. We look beyond policies, processes, and job descriptions to understand what truly drives people. Because at the heart of every successful organization are individuals with untapped potential, unique strengths, and the capacity to achieve greatness when supported effectively.
                             </p>
@@ -47,8 +59,6 @@ const About = () => {
                         </motion.div>
                     </div>
                 </div>
-                {/* Decorative Laser Lines */}
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
 
             {/* 2. Our Philosophy */}
