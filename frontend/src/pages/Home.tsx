@@ -49,7 +49,7 @@ const Home = () => {
                     <div className="absolute inset-0 pointer-events-none overflow-hidden">
                         <iframe
                             className="absolute top-1/2 left-1/2 min-w-full min-h-full w-[177.77vh] h-[56.25vw] -translate-x-1/2 -translate-y-1/2 opacity-40 scale-110"
-                            src="https://www.youtube.com/embed/eOP3vloZYMo?autoplay=1&mute=1&loop=1&playlist=eOP3vloZYMo&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
+                            src="https://www.youtube.com/embed/qzDm2ur9iWc?autoplay=1&mute=1&loop=1&playlist=qzDm2ur9iWc&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
                             allow="autoplay; encrypted-media"
                             title="Hero Background Video"
                             frameBorder="0"
