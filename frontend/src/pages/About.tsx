@@ -495,7 +495,7 @@ const About = () => {
                             { name: "Hogan Assessments", img: "/hogan_logo.png" },
                             { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
                             { name: "MTa Licensed User", img: "/mta_logo.jpg" },
-                            { name: "SHRM-SCP", img: "/shrm_logo.png" }
+                            { name: "SHRM-CP", img: "/shrm_logo.png" }
                         ].map((cred, i) => (
                             <motion.div
                                 key={i}
@@ -503,7 +503,7 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="group grayscale hover:grayscale-0 transition-all duration-500 transform hover:scale-110"
+                                className="group transition-all duration-500 transform hover:scale-110"
                             >
                                 <img
                                     src={cred.img}
