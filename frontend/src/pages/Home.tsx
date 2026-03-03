@@ -32,6 +32,14 @@ const Home = () => {
         }
     };
 
+    const credentials = [
+        { name: "Leadership Challenge", img: "/leadership_logo.jpg" },
+        { name: "Hogan Assessments", img: "/hogan_logo.png" },
+        { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
+        { name: "MTa Licensed User", img: "/mta_logo.jpg" },
+        { name: "SHRM-CP", img: "/shrm_logo.png" }
+    ];
+
     return (
         <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Hero Section */}
@@ -412,6 +420,34 @@ const Home = () => {
                                     <ArrowRight className="text-teal/20 shrink-0 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />
                                 )}
                             </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Professional Accreditations */}
+            <section className="py-24 bg-white border-t border-navy/5">
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase block mb-4">Benchmarked_Wisdom // CREDENTIALS</span>
+                        <h2 className="text-4xl md:text-7xl font-black text-navy tracking-tighter leading-none">Professional <br /><span className="text-teal font-serif italic uppercase">Accreditations.</span></h2>
+                    </div>
+                    <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
+                        {credentials.map((cred, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="group transition-all duration-500 transform hover:scale-110"
+                            >
+                                <img
+                                    src={cred.img}
+                                    alt={cred.name}
+                                    className="h-16 md:h-20 w-auto object-contain drop-shadow-sm"
+                                />
+                            </motion.div>
                         ))}
                     </div>
                 </div>
