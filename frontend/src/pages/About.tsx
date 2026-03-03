@@ -344,16 +344,6 @@ const About = () => {
                         {[
                             {
                                 num: "01",
-                                title: "Team Development",
-                                subtitle: "Build Aligned, High-Performing Teams",
-                                challenge: "Silos. Misalignment. Low ownership. Conflict without resolution.",
-                                approach: "Interactive experiential workshops that reveal team dynamics in real time — followed by structured reflection and strategic alignment conversations.",
-                                btn: "Strengthen Your Teams",
-                                link: "/services/team-development",
-                                icon: <Users size={32} />
-                            },
-                            {
-                                num: "02",
                                 title: "Leadership Development",
                                 subtitle: "Develop Leaders Who Drive Strategic Impact",
                                 challenge: "Technically strong managers who struggle to lead transformation.",
@@ -361,6 +351,16 @@ const About = () => {
                                 btn: "Develop Stronger Leaders",
                                 link: "/services/leadership-development",
                                 icon: <Award size={32} />
+                            },
+                            {
+                                num: "02",
+                                title: "Team Development",
+                                subtitle: "Build Aligned, High-Performing Teams",
+                                challenge: "Silos. Misalignment. Low ownership. Conflict without resolution.",
+                                approach: "Interactive experiential workshops that reveal team dynamics in real time — followed by structured reflection and strategic alignment conversations.",
+                                btn: "Strengthen Your Teams",
+                                link: "/services/team-development",
+                                icon: <Users size={32} />
                             },
                             {
                                 num: "03",
