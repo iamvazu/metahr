@@ -125,21 +125,7 @@ const Home = () => {
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
 
-            {/* Trusted Accreditations Bar */}
-            <section className="py-16 bg-beige/30 border-b border-navy/5">
-                <div className="container mx-auto px-6">
-                    <p className="text-center font-mono text-navy/40 font-bold uppercase tracking-[0.4em] text-[10px] mb-10 overflow-hidden">
-                        <span className="inline-block animate-pulse">Trusted_Accreditations // Benchmarked_Expertise</span>
-                    </p>
-                    <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
-                        {['SHRM-SCP', 'Gallup', 'Hogan', 'Five Behaviors', 'Wiley'].map((brand) => (
-                            <div key={brand} className="text-3xl font-black text-navy tracking-tighter hover:text-teal transform hover:scale-110 transition-all duration-500">
-                                {brand}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+
 
             {/* The Business Reality */}
             <section className="py-32 bg-white relative">
@@ -216,7 +202,7 @@ const Home = () => {
                             className="md:col-span-8 group relative overflow-hidden rounded-[4rem] bg-white/5 border border-white/10 p-12 md:p-16 min-h-[500px] flex flex-col justify-end"
                         >
                             <div className="absolute inset-0 z-0">
-                                <img src="/leadership_development_abstract_1772538227877.png" alt="Leadership" className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000" />
+                                <img src="/leadership_development_abstract.png" alt="Leadership" className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent"></div>
                             </div>
                             <div className="relative z-10">
@@ -240,7 +226,7 @@ const Home = () => {
                             className="md:col-span-4 group relative overflow-hidden rounded-[4rem] bg-white/5 border border-white/10 p-12 flex flex-col justify-end"
                         >
                             <div className="absolute inset-0 z-0">
-                                <img src="/team_development_abstract_1772538209117.png" alt="Team" className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
+                                <img src="/team_development_abstract.png" alt="Team" className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent"></div>
                             </div>
                             <div className="relative z-10">
@@ -266,7 +252,7 @@ const Home = () => {
                             className="md:col-span-5 group relative overflow-hidden rounded-[4rem] bg-white/5 border border-white/10 p-12 flex flex-col justify-end min-h-[400px]"
                         >
                             <div className="absolute inset-0 z-0">
-                                <img src="/executive_coaching_abstract_1772538242520.png" alt="Coaching" className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
+                                <img src="/executive_coaching_abstract.png" alt="Coaching" className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent"></div>
                             </div>
                             <div className="relative z-10">
@@ -292,14 +278,14 @@ const Home = () => {
                             className="md:col-span-3 group relative overflow-hidden rounded-[4rem] bg-white/5 border border-white/10 p-10 flex flex-col"
                         >
                             <div className="absolute inset-0 z-0">
-                                <img src="/individual_development_abstract_1772538257965.png" alt="Individual" className="w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-1000" />
+                                <img src="/individual_development_abstract.png" alt="Individual" className="w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-1000" />
                             </div>
                             <div className="relative z-10 flex-grow">
-                                <div className="w-10 h-10 bg-teal text-white flex items-center justify-center rounded-xl mb-6 shadow-xl shadow-teal/20">
-                                    <Zap size={20} />
+                                <div className="w-14 h-14 bg-teal text-white flex items-center justify-center rounded-2xl mb-8 shadow-xl shadow-teal/20 group-hover:scale-110 transition-transform">
+                                    <Zap size={28} />
                                 </div>
-                                <h4 className="text-xl font-black mb-4 tracking-tight">High-Potential Development</h4>
-                                <p className="text-white/40 text-[13px] leading-relaxed mb-6">
+                                <h4 className="text-2xl font-black mb-4 tracking-tight">High-Potential <br />Development</h4>
+                                <p className="text-white/40 text-sm font-medium leading-relaxed mb-8">
                                     Strengthening emerging talent through structured growth paths.
                                 </p>
                             </div>
@@ -317,7 +303,7 @@ const Home = () => {
                             className="md:col-span-4 group relative overflow-hidden rounded-[4rem] bg-teal p-12 flex flex-col justify-end"
                         >
                             <div className="absolute inset-0 z-0">
-                                <img src="/org_effectiveness_abstract_1772538282497.png" alt="Org" className="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-1000 mix-blend-overlay" />
+                                <img src="/org_effectiveness_abstract.png" alt="Org" className="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-1000 mix-blend-overlay" />
                             </div>
                             <div className="relative z-10">
                                 <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-2xl">
