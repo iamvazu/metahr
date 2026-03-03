@@ -146,12 +146,17 @@ const Home = () => {
                                 ))}
                             </ul>
                         </div>
-                        <div className="bg-navy p-12 md:p-16 rounded-[4rem] shadow-2xl relative text-white border border-teal/20">
-                            <Quote className="text-teal/40 mb-8" size={60} />
-                            <p className="text-3xl md:text-4xl font-light leading-snug tracking-tighter">
-                                The issue is not intent. <br />
-                                It is <span className="text-teal font-serif italic font-bold">leadership behavior</span> and <span className="text-teal font-serif italic font-bold">team dynamics.</span>
-                            </p>
+                        <div className="group relative overflow-hidden bg-navy p-12 md:p-16 rounded-[4rem] shadow-2xl text-white border border-teal/20">
+                            <div className="absolute inset-0 z-0 opacity-40 group-hover:scale-105 transition-transform duration-1000">
+                                <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover" />
+                            </div>
+                            <div className="relative z-10">
+                                <Quote className="text-teal/40 mb-8" size={60} />
+                                <p className="text-3xl md:text-4xl font-light leading-snug tracking-tighter">
+                                    The issue is not intent. <br />
+                                    It is <span className="text-teal font-serif italic font-bold">leadership behavior</span> and <span className="text-teal font-serif italic font-bold">team dynamics.</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -346,12 +351,15 @@ const Home = () => {
                                 ))}
                             </ul>
                         </div>
-                        <div className="bg-teal p-12 md:p-16 rounded-[4rem] shadow-2xl text-white relative overflow-hidden">
-                            <div className="absolute -bottom-10 -right-10 opacity-10">
+                        <div className="group relative overflow-hidden bg-teal p-12 md:p-16 rounded-[4rem] shadow-2xl text-white border border-white/10">
+                            <div className="absolute inset-0 z-0 opacity-30 group-hover:scale-105 transition-transform duration-1000">
+                                <img src="/frameworks_supported_bg.png" alt="" className="w-full h-full object-cover" />
+                            </div>
+                            <div className="absolute -bottom-10 -right-10 opacity-10 group-hover:rotate-12 transition-transform duration-1000">
                                 <Lightbulb size={200} />
                             </div>
                             <div className="relative z-10">
-                                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-10">
+                                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md">
                                     <Lightbulb size={32} className="text-white" />
                                 </div>
                                 <h3 className="text-3xl font-black mb-6 tracking-tight">Supported By</h3>
@@ -360,7 +368,7 @@ const Home = () => {
                                 </p>
                                 <div className="flex flex-wrap gap-4">
                                     {['Gallup Strengths', 'Hogan', 'DiSC', 'NLP Frameworks'].map(tool => (
-                                        <span key={tool} className="px-6 py-3 bg-white/20 rounded-full font-bold tracking-wide border border-white/30 cursor-default shadow-lg">
+                                        <span key={tool} className="px-6 py-3 bg-white/20 backdrop-blur-md rounded-full font-bold tracking-wide border border-white/30 cursor-default shadow-lg hover:bg-white/30 transition-colors">
                                             {tool}
                                         </span>
                                     ))}
@@ -381,15 +389,27 @@ const Home = () => {
                     </p>
 
                     {/* Process Flow */}
-                    <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-4 max-w-6xl mx-auto">
-                        {['Diagnose', 'Design', 'Deliver', 'Measure', 'Reinforce'].map((step, i) => (
-                            <div key={step} className="flex flex-col md:flex-row items-center gap-6 md:gap-4">
-                                <div className="bg-beige text-navy w-32 h-32 md:w-40 md:h-40 rounded-full flex flex-col items-center justify-center shadow-2xl border border-navy/5 hover:bg-navy hover:text-white transition-all group cursor-default">
-                                    <span className="font-mono text-teal/50 text-[10px] mb-2">0{i + 1}</span>
-                                    <span className="font-black text-lg md:text-xl group-hover:scale-105 transition-transform tracking-tight">{step}</span>
+                    <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 max-w-7xl mx-auto">
+                        {[
+                            { name: 'Diagnose', img: '/diagnose_step_bg.png' },
+                            { name: 'Design', img: '/design_step_bg.png' },
+                            { name: 'Deliver', img: '/deliver_step_bg.png' },
+                            { name: 'Measure', img: '/measure_step_bg.png' },
+                            { name: 'Reinforce', img: '/reinforce_step_bg.png' }
+                        ].map((step, i) => (
+                            <div key={step.name} className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+                                <div className="group relative w-44 h-44 md:w-52 md:h-52 rounded-full overflow-hidden flex flex-col items-center justify-center shadow-2xl border border-navy/10 hover:border-teal/50 transition-all cursor-default">
+                                    <div className="absolute inset-0 z-0 opacity-40 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0">
+                                        <img src={step.img} alt="" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="absolute inset-0 bg-beige/80 group-hover:bg-navy/80 transition-colors z-[1]"></div>
+                                    <div className="relative z-10 text-center">
+                                        <span className="font-mono text-teal/50 group-hover:text-teal/80 text-[10px] mb-2 block font-black uppercase tracking-[0.3em]">Phase_0{i + 1}</span>
+                                        <span className="font-black text-xl md:text-2xl text-navy group-hover:text-white transition-colors tracking-tight">{step.name}</span>
+                                    </div>
                                 </div>
                                 {i < 4 && (
-                                    <ArrowRight className="text-teal rotate-90 md:rotate-0 my-4 md:my-0" size={24} />
+                                    <ArrowRight className="text-teal/30 rotate-90 md:rotate-0 my-4 md:my-0" size={24} />
                                 )}
                             </div>
                         ))}

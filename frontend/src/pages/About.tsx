@@ -230,13 +230,18 @@ const About = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-white/5 p-12 rounded-[3rem] border border-white/10 backdrop-blur-sm lg:col-span-1"
+                            className="group relative overflow-hidden bg-white/5 p-12 rounded-[3rem] border border-white/10 backdrop-blur-sm lg:col-span-1"
                         >
-                            <Target className="text-teal mb-8" size={40} />
-                            <h3 className="text-3xl font-black mb-6">Purpose</h3>
-                            <p className="text-lg text-beige/70 font-light leading-relaxed">
-                                To be the partner of choice for organizations—unlocking excellence in their people, inspiring transformation in their operations, and delivering meaningful, measurable outcomes.
-                            </p>
+                            <div className="absolute inset-0 z-0 opacity-20 group-hover:scale-105 transition-transform duration-1000">
+                                <img src="/purpose_card_bg.png" alt="" className="w-full h-full object-cover" />
+                            </div>
+                            <div className="relative z-10">
+                                <Target className="text-teal mb-8" size={48} />
+                                <h3 className="text-3xl font-black mb-6">Purpose</h3>
+                                <p className="text-lg text-beige/70 font-light leading-relaxed">
+                                    To be the partner of choice for organizations—unlocking excellence in their people, inspiring transformation in their operations, and delivering meaningful, measurable outcomes.
+                                </p>
+                            </div>
                         </motion.div>
 
                         {/* Direction */}
@@ -245,13 +250,18 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="bg-white/5 p-12 rounded-[3rem] border border-white/10 backdrop-blur-sm lg:col-span-2"
+                            className="group relative overflow-hidden bg-white/5 p-12 rounded-[3rem] border border-white/10 backdrop-blur-sm lg:col-span-2"
                         >
-                            <Lightbulb className="text-teal mb-8" size={40} />
-                            <h3 className="text-3xl font-black mb-6">Direction</h3>
-                            <p className="text-lg text-beige/70 font-light leading-relaxed">
-                                We partner with organizations to elevate human potential, streamline operational performance, and deliver data-driven solutions that lead to sustainable success. Through collaboration, innovation, and a deep commitment to impact, we help our clients thrive in a dynamic world.
-                            </p>
+                            <div className="absolute inset-0 z-0 opacity-20 group-hover:scale-105 transition-transform duration-1000">
+                                <img src="/direction_card_bg.png" alt="" className="w-full h-full object-cover" />
+                            </div>
+                            <div className="relative z-10">
+                                <Lightbulb className="text-teal mb-8" size={48} />
+                                <h3 className="text-3xl font-black mb-6">Direction</h3>
+                                <p className="text-lg text-beige/70 font-light leading-relaxed">
+                                    We partner with organizations to elevate human potential, streamline operational performance, and deliver data-driven solutions that lead to sustainable success. Through collaboration, innovation, and a deep commitment to impact, we help our clients thrive in a dynamic world.
+                                </p>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
