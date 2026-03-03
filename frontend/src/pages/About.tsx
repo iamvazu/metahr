@@ -277,26 +277,40 @@ const About = () => {
                         </h2>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
                         {[
-                            { title: "We Redefine Performance", num: "01", desc: "We don’t optimize average — we unlock exceptional. We challenge norms, elevate standards, and drive breakthrough results." },
-                            { title: "Courageous Transformation", num: "02", desc: "We lean into complexity. Real change requires bold thinking, decisive action, and the confidence to disrupt what no longer works." },
-                            { title: "Accountability to Outcomes", num: "03", desc: "Impact isn’t optional. We measure what matters and stand behind the results we deliver." },
-                            { title: "Human-Centered Innovation", num: "04", desc: "Technology and data power progress — but people drive it. We design solutions where human potential meets intelligent systems." },
-                            { title: "Built for What’s Next", num: "05", desc: "The future rewards agility. We help organizations adapt, evolve, and lead in dynamic environments." }
+                            { title: "We Redefine Performance", num: "01", desc: "We don’t optimize average — we unlock exceptional. We challenge norms, elevate standards, and drive breakthrough results.", img: "/value_1_bg.png" },
+                            { title: "Courageous Transformation", num: "02", desc: "We lean into complexity. Real transformation requires bold thinking, decisive action, and the confidence to disrupt what no longer works.", img: "/value_2_bg.png" },
+                            { title: "Accountability to Outcomes", num: "03", desc: "Impact isn’t optional. We measure what matters and stand behind the results we deliver to ensure strategic ROI.", img: "/value_3_bg.png" },
+                            { title: "Human-Centered Innovation", num: "04", desc: "Technology and data power progress — but people drive it. We design solutions where human potential meets intelligent systems.", img: "/value_4_bg.png" },
+                            { title: "Built for What’s Next", num: "05", desc: "The future rewards agility. We help organizations adapt, evolve, and lead with clarity in dynamic environments.", img: "/value_5_bg.png" }
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="bg-white border border-navy/5 p-10 lg:p-12 rounded-[2.5rem] hover:shadow-2xl hover:border-teal/30 transition-all duration-500 relative overflow-hidden group"
+                                transition={{ delay: i * 0.1, duration: 0.8 }}
+                                className={`group relative overflow-hidden rounded-[4rem] p-12 min-h-[400px] flex flex-col justify-end transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)] border border-navy/5 ${i === 3 ? 'md:col-span-1 lg:col-span-2' : ''}`}
                             >
-                                <span className="absolute top-8 right-8 text-5xl font-black text-navy/5 group-hover:text-teal/10 transition-colors duration-500">{item.num}</span>
-                                <h3 className="text-2xl font-black text-navy mb-4 tracking-tight relative z-10 w-4/5">{item.title}</h3>
-                                <div className="w-12 h-1 bg-teal/20 mb-6 group-hover:bg-teal group-hover:w-16 transition-all duration-500"></div>
-                                <p className="text-navy/60 font-medium leading-relaxed relative z-10">{item.desc}</p>
+                                {/* Background Image with Gradient Overlay */}
+                                <div className="absolute inset-0 z-0">
+                                    <img src={item.img} alt="" className="w-full h-full object-cover opacity-10 group-hover:scale-110 group-hover:opacity-30 transition-all duration-1000 grayscale group-hover:grayscale-0" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent group-hover:from-white/10 transition-colors duration-700"></div>
+                                </div>
+
+                                {/* Content */}
+                                <div className="relative z-10">
+                                    <div className="flex items-center justify-between mb-8">
+                                        <span className="text-sm font-mono font-black text-teal/40 group-hover:text-teal transition-colors tracking-[0.3em]">VAL_PRTL_{item.num}</span>
+                                        <span className="text-4xl font-black text-navy/5 group-hover:text-navy/10 transition-colors">{item.num}</span>
+                                    </div>
+                                    <h3 className="text-3xl font-black text-navy mb-6 tracking-tighter leading-none group-hover:translate-x-2 transition-transform duration-500">{item.title}</h3>
+                                    <div className="w-12 h-1 bg-teal/20 mb-8 group-hover:w-24 group-hover:bg-teal transition-all duration-500"></div>
+                                    <p className="text-navy/60 group-hover:text-navy text-lg font-medium leading-relaxed max-w-sm">
+                                        {item.desc}
+                                    </p>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
