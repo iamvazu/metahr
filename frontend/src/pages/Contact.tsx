@@ -87,7 +87,7 @@ const Contact = () => {
                         className="text-5xl md:text-8xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
                     >
                         Ready to Partner <br />
-                        <span className="text-teal font-serif italic text-gradient uppercase">with MetaHR?</span>
+                        <span className="text-white opacity-40 uppercase drop-shadow-[0_2px_15px_rgba(255,255,255,0.2)] md:-ml-8 relative -top-6">with MetaHR?</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
