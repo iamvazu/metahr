@@ -59,7 +59,7 @@ const Contact = () => {
     return (
         <div className="bg-white">
             {/* Contact Hero */}
-            <section className="bg-navy relative overflow-hidden min-h-[60vh] md:min-h-[70vh] flex flex-col justify-center pt-24 pb-16">
+            <section className="bg-navy relative overflow-hidden min-h-[80vh] md:min-h-[85vh] flex flex-col justify-center pt-32 pb-24">
                 {/* Background Image with Zoom Animation */}
                 <motion.div
                     initial={{ scale: 1.2 }}
@@ -67,8 +67,8 @@ const Contact = () => {
                     transition={{ duration: 1.5, ease: "easeOut" }}
                     className="absolute inset-0 z-0 pointer-events-none"
                 >
-                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" alt="Contact Background" className="w-full h-full object-cover opacity-30 mix-blend-luminosity" />
-                    <div className="absolute inset-0 bg-navy/80"></div>
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" alt="Contact Background" className="w-full h-full object-cover opacity-60" />
+                    <div className="absolute inset-0 bg-navy/70"></div>
                 </motion.div>
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
