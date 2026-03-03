@@ -7,8 +7,8 @@ const Footer = () => {
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid md:grid-cols-5 gap-12 mb-20">
                     <div className="col-span-2">
-                        <Link to="/" className="text-4xl font-black tracking-tighter mb-8 block">
-                            MetaHR
+                        <Link to="/" className="mb-8 block inline-block">
+                            <img src="/logo.png" alt="MetaHR" className="h-14 w-auto object-contain brightness-0 invert" />
                         </Link>
                         <p className="text-white/40 text-lg max-w-sm mb-10 leading-relaxed font-light">
                             Beyond Policies. Beyond Processes. Strategically aligning people, culture, and business objectives for sustainable organizational excellence.

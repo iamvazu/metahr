@@ -52,9 +52,11 @@ const Navbar = () => {
                     {/* Logo Area */}
                     <div className="flex-1 flex items-center pr-8">
                         <Link to="/" className="flex items-center space-x-2">
-                            <span className={`text-xl font-bold tracking-tighter transition-colors ${scrolled ? 'text-navy' : 'text-white'}`}>
-                                MetaHR
-                            </span>
+                            <img
+                                src="/logo.png"
+                                alt="MetaHR"
+                                className={`h-10 w-auto object-contain transition-all duration-500 ${!scrolled ? 'brightness-0 invert' : ''}`}
+                            />
                         </Link>
                     </div>
 
@@ -81,8 +83,8 @@ const Navbar = () => {
                                                     key={subItem.path}
                                                     to={subItem.path}
                                                     className={`text-sm font-bold tracking-tight px-4 py-3 rounded-2xl transition-all whitespace-normal leading-snug ${location.pathname === subItem.path
-                                                            ? 'bg-beige/50 text-teal'
-                                                            : 'text-navy hover:bg-beige/30 hover:text-teal'
+                                                        ? 'bg-beige/50 text-teal'
+                                                        : 'text-navy hover:bg-beige/30 hover:text-teal'
                                                         }`}
                                                 >
                                                     {subItem.name}
@@ -140,8 +142,8 @@ const Navbar = () => {
                                                     key={subItem.path}
                                                     to={subItem.path}
                                                     className={`text-sm font-medium tracking-tight ${location.pathname === subItem.path
-                                                            ? 'text-teal'
-                                                            : 'text-navy/60 hover:text-teal'
+                                                        ? 'text-teal'
+                                                        : 'text-navy/60 hover:text-teal'
                                                         }`}
                                                     onClick={() => setIsOpen(false)}
                                                 >
