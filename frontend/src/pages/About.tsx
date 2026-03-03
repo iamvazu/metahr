@@ -6,7 +6,7 @@ const About = () => {
     return (
         <div className="bg-white">
             {/* 1. About Us (Hero) */}
-            <section className="bg-navy relative overflow-hidden min-h-[80vh] md:min-h-[85vh] flex flex-col justify-center pt-32 pb-24">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
                 {/* Background Image with Zoom Animation */}
                 <motion.div
                     initial={{ scale: 1.2 }}
