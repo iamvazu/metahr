@@ -182,18 +182,25 @@ const Home = () => {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                         {[
-                            { title: "Team Development", desc: "Build aligned, high-performing teams", icon: <Users size={32} /> },
-                            { title: "Leadership Development", desc: "Develop leaders who drive strategic impact", icon: <Award size={32} /> },
-                            { title: "Executive Coaching", desc: "Unlock leadership potential", icon: <Target size={32} /> },
-                            { title: "Individual Development", desc: "Strengthen emerging & high-potential talent", icon: <Zap size={32} /> },
-                            { title: "Organizational Effectiveness", desc: "Align culture, strategy & leadership", icon: <Globe size={32} /> },
+                            { title: "Team Development", desc: "Build aligned, high-performing teams", icon: <Users size={32} />, link: "/services/team-development" },
+                            { title: "Leadership Development", desc: "Develop leaders who drive strategic impact", icon: <Award size={32} />, link: "/services/leadership-development" },
+                            { title: "Executive Coaching", desc: "Unlock leadership potential", icon: <Target size={32} />, link: "/services/executive-coaching" },
+                            { title: "Individual Development", desc: "Strengthen emerging & high-potential talent", icon: <Zap size={32} />, link: "/services/individual-development" },
+                            { title: "Organizational Effectiveness", desc: "Align culture, strategy & leadership", icon: <Globe size={32} />, link: "/services/organizational-effectiveness" },
                         ].map((area, index) => (
-                            <motion.div key={index} whileHover={{ y: -10 }} className="bg-white/5 border border-white/10 p-10 rounded-[3rem] hover:bg-white/10 transition-all group">
-                                <div className="w-16 h-16 bg-teal text-white flex items-center justify-center rounded-2xl mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-teal/20">
-                                    {area.icon}
+                            <motion.div key={index} whileHover={{ y: -10 }} className="flex flex-col bg-white/5 border border-white/10 p-10 rounded-[3rem] hover:bg-white/10 transition-all group">
+                                <div className="flex-grow">
+                                    <div className="w-16 h-16 bg-teal text-white flex items-center justify-center rounded-2xl mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-teal/20">
+                                        {area.icon}
+                                    </div>
+                                    <h3 className="text-2xl font-black mb-4 tracking-tight">{area.title}</h3>
+                                    <p className="text-white/60 font-medium leading-relaxed mb-10">{area.desc}</p>
                                 </div>
-                                <h3 className="text-2xl font-black mb-4 tracking-tight">{area.title}</h3>
-                                <p className="text-white/60 font-medium leading-relaxed">{area.desc}</p>
+                                <div className="mt-auto pt-4 border-t border-white/10">
+                                    <Link to={area.link} className="inline-flex items-center text-teal font-black uppercase tracking-widest text-[10px] group-hover:text-white transition-colors">
+                                        Learn More <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={14} />
+                                    </Link>
+                                </div>
                             </motion.div>
                         ))}
                     </div>

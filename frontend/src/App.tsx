@@ -9,6 +9,13 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 
+// Service Pages
+import LeadershipDevelopment from './pages/services/LeadershipDevelopment';
+import TeamDevelopment from './pages/services/TeamDevelopment';
+import ExecutiveCoaching from './pages/services/ExecutiveCoaching';
+import IndividualDevelopment from './pages/services/IndividualDevelopment';
+import OrganizationalEffectiveness from './pages/services/OrganizationalEffectiveness';
+
 function App() {
   return (
     <Router>
@@ -23,6 +30,12 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
+            {/* Services Pages */}
+            <Route path="/services/leadership-development" element={<LeadershipDevelopment />} />
+            <Route path="/services/team-development" element={<TeamDevelopment />} />
+            <Route path="/services/executive-coaching" element={<ExecutiveCoaching />} />
+            <Route path="/services/individual-development" element={<IndividualDevelopment />} />
+            <Route path="/services/organizational-effectiveness" element={<OrganizationalEffectiveness />} />
           </Routes>
         </main>
         <Footer />
