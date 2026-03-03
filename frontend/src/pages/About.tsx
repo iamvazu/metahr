@@ -7,27 +7,20 @@ const About = () => {
         <div className="bg-white">
             {/* 1. About Us (Hero) */}
             <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
-                {/* Background Image with Zoom Animation */}
-                <motion.div
-                    initial={{ scale: 1.2 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="absolute inset-0 z-0 pointer-events-none"
-                >
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2000" alt="About MetaHR" className="w-full h-full object-cover opacity-60" />
-                    <div className="absolute inset-0 bg-navy/70"></div>
-                </motion.div>
+                {/* Background Video Layer */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                    <iframe
+                        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-[177.77vh] h-[56.25vw] -translate-x-1/2 -translate-y-1/2 opacity-40 scale-110"
+                        src="https://www.youtube.com/embed/xJZpKIgTvL8?autoplay=1&mute=1&loop=1&playlist=xJZpKIgTvL8&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
+                        allow="autoplay; encrypted-media"
+                        title="About Background Video"
+                        frameBorder="0"
+                    ></iframe>
+                    <div className="absolute inset-0 bg-navy/70 z-10"></div>
+                </div>
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="mb-8"
-                    >
-                        <span className="px-6 py-2 rounded-full border border-teal/60 text-teal text-[10px] font-mono font-bold tracking-[0.4em] uppercase bg-black/40 backdrop-blur-xl animate-status-beat">
-                            INTRODUCTION // ABOUT_US
-                        </span>
-                    </motion.div>
+
 
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}

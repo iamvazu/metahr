@@ -29,15 +29,7 @@ const Resources = () => {
                 </motion.div>
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="mb-8"
-                    >
-                        <span className="px-6 py-2 rounded-full border border-teal/60 text-teal text-[10px] font-mono font-bold tracking-[0.4em] uppercase bg-black/40 backdrop-blur-xl animate-status-beat">
-                            RESOURCES.INDEX // GLOBAL_BENCHMARKS
-                        </span>
-                    </motion.div>
+
 
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
