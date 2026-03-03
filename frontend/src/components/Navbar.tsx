@@ -49,7 +49,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Nav - Centered */}
-                    <div className="hidden md:flex space-x-12 items-center px-8">
+                    <div className="flex max-md:hidden space-x-12 items-center px-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.path}
@@ -68,7 +68,7 @@ const Navbar = () => {
                     <div className="flex-1 flex items-center justify-end">
                         <Link
                             to="/contact"
-                            className={`hidden md:inline-block px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap ${scrolled ? 'bg-navy text-white hover:bg-teal' : 'bg-white text-navy hover:bg-teal hover:text-white'
+                            className={`inline-block max-md:hidden px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap ${scrolled ? 'bg-navy text-white hover:bg-teal' : 'bg-white text-navy hover:bg-teal hover:text-white'
                                 }`}
                         >
                             Get Started

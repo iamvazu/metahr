@@ -157,16 +157,7 @@ const Home = () => {
                     }}
                     className="container mx-auto px-6 text-center z-10 flex flex-col items-center justify-center pt-8"
                 >
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1 }}
-                        className="mb-8"
-                    >
-                        <span className="px-6 py-2 rounded-full border border-teal/60 text-teal text-[10px] font-mono font-bold tracking-[0.4em] uppercase bg-black/40 backdrop-blur-xl animate-status-beat">
-                            Status: Initializing_Potential
-                        </span>
-                    </motion.div>
+
 
                     <motion.h1
                         initial={{ opacity: 0, y: 30, z: -200 }}
