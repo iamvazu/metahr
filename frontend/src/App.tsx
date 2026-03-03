@@ -17,7 +17,18 @@ import ExecutiveCoaching from './pages/services/ExecutiveCoaching';
 import IndividualDevelopment from './pages/services/IndividualDevelopment';
 import OrganizationalEffectiveness from './pages/services/OrganizationalEffectiveness';
 
+import { useEffect } from 'react';
+
 function App() {
+  useEffect(() => {
+    // Redirect old HashRouter links to clean URLs
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#/')) {
+      const path = hash.slice(2);
+      window.history.replaceState(null, '', '/' + path);
+    }
+  }, []);
+
   return (
     <Router>
       <div className="min-h-screen bg-beige selection:bg-teal selection:text-white">
