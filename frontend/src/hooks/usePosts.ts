@@ -16,6 +16,7 @@ export interface Post {
         rendered: string;
     };
     date: string;
+    link: string;
     _embedded?: {
         'wp:featuredmedia'?: Array<{
             source_url: string;

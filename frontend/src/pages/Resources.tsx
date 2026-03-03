@@ -136,13 +136,12 @@ const Resources = () => {
                             ))
                         ) : posts && posts.length > 0 ? (
                             posts.map((post, i) => (
-                                <motion.div
+                                <a
                                     key={post.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    viewport={{ once: true }}
-                                    className="group relative h-full flex flex-col bg-white border border-navy/5 rounded-[3rem] overflow-hidden hover:border-teal/30 hover:shadow-3xl transition-all duration-700"
+                                    href={post.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block group relative h-full flex flex-col bg-white border border-navy/5 rounded-[3rem] overflow-hidden hover:border-teal/30 hover:shadow-3xl transition-all duration-700"
                                 >
                                     <div className="h-48 overflow-hidden relative">
                                         {post._embedded?.['wp:featuredmedia']?.[0]?.source_url ? (
@@ -176,7 +175,7 @@ const Resources = () => {
                                             <Award size={18} className="text-navy/10 group-hover:text-teal transition-colors" />
                                         </div>
                                     </div>
-                                </motion.div>
+                                </a>
                             ))
                         ) : (
                             <div className="col-span-full py-20 text-center bg-beige/10 rounded-[4rem] border-2 border-dashed border-navy/5">
