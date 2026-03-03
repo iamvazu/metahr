@@ -389,32 +389,30 @@ const Home = () => {
                     </p>
 
                     {/* Process Flow */}
-                    <div className="overflow-x-auto pb-12 hide-scrollbar">
-                        <div className="flex flex-row md:flex-row justify-between items-center gap-6 md:gap-8 min-w-max md:min-w-0 md:justify-center px-4">
-                            {[
-                                { name: 'Diagnose', img: '/diagnose_step_bg.png' },
-                                { name: 'Design', img: '/design_step_bg.png' },
-                                { name: 'Deliver', img: '/deliver_step_bg.png' },
-                                { name: 'Measure', img: '/measure_step_bg.png' },
-                                { name: 'Reinforce', img: '/reinforce_step_bg.png' }
-                            ].map((step, i) => (
-                                <div key={step.name} className="flex flex-row items-center gap-6 md:gap-8 shrink-0">
-                                    <div className="group relative w-44 h-44 md:w-52 md:h-52 rounded-full overflow-hidden flex flex-col items-center justify-center shadow-2xl border border-navy/10 hover:border-teal/50 transition-all cursor-default scale-90 md:scale-100">
-                                        <div className="absolute inset-0 z-0 opacity-40 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0">
-                                            <img src={step.img} alt="" className="w-full h-full object-cover" />
-                                        </div>
-                                        <div className="absolute inset-0 bg-beige/80 group-hover:bg-navy/80 transition-colors z-[1]"></div>
-                                        <div className="relative z-10 text-center">
-                                            <span className="font-mono text-teal/50 group-hover:text-teal/80 text-[10px] mb-2 block font-black uppercase tracking-[0.3em]">Phase_0{i + 1}</span>
-                                            <span className="font-black text-xl md:text-2xl text-navy group-hover:text-white transition-colors tracking-tight">{step.name}</span>
-                                        </div>
+                    <div className="flex flex-wrap justify-center items-center gap-y-12 gap-x-4 md:gap-x-8 lg:gap-x-12 max-w-7xl mx-auto px-4">
+                        {[
+                            { name: 'Diagnose', img: '/diagnose_step_bg.png' },
+                            { name: 'Design', img: '/design_step_bg.png' },
+                            { name: 'Deliver', img: '/deliver_step_bg.png' },
+                            { name: 'Measure', img: '/measure_step_bg.png' },
+                            { name: 'Reinforce', img: '/reinforce_step_bg.png' }
+                        ].map((step, i) => (
+                            <div key={step.name} className="flex items-center gap-4 md:gap-8">
+                                <div className="group relative w-36 h-36 sm:w-44 sm:h-44 lg:w-48 lg:h-48 xl:w-52 xl:h-52 rounded-full overflow-hidden flex flex-col items-center justify-center shadow-2xl border border-navy/10 hover:border-teal/50 transition-all cursor-default scale-95 hover:scale-100">
+                                    <div className="absolute inset-0 z-0 opacity-40 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0">
+                                        <img src={step.img} alt="" className="w-full h-full object-cover" />
                                     </div>
-                                    {i < 4 && (
-                                        <ArrowRight className="text-teal/30 shrink-0" size={24} />
-                                    )}
+                                    <div className="absolute inset-0 bg-beige/80 group-hover:bg-navy/80 transition-colors z-[1]"></div>
+                                    <div className="relative z-10 text-center px-4">
+                                        <span className="font-mono text-teal/50 group-hover:text-teal/80 text-[8px] sm:text-[10px] mb-1 sm:mb-2 block font-black uppercase tracking-[0.3em]">Phase_0{i + 1}</span>
+                                        <span className="font-black text-lg sm:text-xl lg:text-2xl text-navy group-hover:text-white transition-colors tracking-tight leading-tight">{step.name}</span>
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
+                                {i < 4 && (
+                                    <ArrowRight className="text-teal/30 hidden sm:block shrink-0" size={24} />
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
