@@ -491,11 +491,11 @@ const About = () => {
                     </div>
                     <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
                         {[
-                            { name: "SHRM-SCP", img: "/shrm_logo.png" },
-                            { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
-                            { name: "MTa Licensed User", img: "/mta_logo.png" },
+                            { name: "Leadership Challenge", img: "/leadership_logo.jpg" },
                             { name: "Hogan Assessments", img: "/hogan_logo.png" },
-                            { name: "The Leadership Challenge", img: "/leadership_challenge_logo.png" }
+                            { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
+                            { name: "MTa Licensed User", img: "/mta_logo.jpg" },
+                            { name: "SHRM-SCP", img: "/shrm_logo.png" }
                         ].map((cred, i) => (
                             <motion.div
                                 key={i}
