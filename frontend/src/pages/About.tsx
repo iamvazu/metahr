@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, Users, Globe, Zap, ShieldCheck, ArrowRight, CheckCircle2, Award, Briefcase, Lightbulb, TrendingUp } from 'lucide-react';
+import { Target, Users, Globe, Zap, ArrowRight, CheckCircle2, Award, Lightbulb, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -49,6 +49,71 @@ const About = () => {
                 </div>
                 {/* Decorative Laser Lines */}
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
+            </section>
+
+            {/* Extended About Text */}
+            <section className="py-24 md:py-32 bg-white relative overflow-hidden border-b border-navy/5">
+                <div className="container mx-auto px-6">
+                    <div className="max-w-5xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-2xl md:text-3xl lg:text-4xl text-navy font-light leading-relaxed tracking-tight mb-16 text-center md:text-left"
+                        >
+                            The word <strong>Meta</strong> means <span className="text-teal font-serif italic text-3xl md:text-4xl lg:text-5xl">beyond.</span> And that is exactly how we approach HR. We look beyond policies, processes, and job descriptions to understand what truly drives people. Because at the heart of every successful organization are individuals with untapped potential, unique strengths, and the capacity to achieve greatness when supported effectively.
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 }}
+                            >
+                                <p className="text-xl md:text-2xl text-navy font-medium leading-relaxed mb-8">
+                                    Meta HR is a leadership and organizational effectiveness partner focused on strengthening the human systems that drive performance.
+                                </p>
+                                <p className="text-lg text-navy/60 leading-relaxed font-bold mb-6">
+                                    Our work sits at the intersection of:
+                                </p>
+                                <ul className="space-y-4 text-lg text-navy/80 font-medium pb-8 border-b border-navy/10 md:border-0 md:pb-0">
+                                    <li className="flex items-center space-x-4">
+                                        <div className="w-2 h-2 rounded-full bg-teal shrink-0"></div>
+                                        <span>Behavioral science</span>
+                                    </li>
+                                    <li className="flex items-center space-x-4">
+                                        <div className="w-2 h-2 rounded-full bg-teal shrink-0"></div>
+                                        <span>Experiential learning</span>
+                                    </li>
+                                    <li className="flex items-center space-x-4">
+                                        <div className="w-2 h-2 rounded-full bg-teal shrink-0"></div>
+                                        <span>Strategic alignment</span>
+                                    </li>
+                                    <li className="flex items-center space-x-4">
+                                        <div className="w-2 h-2 rounded-full bg-teal shrink-0"></div>
+                                        <span>Measurable business outcomes</span>
+                                    </li>
+                                </ul>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="bg-navy p-10 md:p-14 rounded-[3rem] text-white shadow-2xl relative overflow-hidden group"
+                            >
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-teal/10 rounded-full blur-[80px] -mr-20 -mt-20 transition-all duration-700 group-hover:bg-teal/20"></div>
+                                <div className="relative z-10">
+                                    <p className="text-2xl md:text-3xl font-black tracking-tight mb-6">We do not deliver generic workshops.</p>
+                                    <p className="text-lg text-beige/80 leading-relaxed font-light">
+                                        We design leadership interventions that <span className="text-white font-medium">shift behaviors</span>, <span className="text-white font-medium">strengthen alignment</span>, and <span className="text-white font-medium">improve execution capability</span>.
+                                    </p>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             {/* 2. Our Philosophy */}
@@ -195,6 +260,42 @@ const About = () => {
                                 We partner with organizations to elevate human potential, streamline operational performance, and deliver data-driven solutions that lead to sustainable success. Through collaboration, innovation, and a deep commitment to impact, we help our clients thrive in a dynamic world.
                             </p>
                         </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Values Section */}
+            <section className="py-32 bg-beige/20 relative">
+                <div className="container mx-auto px-6">
+                    <div className="text-center max-w-4xl mx-auto mb-20">
+                        <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">PRINCIPLES // HOW_WE_WORK</span>
+                        <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-navy">
+                            Our <span className="text-teal font-serif italic">Values.</span>
+                        </h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        {[
+                            { title: "We Redefine Performance", num: "01", desc: "We don’t optimize average — we unlock exceptional. We challenge norms, elevate standards, and drive breakthrough results." },
+                            { title: "Courageous Transformation", num: "02", desc: "We lean into complexity. Real change requires bold thinking, decisive action, and the confidence to disrupt what no longer works." },
+                            { title: "Accountability to Outcomes", num: "03", desc: "Impact isn’t optional. We measure what matters and stand behind the results we deliver." },
+                            { title: "Human-Centered Innovation", num: "04", desc: "Technology and data power progress — but people drive it. We design solutions where human potential meets intelligent systems." },
+                            { title: "Built for What’s Next", num: "05", desc: "The future rewards agility. We help organizations adapt, evolve, and lead in dynamic environments." }
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="bg-white border border-navy/5 p-10 lg:p-12 rounded-[2.5rem] hover:shadow-2xl hover:border-teal/30 transition-all duration-500 relative overflow-hidden group"
+                            >
+                                <span className="absolute top-8 right-8 text-5xl font-black text-navy/5 group-hover:text-teal/10 transition-colors duration-500">{item.num}</span>
+                                <h3 className="text-2xl font-black text-navy mb-4 tracking-tight relative z-10 w-4/5">{item.title}</h3>
+                                <div className="w-12 h-1 bg-teal/20 mb-6 group-hover:bg-teal group-hover:w-16 transition-all duration-500"></div>
+                                <p className="text-navy/60 font-medium leading-relaxed relative z-10">{item.desc}</p>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>

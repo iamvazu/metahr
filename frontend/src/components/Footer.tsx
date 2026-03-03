@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="grid md:grid-cols-5 gap-12 mb-20">
                     <div className="col-span-2">
                         <Link to="/" className="mb-8 block inline-block">
-                            <img src="/logo.png" alt="MetaHR" className="h-14 w-auto object-contain brightness-0 invert" />
+                            <img src="/logo.png" alt="MetaHR" className="h-20 md:h-24 w-auto object-contain brightness-0 invert" />
                         </Link>
                         <p className="text-white/40 text-lg max-w-sm mb-10 leading-relaxed font-light">
                             Beyond Policies. Beyond Processes. Strategically aligning people, culture, and business objectives for sustainable organizational excellence.
@@ -38,6 +38,7 @@ const Footer = () => {
                             <li><Link to="/about" className="hover:text-teal transition-colors break-words">About Us</Link></li>
                             <li><Link to="/solutions" className="hover:text-teal transition-colors break-words">Solutions</Link></li>
                             <li><Link to="/resources" className="hover:text-teal transition-colors break-words">Resources</Link></li>
+                            <li><Link to="/blog" className="hover:text-teal transition-colors break-words">Blog</Link></li>
                             <li><Link to="/contact" className="hover:text-teal transition-colors break-words">Contact</Link></li>
                         </ul>
                     </div>
@@ -70,14 +71,14 @@ const Footer = () => {
 
                 <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center text-white/20 text-[10px] font-mono tracking-widest uppercase">
                     <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-                        <p>© 2024 MetaHR. All rights reserved.</p>
-                        <div className="flex space-x-6">
+                        <p>© 2026 MetaHR. All rights reserved.</p>
+                        <div className="flex space-x-6 items-center">
                             <Link to="/terms" className="hover:text-teal transition-colors hover:-translate-y-[1px] transform">Terms_of_Service</Link>
                             <Link to="/privacy" className="hover:text-teal transition-colors hover:-translate-y-[1px] transform">Privacy_Policy</Link>
+                            <span>26 Years of Excellence</span>
                         </div>
                     </div>
                     <div className="flex space-x-8 mt-6 md:mt-0">
-                        <span>26 Years of Excellence</span>
                         <span className="italic font-serif normal-case tracking-normal text-sm">Maximize Potential. Elevate Organizations.</span>
                     </div>
                 </div>
