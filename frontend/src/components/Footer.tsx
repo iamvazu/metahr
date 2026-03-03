@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className="bg-navy text-white pt-24 pb-12 rounded-t-[4rem] relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
-                <div className="grid md:grid-cols-4 gap-16 mb-20">
+                <div className="grid md:grid-cols-5 gap-12 mb-20">
                     <div className="col-span-2">
                         <Link to="/" className="text-4xl font-black tracking-tighter mb-8 block">
                             MetaHR
@@ -35,23 +35,34 @@ const Footer = () => {
                     <div>
                         <h4 className="text-[10px] font-mono font-bold tracking-[0.3em] text-teal uppercase mb-8">Navigation</h4>
                         <ul className="space-y-4 text-white/40 font-medium">
-                            <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                            <li><Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link></li>
-                            <li><Link to="/resources" className="hover:text-white transition-colors">Resources</Link></li>
-                            <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                            <li><Link to="/about" className="hover:text-teal transition-colors break-words">About Us</Link></li>
+                            <li><Link to="/solutions" className="hover:text-teal transition-colors break-words">Solutions</Link></li>
+                            <li><Link to="/resources" className="hover:text-teal transition-colors break-words">Resources</Link></li>
+                            <li><Link to="/contact" className="hover:text-teal transition-colors break-words">Contact</Link></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="text-[10px] font-mono font-bold tracking-[0.3em] text-teal uppercase mb-8">Services</h4>
+                        <ul className="space-y-4 text-white/40 font-medium text-sm">
+                            <li><Link to="/services/leadership-development" className="hover:text-teal transition-colors break-words">Leadership Development</Link></li>
+                            <li><Link to="/services/team-development" className="hover:text-teal transition-colors break-words">Team Development</Link></li>
+                            <li><Link to="/services/executive-coaching" className="hover:text-teal transition-colors break-words">Executive Coaching</Link></li>
+                            <li><Link to="/services/individual-development" className="hover:text-teal transition-colors break-words">Individual Development</Link></li>
+                            <li><Link to="/services/organizational-effectiveness" className="hover:text-teal transition-colors break-words">Organizational Effectiveness</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="text-[10px] font-mono font-bold tracking-[0.3em] text-teal uppercase mb-8">Direct_Comm</h4>
-                        <ul className="space-y-4 text-white/40">
-                            <li className="flex items-center space-x-3 group cursor-pointer">
-                                <Mail size={16} className="text-teal group-hover:scale-110 transition-transform" />
-                                <span className="group-hover:text-white transition-colors">ian@metahr.co.in</span>
+                        <ul className="space-y-4 text-white/40 font-medium text-sm">
+                            <li className="flex items-center space-x-3 group cursor-pointer transition-colors hover:text-teal">
+                                <Mail size={16} className="text-teal/50 group-hover:text-teal transition-colors shrink-0" />
+                                <span className="break-all">ian@metahr.co.in</span>
                             </li>
-                            <li className="flex items-center space-x-3 group cursor-pointer">
-                                <Phone size={16} className="text-teal group-hover:scale-110 transition-transform" />
-                                <span className="group-hover:text-white transition-colors">+91 82960 49787</span>
+                            <li className="flex items-center space-x-3 group cursor-pointer transition-colors hover:text-teal">
+                                <Phone size={16} className="text-teal/50 group-hover:text-teal transition-colors shrink-0" />
+                                <span>+91 82960 49787</span>
                             </li>
                         </ul>
                     </div>

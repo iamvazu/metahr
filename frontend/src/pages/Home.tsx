@@ -283,19 +283,19 @@ const Home = () => {
             </section>
 
             {/* Call to Action */}
-            <section className="py-32 md:py-48 bg-navy text-center relative overflow-hidden">
+            <section className="py-20 md:py-32 bg-white text-center relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
                 <div className="container mx-auto px-6 relative z-10">
-                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-navy mb-6 tracking-tighter leading-none">
                         Leadership is a <br /><span className="text-teal font-serif italic block mt-4">strategic advantage.</span>
                     </h2>
-                    <p className="text-2xl md:text-3xl text-white/50 mb-16 font-light">Let’s build it intentionally.</p>
+                    <p className="text-xl md:text-2xl text-navy/50 mb-12 font-light">Let’s build it intentionally.</p>
 
                     <div className="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
-                        <Link to="/contact" className="bg-teal text-white px-16 py-6 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-navy transition-all shadow-2xl hover:scale-[1.03]">
+                        <Link to="/contact" className="bg-teal text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-navy hover:-translate-y-1 transition-all shadow-2xl">
                             Get Started Today
                         </Link>
-                        <Link to="/contact" className="text-white font-mono font-bold text-sm uppercase tracking-widest border border-white/20 px-16 py-6 rounded-full hover:bg-white/10 transition-all hover:scale-[1.03]">
+                        <Link to="/contact" className="text-navy font-mono font-bold text-sm uppercase tracking-widest border border-navy/20 px-12 py-5 rounded-full hover:bg-navy/5 hover:-translate-y-1 transition-all">
                             [ Book Call ]
                         </Link>
                     </div>
