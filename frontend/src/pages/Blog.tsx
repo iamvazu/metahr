@@ -6,16 +6,40 @@ const Blog = () => {
     const { posts, loading: loadingPosts } = usePosts();
 
     return (
-        <div className="bg-white pt-32 pb-24 min-h-screen">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-24">
-                    <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Intelligence_Feed // LATEST_THINKING</span>
-                    <h2 className="text-4xl md:text-6xl font-black text-navy mb-8 tracking-tighter">Global Leadership <br /><span className="text-teal font-serif italic text-gradient uppercase">Insights.</span></h2>
-                    <p className="text-lg text-navy/40 font-light max-w-2xl mx-auto leading-relaxed">
+        <div className="bg-white">
+            {/* Blog Hero */}
+            <section className="bg-navy relative overflow-hidden pt-40 pb-24">
+                <div className="container mx-auto px-6 relative z-10 text-center">
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block"
+                    >
+                        Intelligence_Feed // LATEST_THINKING
+                    </motion.span>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-7xl font-black !text-white mb-8 tracking-tighter leading-none"
+                    >
+                        Global Leadership <br />
+                        <span className="text-teal font-serif italic">Insights.</span>
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-lg md:text-xl !text-beige/60 font-light max-w-2xl mx-auto leading-relaxed"
+                    >
                         Explore our latest research, thought leadership, and tactical insights for modern organizational growth.
-                    </p>
+                    </motion.p>
                 </div>
+                {/* Decorative Laser Line */}
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
+            </section>
 
+            <div className="container mx-auto px-6 py-32">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {loadingPosts ? (
                         [1, 2, 3, 4, 5, 6].map((n) => (
