@@ -6,11 +6,11 @@ const Resources = () => {
     const { posts, loading: loadingPosts } = usePosts();
 
     const credentials = [
-        "SHRM - Senior Certified Professional (SHRM-SCP)",
-        "Gallup Global Strengths Coach",
-        "Hogan Assessments Certified Practitioner",
-        "The Leadership Challenge Licensed User",
-        "Everything DiSC® Certified Facilitator"
+        { name: "Leadership Challenge", img: "/leadership_logo.jpg" },
+        { name: "Hogan Assessments", img: "/hogan_logo.png" },
+        { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
+        { name: "MTa Licensed User", img: "/mta_logo.jpg" },
+        { name: "SHRM-CP", img: "/shrm_logo.png" }
     ];
 
     return (
@@ -238,20 +238,21 @@ const Resources = () => {
                     <div className="max-w-5xl mx-auto">
                         <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-10 block">Benchmarked_Wisdom // CREDENTIALS</span>
                         <h2 className="text-4xl md:text-7xl font-black text-navy mb-16 tracking-tighter leading-none">Professional <br /><span className="text-teal font-serif italic uppercase text-gradient">Accreditations.</span></h2>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {credentials.map((c, i) => (
+                        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
+                            {credentials.map((cred, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: i * 0.1 }}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="bg-beige/10 border border-navy/5 p-10 rounded-[3rem] text-navy font-bold hover:border-teal/30 hover:shadow-3xl transition-all duration-500 group flex items-center space-x-6"
+                                    transition={{ delay: i * 0.1 }}
+                                    className="group transition-all duration-500 transform hover:scale-110"
                                 >
-                                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-teal group-hover:bg-navy group-hover:text-white transition-all duration-500 shrink-0 shadow-lg shadow-navy/5">
-                                        <Award size={24} />
-                                    </div>
-                                    <span className="text-left text-xs uppercase tracking-widest leading-relaxed">{c}</span>
+                                    <img
+                                        src={cred.img}
+                                        alt={cred.name}
+                                        className="h-16 md:h-20 w-auto object-contain drop-shadow-sm"
+                                    />
                                 </motion.div>
                             ))}
                         </div>

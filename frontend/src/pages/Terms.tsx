@@ -155,22 +155,22 @@ const Terms = () => {
                         <div className="grid md:grid-cols-2 gap-10">
                             <div className="space-y-6">
                                 <a
-                                    href="mailto:ian@metahr.co.in"
+                                    href="mailto:info@metahr.co.in"
                                     className="flex items-center space-x-4 group hover:translate-x-2 transition-transform"
                                 >
                                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-teal group-hover:bg-teal group-hover:text-white transition-all">
                                         <Mail size={18} />
                                     </div>
-                                    <span className="font-bold text-sm tracking-widest uppercase text-white/80 group-hover:text-white transition-colors">ian@metahr.co.in</span>
+                                    <span className="font-bold text-sm tracking-widest uppercase text-white/80 group-hover:text-white transition-colors">info@metahr.co.in</span>
                                 </a>
                                 <a
-                                    href="tel:+918296049787"
+                                    href="tel:+919187651277"
                                     className="flex items-center space-x-4 group hover:translate-x-2 transition-transform"
                                 >
                                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-teal group-hover:bg-teal group-hover:text-white transition-all">
                                         <Phone size={18} />
                                     </div>
-                                    <span className="font-bold text-sm tracking-widest uppercase text-white/80 group-hover:text-white transition-colors">+91 82960 49787</span>
+                                    <span className="font-bold text-sm tracking-widest uppercase text-white/80 group-hover:text-white transition-colors">+91 91876 51277</span>
                                 </a>
                             </div>
                             <div className="flex flex-col justify-end">
