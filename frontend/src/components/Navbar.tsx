@@ -55,7 +55,7 @@ const Navbar = () => {
                             <img
                                 src="/logo.png"
                                 alt="MetaHR"
-                                className={`h-14 md:h-16 w-auto object-contain transition-all duration-500 ${!scrolled ? 'brightness-0 invert' : ''}`}
+                                className={`h-24 md:h-28 w-auto object-contain transition-all duration-500 ${!scrolled ? 'brightness-0 invert' : ''}`}
                             />
                         </Link>
                     </div>
