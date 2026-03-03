@@ -389,7 +389,7 @@ const Home = () => {
                     </p>
 
                     {/* Process Flow */}
-                    <div className="flex flex-nowrap justify-center items-center gap-x-2 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 xl:gap-x-12 max-w-[95vw] mx-auto px-4 overflow-x-auto lg:overflow-x-visible hide-scrollbar pt-8 pb-12">
+                    <div className="flex flex-nowrap items-center justify-center gap-x-1 sm:gap-x-3 md:gap-x-4 lg:gap-x-5 xl:gap-x-8 max-w-full mx-auto px-2 overflow-x-auto lg:overflow-x-visible hide-scrollbar pt-8 pb-12">
                         {[
                             { name: 'Diagnose', img: '/diagnose_step_bg.png' },
                             { name: 'Design', img: '/design_step_bg.png' },
@@ -397,19 +397,19 @@ const Home = () => {
                             { name: 'Measure', img: '/measure_step_bg.png' },
                             { name: 'Reinforce', img: '/reinforce_step_bg.png' }
                         ].map((step, i) => (
-                            <div key={step.name} className="flex items-center gap-x-2 sm:gap-x-4 md:gap-x-6 shrink-0 lg:shrink">
-                                <div className="group relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-52 xl:h-52 rounded-full overflow-hidden flex flex-col items-center justify-center shadow-2xl border border-navy/10 hover:border-teal/50 transition-all cursor-default hover:scale-105 active:scale-95">
+                            <div key={step.name} className="flex items-center gap-x-1 sm:gap-x-3 md:gap-x-4 shrink-0 lg:shrink">
+                                <div className="group relative w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 xl:w-48 xl:h-48 rounded-full overflow-hidden flex flex-col items-center justify-center shadow-2xl border border-navy/10 hover:border-teal/50 transition-all cursor-default hover:scale-110 active:scale-95">
                                     <div className="absolute inset-0 z-0 opacity-40 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0">
                                         <img src={step.img} alt="" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="absolute inset-0 bg-beige/80 group-hover:bg-navy/80 transition-colors z-[1]"></div>
                                     <div className="relative z-10 text-center px-2">
-                                        <span className="font-mono text-teal/50 group-hover:text-teal/80 text-[6px] sm:text-[8px] lg:text-[10px] mb-1 block font-black uppercase tracking-[0.2em] lg:tracking-[0.3em]">Phase_0{i + 1}</span>
-                                        <span className="font-black text-xs sm:text-lg md:text-xl lg:text-2xl text-navy group-hover:text-white transition-colors tracking-tight leading-tight">{step.name}</span>
+                                        <span className="font-mono text-teal/50 group-hover:text-teal/80 text-[6px] sm:text-[7px] md:text-[8px] lg:text-[9px] xl:text-[10px] mb-1 block font-black uppercase tracking-[0.2em] lg:tracking-[0.3em]">Phase_0{i + 1}</span>
+                                        <span className="font-black text-[10px] sm:text-base md:text-lg lg:text-xl xl:text-2xl text-navy group-hover:text-white transition-colors tracking-tight leading-tight">{step.name}</span>
                                     </div>
                                 </div>
                                 {i < 4 && (
-                                    <ArrowRight className="text-teal/20 shrink-0 w-4 h-4 sm:w-6 sm:h-6" />
+                                    <ArrowRight className="text-teal/20 shrink-0 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />
                                 )}
                             </div>
                         ))}
