@@ -31,6 +31,7 @@ const Navbar = () => {
             ]
         },
         { name: 'Resources', path: '/resources' },
+        { name: 'Blog', path: '/blog' },
         { name: 'Contact', path: '/contact' },
     ];
 
@@ -55,7 +56,7 @@ const Navbar = () => {
                             <img
                                 src="/logo.png"
                                 alt="MetaHR"
-                                className={`h-10 w-auto object-contain transition-all duration-500 ${!scrolled ? 'brightness-0 invert' : ''}`}
+                                className={`h-14 md:h-16 w-auto object-contain transition-all duration-500 ${!scrolled ? 'brightness-0 invert' : ''}`}
                             />
                         </Link>
                     </div>
