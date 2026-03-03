@@ -484,18 +484,18 @@ const About = () => {
             </section>
 
             {/* 9. Credentials */}
-            <section className="py-24 bg-beige/20 border-t border-navy/5">
+            <section className="py-24 bg-beige/10 border-t border-navy/5">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
                         <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase block">TRUST // CREDENTIALS</span>
                     </div>
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+                    <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
                         {[
-                            "SHRM-SCP",
-                            "Gallup Strengths Certified Coach",
-                            "MTa Licensed User",
-                            "Hogan Assessor",
-                            "The Leadership Challenge"
+                            { name: "SHRM-SCP", img: "/shrm_logo.png" },
+                            { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
+                            { name: "MTa Licensed User", img: "/mta_logo.png" },
+                            { name: "Hogan Assessments", img: "/hogan_logo.png" },
+                            { name: "The Leadership Challenge", img: "/leadership_challenge_logo.png" }
                         ].map((cred, i) => (
                             <motion.div
                                 key={i}
@@ -503,10 +503,13 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="bg-white border border-navy/5 px-8 py-4 rounded-2xl shadow-lg shadow-navy/5 flex items-center space-x-3 hover:border-teal/30 hover:shadow-xl transition-all"
+                                className="group grayscale hover:grayscale-0 transition-all duration-500 transform hover:scale-110"
                             >
-                                <Award className="text-teal" size={20} />
-                                <span className="font-bold text-navy/80 text-sm md:text-base tracking-wide">{cred}</span>
+                                <img
+                                    src={cred.img}
+                                    alt={cred.name}
+                                    className="h-16 md:h-20 w-auto object-contain drop-shadow-sm"
+                                />
                             </motion.div>
                         ))}
                     </div>
