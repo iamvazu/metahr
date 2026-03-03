@@ -16,8 +16,8 @@ const Contact = () => {
     const [responseMessage, setResponseMessage] = useState('');
 
     const contactInfo = [
-        { label: "Email", value: "ian@metahr.co.in", icon: <Mail size={24} />, href: "mailto:ian@metahr.co.in" },
-        { label: "Phone", value: "+91 82960 49787", icon: <Phone size={24} />, href: "tel:+918296049787" },
+        { label: "Email", value: "info@metahr.co.in", icon: <Mail size={24} />, href: "mailto:info@metahr.co.in" },
+        { label: "Phone", value: "+91 91876 51277", icon: <Phone size={24} />, href: "tel:+919187651277" },
         { label: "LinkedIn", value: "Ian Kishander", icon: <Linkedin size={24} />, href: "https://www.linkedin.com/in/ian-kishander-04007ba6/" },
         { label: "Website", value: "www.metahr.co.in", icon: <Globe size={24} />, href: "http://www.metahr.co.in" }
     ];
@@ -59,7 +59,18 @@ const Contact = () => {
     return (
         <div className="bg-white">
             {/* Contact Hero */}
-            <section className="bg-navy pt-32 pb-16 relative overflow-hidden">
+            <section className="bg-navy relative overflow-hidden min-h-[60vh] md:min-h-[70vh] flex flex-col justify-center pt-24 pb-16">
+                {/* Background Image with Zoom Animation */}
+                <motion.div
+                    initial={{ scale: 1.2 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="absolute inset-0 z-0 pointer-events-none"
+                >
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" alt="Contact Background" className="w-full h-full object-cover opacity-30 mix-blend-luminosity" />
+                    <div className="absolute inset-0 bg-navy/80"></div>
+                </motion.div>
+
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}

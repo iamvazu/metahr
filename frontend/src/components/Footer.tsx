@@ -58,11 +58,11 @@ const Footer = () => {
                         <ul className="space-y-4 text-white/40 font-medium text-sm">
                             <li className="flex items-center space-x-3 group cursor-pointer transition-colors hover:text-teal">
                                 <Mail size={16} className="text-teal/50 group-hover:text-teal transition-colors shrink-0" />
-                                <span className="break-all">ian@metahr.co.in</span>
+                                <a href="mailto:info@metahr.co.in" className="break-all">info@metahr.co.in</a>
                             </li>
                             <li className="flex items-center space-x-3 group cursor-pointer transition-colors hover:text-teal">
                                 <Phone size={16} className="text-teal/50 group-hover:text-teal transition-colors shrink-0" />
-                                <span>+91 82960 49787</span>
+                                <a href="tel:+919187651277">+91 91876 51277</a>
                             </li>
                         </ul>
                     </div>

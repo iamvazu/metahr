@@ -16,7 +16,18 @@ const Resources = () => {
     return (
         <div className="bg-white">
             {/* Resources Hero */}
-            <section className="bg-navy pt-32 pb-16 relative overflow-hidden">
+            <section className="bg-navy relative overflow-hidden min-h-[60vh] md:min-h-[70vh] flex flex-col justify-center pt-24 pb-16">
+                {/* Background Image with Zoom Animation */}
+                <motion.div
+                    initial={{ scale: 1.2 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="absolute inset-0 z-0 pointer-events-none"
+                >
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=2000" alt="Resources Background" className="w-full h-full object-cover opacity-30 mix-blend-luminosity" />
+                    <div className="absolute inset-0 bg-navy/80"></div>
+                </motion.div>
+
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
