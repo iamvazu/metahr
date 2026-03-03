@@ -94,8 +94,11 @@ const About = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="bg-navy p-10 md:p-14 rounded-[3rem] text-white shadow-2xl relative overflow-hidden group"
+                                className="group relative overflow-hidden bg-navy p-10 md:p-14 rounded-[3rem] text-white shadow-2xl border border-teal/20"
                             >
+                                <div className="absolute inset-0 z-0 opacity-20 group-hover:scale-105 transition-transform duration-1000">
+                                    <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover" />
+                                </div>
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-teal/10 rounded-full blur-[80px] -mr-20 -mt-20 transition-all duration-700 group-hover:bg-teal/20"></div>
                                 <div className="relative z-10">
                                     <p className="text-2xl md:text-3xl font-black tracking-tight mb-6">We do not deliver generic workshops.</p>
@@ -135,23 +138,28 @@ const About = () => {
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="bg-navy rounded-[3rem] p-12 text-white relative shadow-3xl shadow-navy/20"
+                            className="group relative overflow-hidden bg-navy rounded-[3rem] p-12 text-white shadow-3xl shadow-navy/20 border border-white/5"
                         >
-                            <h3 className="text-2xl font-bold mb-8 tracking-tight">At MetaHR, we focus on:</h3>
-                            <ul className="space-y-6">
-                                {[
-                                    "Unlocking and developing individual potential",
-                                    "Creating engaging and high-performance work environments",
-                                    "Aligning people strategy with business objectives",
-                                    "Strengthening leadership and team collaboration",
-                                    "Building scalable, sustainable HR foundations"
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-start">
-                                        <CheckCircle2 className="text-teal shrink-0 mt-1 mr-4" size={24} />
-                                        <span className="text-lg font-light text-beige/90">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="absolute inset-0 z-0 opacity-20 group-hover:scale-110 transition-transform duration-1000">
+                                <img src="/direction_card_bg.png" alt="" className="w-full h-full object-cover" />
+                            </div>
+                            <div className="relative z-10">
+                                <h3 className="text-2xl font-bold mb-8 tracking-tight">At MetaHR, we focus on:</h3>
+                                <ul className="space-y-6">
+                                    {[
+                                        "Unlocking and developing individual potential",
+                                        "Creating engaging and high-performance work environments",
+                                        "Aligning people strategy with business objectives",
+                                        "Strengthening leadership and team collaboration",
+                                        "Building scalable, sustainable HR foundations"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start group/li">
+                                            <CheckCircle2 className="text-teal shrink-0 mt-1 mr-4 group-hover/li:scale-125 transition-transform" size={24} />
+                                            <span className="text-lg font-light text-beige/90 group-hover/li:text-white transition-colors">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
@@ -172,23 +180,28 @@ const About = () => {
 
                     <div className="grid md:grid-cols-3 gap-8 mb-16">
                         {[
-                            { title: "Startups", desc: "A startup building your HR function from the ground up", icon: <Zap size={32} /> },
-                            { title: "Growing Companies", desc: "A growing company refining systems and strengthening culture", icon: <TrendingUp size={32} /> },
-                            { title: "Established Orgs", desc: "An established organization scaling your people strategy", icon: <Globe size={32} /> }
+                            { title: "Startups", desc: "A startup building your HR function from the ground up", icon: <Zap size={32} />, img: "/value_1_bg.png" },
+                            { title: "Growing Companies", desc: "A growing company refining systems and strengthening culture", icon: <TrendingUp size={32} />, img: "/value_2_bg.png" },
+                            { title: "Established Orgs", desc: "An established organization scaling your people strategy", icon: <Globe size={32} />, img: "/value_5_bg.png" }
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="bg-white p-10 rounded-[3rem] shadow-xl shadow-navy/5 border border-navy/5"
+                                className="group relative overflow-hidden bg-white p-10 rounded-[3rem] shadow-xl shadow-navy/5 border border-navy/5 transition-all duration-700 hover:shadow-2xl hover:-translate-y-2"
                             >
-                                <div className="w-16 h-16 rounded-2xl bg-teal/10 flex items-center justify-center text-teal mb-8">
-                                    {item.icon}
+                                <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-1000">
+                                    <img src={item.img} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                                 </div>
-                                <h4 className="text-2xl font-bold mb-4 text-navy">Whether you are:</h4>
-                                <p className="text-lg text-navy/60 leading-relaxed">{item.desc}</p>
+                                <div className="relative z-10">
+                                    <div className="w-16 h-16 rounded-2xl bg-teal/10 flex items-center justify-center text-teal mb-8 group-hover:bg-teal group-hover:text-white transition-all">
+                                        {item.icon}
+                                    </div>
+                                    <h4 className="text-2xl font-bold mb-4 text-navy">Whether you are:</h4>
+                                    <p className="text-lg text-navy/60 leading-relaxed font-medium">{item.desc}</p>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -385,36 +398,52 @@ const About = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="bg-white border border-navy/10 rounded-[3rem] p-10 md:p-14 hover:shadow-2xl hover:border-teal/30 transition-all duration-500 group"
+                                className="group relative overflow-hidden bg-white border border-navy/10 rounded-[3rem] p-10 md:p-14 hover:shadow-2xl hover:border-teal/30 transition-all duration-700"
                             >
-                                <div className="grid lg:grid-cols-12 gap-10 items-center">
+                                {/* Background Image for Core Service List Item */}
+                                <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 scale-105 transition-all duration-1000">
+                                    <img
+                                        src={
+                                            service.title === "Team Development" ? "/team_development_abstract.png" :
+                                                service.title === "Leadership Development" ? "/leadership_development_abstract.png" :
+                                                    service.title === "Executive & Performance Coaching" ? "/executive_coaching_abstract.png" :
+                                                        service.title === "Individual Development" ? "/individual_development_abstract.png" :
+                                                            "/org_effectiveness_abstract.png"
+                                        }
+                                        alt=""
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white"></div>
+                                </div>
+
+                                <div className="grid lg:grid-cols-12 gap-10 items-center relative z-10">
                                     <div className="lg:col-span-4">
                                         <div className="flex items-center space-x-6 mb-6">
                                             <span className="text-4xl md:text-5xl font-black text-navy/10 group-hover:text-teal transition-colors duration-500">{service.num}</span>
-                                            <div className="w-16 h-16 rounded-2xl bg-beige/50 flex items-center justify-center text-teal">
+                                            <div className="w-20 h-20 rounded-2xl bg-beige/50 backdrop-blur-sm flex items-center justify-center text-teal group-hover:bg-teal group-hover:text-white transition-all duration-500">
                                                 {service.icon}
                                             </div>
                                         </div>
-                                        <h3 className="text-3xl font-black text-navy mb-2 tracking-tight">{service.title}</h3>
-                                        <p className="text-teal font-medium text-lg">{service.subtitle}</p>
+                                        <h3 className="text-3xl font-black text-navy mb-2 tracking-tight group-hover:translate-x-2 transition-transform duration-500">{service.title}</h3>
+                                        <p className="text-teal font-black text-lg group-hover:text-navy transition-colors">{service.subtitle}</p>
                                     </div>
                                     <div className="lg:col-span-5 space-y-6">
-                                        <div>
-                                            <h4 className="text-sm font-bold text-navy uppercase tracking-widest mb-2">The Challenge:</h4>
-                                            <p className="text-navy/60 font-medium">{service.challenge}</p>
+                                        <div className="group/item">
+                                            <h4 className="text-xs font-black text-navy uppercase tracking-[0.2em] mb-2">The Challenge:</h4>
+                                            <p className="text-navy/60 font-bold group-hover:text-navy/80 transition-colors leading-relaxed">{service.challenge}</p>
                                         </div>
-                                        <div>
-                                            <h4 className="text-sm font-bold text-navy uppercase tracking-widest mb-2">Our Approach:</h4>
-                                            <p className="text-navy/60 font-medium">{service.approach}</p>
+                                        <div className="group/item">
+                                            <h4 className="text-xs font-black text-navy uppercase tracking-[0.2em] mb-2">Our Approach:</h4>
+                                            <p className="text-navy/60 font-bold group-hover:text-navy/80 transition-colors leading-relaxed">{service.approach}</p>
                                         </div>
                                     </div>
                                     <div className="lg:col-span-3 lg:text-right">
                                         <Link
                                             to={service.link}
-                                            className="inline-flex items-center justify-center space-x-3 bg-navy text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-teal transition-colors w-full lg:w-auto text-center"
+                                            className="inline-flex items-center justify-center space-x-3 bg-navy text-white px-10 py-5 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-teal transition-all w-full lg:w-auto text-center group/btn shadow-xl shadow-navy/10"
                                         >
                                             <span>{service.btn}</span>
-                                            <ArrowRight size={18} />
+                                            <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
                                         </Link>
                                     </div>
                                 </div>
