@@ -66,7 +66,7 @@ const Navbar = () => {
                             <div key={link.path} className="relative group">
                                 <Link
                                     to={link.path}
-                                    className={`text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
+                                    className={`text-[13px] font-black uppercase tracking-[0.25em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
                                         ? (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-navy')
                                         : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-white/80')
                                         }`}
@@ -101,7 +101,7 @@ const Navbar = () => {
                     <div className="flex-1 flex items-center justify-end pl-8">
                         <Link
                             to="/contact"
-                            className={`inline-block max-md:hidden px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap ${scrolled ? 'bg-navy text-white hover:bg-teal' : 'bg-white text-navy hover:bg-teal hover:text-white'
+                            className={`inline-block max-md:hidden px-8 py-3 rounded-full text-[12px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap ${scrolled ? 'bg-navy text-white hover:bg-teal' : 'bg-white text-navy hover:bg-teal hover:text-white'
                                 }`}
                         >
                             Get Started
