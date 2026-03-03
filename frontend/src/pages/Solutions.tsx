@@ -50,62 +50,6 @@ const Solutions = () => {
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
 
-            {/* The Intersection Philosophy */}
-            <section className="py-32 bg-white relative overflow-hidden">
-                <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-24 items-center">
-                        <div>
-                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Our Core Philosophy // THE_THREE_CHORDS</span>
-                            <h2 className="text-4xl md:text-6xl font-black text-navy mb-10 tracking-tighter leading-tight">The Three-Chord <br /><span className="text-teal font-serif italic">Tapestry.</span></h2>
-                            <p className="text-navy/50 text-xl mb-12 leading-relaxed font-light">
-                                Performance isn't siloed. We believe organizational success happens at the intersection of three critical pillars. When these chords are in harmony, excellence becomes sustainable.
-                            </p>
-                            <div className="space-y-8">
-                                {[
-                                    { title: "People", desc: "Unlocking individual potential through behavioral science.", icon: <Users size={24} /> },
-                                    { title: "Culture", desc: "Creating high-trust environments where people thrive.", icon: <Globe size={24} /> },
-                                    { title: "Strategy", desc: "Aligning human capital with business objectives.", icon: <Target size={24} /> }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-start space-x-6 group">
-                                        <div className="w-14 h-14 rounded-2xl bg-beige flex items-center justify-center text-teal shrink-0 group-hover:bg-navy group-hover:text-white transition-all duration-500">
-                                            {item.icon}
-                                        </div>
-                                        <div>
-                                            <h4 className="font-black text-navy text-xl tracking-tight mb-1">{item.title}</h4>
-                                            <p className="text-navy/40 font-medium">{item.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="relative flex justify-center">
-                            {/* Visual Representation of the Intersection */}
-                            <div className="relative w-full aspect-square max-w-md">
-                                <motion.div
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                                    className="absolute inset-0 border border-navy/5 rounded-full scale-110"
-                                ></motion.div>
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-2/3 bg-navy/5 border border-navy/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                    <span className="text-navy/40 font-black text-xs tracking-widest -mt-20">PEOPLE</span>
-                                </div>
-                                <div className="absolute bottom-10 left-0 w-2/3 h-2/3 bg-teal/5 border border-teal/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                    <span className="text-teal/40 font-black text-xs tracking-widest -ml-10 mt-10">CULTURE</span>
-                                </div>
-                                <div className="absolute bottom-10 right-0 w-2/3 h-2/3 bg-skyBlue/10 border border-skyBlue/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                    <span className="text-navy/20 font-black text-xs tracking-widest -mr-10 mt-10 uppercase">Strategy</span>
-                                </div>
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-navy p-10 rounded-full shadow-3xl text-white text-center z-10 scale-125 border-4 border-white ring-8 ring-navy/5 transition-transform hover:scale-[1.3] cursor-default">
-                                        <span className="font-black tracking-tighter text-base">METAHR</span><br />
-                                        <span className="text-[10px] opacity-40 uppercase tracking-[0.3em] font-bold">Excellence</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* Service Grid - Core Services */}
             <div className="bg-beige/10">
