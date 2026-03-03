@@ -51,27 +51,6 @@ const About = () => {
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
 
-            {/* Extended About Us Text */}
-            <section className="py-24 bg-white relative overflow-hidden border-b border-navy/5">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="space-y-8 text-lg md:text-xl text-navy/70 font-light leading-relaxed font-medium"
-                        >
-                            <p>
-                                The word <strong>Meta</strong> means <span className="text-teal italic">beyond</span>. And that is exactly how we approach HR. We look beyond policies, processes, and job descriptions to understand what truly drives people. Because at the heart of every successful organization are individuals with untapped potential, unique strengths, and the capacity to achieve greatness when supported effectively.
-                            </p>
-                            <p>
-                                Meta HR is a leadership and organizational effectiveness partner that helps businesses strengthen leadership capability, build cohesive teams, and align culture with strategy to accelerate measurable performance outcomes.
-                            </p>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
             {/* 2. Our Philosophy */}
             <section className="py-32 bg-white relative overflow-hidden">
                 <div className="container mx-auto px-6">
