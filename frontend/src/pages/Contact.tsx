@@ -9,6 +9,7 @@ const Contact = () => {
         email: '',
         company: '',
         phone: '',
+        solution: '',
         message: ''
     });
 
@@ -37,7 +38,7 @@ const Contact = () => {
             if (response.data.success) {
                 setStatus('success');
                 setResponseMessage(response.data.message);
-                setFormData({ name: '', email: '', company: '', phone: '', message: '' });
+                setFormData({ name: '', email: '', company: '', phone: '', solution: '', message: '' });
             } else {
                 setStatus('error');
                 setResponseMessage('Something went wrong. Please try again.');
@@ -49,7 +50,7 @@ const Contact = () => {
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -60,16 +61,17 @@ const Contact = () => {
         <div className="bg-white">
             {/* Contact Hero */}
             <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
-                {/* Background Image with Zoom Animation */}
-                <motion.div
-                    initial={{ scale: 1.2 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="absolute inset-0 z-0 pointer-events-none"
-                >
-                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" alt="Contact Background" className="w-full h-full object-cover opacity-60" />
+                {/* Background Video Layer */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                    <iframe
+                        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-[177.77vh] h-[56.25vw] -translate-x-1/2 -translate-y-1/2 opacity-40 scale-110"
+                        src="https://www.youtube.com/embed/hiSeDL9C3cE?autoplay=1&mute=1&loop=1&playlist=hiSeDL9C3cE&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
+                        allow="autoplay; encrypted-media"
+                        title="Contact Background Video"
+                        frameBorder="0"
+                    ></iframe>
                     <div className="absolute inset-0 bg-navy/70"></div>
-                </motion.div>
+                </div>
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
 
@@ -79,7 +81,7 @@ const Contact = () => {
                         className="text-5xl md:text-8xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
                     >
                         Ready to Partner <br />
-                        <span className="text-white opacity-40 uppercase drop-shadow-[0_2px_15px_rgba(255,255,255,0.2)] md:-ml-8 relative -top-6">with MetaHR?</span>
+                        <span className="text-teal font-serif italic text-gradient uppercase">with MetaHR?</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -240,6 +242,24 @@ const Contact = () => {
                                                 />
                                             </div>
                                         </div>
+                                        <div className="space-y-3">
+                                            <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal/60 ml-2">Solution_Inquiry</label>
+                                            <select
+                                                name="solution"
+                                                required
+                                                value={formData.solution}
+                                                onChange={handleChange}
+                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-navy transition-all text-white font-medium appearance-none cursor-pointer"
+                                            >
+                                                <option value="" disabled className="bg-navy">Select a solution</option>
+                                                <option value="Leadership Development" className="bg-navy">Leadership Development</option>
+                                                <option value="Team Development" className="bg-navy">Team Development</option>
+                                                <option value="Executive Coaching" className="bg-navy">Executive Coaching</option>
+                                                <option value="Individual Development" className="bg-navy">Individual Development</option>
+                                                <option value="Organizational Effectiveness" className="bg-navy">Organizational Effectiveness</option>
+                                            </select>
+                                        </div>
+
                                         <div className="space-y-3">
                                             <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal/60 ml-2">Desired_Outcomes</label>
                                             <textarea
