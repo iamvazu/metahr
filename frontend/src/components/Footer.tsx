@@ -6,8 +6,8 @@ const Footer = () => {
         <footer className="bg-navy text-white pt-24 pb-12 rounded-t-[4rem] relative overflow-hidden group">
             {/* Background Image Overlay */}
             <div className="absolute inset-0 z-0">
-                <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-30 group-hover:scale-105 transition-all duration-1000" />
-                <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/90 to-navy"></div>
+                <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 group-hover:scale-105 transition-all duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/70 to-navy/90"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
