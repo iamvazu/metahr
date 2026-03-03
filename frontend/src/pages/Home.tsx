@@ -172,37 +172,166 @@ const Home = () => {
             </section>
 
             {/* What We Do */}
-            <section className="py-32 bg-navy text-white overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
+            <section className="py-40 bg-navy text-white overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-teal/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal/5 rounded-full blur-[120px] -ml-64 -mb-64"></div>
+
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center mb-24">
-                        <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">What We Do</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6">We partner with organizations across <br /><span className="text-teal font-serif italic">five strategic areas:</span></h2>
+                    <div className="max-w-4xl mx-auto text-center mb-32">
+                        <motion.span
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-[10px] font-mono font-bold tracking-[0.5em] text-teal uppercase mb-8 block"
+                        >
+                            Strategic_Ecosystem
+                        </motion.span>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-12"
+                        >
+                            We build systems that <br />
+                            <span className="text-teal font-serif italic">elevate performance.</span>
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="text-white/40 text-xl font-light max-w-2xl mx-auto leading-relaxed"
+                        >
+                            Comprehensive solutions designed for strategic impact and senior-level execution across five core areas.
+                        </motion.p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {[
-                            { title: "Team Development", desc: "Build aligned, high-performing teams", icon: <Users size={32} />, link: "/services/team-development" },
-                            { title: "Leadership Development", desc: "Develop leaders who drive strategic impact", icon: <Award size={32} />, link: "/services/leadership-development" },
-                            { title: "Executive Coaching", desc: "Unlock leadership potential", icon: <Target size={32} />, link: "/services/executive-coaching" },
-                            { title: "Individual Development", desc: "Strengthen emerging & high-potential talent", icon: <Zap size={32} />, link: "/services/individual-development" },
-                            { title: "Organizational Effectiveness", desc: "Align culture, strategy & leadership", icon: <Globe size={32} />, link: "/services/organizational-effectiveness" },
-                        ].map((area, index) => (
-                            <motion.div key={index} whileHover={{ y: -10 }} className="flex flex-col bg-white/5 border border-white/10 p-10 rounded-[3rem] hover:bg-white/10 transition-all group">
-                                <div className="flex-grow">
-                                    <div className="w-16 h-16 bg-teal text-white flex items-center justify-center rounded-2xl mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-teal/20">
-                                        {area.icon}
-                                    </div>
-                                    <h3 className="text-2xl font-black mb-4 tracking-tight">{area.title}</h3>
-                                    <p className="text-white/60 font-medium leading-relaxed mb-10">{area.desc}</p>
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-min">
+                        {/* 1. Leadership Development - Featured Large */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="md:col-span-8 group relative overflow-hidden rounded-[4rem] bg-white/5 border border-white/10 p-12 md:p-16 min-h-[500px] flex flex-col justify-end"
+                        >
+                            <div className="absolute inset-0 z-0">
+                                <img src="/leadership_development_abstract_1772538227877.png" alt="Leadership" className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent"></div>
+                            </div>
+                            <div className="relative z-10">
+                                <span className="text-teal font-black tracking-[0.3em] uppercase text-[10px] block mb-4">PROT_01</span>
+                                <h3 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Leadership Development</h3>
+                                <p className="text-white/60 text-lg font-medium leading-relaxed max-w-xl mb-10">
+                                    Developing leaders who model values, inspire shared vision, and drive strategic execution through The Leadership Challenge and DiSC.
+                                </p>
+                                <Link to="/services/leadership-development" className="inline-flex items-center px-8 py-4 bg-teal text-white rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-navy transition-all group/btn">
+                                    Examine Capability <ArrowRight className="ml-3 group-hover/btn:translate-x-2 transition-transform" />
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* 2. Team Development */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="md:col-span-4 group relative overflow-hidden rounded-[4rem] bg-white/5 border border-white/10 p-12 flex flex-col justify-end"
+                        >
+                            <div className="absolute inset-0 z-0">
+                                <img src="/team_development_abstract_1772538209117.png" alt="Team" className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent"></div>
+                            </div>
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-teal transition-colors">
+                                    <Users className="text-white" size={24} />
                                 </div>
-                                <div className="mt-auto pt-4 border-t border-white/10">
-                                    <Link to={area.link} className="inline-flex items-center text-teal font-black uppercase tracking-widest text-[10px] group-hover:text-white transition-colors">
-                                        Learn More <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={14} />
-                                    </Link>
+                                <h3 className="text-2xl font-black mb-4 tracking-tight">Team <br />Development</h3>
+                                <p className="text-white/40 text-sm font-medium leading-relaxed mb-8">
+                                    Building cohesive, high-performing teams using the Five Behaviors model.
+                                </p>
+                                <Link to="/services/team-development" className="text-teal font-black uppercase tracking-widest text-[9px] flex items-center group-hover:text-white transition-colors">
+                                    PROTOCOL_VIEW <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={12} />
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* 3. Executive Coaching */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="md:col-span-5 group relative overflow-hidden rounded-[4rem] bg-white/5 border border-white/10 p-12 flex flex-col justify-end min-h-[400px]"
+                        >
+                            <div className="absolute inset-0 z-0">
+                                <img src="/executive_coaching_abstract_1772538242520.png" alt="Coaching" className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent"></div>
+                            </div>
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-teal transition-colors">
+                                    <Target className="text-white" size={24} />
                                 </div>
-                            </motion.div>
-                        ))}
+                                <h3 className="text-3xl font-black mb-4 tracking-tight">Executive Coaching</h3>
+                                <p className="text-white/60 font-medium leading-relaxed mb-8">
+                                    Data-driven coaching to unlock leadership potential at the individual level.
+                                </p>
+                                <Link to="/services/executive-coaching" className="inline-flex items-center px-6 py-3 border border-white/20 rounded-full font-black text-[9px] uppercase tracking-widest hover:bg-white hover:text-navy transition-all">
+                                    Schedule Consult <ArrowRight className="ml-2" size={12} />
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* 4. Individual Development */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="md:col-span-3 group relative overflow-hidden rounded-[4rem] bg-white/5 border border-white/10 p-10 flex flex-col"
+                        >
+                            <div className="absolute inset-0 z-0">
+                                <img src="/individual_development_abstract_1772538257965.png" alt="Individual" className="w-full h-full object-cover opacity-10 group-hover:scale-110 transition-transform duration-1000" />
+                            </div>
+                            <div className="relative z-10 flex-grow">
+                                <div className="w-10 h-10 bg-teal text-white flex items-center justify-center rounded-xl mb-6 shadow-xl shadow-teal/20">
+                                    <Zap size={20} />
+                                </div>
+                                <h4 className="text-xl font-black mb-4 tracking-tight">High-Potential Development</h4>
+                                <p className="text-white/40 text-[13px] leading-relaxed mb-6">
+                                    Strengthening emerging talent through structured growth paths.
+                                </p>
+                            </div>
+                            <Link to="/services/individual-development" className="relative z-10 text-[9px] font-black uppercase tracking-widest text-white/40 hover:text-teal transition-colors flex items-center">
+                                VIEW_DETAILS <ArrowRight className="ml-2" size={12} />
+                            </Link>
+                        </motion.div>
+
+                        {/* 5. Organizational Effectiveness */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4 }}
+                            className="md:col-span-4 group relative overflow-hidden rounded-[4rem] bg-teal p-12 flex flex-col justify-end"
+                        >
+                            <div className="absolute inset-0 z-0">
+                                <img src="/org_effectiveness_abstract_1772538282497.png" alt="Org" className="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-1000 mix-blend-overlay" />
+                            </div>
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-2xl">
+                                    <Globe className="text-teal" size={24} />
+                                </div>
+                                <h3 className="text-2xl font-black mb-4 tracking-tight text-white leading-tight">Organizational <br />Effectiveness</h3>
+                                <p className="text-white/80 text-sm font-medium leading-relaxed mb-8">
+                                    Aligning culture and strategy for sustainable performance.
+                                </p>
+                                <Link to="/services/organizational-effectiveness" className="inline-flex items-center px-6 py-3 bg-white text-navy rounded-full font-black text-[9px] uppercase tracking-widest hover:bg-navy hover:text-white transition-all shadow-xl">
+                                    System_Audit <ArrowRight className="ml-2" size={12} />
+                                </Link>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
