@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
+import FAQPage from './pages/FAQPage';
 import Breadcrumbs from './components/Breadcrumbs';
 import FloatingCTA from './components/FloatingCTA';
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/faq" element={<FAQPage />} />
             {/* Services Pages */}
             <Route path="/services/leadership-development" element={<LeadershipDevelopment />} />
             <Route path="/services/team-development" element={<TeamDevelopment />} />

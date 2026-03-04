@@ -37,6 +37,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://metahr.co.in/faq</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://metahr.co.in/services/leadership-development</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
