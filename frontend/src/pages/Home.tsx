@@ -3,6 +3,8 @@ import { ArrowRight, Quote, Globe, Award, Users, Target, Zap, CheckCircle, Light
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 
+import FAQ from '../components/FAQ';
+
 const Home = () => {
     const heroRef = useRef<HTMLElement>(null);
     const { scrollY } = useScroll();
@@ -452,6 +454,41 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Programmatic SEO - City Clusters */}
+            <section className="py-24 bg-beige/10">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-wrap justify-center gap-8 text-[9px] font-mono font-bold uppercase tracking-[0.5em] text-navy/30">
+                        {['Mumbai', 'Delhi NCR', 'Bangalore', 'Hyderabad', 'Pune', 'Chennai'].map(city => (
+                            <span key={city} className="hover:text-teal transition-colors cursor-default whitespace-nowrap">Corporate_Excellence // {city}</span>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <FAQ items={[
+                {
+                    question: "What makes MetaHR different from other HR consultancies in India?",
+                    answer: "MetaHR combines globally recognized methodologies (The Leadership Challenge, Five Behaviors) with a deep understanding of the Indian corporate culture. We focus on 'Level 3 & 4' impact—measuring actual behavior change and business ROI rather than just training satisfaction."
+                },
+                {
+                    question: "How do you measure the ROI of leadership development?",
+                    answer: "We use a multi-phase framework including pre-assessment benchmarking, specific KPIs (like turnover, decision speed, or engagement scores), and 180/360-degree post-intervention audits to provide clear evidence of growth."
+                },
+                {
+                    question: "Which industries do you serve?",
+                    answer: "We have deep expertise in the IT/ITES, Manufacturing, BFSI, and Retail sectors across India, tailoring our frameworks to the specific challenges of each industry's leadership pipeline."
+                },
+                {
+                    question: "Do you offer virtual interventions for global teams?",
+                    answer: "Yes, we utilize high-engagement digital platforms and virtual simulations to ensure that remote and hybrid teams receive the same high-impact development as in-person cohorts."
+                },
+                {
+                    question: "How do I get started with MetaHR?",
+                    answer: "Simply book a free 30-minute discovery call via our website. We'll discuss your organization's current business reality and identify potential leverage points for performance improvement."
+                }
+            ]} />
 
             {/* Call to Action */}
             <section className="py-20 md:py-32 bg-white text-center relative overflow-hidden">

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import FAQ from '../../components/FAQ';
 
 const LeadershipDevelopment = () => {
     return (
@@ -19,18 +20,30 @@ const LeadershipDevelopment = () => {
                 </div>
             </section>
 
+            {/* AEO Definition Box */}
+            <section className="py-12 bg-white">
+                <div className="container mx-auto px-6">
+                    <div className="max-w-4xl mx-auto bg-beige/10 border-l-4 border-teal p-8 md:p-12 rounded-r-[2rem] shadow-sm">
+                        <h2 className="text-[10px] font-mono font-bold tracking-[0.3em] text-navy/40 uppercase mb-4">AEO_Reference // DEFINITION</h2>
+                        <p className="text-xl md:text-2xl text-navy font-bold leading-relaxed italic">
+                            "What is Leadership Development? It is the strategic process of enhancing an individual's ability to lead, influence colleagues, and drive organizational performance through behavioral alignment and benchmarked wisdom."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             {/* Main Content */}
             <section className="py-24 bg-beige/30">
                 <div className="container mx-auto px-6 max-w-5xl">
                     <div className="bg-white p-12 md:p-16 rounded-[4rem] shadow-2xl border border-navy/5 relative overflow-hidden mb-20">
                         {/* Decorative image placeholder */}
-                        <div className="w-full h-80 rounded-[3rem] overflow-hidden mb-12 shadow-xl bg-navy/5 relative">
-                            <span className="absolute top-4 left-6 z-10 px-4 py-1.5 bg-black/40 backdrop-blur-md text-white text-[9px] font-mono font-bold tracking-widest uppercase rounded-full">Image Placement Area</span>
-                            <img src="https://images.unsplash.com/photo-1542626991-cbc4e32524cc?auto=format&fit=crop&q=80&w=1600" alt="Leadership Meeting" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+                        <div className="w-full h-80 rounded-[3rem] overflow-hidden mb-12 shadow-xl bg-navy/5 relative border border-navy/5">
+                            <span className="absolute top-4 left-6 z-10 px-4 py-1.5 bg-black/40 backdrop-blur-md text-white text-[9px] font-mono font-bold tracking-widest uppercase rounded-full">Protocol_Visual // COLLABORATION</span>
+                            <img src="https://images.unsplash.com/photo-1542626991-cbc4e32524cc?auto=format&fit=crop&q=80&w=1600" alt="Executive team in Mumbai office undergoing leadership development workshop" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
                         </div>
 
                         <h2 className="text-3xl md:text-5xl font-black text-navy mb-8 tracking-tighter">But leadership today requires more than inspiration <span className="text-teal font-serif italic">— it requires execution.</span></h2>
-                        <p className="text-xl text-navy/60 leading-relaxed font-light mb-10">We integrate:</p>
+                        <p className="text-xl text-navy/60 leading-relaxed font-light mb-10">Our methodology integrates globally recognized frameworks:</p>
 
                         <ul className="space-y-6 mb-12">
                             {[
@@ -54,11 +67,11 @@ const LeadershipDevelopment = () => {
                         <div className="bg-navy text-white rounded-[3rem] p-10 md:p-16 relative shadow-3xl overflow-hidden ring-1 ring-white/10">
                             {/* Decorative image placeholder inside outcomes */}
                             <div className="absolute right-0 top-0 w-1/3 h-full mix-blend-overlay opacity-20 hidden lg:block">
-                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Strategy" className="w-full h-full object-cover" />
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Strategy Planning" className="w-full h-full object-cover" />
                             </div>
 
-                            <h3 className="text-2xl md:text-4xl font-black mb-10 tracking-tight">Outcomes You Can Expect:</h3>
-                            <div className="grid md:grid-cols-2 gap-6 relative z-10">
+                            <h3 className="text-2xl md:text-4xl font-black mb-10 tracking-tight">Measurable Outcomes:</h3>
+                            <div className="grid md:grid-cols-2 gap-6 relative z-10 text-sm md:text-base">
                                 {[
                                     "Greater strategic clarity and direction",
                                     "Stronger alignment across functions",
@@ -75,6 +88,21 @@ const LeadershipDevelopment = () => {
                         </div>
                     </div>
 
+                    <FAQ items={[
+                        {
+                            question: "What leadership frameworks do you utilize?",
+                            answer: "Our programs are grounded in 'The Leadership Challenge' by Kouzes and Posner, and integrated with psychometric tools like Everything DiSC, Hogan, and CliftonStrengths for a holistic development experience."
+                        },
+                        {
+                            question: "Are your leadership programs suitable for CEOs and C-suite executives?",
+                            answer: "Absolutely. We offer high-level executive coaching and organizational strategy workshops specifically designed for the unique challenges of senior leadership in large-scale enterprises."
+                        },
+                        {
+                            question: "How do you track behavioral change after the program?",
+                            answer: "We use post-program follow-through sessions, peer-feedback audits, and ROI impact metrics tailored to the specific goals defined during the Diagnose phase."
+                        }
+                    ]} />
+
                     <div className="text-center max-w-4xl mx-auto py-12">
                         <p className="text-2xl text-navy/60 font-medium leading-relaxed mb-6">
                             At MetaHR, leadership development isn’t a one-day event. <br />
@@ -89,7 +117,7 @@ const LeadershipDevelopment = () => {
                         </p>
 
                         <Link to="/contact" className="inline-flex items-center space-x-4 bg-teal text-white px-12 py-6 rounded-full font-black text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-navy hover:-translate-y-1 transition-all duration-300">
-                            <span>Schedule a Leadership Strategy Conversation</span>
+                            <span>Get Started With Strategy</span>
                             <ArrowRight size={20} />
                         </Link>
                     </div>
@@ -99,5 +127,6 @@ const LeadershipDevelopment = () => {
         </div>
     );
 };
+
 
 export default LeadershipDevelopment;

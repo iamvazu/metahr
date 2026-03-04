@@ -9,10 +9,13 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
+import Breadcrumbs from './components/Breadcrumbs';
+import FloatingCTA from './components/FloatingCTA';
 
 // Service Pages
 import LeadershipDevelopment from './pages/services/LeadershipDevelopment';
 import TeamDevelopment from './pages/services/TeamDevelopment';
+import LocationService from './pages/LocationService';
 import ExecutiveCoaching from './pages/services/ExecutiveCoaching';
 import IndividualDevelopment from './pages/services/IndividualDevelopment';
 import OrganizationalEffectiveness from './pages/services/OrganizationalEffectiveness';
@@ -33,6 +36,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-beige selection:bg-teal selection:text-white">
         <Navbar />
+        <Breadcrumbs />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -49,9 +53,13 @@ function App() {
             <Route path="/services/executive-coaching" element={<ExecutiveCoaching />} />
             <Route path="/services/individual-development" element={<IndividualDevelopment />} />
             <Route path="/services/organizational-effectiveness" element={<OrganizationalEffectiveness />} />
+            {/* PSEO - Location Pages */}
+            <Route path="/locations/:city" element={<LocationService />} />
+            <Route path="/locations/:city/:service" element={<LocationService />} />
           </Routes>
         </main>
         <Footer />
+        <FloatingCTA />
       </div>
     </Router>
   );

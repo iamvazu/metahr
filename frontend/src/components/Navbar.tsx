@@ -101,14 +101,20 @@ const Navbar = () => {
                     <div className="flex-1 flex items-center justify-end pl-8">
                         <Link
                             to="/contact"
-                            className={`inline-block max-md:hidden px-8 py-3 rounded-full text-[12px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap ${scrolled ? 'bg-navy text-white hover:bg-teal' : 'bg-white text-navy hover:bg-teal hover:text-white'
+                            aria-label="Book a free discovery call"
+                            className={`inline-block max-md:hidden px-8 py-3 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap shadow-xl ${scrolled ? 'bg-teal text-white hover:bg-navy' : 'bg-white text-navy hover:bg-teal hover:text-white'
                                 }`}
                         >
-                            Get Started
+                            Book Free Discovery Call
                         </Link>
 
                         {/* Mobile Menu Toggle */}
-                        <button className={`md:hidden ml-4 ${scrolled ? 'text-navy' : 'text-white'}`} onClick={() => setIsOpen(!isOpen)}>
+                        <button
+                            className={`md:hidden ml-4 p-2 rounded-xl transition-colors ${scrolled ? 'text-navy hover:bg-navy/5' : 'text-white hover:bg-white/10'}`}
+                            onClick={() => setIsOpen(!isOpen)}
+                            aria-expanded={isOpen}
+                            aria-label="Toggle navigation menu"
+                        >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
                     </div>
@@ -119,31 +125,31 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-6 right-6 mt-4 bg-white/95 backdrop-blur-2xl rounded-3xl shadow-2xl md:hidden border border-navy/5 max-h-[80vh] overflow-y-auto"
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                        className="absolute top-full left-6 right-6 mt-4 bg-white/98 backdrop-blur-3xl rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] md:hidden border border-navy/5 max-h-[85vh] overflow-y-auto"
                     >
-                        <div className="flex flex-col p-8 space-y-6">
+                        <div className="flex flex-col p-10 space-y-8">
                             {navLinks.map((link) => (
-                                <div key={link.path} className="flex flex-col border-b border-navy/5 pb-4 last:border-0">
+                                <div key={link.path} className="flex flex-col border-b border-navy/5 pb-6 last:border-0">
                                     <Link
                                         to={link.path}
-                                        className={`text-lg font-bold tracking-tight ${location.pathname === link.path ? 'text-teal' : 'text-navy'}`}
+                                        className={`text-2xl font-black tracking-tight ${location.pathname === link.path ? 'text-teal' : 'text-navy'}`}
                                         onClick={() => !link.dropdown && setIsOpen(false)}
                                     >
                                         {link.name}
                                     </Link>
 
                                     {link.dropdown && (
-                                        <div className="flex flex-col space-y-3 mt-4 ml-4">
+                                        <div className="flex flex-col space-y-4 mt-6 ml-6">
                                             {link.dropdown.map(subItem => (
                                                 <Link
                                                     key={subItem.path}
                                                     to={subItem.path}
-                                                    className={`text-sm font-medium tracking-tight ${location.pathname === subItem.path
+                                                    className={`text-base font-bold tracking-tight ${location.pathname === subItem.path
                                                         ? 'text-teal'
-                                                        : 'text-navy/60 hover:text-teal'
+                                                        : 'text-navy/40 hover:text-teal'
                                                         }`}
                                                     onClick={() => setIsOpen(false)}
                                                 >
@@ -156,10 +162,10 @@ const Navbar = () => {
                             ))}
                             <Link
                                 to="/contact"
-                                className="bg-navy text-white px-6 py-4 rounded-2xl text-center font-black uppercase tracking-widest text-sm mt-4"
+                                className="bg-teal text-white px-8 py-5 rounded-2xl text-center font-black uppercase tracking-[0.2em] text-[13px] mt-6 shadow-2xl shadow-teal/30 active:scale-95 transition-all"
                                 onClick={() => setIsOpen(false)}
                             >
-                                Get Started
+                                Book Free Discovery Call
                             </Link>
                         </div>
                     </motion.div>
