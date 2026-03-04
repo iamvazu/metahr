@@ -66,7 +66,7 @@ const Navbar = () => {
                             <div key={link.path} className="relative group">
                                 <Link
                                     to={link.path}
-                                    className={`text-[13px] font-black uppercase tracking-[0.25em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
+                                    className={`text-[11px] font-black uppercase tracking-[0.25em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
                                         ? (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-navy')
                                         : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-white/80')
                                         }`}
@@ -101,11 +101,11 @@ const Navbar = () => {
                     <div className="flex-1 flex items-center justify-end pl-8">
                         <Link
                             to="/contact"
-                            aria-label="Book a free discovery call"
+                            aria-label="Get Started"
                             className={`inline-block max-md:hidden px-8 py-3 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap shadow-xl ${scrolled ? 'bg-teal text-white hover:bg-navy' : 'bg-white text-navy hover:bg-teal hover:text-white'
                                 }`}
                         >
-                            Book Free Discovery Call
+                            Get Started
                         </Link>
 
                         {/* Mobile Menu Toggle */}
@@ -165,7 +165,7 @@ const Navbar = () => {
                                 className="bg-teal text-white px-8 py-5 rounded-2xl text-center font-black uppercase tracking-[0.2em] text-[13px] mt-6 shadow-2xl shadow-teal/30 active:scale-95 transition-all"
                                 onClick={() => setIsOpen(false)}
                             >
-                                Book Free Discovery Call
+                                Get Started
                             </Link>
                         </div>
                     </motion.div>

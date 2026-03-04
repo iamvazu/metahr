@@ -125,8 +125,8 @@ const Home = () => {
                             </Link>
                         </motion.div>
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <Link to="/contact" className="text-white/60 font-mono font-bold tracking-widest uppercase text-xs border border-white/10 px-8 py-5 rounded-full hover:bg-white hover:text-navy transition-all backdrop-blur-sm">
-                                [ Contact Us ]
+                            <Link to="/contact" className="text-white bg-teal/20 backdrop-blur-md px-10 py-5 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-teal hover:text-white transition-all shadow-2xl border border-teal/30">
+                                Book Free Discovery Call
                             </Link>
                         </motion.div>
                     </motion.div>
