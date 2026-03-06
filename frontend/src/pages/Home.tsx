@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Quote, Globe, Award, Users, Target, Zap, CheckCircle, Lightbulb, XCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ScrollIndicator from '../components/ScrollIndicator';
 import { useRef, useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
@@ -149,8 +148,6 @@ const Home = () => {
                     </motion.div>
                 </motion.div>
 
-
-                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
 
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
