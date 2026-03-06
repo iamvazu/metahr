@@ -9,6 +9,10 @@ const LeadershipDevelopment = () => {
         <div className="bg-white pt-0">
             {/* Hero Section */}
             <section className="bg-navy pt-40 pb-24 relative overflow-hidden text-white">
+                <div className="absolute inset-0 z-0">
+                    <img src="/leadership_development_abstract.png" alt="" className="w-full h-full object-cover opacity-30" />
+                    <div className="absolute inset-0 bg-navy/60"></div>
+                </div>
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Service // Leadership_Development</span>
