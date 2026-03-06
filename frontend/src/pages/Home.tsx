@@ -381,31 +381,36 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Our Frameworks */}
-            <section className="py-32 bg-beige/30 relative">
+            {/* Our Frameworks - Redesigned to match Business Reality section */}
+            <section className="py-32 bg-beige/30 relative overflow-hidden">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-20 items-stretch">
-                        <div>
-                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Our Frameworks</span>
-                            <h2 className="text-4xl md:text-6xl font-black text-navy mb-8 tracking-tighter leading-none">Globally Recognized <br /><span className="text-teal font-serif italic">Methodologies.</span></h2>
-                            <p className="text-xl text-navy/60 mb-12 leading-relaxed font-light">We leverage proven methodologies to drive transformational change:</p>
-                            <ul className="space-y-6">
-                                {[
-                                    'The Leadership Challenge',
-                                    'The Five Behaviors of a Cohesive Team',
-                                    'Strengths Based Leadership',
-                                    'Experiential simulations powered by MTa Learning'
-                                ].map((fw, i) => (
-                                    <li key={i} className="flex items-center space-x-6 group">
-                                        <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-teal shadow-xl group-hover:bg-navy group-hover:text-white transition-all shadow-navy/5 shrink-0 border border-navy/5">
-                                            <CheckCircle size={20} />
-                                        </div>
-                                        <h4 className="font-bold text-navy text-xl tracking-tight">{fw}</h4>
-                                    </li>
-                                ))}
-                            </ul>
+                    <div className="grid lg:grid-cols-2 gap-10">
+                        {/* Left Card - Light Premium */}
+                        <div className="group relative overflow-hidden bg-white p-12 md:p-16 rounded-[4rem] shadow-xl border border-navy/5 flex flex-col justify-center">
+                            <div className="relative z-10">
+                                <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Our Frameworks</span>
+                                <h2 className="text-4xl md:text-5xl font-black text-navy mb-8 tracking-tighter leading-tight">Globally Recognized <br /><span className="text-teal font-serif italic">Methodologies.</span></h2>
+                                <p className="text-lg text-navy/60 mb-10 leading-relaxed font-light">We leverage proven methodologies to drive transformational change:</p>
+                                <ul className="space-y-6">
+                                    {[
+                                        'The Leadership Challenge',
+                                        'The Five Behaviors of a Cohesive Team',
+                                        'Strengths Based Leadership',
+                                        'Experiential simulations powered by MTa Learning'
+                                    ].map((fw, i) => (
+                                        <li key={i} className="flex items-center space-x-6 group/item transition-transform hover:translate-x-3 duration-500">
+                                            <div className="w-10 h-10 rounded-xl bg-teal/5 flex items-center justify-center text-teal shadow-sm group-hover/item:bg-teal group-hover/item:text-white transition-all shrink-0 border border-teal/10">
+                                                <CheckCircle size={18} />
+                                            </div>
+                                            <h4 className="font-bold text-navy text-lg tracking-tight leading-tight">{fw}</h4>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
-                        <div className="group relative overflow-hidden bg-teal p-12 md:p-16 rounded-[4rem] shadow-2xl text-white border border-white/10">
+
+                        {/* Right Card - Dark Premium Anchor */}
+                        <div className="group relative overflow-hidden bg-navy p-12 md:p-16 rounded-[4rem] shadow-2xl text-white border border-white/5 flex flex-col justify-center">
                             <div className="absolute inset-0 z-0 opacity-30 group-hover:scale-105 transition-transform duration-1000">
                                 <img src="/frameworks_supported_bg.png" alt="" className="w-full h-full object-cover" />
                             </div>
@@ -413,16 +418,16 @@ const Home = () => {
                                 <Lightbulb size={200} />
                             </div>
                             <div className="relative z-10">
-                                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md">
-                                    <Lightbulb size={32} className="text-white" />
+                                <div className="w-16 h-16 bg-white/10 backdrop-blur-2xl rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:bg-teal group-hover:border-teal transition-all duration-700">
+                                    <Lightbulb size={32} className="text-teal" />
                                 </div>
-                                <h3 className="text-3xl font-black mb-6 tracking-tight">Supported By</h3>
-                                <p className="text-xl font-light leading-relaxed mb-10">
+                                <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter">Supported <span className="text-teal font-serif italic">By.</span></h2>
+                                <p className="text-xl font-light text-white/60 leading-relaxed mb-10">
                                     Psychometric and behavioral tools including:
                                 </p>
                                 <div className="flex flex-wrap gap-4">
                                     {['Gallup Strengths', 'Hogan', 'DiSC', 'NLP Frameworks'].map(tool => (
-                                        <span key={tool} className="px-6 py-3 bg-white/20 backdrop-blur-md rounded-full font-bold tracking-wide border border-white/30 cursor-default shadow-lg hover:bg-white/30 transition-colors">
+                                        <span key={tool} className="px-6 py-3 bg-white/5 backdrop-blur-md rounded-full font-bold tracking-wide border border-white/10 cursor-default shadow-lg hover:bg-teal hover:border-teal transition-all duration-300">
                                             {tool}
                                         </span>
                                     ))}
