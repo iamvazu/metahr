@@ -77,12 +77,12 @@ const Contact = () => {
                 <div className="container mx-auto px-6 relative z-10 text-center">
 
                     <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-8xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
+                        className="text-6xl md:text-9xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
                     >
                         Ready to Partner <br />
-                        <span className="text-teal font-serif italic text-gradient uppercase">with MetaHR?</span>
+                        <span className="text-teal font-serif italic uppercase bg-gradient-to-r from-teal to-skyBlue bg-clip-text text-transparent drop-shadow-2xl">with MetaHR?</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
