@@ -347,35 +347,40 @@ const About = () => {
                                 num: "01", 
                                 desc: "We don’t optimize average — we unlock exceptional. We challenge norms, elevate standards, and drive breakthrough results.",
                                 icon: <Rocket size={24} />,
-                                span: "md:col-span-4"
+                                span: "md:col-span-4",
+                                bg: "/value_performance_bg.png"
                             },
                             { 
                                 title: "Courageous Transformation", 
                                 num: "02", 
                                 desc: "We lean into complexity. Real change requires bold thinking and decisive action.",
                                 icon: <ShieldCheck size={24} />,
-                                span: "md:col-span-2"
+                                span: "md:col-span-2",
+                                bg: "/value_transformation_bg.png"
                             },
                             { 
                                 title: "Accountability to Outcomes", 
                                 num: "03", 
                                 desc: "Impact isn’t optional. We measure what matters and stand behind the results.",
                                 icon: <Target size={24} />,
-                                span: "md:col-span-2"
+                                span: "md:col-span-2",
+                                bg: "/value_accountability_bg.png"
                             },
                             { 
                                 title: "Human-Centered Innovation", 
                                 num: "04", 
                                 desc: "Technology and data power progress — but people drive it. We design solutions where human potential meets intelligent systems.",
                                 icon: <Heart size={24} />,
-                                span: "md:col-span-4" 
+                                span: "md:col-span-4",
+                                bg: "/value_innovation_bg.png"
                             },
                             { 
                                 title: "Built for What’s Next", 
                                 num: "05", 
                                 desc: "The future rewards agility. We help organizations adapt, evolve, and lead in dynamic environments.",
                                 icon: <Sparkles size={24} />,
-                                span: "md:col-span-6"
+                                span: "md:col-span-6",
+                                bg: "/value_future_bg.png"
                             }
                         ].map((item, i) => (
                             <motion.div
@@ -386,12 +391,16 @@ const About = () => {
                                 transition={{ delay: i * 0.1 }}
                                 className={`group relative overflow-hidden bg-white p-12 md:p-16 rounded-[3rem] border border-navy/5 shadow-lg hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 ${item.span} flex flex-col justify-between`}
                             >
-                                <div>
+                                <div className="absolute inset-0 z-0">
+                                    <img src={item.bg} alt="" className="w-full h-full object-cover opacity-[0.08] group-hover:scale-110 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-white/40"></div>
+                                </div>
+                                <div className="relative z-10">
                                     <div className="flex items-center justify-between mb-8">
-                                        <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center text-teal group-hover:bg-teal group-hover:text-white transition-all">
+                                        <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center text-teal group-hover:bg-teal group-hover:text-white transition-all shadow-sm">
                                             {item.icon}
                                         </div>
-                                        <span className="text-3xl font-black text-navy/5 group-hover:text-teal/10 transition-colors">{item.num}</span>
+                                        <span className="text-3xl font-black text-navy/5 group-hover:text-teal/10 transition-colors uppercase tracking-[0.2em]">{item.num}</span>
                                     </div>
                                     <h3 className="text-2xl font-black text-navy mb-6 tracking-tight group-hover:translate-x-2 transition-transform">{item.title}</h3>
                                     <p className="text-lg text-navy/50 leading-relaxed font-medium">
