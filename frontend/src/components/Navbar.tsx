@@ -50,12 +50,12 @@ const Navbar = () => {
                     className="flex items-center transition-all duration-500 rounded-full"
                 >
                     {/* Logo Area */}
-                    <div className="flex-1 flex items-center pr-8">
+                    <div className="flex-1 flex items-center pr-4">
                         <Link to="/" className="flex items-center space-x-2">
                             <img
                                 src={scrolled ? "/logo.png" : "/logo_white.png"}
                                 alt="MetaHR"
-                                className="h-16 md:h-20 w-auto object-contain transition-all duration-500"
+                                className="h-10 md:h-12 w-auto object-contain transition-all duration-500"
                             />
                         </Link>
                     </div>
