@@ -140,32 +140,68 @@ const Home = () => {
             {/* The Business Reality */}
             <section className="py-32 bg-white relative">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">The Business Reality</span>
-                            <h2 className="text-4xl md:text-6xl font-black text-navy tracking-tighter leading-tight mb-8">Strategy alone <br /><span className="text-teal font-serif italic">does not drive results.</span></h2>
-                            <p className="text-navy/60 text-xl font-medium leading-relaxed mb-10">
-                                Organizations struggle with:
-                            </p>
-                            <ul className="space-y-4 mb-10">
-                                {['Leadership misalignment', 'Low accountability', 'Silos across teams', 'Weak succession pipelines'].map((item, i) => (
-                                    <li key={i} className="flex items-center space-x-4">
-                                        <div className="w-2 h-2 bg-teal rounded-full" />
-                                        <span className="text-navy font-bold text-lg">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                    <div className="max-w-4xl mb-20">
+                        <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">The Business Reality</span>
+                        <h2 className="text-4xl md:text-7xl font-black text-navy tracking-tighter leading-[0.9] mb-8">
+                            Strategy alone <br />
+                            <span className="text-teal font-serif italic">does not drive results.</span>
+                        </h2>
+                    </div>
+
+                    <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+                        {/* Problems Card */}
+                        <div className="group relative overflow-hidden bg-white p-12 md:p-16 rounded-[4rem] shadow-2xl border border-navy/5 flex flex-col justify-center">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-teal/5 rounded-full blur-3xl -mr-32 -mt-32 transition-transform duration-1000 group-hover:scale-110"></div>
+                            
+                            <div className="relative z-10">
+                                <p className="text-navy text-xl font-black uppercase tracking-[0.2em] mb-12 flex items-center">
+                                    <span className="w-10 h-10 bg-navy/5 rounded-xl flex items-center justify-center mr-4 text-teal">
+                                        <Target size={20} />
+                                    </span>
+                                    Organizations struggle with:
+                                </p>
+                                
+                                <ul className="space-y-6">
+                                    {[
+                                        { text: 'Leadership misalignment', desc: 'Lack of shared vision and execution at the top level.' },
+                                        { text: 'Low accountability', desc: 'Undefined ownership leads to stagnant progress.' },
+                                        { text: 'Silos across teams', desc: 'Internal friction preventing cross-functional success.' },
+                                        { text: 'Weak succession pipelines', desc: 'Unprepared talent pool for future critical roles.' }
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start group/item">
+                                            <div className="mt-1 mr-6 w-5 h-5 rounded-full border-2 border-teal/20 flex items-center justify-center transition-colors group-hover/item:border-teal">
+                                                <div className="w-1.5 h-1.5 bg-teal rounded-full" />
+                                            </div>
+                                            <div>
+                                                <h4 className="text-navy font-black text-lg tracking-tight mb-1">{item.text}</h4>
+                                                <p className="text-navy/40 text-sm font-medium leading-relaxed">{item.desc}</p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
-                        <div className="group relative overflow-hidden bg-navy p-12 md:p-16 rounded-[4rem] shadow-2xl text-white border border-teal/20">
+
+                        {/* Solutions Card */}
+                        <div className="group relative overflow-hidden bg-navy p-12 md:p-16 rounded-[4rem] shadow-2xl text-white border border-teal/20 flex flex-col justify-center">
                             <div className="absolute inset-0 z-0 opacity-40 group-hover:scale-105 transition-transform duration-1000">
                                 <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover" />
                             </div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-navy via-transparent to-teal/10 pointer-events-none"></div>
+                            
                             <div className="relative z-10">
-                                <Quote className="text-teal/40 mb-8" size={60} />
-                                <p className="text-3xl md:text-4xl font-light leading-snug tracking-tighter">
-                                    The issue is not intent. <br />
-                                    It is <span className="text-teal font-serif italic font-bold">leadership behavior</span> and <span className="text-teal font-serif italic font-bold">team dynamics.</span>
+                                <div className="w-16 h-16 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:bg-teal group-hover:border-teal transition-all duration-500">
+                                    <Quote className="text-teal" size={32} />
+                                </div>
+                                <p className="text-3xl md:text-5xl font-light leading-tight tracking-tighter mb-8">
+                                    The issue is <span className="text-white/40">not intent.</span> <br />
+                                    It is <span className="text-teal font-serif italic font-bold">leadership behavior</span> <br />
+                                    and <span className="text-teal font-serif italic font-bold">team dynamics.</span>
                                 </p>
+                                <div className="flex items-center space-x-4">
+                                    <div className="w-12 h-px bg-teal/30"></div>
+                                    <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase">The_Core_Correction</span>
+                                </div>
                             </div>
                         </div>
                     </div>
