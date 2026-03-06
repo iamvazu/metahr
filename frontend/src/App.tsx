@@ -12,6 +12,7 @@ import Privacy from './pages/Privacy';
 import FAQPage from './pages/FAQPage';
 import Breadcrumbs from './components/Breadcrumbs';
 import FloatingCTA from './components/FloatingCTA';
+import ScrollToTop from './components/ScrollToTop';
 
 // Service Pages
 import LeadershipDevelopment from './pages/services/LeadershipDevelopment';
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-beige selection:bg-teal selection:text-white">
         <Navbar />
         <Breadcrumbs />
