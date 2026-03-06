@@ -43,7 +43,7 @@ const Navbar = () => {
                         width: scrolled ? 'auto' : '100%',
                         backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0)',
                         backdropFilter: scrolled ? 'blur(24px)' : 'blur(0px)',
-                        padding: scrolled ? '0.75rem 2.5rem' : '0.5rem 2rem',
+                        padding: scrolled ? '0.5rem 2.5rem' : '0.5rem 2rem',
                         borderRadius: scrolled ? '9999px' : '0px',
                         border: scrolled ? '1px solid rgba(86, 124, 141, 0.2)' : '1px solid rgba(255, 255, 255, 0)',
                     }}
@@ -55,18 +55,18 @@ const Navbar = () => {
                             <img
                                 src={scrolled ? "/logo.png" : "/logo_white.png"}
                                 alt="MetaHR"
-                                className="h-24 md:h-28 w-auto object-contain transition-all duration-500"
+                                className="h-16 md:h-20 w-auto object-contain transition-all duration-500"
                             />
                         </Link>
                     </div>
 
                     {/* Desktop Nav - Centered */}
-                    <div className="flex max-md:hidden space-x-12 items-center px-8">
+                    <div className="flex max-md:hidden space-x-8 items-center px-8">
                         {navLinks.map((link) => (
                             <div key={link.path} className="relative group">
                                 <Link
                                     to={link.path}
-                                    className={`text-[11px] font-black uppercase tracking-[0.25em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
+                                    className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
                                         ? (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-navy')
                                         : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-white/80')
                                         }`}
@@ -102,7 +102,7 @@ const Navbar = () => {
                         <Link
                             to="/contact"
                             aria-label="Get Started"
-                            className={`inline-block max-md:hidden px-8 py-3 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap shadow-xl ${scrolled ? 'bg-teal text-white hover:bg-navy' : 'bg-white text-navy hover:bg-teal hover:text-white'
+                            className={`inline-block max-md:hidden px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:scale-[1.03] active:scale-95 whitespace-nowrap shadow-xl ${scrolled ? 'bg-teal text-white hover:bg-navy' : 'bg-white text-navy hover:bg-teal hover:text-white'
                                 }`}
                         >
                             Get Started
