@@ -528,23 +528,22 @@ const Home = () => {
             <section className="py-20 md:py-32 bg-white text-center relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
                 <div className="container mx-auto px-6 relative z-10">
-                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-navy mb-8 tracking-tighter leading-tight min-h-[1.2em]">
-                        <div className="relative inline-block overflow-hidden align-top text-left w-full sm:w-auto h-[1.2em] mb-2 sm:mb-0">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-navy mb-8 tracking-tighter leading-[1.1] flex flex-wrap justify-center items-baseline gap-x-4">
+                        <span className="relative inline-block text-teal min-w-[300px] text-right">
                             <AnimatePresence mode="wait">
                                 <motion.span
                                     key={ctaWords[ctaWordIndex]}
-                                    initial={{ y: 40, opacity: 0 }}
+                                    initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
-                                    exit={{ y: -40, opacity: 0 }}
-                                    transition={{ duration: 0.5, ease: "easeOut" }}
-                                    className="absolute inset-0 block text-teal"
+                                    exit={{ y: -20, opacity: 0 }}
+                                    transition={{ duration: 0.4, ease: "easeOut" }}
+                                    className="inline-block"
                                 >
                                     {ctaWords[ctaWordIndex]}
                                 </motion.span>
                             </AnimatePresence>
-                        </div>
-                        <br className="sm:hidden" />
-                        <span className="block sm:inline"> is a <span className="text-teal font-serif italic">strategic advantage.</span></span>
+                        </span>
+                        <span className="text-navy">is a <span className="text-teal font-serif italic">strategic advantage.</span></span>
                     </h2>
                     <p className="text-xl md:text-2xl text-navy/50 mb-16 font-light">Let’s build it intentionally.</p>
 
