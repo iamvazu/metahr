@@ -149,17 +149,15 @@ const Home = () => {
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-                        {/* Problems Card */}
-                        <div className="group relative overflow-hidden bg-navy p-12 md:p-20 rounded-[4rem] shadow-2xl border border-white/10 flex flex-col justify-center">
-                            <div className="absolute inset-0 z-0 opacity-20">
-                                <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-transparent to-transparent"></div>
-                            </div>
+                        {/* Problems Card - Light Theme */}
+                        <div className="group relative overflow-hidden bg-slate-50 p-12 md:p-20 rounded-[4rem] shadow-xl border border-navy/5 flex flex-col justify-center">
+                            <div className="absolute top-0 right-0 w-80 h-80 bg-red-500/5 rounded-full blur-[100px] -mr-40 -mt-40 transition-transform duration-1000 group-hover:scale-110"></div>
                             
                             <div className="relative z-10">
-                                <h3 className="text-white text-3xl md:text-5xl font-black tracking-tighter mb-16 leading-tight">
+                                <h3 className="text-navy text-3xl md:text-5xl font-black tracking-tighter mb-16 leading-tight">
                                     Organizations <br />
-                                    <span className="text-red-400 italic font-serif">struggle with:</span>
-                                </h3 >
+                                    <span className="text-red-500 italic font-serif">struggle with:</span>
+                                </h3>
                                 
                                 <ul className="space-y-10">
                                     {[
@@ -169,18 +167,18 @@ const Home = () => {
                                         'Weak succession pipelines'
                                     ].map((item, i) => (
                                         <li key={i} className="flex items-center group/item transition-transform hover:translate-x-3 duration-500">
-                                            <div className="mr-8 w-10 h-10 rounded-xl bg-red-400/10 border border-red-400/20 flex items-center justify-center text-red-400 shrink-0">
+                                            <div className="mr-8 w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 shrink-0 shadow-sm group-hover/item:bg-red-500 group-hover/item:text-white transition-all">
                                                 <XCircle size={20} />
                                             </div>
-                                            <span className="text-white font-black text-2xl md:text-3xl tracking-tighter leading-none">{item}</span>
+                                            <span className="text-navy font-black text-2xl md:text-3xl tracking-tighter leading-none">{item}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                         </div>
 
-                        {/* Solutions Card */}
-                        <div className="group relative overflow-hidden bg-navy/50 backdrop-blur-3xl p-12 md:p-20 rounded-[4rem] shadow-2xl text-white border border-teal/20 flex flex-col justify-center">
+                        {/* Solutions Card - Dark Premium Anchor */}
+                        <div className="group relative overflow-hidden bg-navy p-12 md:p-20 rounded-[4rem] shadow-2xl text-white border border-white/5 flex flex-col justify-center">
                             <div className="absolute inset-0 z-0 opacity-40 group-hover:scale-105 transition-transform duration-1000">
                                 <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover" />
                             </div>
