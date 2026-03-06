@@ -445,7 +445,8 @@ const About = () => {
                                 approach: "Interactive experiential workshops that reveal team dynamics in real time — followed by structured reflection and strategic alignment conversations.",
                                 btn: "Strengthen Your Teams",
                                 link: "/services/team-development",
-                                icon: <Users size={32} />
+                                icon: <Users size={32} />,
+                                bg: "/team_development_abstract.png"
                             },
                             {
                                 num: "02",
@@ -455,7 +456,8 @@ const About = () => {
                                 approach: "Experiential leadership labs that challenge decision-making, influence, adaptability, and emotional intelligence — not through lectures, but lived experience.",
                                 btn: "Develop Stronger Leaders",
                                 link: "/services/leadership-development",
-                                icon: <Award size={32} />
+                                icon: <Award size={32} />,
+                                bg: "/leadership_development_abstract.png"
                             },
                             {
                                 num: "03",
@@ -465,7 +467,8 @@ const About = () => {
                                 approach: "1:1 coaching integrated with experiential diagnostics and behavioral insight tools.",
                                 btn: "Explore Coaching",
                                 link: "/services/executive-coaching",
-                                icon: <Target size={32} />
+                                icon: <Target size={32} />,
+                                bg: "/executive_coaching_abstract.png"
                             },
                             {
                                 num: "04",
@@ -475,7 +478,8 @@ const About = () => {
                                 approach: "Immersive learning experiences that surface strengths, blind spots, and growth opportunities in action.",
                                 btn: "Develop Talent",
                                 link: "/services/individual-development",
-                                icon: <Zap size={32} />
+                                icon: <Zap size={32} />,
+                                bg: "/individual_development_abstract.png"
                             },
                             {
                                 num: "05",
@@ -485,7 +489,8 @@ const About = () => {
                                 approach: "System-level experiential interventions that uncover misalignment and create clarity at scale.",
                                 btn: "Transform Your Organization",
                                 link: "/services/organizational-effectiveness",
-                                icon: <Globe size={32} />
+                                icon: <Globe size={32} />,
+                                bg: "/org_effectiveness_abstract.png"
                             }
                         ].map((service, i) => (
                             <motion.div
@@ -494,9 +499,13 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className={`group bg-slate-50 p-12 lg:p-16 rounded-[4rem] border border-navy/5 hover:border-teal/30 hover:shadow-2xl transition-all duration-700 flex flex-col justify-between ${i === 4 ? 'md:col-span-2' : ''}`}
+                                className={`group relative overflow-hidden bg-slate-50 p-12 lg:p-16 rounded-[4rem] border border-navy/5 hover:border-teal/30 hover:shadow-2xl transition-all duration-700 flex flex-col justify-between ${i === 4 ? 'md:col-span-2' : ''}`}
                             >
-                                <div>
+                                <div className="absolute inset-0 z-0">
+                                    <img src={service.bg} alt="" className="w-full h-full object-cover opacity-[0.12] group-hover:scale-105 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-slate-50/60"></div>
+                                </div>
+                                <div className="relative z-10">
                                     <div className="flex items-center justify-between mb-12">
                                         <div className="w-20 h-20 rounded-2xl bg-teal/10 flex items-center justify-center text-teal group-hover:bg-teal group-hover:text-white transition-all">
                                             {service.icon}
