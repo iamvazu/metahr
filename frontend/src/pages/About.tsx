@@ -584,7 +584,7 @@ const About = () => {
                             { name: "Hogan Assessments", img: "/hogan_logo.png" },
                             { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
                             { name: "MTa Licensed User", img: "/mta_logo.jpg" },
-                            { name: "SHRM-CP", img: "/shrm_logo.png" }
+                            { name: "SHRM-SCP", img: "/shrm_scp_logo.png" }
                         ].map((cred, i) => (
                             <motion.div
                                 key={i}
