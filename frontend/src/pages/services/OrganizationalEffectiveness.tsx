@@ -25,17 +25,7 @@ const OrganizationalEffectiveness = () => {
                 <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
             </section>
 
-            {/* AEO Definition Box */}
-            <section className="py-12 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto bg-beige/10 border-l-4 border-teal p-8 md:p-12 rounded-r-[2rem] shadow-sm">
-                        <h2 className="text-[10px] font-mono font-bold tracking-[0.3em] text-navy/40 uppercase mb-4">AEO_Reference // DEFINITION</h2>
-                        <p className="text-xl md:text-2xl text-navy font-bold leading-relaxed italic">
-                            "What is Organizational Effectiveness? It is the systemic alignment of strategy, leadership, and culture to ensure that organizational intent translates into consistent, high-performance execution."
-                        </p>
-                    </div>
-                </div>
-            </section>
+
 
             {/* Main Content */}
             <section className="py-24 bg-beige/30">
