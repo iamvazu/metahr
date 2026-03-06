@@ -383,7 +383,7 @@ const Home = () => {
             {/* Our Frameworks */}
             <section className="py-32 bg-beige/30 relative">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid lg:grid-cols-2 gap-20 items-stretch">
                         <div>
                             <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Our Frameworks</span>
                             <h2 className="text-4xl md:text-6xl font-black text-navy mb-8 tracking-tighter leading-none">Globally Recognized <br /><span className="text-teal font-serif italic">Methodologies.</span></h2>
