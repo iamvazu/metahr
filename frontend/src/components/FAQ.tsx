@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 
+import { Link } from 'react-router-dom';
+
 interface FAQItem {
     question: string;
     answer: string;
@@ -13,6 +15,9 @@ interface FAQProps {
     subtitle?: string;
     className?: string;
     dark?: boolean;
+    showLabel?: boolean;
+    footerLinkText?: string;
+    footerLinkHref?: string;
 }
 
 const FAQ = ({ 
@@ -20,7 +25,10 @@ const FAQ = ({
     title = "Frequently Asked Questions", 
     subtitle,
     className = "bg-white",
-    dark = false 
+    dark = false,
+    showLabel = false,
+    footerLinkText,
+    footerLinkHref
 }: FAQProps) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -28,12 +36,13 @@ const FAQ = ({
     const renderTitle = () => {
         if (title === "Frequently Asked Questions") {
             return (
-                <h2 className={`text-4xl md:text-7xl font-black tracking-tighter leading-none mb-8 ${dark ? 'text-white' : 'text-navy'}`}>
-                    Frequently <span className="text-teal font-serif italic">Asked Questions.</span>
+                <h2 className={`text-4xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-8 ${dark ? 'text-white' : 'text-navy'}`}>
+                    Frequently <br className="sm:hidden" />
+                    <span className="text-teal font-serif italic">Asked Questions.</span>
                 </h2>
             );
         }
-        return <h2 className={`text-4xl md:text-5xl font-black tracking-tighter leading-none mb-8 ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>;
+        return <h2 className={`text-4xl md:text-5xl font-black tracking-tighter leading-[1.1] mb-8 ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>;
     };
 
     const schemaData = {
@@ -57,7 +66,9 @@ const FAQ = ({
             
             <div className="container mx-auto px-6 max-w-5xl relative z-10">
                 <div className="text-center mb-24">
-                    <span className={`text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block`}>Inquiry.Module // DEEP_DIVE</span>
+                    {showLabel && (
+                        <span className={`text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block`}>Inquiry.Module // DEEP_DIVE</span>
+                    )}
                     {renderTitle()}
                     {subtitle && (
                         <p className={`text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed ${dark ? 'text-beige/40' : 'text-navy/40'}`}>
@@ -112,6 +123,21 @@ const FAQ = ({
                         </div>
                     ))}
                 </div>
+
+                {footerLinkText && footerLinkHref && (
+                    <div className="mt-20 text-center">
+                        <Link 
+                            to={footerLinkHref}
+                            className={`inline-flex items-center px-10 py-5 rounded-full font-black text-sm uppercase tracking-widest transition-all ${
+                                dark 
+                                ? 'bg-white text-navy hover:bg-teal hover:text-white' 
+                                : 'bg-navy text-white hover:bg-teal'
+                            } shadow-2xl hover:-translate-y-1`}
+                        >
+                            {footerLinkText}
+                        </Link>
+                    </div>
+                )}
             </div>
 
             {/* Structured Data */}

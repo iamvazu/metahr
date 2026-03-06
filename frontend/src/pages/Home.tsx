@@ -511,6 +511,8 @@ const Home = () => {
                 className="bg-navy"
                 dark={true}
                 subtitle="Find answers to common inquiries about our methodologies, delivery systems, and measurable impact models."
+                footerLinkText="View All FAQs"
+                footerLinkHref="/faq"
                 items={[
                 {
                     question: "What makes MetaHR different from other HR consultancies in India?",
