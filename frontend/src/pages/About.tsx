@@ -392,8 +392,8 @@ const About = () => {
                                 className={`group relative overflow-hidden bg-white p-12 md:p-16 rounded-[3rem] border border-navy/5 shadow-lg hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 ${item.span} flex flex-col justify-between`}
                             >
                                 <div className="absolute inset-0 z-0">
-                                    <img src={item.bg} alt="" className="w-full h-full object-cover opacity-[0.08] group-hover:scale-110 transition-transform duration-1000" />
-                                    <div className="absolute inset-0 bg-white/40"></div>
+                                    <img src={item.bg} alt="" className="w-full h-full object-cover opacity-[0.15] group-hover:scale-110 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-white/60"></div>
                                 </div>
                                 <div className="relative z-10">
                                     <div className="flex items-center justify-between mb-8">
