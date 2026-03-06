@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Award, Zap } from 'lucide-react';
 import { usePosts } from '../hooks/usePosts';
+import ScrollIndicator from '../components/ScrollIndicator';
 
 const Blog = () => {
     const { posts, loading: loadingPosts } = usePosts();
@@ -35,6 +36,9 @@ const Blog = () => {
                         Explore our latest research, thought leadership, and tactical insights for modern organizational growth.
                     </motion.p>
                 </div>
+
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
+
                 {/* Decorative Laser Line */}
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>

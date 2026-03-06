@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ScrollIndicator from '../../components/ScrollIndicator';
 
 const TeamDevelopment = () => {
     return (
@@ -17,6 +18,7 @@ const TeamDevelopment = () => {
                         Using The Five Behaviors of a Cohesive Team framework, we help teams build deep trust, engage in healthy conflict, commit to clear decisions, hold one another accountable, and focus relentlessly on collective results.
                     </p>
                 </div>
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
             </section>
 
             {/* Main Content */}

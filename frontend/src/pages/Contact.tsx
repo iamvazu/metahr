@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, Linkedin, Globe, Send, Users, Monitor, MapPin, CheckCircle2, Loader2 } from 'lucide-react';
 import axios from 'axios';
+import ScrollIndicator from '../components/ScrollIndicator';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -92,6 +93,9 @@ const Contact = () => {
                         Whether you are looking for a customized workshop or a long-term strategic HR partnership, we provide the precision you need.
                     </motion.p>
                 </div>
+
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
+
                 {/* Decorative Laser Line */}
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>

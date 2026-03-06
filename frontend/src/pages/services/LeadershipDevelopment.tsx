@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FAQ from '../../components/FAQ';
+import ScrollIndicator from '../../components/ScrollIndicator';
 
 const LeadershipDevelopment = () => {
     return (
@@ -18,6 +19,7 @@ const LeadershipDevelopment = () => {
                         Grounded in The Leadership Challenge, we develop leaders who model values, inspire a shared vision, challenge the process, enable others to act, and encourage the heart.
                     </p>
                 </div>
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
             </section>
 
             {/* AEO Definition Box */}

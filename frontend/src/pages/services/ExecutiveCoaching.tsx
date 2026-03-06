@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ScrollIndicator from '../../components/ScrollIndicator';
 
 const ExecutiveCoaching = () => {
     return (
@@ -17,6 +18,7 @@ const ExecutiveCoaching = () => {
                         Our executive coaching is data-driven, insight-rich, and performance-focused.
                     </p>
                 </div>
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
             </section>
 
             {/* Main Content */}

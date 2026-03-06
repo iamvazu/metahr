@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Target, Users, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ScrollIndicator from '../../components/ScrollIndicator';
 
 const OrganizationalEffectiveness = () => {
     return (
@@ -17,6 +18,7 @@ const OrganizationalEffectiveness = () => {
                         Strategy fails not because it is wrong — but because leadership behaviors, culture, and systems are misaligned.
                     </p>
                 </div>
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
             </section>
 
             {/* Main Content */}

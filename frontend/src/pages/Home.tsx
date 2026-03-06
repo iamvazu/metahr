@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Quote, Globe, Award, Users, Target, Zap, CheckCircle, Lightbulb, XCircle, ChevronDown } from 'lucide-react';
+import { ArrowRight, Quote, Globe, Award, Users, Target, Zap, CheckCircle, Lightbulb, XCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ScrollIndicator from '../components/ScrollIndicator';
 import { useRef, useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
@@ -149,28 +150,7 @@ const Home = () => {
                 </motion.div>
 
 
-                {/* Scroll Indicator */}
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1, duration: 1 }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center"
-                >
-                    <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1">
-                        <motion.div 
-                            animate={{ y: [0, 12, 0] }}
-                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                            className="w-1 h-2 bg-teal rounded-full"
-                        />
-                    </div>
-                    <motion.div
-                        animate={{ y: [0, 5, 0] }}
-                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                        className="mt-2"
-                    >
-                        <ChevronDown size={20} className="text-white/20" />
-                    </motion.div>
-                </motion.div>
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
 
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>

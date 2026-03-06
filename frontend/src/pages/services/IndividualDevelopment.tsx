@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ScrollIndicator from '../../components/ScrollIndicator';
 
 const IndividualDevelopment = () => {
     return (
@@ -17,6 +18,7 @@ const IndividualDevelopment = () => {
                         Today’s emerging talent cannot be developed with yesterday’s training models.
                     </p>
                 </div>
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
             </section>
 
             {/* Main Content */}
