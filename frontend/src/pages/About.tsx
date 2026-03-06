@@ -192,59 +192,54 @@ const About = () => {
                 </div>
             </section>
 
-            {/* 3. What We Do - Whether you are Section */}
-            <section className="py-32 bg-slate-50 relative">
+            {/* 3. What We Do - Whether you are Section - RESTRUCTURED */}
+            <section className="py-32 bg-slate-50 relative overflow-hidden">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-4xl mx-auto mb-20">
                         <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">TAILORED_SOLUTIONS // WHAT_WE_DO</span>
                         <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-navy uppercase">
                             What We <span className="text-teal font-serif italic lowercase tracking-normal">Do.</span>
                         </h2>
-                        <p className="text-xl md:text-2xl text-navy/60 font-light leading-relaxed">
+                        <p className="text-xl md:text-2xl text-navy/60 font-light leading-relaxed mb-16">
                             We deliver tailored, results-driven HR solutions designed to meet your organization where it is — and take it where it wants to go.
                         </p>
                     </div>
 
-                    {/* Styled Card Block from Screenshot */}
-                    <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
-                        {[
-                            { 
-                                icon: <Zap size={32} />, 
-                                title: "Whether you are:", 
-                                desc: "A startup building your HR function from the ground up",
-                                bg: "bg-white border border-navy/5 shadow-xl"
-                            },
-                            { 
-                                icon: <TrendingUp size={32} />, 
-                                title: "Whether you are:", 
-                                desc: "A growing company refining systems and strengthening culture",
-                                bg: "bg-white border border-navy/5 shadow-xl"
-                            },
-                            { 
-                                icon: <Globe size={32} />, 
-                                title: "Whether you are:", 
-                                desc: "An established organization scaling your people strategy",
-                                bg: "bg-white border border-navy/5 shadow-xl"
-                            }
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className={`p-16 rounded-[4rem] group transition-all duration-700 hover:-translate-y-4 ${item.bg}`}
-                            >
-                                <div className="w-20 h-20 rounded-3xl bg-teal/10 flex items-center justify-center text-teal mb-10 group-hover:bg-teal group-hover:text-white transition-all duration-500">
-                                    {item.icon}
-                                </div>
-                                <h4 className="text-2xl font-black text-navy mb-6 tracking-tight">{item.title}</h4>
-                                <p className="text-xl text-navy/50 leading-relaxed font-medium">{item.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-navy/5 shadow-2xl p-12 md:p-20 relative overflow-hidden"
+                    >
+                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-teal via-navy to-teal"></div>
+                        
+                        <div className="grid lg:grid-cols-12 gap-16 items-start">
+                            <div className="lg:col-span-4">
+                                <h3 className="text-4xl md:text-5xl font-black text-navy leading-none mb-10 tracking-tighter">
+                                    Whether <br />
+                                    you are:
+                                </h3>
+                                <div className="w-20 h-1 bg-teal rounded-full"></div>
+                            </div>
+                            
+                            <div className="lg:col-span-8 grid md:grid-cols-3 gap-10">
+                                {[
+                                    { icon: <Zap size={28} />, desc: "A startup building your HR function from the ground up" },
+                                    { icon: <TrendingUp size={28} />, desc: "A growing company refining systems and strengthening culture" },
+                                    { icon: <Globe size={28} />, desc: "An established organization scaling your people strategy" }
+                                ].map((item, i) => (
+                                    <div key={i} className="group">
+                                        <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-teal mb-8 group-hover:bg-teal group-hover:text-white transition-all duration-500 shadow-sm">
+                                            {item.icon}
+                                        </div>
+                                        <p className="text-xl text-navy/70 leading-relaxed font-medium group-hover:text-navy transition-colors">{item.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
 
-                    <div className="text-center max-w-5xl mx-auto">
+                    <div className="text-center max-w-5xl mx-auto mt-24">
                         <motion.p 
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
@@ -257,7 +252,7 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Our Commitment & Purpose & Direction */}
+            {/* Our Commitment & Purpose & Direction - Keep as is */}
             <section className="py-32 bg-white relative">
                 <div className="container mx-auto px-6">
                     <div className="grid lg:grid-cols-12 gap-16 items-start">
@@ -320,7 +315,7 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Values Section */}
+            {/* Values Section - BENTO BOX STYLE */}
             <section className="py-32 bg-slate-50 relative overflow-hidden">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-4xl mx-auto mb-24">
@@ -330,57 +325,64 @@ const About = () => {
                         </h2>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-6 gap-6 max-w-7xl mx-auto">
                         {[
                             { 
                                 title: "We Redefine Performance", 
                                 num: "01", 
                                 desc: "We don’t optimize average — we unlock exceptional. We challenge norms, elevate standards, and drive breakthrough results.",
-                                icon: <Rocket size={24} />
+                                icon: <Rocket size={24} />,
+                                span: "md:col-span-4"
                             },
                             { 
                                 title: "Courageous Transformation", 
                                 num: "02", 
-                                desc: "We lean into complexity. Real change requires bold thinking, decisive action, and the confidence to disrupt what no longer works.",
-                                icon: <ShieldCheck size={24} />
+                                desc: "We lean into complexity. Real change requires bold thinking and decisive action.",
+                                icon: <ShieldCheck size={24} />,
+                                span: "md:col-span-2"
                             },
                             { 
                                 title: "Accountability to Outcomes", 
                                 num: "03", 
-                                desc: "Impact isn’t optional. We measure what matters and stand behind the results we deliver.",
-                                icon: <Target size={24} />
+                                desc: "Impact isn’t optional. We measure what matters and stand behind the results.",
+                                icon: <Target size={24} />,
+                                span: "md:col-span-2"
                             },
                             { 
                                 title: "Human-Centered Innovation", 
                                 num: "04", 
                                 desc: "Technology and data power progress — but people drive it. We design solutions where human potential meets intelligent systems.",
-                                icon: <Heart size={24} />
+                                icon: <Heart size={24} />,
+                                span: "md:col-span-4" 
                             },
                             { 
                                 title: "Built for What’s Next", 
                                 num: "05", 
                                 desc: "The future rewards agility. We help organizations adapt, evolve, and lead in dynamic environments.",
-                                icon: <Sparkles size={24} />
+                                icon: <Sparkles size={24} />,
+                                span: "md:col-span-6"
                             }
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
+                                initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className={`group relative overflow-hidden bg-white p-16 rounded-[4rem] border border-navy/5 shadow-lg hover:shadow-2xl transition-all duration-700 hover:-translate-y-2`}
+                                className={`group relative overflow-hidden bg-white p-12 md:p-16 rounded-[3rem] border border-navy/5 shadow-lg hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 ${item.span} flex flex-col justify-between`}
                             >
-                                <div className="flex items-center justify-between mb-12">
-                                    <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center text-teal group-hover:bg-teal group-hover:text-white transition-all">
-                                        {item.icon}
+                                <div>
+                                    <div className="flex items-center justify-between mb-8">
+                                        <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center text-teal group-hover:bg-teal group-hover:text-white transition-all">
+                                            {item.icon}
+                                        </div>
+                                        <span className="text-3xl font-black text-navy/5 group-hover:text-teal/10 transition-colors">{item.num}</span>
                                     </div>
-                                    <span className="text-4xl font-black text-navy/5 group-hover:text-teal/10 transition-colors">{item.num}</span>
+                                    <h3 className="text-2xl font-black text-navy mb-6 tracking-tight group-hover:translate-x-2 transition-transform">{item.title}</h3>
+                                    <p className="text-lg text-navy/50 leading-relaxed font-medium">
+                                        {item.desc}
+                                    </p>
                                 </div>
-                                <h3 className="text-2xl font-black text-navy mb-6 tracking-tight group-hover:translate-x-2 transition-transform">{item.title}</h3>
-                                <p className="text-lg text-navy/50 leading-relaxed font-medium">
-                                    {item.desc}
-                                </p>
                             </motion.div>
                         ))}
                     </div>
