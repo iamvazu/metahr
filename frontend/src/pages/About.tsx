@@ -122,44 +122,72 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Philosophy Deep Dive */}
+            {/* Philosophy Deep Dive - REFINED */}
             <section className="py-32 bg-navy relative overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover opacity-20 grayscale" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-navy via-transparent to-navy"></div>
+                    <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover opacity-10 grayscale scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/90 to-navy text-white"></div>
                 </div>
+                
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center max-w-4xl mx-auto mb-20">
-                        <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">OUR_CORE_PHILOSOPHY</span>
-                        <h2 className="text-4xl md:text-7xl font-black text-white mb-10 tracking-tighter leading-none">
-                            Our <span className="text-teal font-serif italic">Philosophy.</span>
-                        </h2>
-                    </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto">
+                    <div className="text-center max-w-4xl mx-auto mb-24">
                         <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <span className="text-[11px] font-mono font-bold tracking-[0.5em] text-teal uppercase mb-6 block">
+                                OUR_CORE_PHILOSOPHY
+                            </span>
+                        </motion.div>
+                        
+                        <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-2xl text-beige/70 font-light leading-relaxed"
+                            transition={{ delay: 0.1 }}
+                            className="text-6xl md:text-9xl font-black mb-10 tracking-tighter leading-none"
                         >
-                            People are the most valuable asset of any company. Yet, performance is not driven by skill alone. It is influenced by purpose, environment, leadership, relationships, systems, and culture.
-                        </motion.div>
+                            <span className="text-white drop-shadow-2xl">Our </span>
+                            <span className="text-teal font-serif italic block md:inline">Philosophy.</span>
+                        </motion.h2>
+                        <div className="w-24 h-1 bg-teal mx-auto rounded-full opacity-50"></div>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-2xl text-beige/70 font-light leading-relaxed"
+                            className="bg-white/5 backdrop-blur-xl p-12 rounded-[3.5rem] border border-white/10 shadow-2xl hover:bg-white/10 transition-all duration-500"
                         >
-                            Every individual brings a unique set of talents. When these talents are recognized, developed, and aligned with business goals, they become strengths that fuel both individual success and organizational growth.
+                            <div className="text-2xl text-beige/80 font-light leading-relaxed">
+                                People are the most valuable asset of any company. Yet, performance is not driven by skill alone. It is influenced by purpose, environment, leadership, relationships, systems, and culture.
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="bg-white/5 backdrop-blur-xl p-12 rounded-[3.5rem] border border-white/10 shadow-2xl hover:bg-white/10 transition-all duration-500"
+                        >
+                            <div className="text-2xl text-beige/80 font-light leading-relaxed">
+                                Every individual brings a unique set of talents. When these talents are recognized, developed, and aligned with business goals, they become strengths that fuel both individual success and organizational growth.
+                            </div>
                         </motion.div>
                     </div>
 
-                    <div className="mt-20 pt-20 border-t border-white/10 text-center">
-                        <p className="text-3xl md:text-4xl font-black text-white tracking-tight max-w-4xl mx-auto leading-tight italic">
+                    <div className="mt-24 pt-20 border-t border-white/10 text-center">
+                        <motion.blockquote 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="text-3xl md:text-5xl font-black text-white tracking-tight max-w-5xl mx-auto leading-tight italic"
+                        >
                             "We look beyond HR as being primarily administration or operational. HR is a key part of strategy and transformation to organizations."
-                        </p>
+                        </motion.blockquote>
                     </div>
                 </div>
             </section>
@@ -184,19 +212,19 @@ const About = () => {
                                 icon: <Zap size={32} />, 
                                 title: "Whether you are:", 
                                 desc: "A startup building your HR function from the ground up",
-                                bg: "bg-white shadow-xl"
+                                bg: "bg-white border border-navy/5 shadow-xl"
                             },
                             { 
                                 icon: <TrendingUp size={32} />, 
                                 title: "Whether you are:", 
                                 desc: "A growing company refining systems and strengthening culture",
-                                bg: "bg-white/60 backdrop-blur-xl border border-navy/5"
+                                bg: "bg-white border border-navy/5 shadow-xl"
                             },
                             { 
                                 icon: <Globe size={32} />, 
                                 title: "Whether you are:", 
                                 desc: "An established organization scaling your people strategy",
-                                bg: "bg-white shadow-2xl"
+                                bg: "bg-white border border-navy/5 shadow-xl"
                             }
                         ].map((item, i) => (
                             <motion.div
