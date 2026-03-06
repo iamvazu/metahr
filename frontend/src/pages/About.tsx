@@ -164,9 +164,13 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="bg-white/5 backdrop-blur-xl p-12 rounded-[3.5rem] border border-white/10 shadow-2xl hover:bg-white/10 transition-all duration-500"
+                            className="group bg-white/5 backdrop-blur-xl p-12 rounded-[3.5rem] border border-white/10 shadow-2xl hover:bg-white/10 transition-all duration-500 relative overflow-hidden"
                         >
-                            <div className="text-2xl text-beige/80 font-light leading-relaxed">
+                            <div className="absolute inset-0 z-0">
+                                <img src="/philosophy_asset_bg.png" alt="" className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
+                                <div className="absolute inset-0 bg-navy/40"></div>
+                            </div>
+                            <div className="relative z-10 text-2xl text-beige/80 font-light leading-relaxed group-hover:text-white transition-colors">
                                 People are the most valuable asset of any company. Yet, performance is not driven by skill alone. It is influenced by purpose, environment, leadership, relationships, systems, and culture.
                             </div>
                         </motion.div>
@@ -175,9 +179,13 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="bg-white/5 backdrop-blur-xl p-12 rounded-[3.5rem] border border-white/10 shadow-2xl hover:bg-white/10 transition-all duration-500"
+                            className="group bg-white/5 backdrop-blur-xl p-12 rounded-[3.5rem] border border-white/10 shadow-2xl hover:bg-white/10 transition-all duration-500 relative overflow-hidden"
                         >
-                            <div className="text-2xl text-beige/80 font-light leading-relaxed">
+                            <div className="absolute inset-0 z-0">
+                                <img src="/philosophy_talent_bg.png" alt="" className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" />
+                                <div className="absolute inset-0 bg-navy/40"></div>
+                            </div>
+                            <div className="relative z-10 text-2xl text-beige/80 font-light leading-relaxed group-hover:text-white transition-colors">
                                 Every individual brings a unique set of talents. When these talents are recognized, developed, and aligned with business goals, they become strengths that fuel both individual success and organizational growth.
                             </div>
                         </motion.div>
@@ -213,9 +221,13 @@ const About = () => {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="max-w-7xl mx-auto bg-white rounded-[4rem] border border-navy/5 shadow-2xl p-12 md:p-20 relative overflow-hidden"
+                        className="group max-w-7xl mx-auto bg-white rounded-[4rem] border border-navy/5 shadow-2xl p-12 md:p-20 relative overflow-hidden"
                     >
-                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-teal via-navy to-teal"></div>
+                        <div className="absolute inset-0 z-0">
+                            <img src="/tailored_solutions_bg.png" alt="" className="w-full h-full object-cover opacity-[0.07] group-hover:scale-105 transition-transform duration-1000" />
+                            <div className="absolute inset-0 bg-white/30"></div>
+                        </div>
+                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-teal via-navy to-teal z-10"></div>
                         
                         <div className="grid lg:grid-cols-12 gap-16 items-start">
                             <div className="lg:col-span-4">
@@ -288,8 +300,8 @@ const About = () => {
                                 className="group h-full flex flex-col justify-center bg-navy p-16 rounded-[4rem] text-white shadow-2xl relative overflow-hidden"
                             >
                                 <div className="absolute inset-0 z-0">
-                                    <img src="/mission_vision_bg.png" alt="" className="w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" />
-                                    <div className="absolute inset-0 bg-navy/60"></div>
+                                    <img src="/mission_vision_bg.png" alt="" className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-navy/50"></div>
                                 </div>
                                 <div className="relative z-10">
                                     <Target className="text-teal mb-10" size={56} />
@@ -310,8 +322,8 @@ const About = () => {
                                 className="group h-full flex flex-col justify-center bg-slate-50 p-16 rounded-[4rem] border border-navy/5 shadow-xl relative overflow-hidden"
                             >
                                 <div className="absolute inset-0 z-0">
-                                    <img src="/mission_vision_bg.png" alt="" className="w-full h-full object-cover opacity-10 group-hover:scale-105 transition-transform duration-1000" />
-                                    <div className="absolute inset-0 bg-slate-50/80"></div>
+                                    <img src="/mission_vision_bg.png" alt="" className="w-full h-full object-cover opacity-25 group-hover:scale-105 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-slate-50/70"></div>
                                 </div>
                                 <div className="relative z-10">
                                     <div className="flex items-center space-x-6 mb-10">
