@@ -196,7 +196,7 @@ const Contact = () => {
                                     >
                                         <div className="grid md:grid-cols-2 gap-8">
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal/60 ml-2">Full Name</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Full Name</label>
                                                 <input
                                                     type="text"
                                                     name="name"
@@ -208,7 +208,7 @@ const Contact = () => {
                                                 />
                                             </div>
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal/60 ml-2">Work Email</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Work Email</label>
                                                 <input
                                                     type="email"
                                                     name="email"
@@ -222,7 +222,7 @@ const Contact = () => {
                                         </div>
                                         <div className="grid md:grid-cols-2 gap-8">
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal/60 ml-2">Company</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Company</label>
                                                 <input
                                                     type="text"
                                                     name="company"
@@ -234,7 +234,7 @@ const Contact = () => {
                                                 />
                                             </div>
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal/60 ml-2">Phone Number</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Phone Number</label>
                                                 <input
                                                     type="tel"
                                                     name="phone"
@@ -247,7 +247,7 @@ const Contact = () => {
                                             </div>
                                         </div>
                                         <div className="space-y-3">
-                                            <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal/60 ml-2">Solution_Inquiry</label>
+                                            <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Solution_Inquiry</label>
                                             <select
                                                 name="solution"
                                                 required
@@ -265,7 +265,7 @@ const Contact = () => {
                                         </div>
 
                                         <div className="space-y-3">
-                                            <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal/60 ml-2">Desired_Outcomes</label>
+                                            <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Desired_Outcomes</label>
                                             <textarea
                                                 rows={4}
                                                 name="message"
