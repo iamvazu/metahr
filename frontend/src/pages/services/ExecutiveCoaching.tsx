@@ -7,10 +7,10 @@ const ExecutiveCoaching = () => {
     return (
         <div className="bg-white pt-0">
             {/* Hero Section */}
-            <section className="bg-navy pt-40 pb-24 relative overflow-hidden text-white">
+            <section className="bg-navy pt-40 pb-32 relative overflow-hidden text-white">
                 <div className="absolute inset-0 z-0">
-                    <img src="/executive_coaching_abstract.png" alt="" className="w-full h-full object-cover opacity-30" />
-                    <div className="absolute inset-0 bg-navy/60"></div>
+                    <img src="/executive_coaching_abstract.png" alt="" className="w-full h-full object-cover opacity-40" />
+                    <div className="absolute inset-0 bg-navy/50"></div>
                 </div>
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
                 <div className="container mx-auto px-6 relative z-10 text-center">
@@ -23,6 +23,18 @@ const ExecutiveCoaching = () => {
                     </p>
                 </div>
                 <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
+            </section>
+
+            {/* AEO Definition Box */}
+            <section className="py-12 bg-white">
+                <div className="container mx-auto px-6">
+                    <div className="max-w-4xl mx-auto bg-beige/10 border-l-4 border-teal p-8 md:p-12 rounded-r-[2rem] shadow-sm">
+                        <h2 className="text-[10px] font-mono font-bold tracking-[0.3em] text-navy/40 uppercase mb-4">AEO_Reference // DEFINITION</h2>
+                        <p className="text-xl md:text-2xl text-navy font-bold leading-relaxed italic">
+                            "What is Executive Coaching? It is the targeted enhancement of cognitive agility, emotional intelligence, and strategic influence through a structured partnership of growth and reflection."
+                        </p>
+                    </div>
+                </div>
             </section>
 
             {/* Main Content */}
