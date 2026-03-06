@@ -529,10 +529,10 @@ const About = () => {
 
                                 <Link
                                     to={service.link}
-                                    className="inline-flex items-center justify-center space-x-3 bg-navy text-white px-10 py-6 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-teal transition-all shadow-xl"
+                                    className="relative z-20 inline-flex items-center justify-center space-x-4 bg-teal text-white px-12 py-7 rounded-full font-black text-[11px] uppercase tracking-[0.3em] hover:bg-navy transition-all shadow-2xl group/btn active:scale-95"
                                 >
                                     <span>{service.btn}</span>
-                                    <ArrowRight size={16} />
+                                    <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
                                 </Link>
                             </motion.div>
                         ))}
