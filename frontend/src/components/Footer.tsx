@@ -40,33 +40,33 @@ const Footer = () => {
 
                     <div>
                         <h4 className="text-[10px] font-mono font-black tracking-[0.4em] text-teal uppercase mb-8">Navigation</h4>
-                        <ul className="space-y-4 text-white/60 font-bold">
-                            <li><Link to="/about" className="hover:text-white transition-all hover:translate-x-1 inline-block">About Us</Link></li>
-                            <li><Link to="/solutions" className="hover:text-white transition-all hover:translate-x-1 inline-block">Solutions</Link></li>
-                            <li><Link to="/resources" className="hover:text-white transition-all hover:translate-x-1 inline-block">Resources</Link></li>
-                            <li><Link to="/blog" className="hover:text-white transition-all hover:translate-x-1 inline-block">Blog</Link></li>
-                            <li><Link to="/faq" className="hover:text-white transition-all hover:translate-x-1 inline-block">FAQ</Link></li>
-                            <li><Link to="/contact" className="hover:text-white transition-all hover:translate-x-1 inline-block">Contact</Link></li>
+                        <ul className="space-y-4 text-white/60 font-medium">
+                            <li><Link to="/about" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">About Us</Link></li>
+                            <li><Link to="/solutions" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Solutions</Link></li>
+                            <li><Link to="/resources" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Resources</Link></li>
+                            <li><Link to="/blog" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Blog</Link></li>
+                            <li><Link to="/faq" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">FAQ</Link></li>
+                            <li><Link to="/contact" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Contact</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="text-[10px] font-mono font-black tracking-[0.4em] text-teal uppercase mb-8">Services</h4>
-                        <ul className="space-y-4 text-white/60 font-bold text-sm">
-                            <li><Link to="/services/leadership-development" className="hover:text-white transition-all hover:translate-x-1 inline-block text-[12px]">Leadership Development</Link></li>
-                            <li><Link to="/services/team-development" className="hover:text-white transition-all hover:translate-x-1 inline-block text-[12px]">Team Development</Link></li>
-                            <li><Link to="/services/executive-coaching" className="hover:text-white transition-all hover:translate-x-1 inline-block text-[12px]">Executive Coaching</Link></li>
-                            <li><Link to="/services/individual-development" className="hover:text-white transition-all hover:translate-x-1 inline-block text-[12px]">Individual Development</Link></li>
-                            <li><Link to="/services/organizational-effectiveness" className="hover:text-white transition-all hover:translate-x-1 inline-block text-[12px]">Organizational Effectiveness</Link></li>
+                        <ul className="space-y-4 text-white/60 font-medium">
+                            <li><Link to="/services/leadership-development" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Leadership Development</Link></li>
+                            <li><Link to="/services/team-development" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Team Development</Link></li>
+                            <li><Link to="/services/executive-coaching" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Executive Coaching</Link></li>
+                            <li><Link to="/services/individual-development" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Individual Development</Link></li>
+                            <li><Link to="/services/organizational-effectiveness" className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">Organizational Effectiveness</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="text-[10px] font-mono font-black tracking-[0.4em] text-teal uppercase mb-8">Locations</h4>
-                        <ul className="space-y-4 text-white/60 font-bold text-sm">
+                        <ul className="space-y-4 text-white/60 font-medium">
                             {['Mumbai', 'Delhi NCR', 'Bangalore', 'Hyderabad', 'Pune', 'Chennai'].map(city => (
                                 <li key={city}>
-                                    <Link to={`/locations/${city.toLowerCase().replace(' ', '-')}`} className="hover:text-white transition-all hover:translate-x-1 inline-block text-[12px]">
+                                    <Link to={`/locations/${city.toLowerCase().replace(' ', '-')}`} className="hover:text-white transition-all hover:translate-x-1 inline-block text-sm">
                                         {city}
                                     </Link>
                                 </li>
@@ -76,14 +76,14 @@ const Footer = () => {
 
                     <div>
                         <h4 className="text-[10px] font-mono font-black tracking-[0.4em] text-teal uppercase mb-8">Direct_Comm</h4>
-                        <ul className="space-y-4 text-white/60 font-black text-sm">
+                        <ul className="space-y-6 text-white/60 font-medium">
                             <li className="flex items-center space-x-3 group cursor-pointer transition-colors hover:text-white">
                                 <Mail size={16} className="text-teal group-hover:scale-110 transition-transform shrink-0" />
-                                <a href="mailto:info@metahr.co.in" className="break-all font-mono text-[11px]">info@metahr.co.in</a>
+                                <a href="mailto:info@metahr.co.in" className="break-all font-mono text-xs">info@metahr.co.in</a>
                             </li>
                             <li className="flex items-center space-x-3 group cursor-pointer transition-colors hover:text-white">
                                 <Phone size={16} className="text-teal group-hover:scale-110 transition-transform shrink-0" />
-                                <a href="tel:+919187651277" className="font-mono text-[11px]">+91 91876 51277</a>
+                                <a href="tel:+919187651277" className="font-mono text-xs">+91 91876 51277</a>
                             </li>
                         </ul>
                     </div>

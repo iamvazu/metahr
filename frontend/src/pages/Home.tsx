@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Quote, Globe, Award, Users, Target, Zap, CheckCircle, Lightbulb } from 'lucide-react';
+import { ArrowRight, Quote, Globe, Award, Users, Target, Zap, CheckCircle, Lightbulb, XCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 
