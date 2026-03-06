@@ -32,7 +32,6 @@ const FAQ = ({ items, title = "Frequently Asked Questions" }: FAQProps) => {
         <section className="py-24 bg-white">
             <div className="container mx-auto px-6 max-w-4xl">
                 <div className="text-center mb-16">
-                    <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-4 block underline decoration-teal/30 underline-offset-8">Support // INTELLIGENCE_BASE</span>
                     <h2 className="text-4xl md:text-5xl font-black text-navy tracking-tighter">{title}</h2>
                 </div>
 

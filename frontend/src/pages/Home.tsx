@@ -1,11 +1,27 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Quote, Globe, Award, Users, Target, Zap, CheckCircle, Lightbulb, XCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 import FAQ from '../components/FAQ';
 
 const Home = () => {
+    const [ctaWordIndex, setCtaWordIndex] = useState(0);
+    const ctaWords = [
+        "Leadership Development",
+        "Team Development",
+        "Individual Development",
+        "Executive Coaching",
+        "Organizational Effectiveness"
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCtaWordIndex((prev) => (prev + 1) % ctaWords.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
     const heroRef = useRef<HTMLElement>(null);
     const { scrollY } = useScroll();
 
@@ -482,16 +498,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Programmatic SEO - City Clusters */}
-            <section className="py-24 bg-beige/10">
-                <div className="container mx-auto px-6">
-                    <div className="flex flex-wrap justify-center gap-8 text-[9px] font-mono font-bold uppercase tracking-[0.5em] text-navy/30">
-                        {['Mumbai', 'Delhi NCR', 'Bangalore', 'Hyderabad', 'Pune', 'Chennai'].map(city => (
-                            <span key={city} className="hover:text-teal transition-colors cursor-default whitespace-nowrap">Corporate_Excellence // {city}</span>
-                        ))}
-                    </div>
-                </div>
-            </section>
+
 
             {/* FAQ Section */}
             <FAQ items={[
@@ -521,10 +528,25 @@ const Home = () => {
             <section className="py-20 md:py-32 bg-white text-center relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
                 <div className="container mx-auto px-6 relative z-10">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-navy mb-6 tracking-tighter leading-none">
-                        Leadership is a <br /><span className="text-teal font-serif italic block mt-4">strategic advantage.</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-navy mb-8 tracking-tighter leading-tight min-h-[1.2em]">
+                        <div className="relative inline-block overflow-hidden align-top text-left w-full sm:w-auto h-[1.2em] mb-2 sm:mb-0">
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={ctaWords[ctaWordIndex]}
+                                    initial={{ y: 40, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: -40, opacity: 0 }}
+                                    transition={{ duration: 0.5, ease: "easeOut" }}
+                                    className="absolute inset-0 block text-teal"
+                                >
+                                    {ctaWords[ctaWordIndex]}
+                                </motion.span>
+                            </AnimatePresence>
+                        </div>
+                        <br className="sm:hidden" />
+                        <span className="block sm:inline"> is a <span className="text-teal font-serif italic">strategic advantage.</span></span>
                     </h2>
-                    <p className="text-xl md:text-2xl text-navy/50 mb-12 font-light">Let’s build it intentionally.</p>
+                    <p className="text-xl md:text-2xl text-navy/50 mb-16 font-light">Let’s build it intentionally.</p>
 
                     <div className="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
                         <Link to="/contact" className="bg-teal text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-navy hover:-translate-y-1 transition-all shadow-2xl">
