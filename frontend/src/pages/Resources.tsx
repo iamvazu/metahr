@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Award, Zap, Brain, MessageSquare, BookOpen, Globe, Users, Target } from 'lucide-react';
+import { Award, Zap, BookOpen, Globe, Users, Target } from 'lucide-react';
 import { usePosts } from '../hooks/usePosts';
 import ScrollIndicator from '../components/ScrollIndicator';
 
@@ -57,61 +57,6 @@ const Resources = () => {
             </section>
 
             <div className="container mx-auto px-6 py-32">
-                {/* Assessment Profiles */}
-                <div className="text-center mb-24">
-                    <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Precision Diagnostics // MEASURING_PERFORMANCE</span>
-                    <h2 className="text-4xl md:text-6xl font-black text-navy mb-8 tracking-tighter">Behavioral Assessment <span className="text-teal font-serif italic leading-tight">Profiles.</span></h2>
-                </div>
-
-                <div className="grid lg:grid-cols-3 gap-10 mb-40">
-                    {[
-                        {
-                            name: "Hogan Assessments",
-                            desc: "Predicting performance by looking at the 'Bright Side' (day-to-day strengths), the 'Dark Side' (derailers under stress), and the 'Inside' (core values).",
-                            icon: <Brain className="text-teal" size={32} />,
-                            features: ["HPI: Bright Side", "HDS: Dark Side", "MVPI: Inside"],
-                            label: "DIAG_HOGAN"
-                        },
-                        {
-                            name: "CliftonStrengths®",
-                            desc: "Uncover the unique set of talents that give you your power and edge. Learn to leverage what you do naturally best for higher performance.",
-                            icon: <Zap className="text-teal" size={32} />,
-                            features: ["Top 5 Core Themes", "Full 34 Profile", "Team Talent Map"],
-                            label: "DIAG_STRENGTHS"
-                        },
-                        {
-                            name: "Everything DiSC®",
-                            desc: "A behavioral tool to help individuals understand their style—Dominance, Influence, Steadiness, or Conscientiousness—to improve communication.",
-                            icon: <MessageSquare className="text-teal" size={32} />,
-                            features: ["Personal Styles", "Comparison Reports", "Team Culture Reports"],
-                            label: "DIAG_DISC"
-                        }
-                    ].map((tool, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            viewport={{ once: true }}
-                            className="bg-beige/10 border border-navy/5 p-12 rounded-[4rem] hover:border-teal/30 hover:shadow-3xl transition-all h-full flex flex-col group"
-                        >
-                            <span className="text-[10px] font-mono font-bold text-navy/20 block mb-8 tracking-widest">{tool.label}</span>
-                            <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mb-10 shadow-3xl shadow-navy/5 group-hover:bg-navy group-hover:text-white transition-all duration-500">
-                                {tool.icon}
-                            </div>
-                            <h3 className="text-2xl font-black text-navy mb-6 tracking-tight">{tool.name}</h3>
-                            <p className="text-navy/50 text-base leading-relaxed mb-10 flex-grow font-medium">{tool.desc}</p>
-                            <ul className="space-y-4 pt-8 border-t border-navy/10">
-                                {tool.features.map(f => (
-                                    <li key={f} className="flex items-center space-x-3 text-navy/60 text-xs font-black uppercase tracking-widest">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-teal"></div>
-                                        <span>{f}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-                    ))}
-                </div>
 
                 {/* Latest Thinking (Dynamic from WordPress) */}
                 <div className="mb-40">
@@ -139,7 +84,7 @@ const Resources = () => {
                                 </div>
                             ))
                         ) : posts && posts.length > 0 ? (
-                            posts.map((post, i) => (
+                            posts.map((post) => (
                                 <a
                                     key={post.id}
                                     href={post.link}
