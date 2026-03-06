@@ -14,7 +14,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
                     <div className="col-span-2">
                         <Link to="/" className="mb-4 block inline-block transform hover:scale-105 transition-transform">
-                            <img src="/logo.png" alt="MetaHR" className="h-28 md:h-32 w-auto object-contain brightness-0 invert" />
+                            <img src="/logo_white.png" alt="MetaHR" className="h-28 md:h-32 w-auto object-contain" />
                         </Link>
                         <p className="text-white/70 text-lg max-w-sm mb-10 leading-relaxed font-light">
                             Beyond Policies. Beyond Processes. Strategically aligning people, culture, and business objectives for sustainable organizational excellence.

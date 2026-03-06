@@ -53,9 +53,9 @@ const Navbar = () => {
                     <div className="flex-1 flex items-center pr-8">
                         <Link to="/" className="flex items-center space-x-2">
                             <img
-                                src="/logo.png"
+                                src={scrolled ? "/logo.png" : "/logo_white.png"}
                                 alt="MetaHR"
-                                className={`h-24 md:h-28 w-auto object-contain transition-all duration-500 ${!scrolled ? 'brightness-0 invert' : ''}`}
+                                className="h-24 md:h-28 w-auto object-contain transition-all duration-500"
                             />
                         </Link>
                     </div>
