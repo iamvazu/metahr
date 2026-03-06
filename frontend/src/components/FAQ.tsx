@@ -22,7 +22,7 @@ interface FAQProps {
 
 const FAQ = ({ 
     items, 
-    title = "Frequently Asked Questions", 
+    title,
     subtitle,
     className = "bg-white",
     dark = false,
@@ -31,19 +31,6 @@ const FAQ = ({
     footerLinkHref
 }: FAQProps) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-    // Split title to apply different styles if it's the default or matches a pattern
-    const renderTitle = () => {
-        if (title === "Frequently Asked Questions") {
-            return (
-                <h2 className={`text-4xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-8 ${dark ? 'text-white' : 'text-navy'}`}>
-                    Frequently <br className="sm:hidden" />
-                    <span className="text-teal font-serif italic">Asked Questions.</span>
-                </h2>
-            );
-        }
-        return <h2 className={`text-4xl md:text-5xl font-black tracking-tighter leading-[1.1] mb-8 ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>;
-    };
 
     const schemaData = {
         "@context": "https://schema.org",
@@ -65,13 +52,24 @@ const FAQ = ({
             )}
             
             <div className="container mx-auto px-6 max-w-5xl relative z-10">
-                <div className="text-center mb-24">
+                <div className="text-center mb-20">
                     {showLabel && (
                         <span className={`text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block`}>Inquiry.Module // DEEP_DIVE</span>
                     )}
-                    {renderTitle()}
+                    
+                    <h2 className="flex flex-col items-center justify-center text-4xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
+                        {title ? (
+                            <span className={dark ? 'text-white' : 'text-navy'}>{title}</span>
+                        ) : (
+                            <>
+                                <span className={dark ? 'text-white' : 'text-navy'}>Frequently</span>
+                                <span className="text-teal font-serif italic mt-[-0.1em]">Asked Questions.</span>
+                            </>
+                        )}
+                    </h2>
+
                     {subtitle && (
-                        <p className={`text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed ${dark ? 'text-beige/40' : 'text-navy/40'}`}>
+                        <p className={`text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed mt-8 ${dark ? 'text-white/40' : 'text-navy/40'}`}>
                             {subtitle}
                         </p>
                     )}
