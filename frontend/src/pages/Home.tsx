@@ -150,31 +150,35 @@ const Home = () => {
 
                     <div className="grid lg:grid-cols-2 gap-8 items-stretch">
                         {/* Problems Card */}
-                        <div className="group relative overflow-hidden bg-white p-12 md:p-16 rounded-[4rem] shadow-2xl border border-navy/5 flex flex-col justify-center">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-teal/5 rounded-full blur-3xl -mr-32 -mt-32 transition-transform duration-1000 group-hover:scale-110"></div>
+                        <div className="group relative overflow-hidden bg-navy p-12 md:p-16 rounded-[4rem] shadow-2xl border border-white/5 flex flex-col justify-center">
+                            <div className="absolute inset-0 z-0 opacity-20 transition-transform duration-1000 group-hover:scale-110">
+                                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-transparent"></div>
+                            </div>
                             
                             <div className="relative z-10">
-                                <p className="text-navy text-xl font-black uppercase tracking-[0.2em] mb-12 flex items-center">
-                                    <span className="w-10 h-10 bg-navy/5 rounded-xl flex items-center justify-center mr-4 text-teal">
-                                        <Target size={20} />
-                                    </span>
-                                    Organizations struggle with:
+                                <div className="flex items-center space-x-3 mb-10">
+                                    <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-red-400 uppercase">STRATEGIC_FRICTION // PAIN_POINTS</span>
+                                </div>
+                                
+                                <p className="text-white text-3xl font-black tracking-tight mb-12">
+                                    Organizations <br />
+                                    <span className="text-red-400">struggle with:</span>
                                 </p>
                                 
-                                <ul className="space-y-6">
+                                <ul className="space-y-8">
                                     {[
-                                        { text: 'Leadership misalignment', desc: 'Lack of shared vision and execution at the top level.' },
-                                        { text: 'Low accountability', desc: 'Undefined ownership leads to stagnant progress.' },
-                                        { text: 'Silos across teams', desc: 'Internal friction preventing cross-functional success.' },
-                                        { text: 'Weak succession pipelines', desc: 'Unprepared talent pool for future critical roles.' }
+                                        { text: 'Leadership misalignment', icon: <Users size={20} />, desc: 'Fragmented vision at the executive level.' },
+                                        { text: 'Low accountability', desc: 'Performance stalled by undefined ownership.' },
+                                        { text: 'Silos across teams', desc: 'Internal barriers preventing collaboration.' },
+                                        { text: 'Weak succession pipelines', desc: 'Future growth limited by a thin talent pool.' }
                                     ].map((item, i) => (
                                         <li key={i} className="flex items-start group/item">
-                                            <div className="mt-1 mr-6 w-5 h-5 rounded-full border-2 border-teal/20 flex items-center justify-center transition-colors group-hover/item:border-teal">
-                                                <div className="w-1.5 h-1.5 bg-teal rounded-full" />
+                                            <div className="mt-1 mr-6 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-red-400/50 transition-all group-hover/item:border-red-400 group-hover/item:text-red-400 group-hover/item:bg-red-400/10 shrink-0">
+                                                <div className="w-1.5 h-1.5 bg-current rounded-full" />
                                             </div>
                                             <div>
-                                                <h4 className="text-navy font-black text-lg tracking-tight mb-1">{item.text}</h4>
-                                                <p className="text-navy/40 text-sm font-medium leading-relaxed">{item.desc}</p>
+                                                <h4 className="text-white font-bold text-lg tracking-tight mb-1 group-hover/item:text-red-400 transition-colors">{item.text}</h4>
+                                                <p className="text-white/40 text-sm font-medium leading-relaxed">{item.desc}</p>
                                             </div>
                                         </li>
                                     ))}
@@ -198,10 +202,6 @@ const Home = () => {
                                     It is <span className="text-teal font-serif italic font-bold">leadership behavior</span> <br />
                                     and <span className="text-teal font-serif italic font-bold">team dynamics.</span>
                                 </p>
-                                <div className="flex items-center space-x-4">
-                                    <div className="w-12 h-px bg-teal/30"></div>
-                                    <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase">The_Core_Correction</span>
-                                </div>
                             </div>
                         </div>
                     </div>
