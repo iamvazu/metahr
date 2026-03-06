@@ -10,10 +10,31 @@ interface FAQItem {
 interface FAQProps {
     items: FAQItem[];
     title?: string;
+    subtitle?: string;
+    className?: string;
+    dark?: boolean;
 }
 
-const FAQ = ({ items, title = "Frequently Asked Questions" }: FAQProps) => {
+const FAQ = ({ 
+    items, 
+    title = "Frequently Asked Questions", 
+    subtitle,
+    className = "bg-white",
+    dark = false 
+}: FAQProps) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+    // Split title to apply different styles if it's the default or matches a pattern
+    const renderTitle = () => {
+        if (title === "Frequently Asked Questions") {
+            return (
+                <h2 className={`text-4xl md:text-7xl font-black tracking-tighter leading-none mb-8 ${dark ? 'text-white' : 'text-navy'}`}>
+                    Frequently <span className="text-teal font-serif italic">Asked Questions.</span>
+                </h2>
+            );
+        }
+        return <h2 className={`text-4xl md:text-5xl font-black tracking-tighter leading-none mb-8 ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>;
+    };
 
     const schemaData = {
         "@context": "https://schema.org",
@@ -29,24 +50,49 @@ const FAQ = ({ items, title = "Frequently Asked Questions" }: FAQProps) => {
     };
 
     return (
-        <section className="py-24 bg-white">
-            <div className="container mx-auto px-6 max-w-4xl">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-black text-navy tracking-tighter">{title}</h2>
+        <section className={`py-32 relative overflow-hidden ${className}`}>
+            {dark && (
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
+            )}
+            
+            <div className="container mx-auto px-6 max-w-5xl relative z-10">
+                <div className="text-center mb-24">
+                    <span className={`text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block`}>Inquiry.Module // DEEP_DIVE</span>
+                    {renderTitle()}
+                    {subtitle && (
+                        <p className={`text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed ${dark ? 'text-beige/40' : 'text-navy/40'}`}>
+                            {subtitle}
+                        </p>
+                    )}
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-6">
                     {items.map((item, index) => (
-                        <div key={index} className="border border-navy/5 rounded-[2rem] overflow-hidden bg-beige/5 hover:border-teal/30 transition-all">
+                        <div 
+                            key={index} 
+                            className={`border rounded-[3rem] overflow-hidden transition-all duration-500 hover:scale-[1.01] ${
+                                dark 
+                                ? 'border-white/10 bg-white/5 hover:border-teal/30' 
+                                : 'border-navy/5 bg-beige/5 hover:border-teal/30 shadow-xl shadow-navy/5'
+                            }`}
+                        >
                             <button
                                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                                className="w-full px-8 py-6 flex items-center justify-between text-left group"
+                                className="w-full px-10 py-8 flex items-center justify-between text-left group"
                             >
-                                <span className={`text-lg font-bold tracking-tight transition-colors ${activeIndex === index ? 'text-teal' : 'text-navy'}`}>
+                                <span className={`text-xl font-bold tracking-tight transition-colors ${
+                                    activeIndex === index 
+                                    ? 'text-teal' 
+                                    : dark ? 'text-white' : 'text-navy'
+                                }`}>
                                     {item.question}
                                 </span>
-                                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${activeIndex === index ? 'bg-navy text-white' : 'bg-white text-navy/20 group-hover:text-teal'}`}>
-                                    {activeIndex === index ? <Minus size={18} /> : <Plus size={18} />}
+                                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                                    activeIndex === index 
+                                    ? 'bg-teal text-white rotate-180 shadow-lg shadow-teal/20' 
+                                    : dark ? 'bg-white/10 text-white/20 group-hover:bg-teal group-hover:text-white' : 'bg-white text-navy/20 group-hover:bg-navy group-hover:text-white shadow-md'
+                                }`}>
+                                    {activeIndex === index ? <Minus size={20} /> : <Plus size={20} />}
                                 </div>
                             </button>
                             <AnimatePresence>
@@ -55,9 +101,9 @@ const FAQ = ({ items, title = "Frequently Asked Questions" }: FAQProps) => {
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3, ease: "easeOut" }}
+                                        transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                                     >
-                                        <div className="px-8 pb-8 text-navy/60 font-medium leading-relaxed">
+                                        <div className={`px-10 pb-10 text-lg font-medium leading-relaxed ${dark ? 'text-white/60' : 'text-navy/60'}`}>
                                             {item.answer}
                                         </div>
                                     </motion.div>

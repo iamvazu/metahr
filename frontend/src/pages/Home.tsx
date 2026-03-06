@@ -507,7 +507,11 @@ const Home = () => {
 
 
             {/* FAQ Section */}
-            <FAQ items={[
+            <FAQ 
+                className="bg-navy"
+                dark={true}
+                subtitle="Find answers to common inquiries about our methodologies, delivery systems, and measurable impact models."
+                items={[
                 {
                     question: "What makes MetaHR different from other HR consultancies in India?",
                     answer: "MetaHR combines globally recognized methodologies (The Leadership Challenge, Five Behaviors) with a deep understanding of the Indian corporate culture. We focus on 'Level 3 & 4' impact—measuring actual behavior change and business ROI rather than just training satisfaction."
