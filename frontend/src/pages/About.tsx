@@ -287,12 +287,17 @@ const About = () => {
                                 viewport={{ once: true }}
                                 className="group h-full flex flex-col justify-center bg-navy p-16 rounded-[4rem] text-white shadow-2xl relative overflow-hidden"
                             >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-teal/10 rounded-full blur-[60px]"></div>
-                                <Target className="text-teal mb-10" size={56} />
-                                <h3 className="text-4xl font-black mb-6 tracking-tighter uppercase">Purpose</h3>
-                                <p className="text-xl text-beige/70 font-light leading-relaxed">
-                                    To be the partner of choice for organizations—unlocking excellence in their people, inspiring transformation in their operations, and delivering meaningful, measurable outcomes.
-                                </p>
+                                <div className="absolute inset-0 z-0">
+                                    <img src="/mission_vision_bg.png" alt="" className="w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-navy/60"></div>
+                                </div>
+                                <div className="relative z-10">
+                                    <Target className="text-teal mb-10" size={56} />
+                                    <h3 className="text-4xl font-black mb-6 tracking-tighter uppercase">Purpose</h3>
+                                    <p className="text-xl text-beige/70 font-light leading-relaxed">
+                                        To be the partner of choice for organizations—unlocking excellence in their people, inspiring transformation in their operations, and delivering meaningful, measurable outcomes.
+                                    </p>
+                                </div>
                             </motion.div>
                         </div>
 
@@ -302,18 +307,24 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="group h-full flex flex-col justify-center bg-slate-50 p-16 rounded-[4rem] border border-navy/5 shadow-xl"
+                                className="group h-full flex flex-col justify-center bg-slate-50 p-16 rounded-[4rem] border border-navy/5 shadow-xl relative overflow-hidden"
                             >
-                                <div className="flex items-center space-x-6 mb-10">
-                                    <div className="w-16 h-16 rounded-2xl bg-teal flex items-center justify-center text-white">
-                                        <Lightbulb size={32} />
-                                    </div>
-                                    <h3 className="text-4xl font-black text-navy tracking-tighter uppercase">Direction</h3>
+                                <div className="absolute inset-0 z-0">
+                                    <img src="/mission_vision_bg.png" alt="" className="w-full h-full object-cover opacity-10 group-hover:scale-105 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-slate-50/80"></div>
                                 </div>
-                                <p className="text-2xl text-navy/70 font-light leading-loose">
-                                    We partner with organizations to elevate human potential, streamline operational performance, and deliver data-driven solutions that lead to sustainable success. Through collaboration, innovation, and a deep commitment to impact, we help our clients thrive in a dynamic world.
-                                </p>
-                            </motion.div>
+                                <div className="relative z-10">
+                                    <div className="flex items-center space-x-6 mb-10">
+                                        <div className="w-16 h-16 rounded-2xl bg-teal flex items-center justify-center text-white">
+                                            <Lightbulb size={32} />
+                                        </div>
+                                        <h3 className="text-4xl font-black text-navy tracking-tighter uppercase">Direction</h3>
+                                    </div>
+                                    <p className="text-2xl text-navy/70 font-light leading-loose">
+                                        We partner with organizations to elevate human potential, streamline operational performance, and deliver data-driven solutions that lead to sustainable success. Through collaboration, innovation, and a deep commitment to impact, we help our clients thrive in a dynamic world.
+                                    </p>
+                                </div>
+                                </motion.div>
                         </div>
                     </div>
                 </div>
