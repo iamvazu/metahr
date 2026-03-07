@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Award, Zap, BookOpen, Globe, Users, Target } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { usePosts } from '../hooks/usePosts';
 import ScrollIndicator from '../components/ScrollIndicator';
 
@@ -85,11 +86,9 @@ const Resources = () => {
                             ))
                         ) : posts && posts.length > 0 ? (
                             posts.map((post) => (
-                                <a
+                                <Link
                                     key={post.id}
-                                    href={post.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    to={`/blog/${post.slug}`}
                                     className="block group relative h-full flex flex-col bg-white border border-navy/5 rounded-[3rem] overflow-hidden hover:border-teal/30 hover:shadow-3xl transition-all duration-700"
                                 >
                                     <div className="h-48 overflow-hidden relative">
@@ -124,7 +123,7 @@ const Resources = () => {
                                             <Award size={18} className="text-navy/10 group-hover:text-teal transition-colors" />
                                         </div>
                                     </div>
-                                </a>
+                                </Link>
                             ))
                         ) : (
                             <div className="col-span-full py-20 text-center bg-beige/10 rounded-[4rem] border-2 border-dashed border-navy/5">

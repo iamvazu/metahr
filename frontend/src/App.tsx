@@ -7,6 +7,7 @@ import Solutions from './pages/Solutions';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import FAQPage from './pages/FAQPage';
@@ -47,6 +48,7 @@ function App() {
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
@@ -60,6 +62,8 @@ function App() {
             {/* PSEO - Location Pages */}
             <Route path="/locations/:city" element={<LocationService />} />
             <Route path="/locations/:city/:service" element={<LocationService />} />
+            {/* Fallback for individual blog posts at root level */}
+            <Route path="/:slug" element={<BlogPost />} />
           </Routes>
         </main>
         <Footer />
