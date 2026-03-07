@@ -581,7 +581,7 @@ const About = () => {
                     <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24 opacity-60 hover:opacity-100 transition-opacity duration-700">
                         {[
                             { name: "Leadership Challenge", img: "/leadership_logo.jpg" },
-                            { name: "Hogan Assessments", img: "/hogan_logo.png" },
+                            { name: "Hogan Assessments", img: "/hogan_assessor.png" },
                             { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
                             { name: "MTa Licensed User", img: "/mta_logo.jpg" },
                             { name: "SHRM-SCP", img: "/shrm_scp_logo.png" }

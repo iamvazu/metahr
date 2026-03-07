@@ -8,7 +8,7 @@ const Resources = () => {
 
     const credentials = [
         { name: "Leadership Challenge", img: "/leadership_logo.jpg" },
-        { name: "Hogan Assessments", img: "/hogan_logo.png" },
+        { name: "Hogan Assessments", img: "/hogan_assessor.png" },
         { name: "Gallup Certified Coach", img: "/gallup_logo.png" },
         { name: "MTa Licensed User", img: "/mta_logo.jpg" },
         { name: "SHRM-SCP", img: "/shrm_scp_logo.png" }
