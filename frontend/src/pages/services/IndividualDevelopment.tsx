@@ -96,7 +96,7 @@ const IndividualDevelopment = () => {
                             The question is — are they being prepared intentionally?
                         </p>
 
-                        <Link to="/contact" className="inline-flex items-center space-x-4 bg-navy text-white px-12 py-6 rounded-full font-black text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-teal hover:-translate-y-1 transition-all duration-300">
+                        <Link to="/contact" className="inline-flex items-center justify-center space-x-4 bg-navy text-white px-12 py-6 rounded-full font-black text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-teal hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto">
                             <span>Design Your High-Potential Development Strategy</span>
                             <ArrowRight size={20} />
                         </Link>

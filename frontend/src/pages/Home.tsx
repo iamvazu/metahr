@@ -131,17 +131,31 @@ const Home = () => {
                         initial={{ opacity: 0, y: 20, z: -30 }}
                         animate={{ opacity: 1, y: 0, z: 0 }}
                         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-                        className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8"
+                        className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 w-full max-w-lg mx-auto sm:max-w-none px-4"
                     >
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative group">
-                            <Link to="/solutions" className="bg-teal text-white px-10 py-5 rounded-full font-bold flex items-center group overflow-hidden relative shadow-2xl shadow-teal/30 transition-all duration-300">
-                                <span className="relative z-10 text-sm uppercase tracking-widest font-black group-hover:text-navy transition-colors duration-500">Our Solutions</span>
+                        <motion.div 
+                            whileHover={{ scale: 1.05 }} 
+                            whileTap={{ scale: 0.95 }} 
+                            className="relative group w-full sm:w-auto flex justify-center"
+                        >
+                            <Link 
+                                to="/solutions" 
+                                className="bg-teal text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold flex items-center justify-center group overflow-hidden relative shadow-2xl shadow-teal/30 transition-all duration-300 w-full sm:w-auto"
+                            >
+                                <span className="relative z-10 text-[10px] md:text-sm uppercase tracking-widest font-black group-hover:text-navy transition-colors duration-500">Our Solutions</span>
                                 <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                                <span className="relative z-20 ml-3 group-hover:text-navy transition-colors duration-500"><ArrowRight size={18} /></span>
+                                <span className="relative z-20 ml-2 md:ml-3 group-hover:text-navy transition-colors duration-500"><ArrowRight size={16} className="md:w-4.5 md:h-4.5" /></span>
                             </Link>
                         </motion.div>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <Link to="/contact" className="text-white bg-teal/20 backdrop-blur-md px-10 py-5 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-teal hover:text-white transition-all shadow-2xl border border-teal/30">
+                        <motion.div 
+                            whileHover={{ scale: 1.05 }} 
+                            whileTap={{ scale: 0.95 }}
+                            className="w-full sm:w-auto flex justify-center"
+                        >
+                            <Link 
+                                to="/contact" 
+                                className="text-white bg-teal/20 backdrop-blur-md px-8 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] hover:bg-teal hover:text-white transition-all shadow-2xl border border-teal/30 text-center w-full sm:w-auto flex justify-center items-center"
+                            >
                                 Book Free Discovery Call
                             </Link>
                         </motion.div>
@@ -169,13 +183,13 @@ const Home = () => {
                         {/* Problems Card - Light Theme */}
                         <div className="group relative overflow-hidden bg-slate-50 p-12 md:p-20 rounded-[4rem] shadow-xl border border-navy/5 flex flex-col justify-center">
                             <div className="absolute top-0 right-0 w-80 h-80 bg-red-500/5 rounded-full blur-[100px] -mr-40 -mt-40 transition-transform duration-1000 group-hover:scale-110"></div>
-                            
+
                             <div className="relative z-10">
                                 <h3 className="text-navy text-3xl md:text-5xl font-black tracking-tighter mb-16 leading-tight">
                                     Organizations <br />
                                     <span className="text-red-500 italic font-serif">struggle with:</span>
                                 </h3>
-                                
+
                                 <ul className="space-y-10">
                                     {[
                                         'Leadership misalignment',
@@ -200,7 +214,7 @@ const Home = () => {
                                 <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover" />
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-br from-navy via-transparent to-teal/10 pointer-events-none"></div>
-                            
+
                             <div className="relative z-10">
                                 <div className="w-20 h-20 bg-white/10 backdrop-blur-2xl rounded-[2rem] flex items-center justify-center mb-12 border border-white/10 group-hover:bg-teal group-hover:border-teal transition-all duration-700">
                                     <Quote className="text-teal" size={40} />
@@ -507,34 +521,34 @@ const Home = () => {
 
 
             {/* FAQ Section */}
-            <FAQ 
+            <FAQ
                 className="bg-navy"
                 dark={true}
                 subtitle="Find answers to common inquiries about our methodologies, delivery systems, and measurable impact models."
                 footerLinkText="View All FAQs"
                 footerLinkHref="/faq"
                 items={[
-                {
-                    question: "What makes MetaHR different from other HR consultancies in India?",
-                    answer: "MetaHR combines globally recognized methodologies (The Leadership Challenge, Five Behaviors) with a deep understanding of the Indian corporate culture. We focus on 'Level 3 & 4' impact—measuring actual behavior change and business ROI rather than just training satisfaction."
-                },
-                {
-                    question: "How do you measure the ROI of leadership development?",
-                    answer: "We use a multi-phase framework including pre-assessment benchmarking, specific KPIs (like turnover, decision speed, or engagement scores), and 180/360-degree post-intervention audits to provide clear evidence of growth."
-                },
-                {
-                    question: "Which industries do you serve?",
-                    answer: "We have deep expertise in the IT/ITES, Manufacturing, BFSI, and Retail sectors across India, tailoring our frameworks to the specific challenges of each industry's leadership pipeline."
-                },
-                {
-                    question: "Do you offer virtual interventions for global teams?",
-                    answer: "Yes, we utilize high-engagement digital platforms and virtual simulations to ensure that remote and hybrid teams receive the same high-impact development as in-person cohorts."
-                },
-                {
-                    question: "How do I get started with MetaHR?",
-                    answer: "Simply book a free 30-minute discovery call via our website. We'll discuss your organization's current business reality and identify potential leverage points for performance improvement."
-                }
-            ]} />
+                    {
+                        question: "What makes MetaHR different from other HR consultancies in India?",
+                        answer: "MetaHR combines globally recognized methodologies (The Leadership Challenge, Five Behaviors) with a deep understanding of the Indian corporate culture. We focus on 'Level 3 & 4' impact—measuring actual behavior change and business ROI rather than just training satisfaction."
+                    },
+                    {
+                        question: "How do you measure the ROI of leadership development?",
+                        answer: "We use a multi-phase framework including pre-assessment benchmarking, specific KPIs (like turnover, decision speed, or engagement scores), and 180/360-degree post-intervention audits to provide clear evidence of growth."
+                    },
+                    {
+                        question: "Which industries do you serve?",
+                        answer: "We have deep expertise in the IT/ITES, Manufacturing, BFSI, and Retail sectors across India, tailoring our frameworks to the specific challenges of each industry's leadership pipeline."
+                    },
+                    {
+                        question: "Do you offer virtual interventions for global teams?",
+                        answer: "Yes, we utilize high-engagement digital platforms and virtual simulations to ensure that remote and hybrid teams receive the same high-impact development as in-person cohorts."
+                    },
+                    {
+                        question: "How do I get started with MetaHR?",
+                        answer: "Simply book a free 30-minute discovery call via our website. We'll discuss your organization's current business reality and identify potential leverage points for performance improvement."
+                    }
+                ]} />
 
             {/* Call to Action */}
             <section className="py-20 md:py-32 bg-white text-center relative overflow-hidden">
@@ -559,11 +573,11 @@ const Home = () => {
                     </h2>
                     <p className="text-xl md:text-2xl text-navy/50 mb-16 font-light">Let’s build it intentionally.</p>
 
-                    <div className="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
-                        <Link to="/contact" className="bg-teal text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-navy hover:-translate-y-1 transition-all shadow-2xl">
+                    <div className="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8 w-full max-w-sm mx-auto sm:max-w-none px-4">
+                        <Link to="/contact" className="bg-teal text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-navy hover:-translate-y-1 transition-all shadow-2xl w-full sm:w-auto text-center">
                             Get Started Today
                         </Link>
-                        <Link to="/contact" className="text-navy font-mono font-bold text-sm uppercase tracking-widest border border-navy/20 px-12 py-5 rounded-full hover:bg-navy/5 hover:-translate-y-1 transition-all">
+                        <Link to="/contact" className="text-navy font-mono font-bold text-sm uppercase tracking-widest border border-navy/20 px-12 py-5 rounded-full hover:bg-navy/5 hover:-translate-y-1 transition-all w-full sm:w-auto text-center">
                             [ Book Call ]
                         </Link>
                     </div>

@@ -168,13 +168,13 @@ const BlogPost = () => {
             </section>
 
             {/* Related/Footer CTA */}
-            <section className="py-32 bg-slate-50">
+            <section className="pt-32 pb-44 bg-slate-50 relative z-10">
                 <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-3xl md:text-5xl font-black text-navy mb-8 tracking-tighter">Ready to <span className="text-teal font-serif italic text-navy lowercase tracking-normal">evolve?</span></h2>
-                    <p className="text-navy/40 text-xl font-light mb-16 max-w-2xl mx-auto leading-relaxed">
+                    <h2 className="text-3xl md:text-5xl font-black text-navy mb-8 tracking-tighter uppercase leading-tight">Ready to <br className="sm:hidden" /><span className="text-teal font-serif italic text-navy lowercase tracking-normal">evolve?</span></h2>
+                    <p className="text-navy/40 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto leading-relaxed">
                         Our frameworks turn insights into organizational impact. Let's discuss how we can partner with your leadership team.
                     </p>
-                    <Link to="/contact" className="bg-teal text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-navy transition-all shadow-xl">
+                    <Link to="/contact" className="inline-block bg-teal text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-navy transition-all shadow-xl w-full sm:w-auto">
                         Schedule a Strategy Session
                     </Link>
                 </div>

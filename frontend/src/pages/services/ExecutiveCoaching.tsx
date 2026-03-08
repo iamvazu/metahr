@@ -97,7 +97,7 @@ const ExecutiveCoaching = () => {
                             They invest in measurable growth.
                         </p>
 
-                        <Link to="/contact" className="inline-flex items-center space-x-4 bg-teal text-white px-12 py-6 rounded-full font-black text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-navy hover:-translate-y-1 transition-all duration-300">
+                        <Link to="/contact" className="inline-flex items-center justify-center space-x-4 bg-teal text-white px-12 py-6 rounded-full font-black text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-navy hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto">
                             <span>Book an Executive Coaching Consultation</span>
                             <ArrowRight size={20} />
                         </Link>

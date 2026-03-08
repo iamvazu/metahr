@@ -24,7 +24,7 @@ const About = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-8xl font-black !text-white mb-8 tracking-tighter leading-none"
+                        className="text-4xl md:text-8xl font-black !text-white mb-8 tracking-tighter leading-none"
                     >
                         Maximize Potential. <br />
                         <span className="text-teal font-serif italic">Elevate Organizations.</span>
@@ -96,7 +96,7 @@ const About = () => {
                                     At the heart of every organization are individuals with hidden treasures of potential. When supported intentionally and developed strategically, they don’t just perform — they excel.
                                 </p>
                             </motion.div>
-                            
+
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
@@ -132,7 +132,7 @@ const About = () => {
                     <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover opacity-10 grayscale scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/90 to-navy text-white"></div>
                 </div>
-                
+
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="text-center max-w-4xl mx-auto mb-24">
                         <motion.div
@@ -144,8 +144,8 @@ const About = () => {
                                 OUR_CORE_PHILOSOPHY
                             </span>
                         </motion.div>
-                        
-                        <motion.h2 
+
+                        <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -157,7 +157,7 @@ const About = () => {
                         </motion.h2>
                         <div className="w-24 h-1 bg-teal mx-auto rounded-full opacity-50"></div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -192,7 +192,7 @@ const About = () => {
                     </div>
 
                     <div className="mt-24 pt-20 border-t border-white/10 text-center">
-                        <motion.blockquote 
+                        <motion.blockquote
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
@@ -217,7 +217,7 @@ const About = () => {
                         </p>
                     </div>
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -228,7 +228,7 @@ const About = () => {
                             <div className="absolute inset-0 bg-white/30"></div>
                         </div>
                         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-teal via-navy to-teal z-10"></div>
-                        
+
                         <div className="grid lg:grid-cols-12 gap-16 items-start">
                             <div className="lg:col-span-4">
                                 <h3 className="text-4xl md:text-5xl font-black text-navy leading-none mb-10 tracking-tighter">
@@ -237,7 +237,7 @@ const About = () => {
                                 </h3>
                                 <div className="w-20 h-1 bg-teal rounded-full"></div>
                             </div>
-                            
+
                             <div className="lg:col-span-8 grid md:grid-cols-3 gap-10">
                                 {[
                                     { icon: <Zap size={28} />, desc: "A startup building your HR function from the ground up" },
@@ -256,7 +256,7 @@ const About = () => {
                     </motion.div>
 
                     <div className="text-center max-w-5xl mx-auto mt-24">
-                        <motion.p 
+                        <motion.p
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
@@ -336,7 +336,7 @@ const About = () => {
                                         We partner with organizations to elevate human potential, streamline operational performance, and deliver data-driven solutions that lead to sustainable success. Through collaboration, innovation, and a deep commitment to impact, we help our clients thrive in a dynamic world.
                                     </p>
                                 </div>
-                                </motion.div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -354,41 +354,41 @@ const About = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-6 gap-6 max-w-7xl mx-auto">
                         {[
-                            { 
-                                title: "We Redefine Performance", 
-                                num: "01", 
+                            {
+                                title: "We Redefine Performance",
+                                num: "01",
                                 desc: "We don’t optimize average — we unlock exceptional. We challenge norms, elevate standards, and drive breakthrough results.",
                                 icon: <Rocket size={24} />,
                                 span: "md:col-span-4",
                                 bg: "/value_performance_bg.png"
                             },
-                            { 
-                                title: "Courageous Transformation", 
-                                num: "02", 
+                            {
+                                title: "Courageous Transformation",
+                                num: "02",
                                 desc: "We lean into complexity. Real change requires bold thinking and decisive action.",
                                 icon: <ShieldCheck size={24} />,
                                 span: "md:col-span-2",
                                 bg: "/value_transformation_bg.png"
                             },
-                            { 
-                                title: "Accountability to Outcomes", 
-                                num: "03", 
+                            {
+                                title: "Accountability to Outcomes",
+                                num: "03",
                                 desc: "Impact isn’t optional. We measure what matters and stand behind the results.",
                                 icon: <Target size={24} />,
                                 span: "md:col-span-2",
                                 bg: "/value_accountability_bg.png"
                             },
-                            { 
-                                title: "Human-Centered Innovation", 
-                                num: "04", 
+                            {
+                                title: "Human-Centered Innovation",
+                                num: "04",
                                 desc: "Technology and data power progress — but people drive it. We design solutions where human potential meets intelligent systems.",
                                 icon: <Heart size={24} />,
                                 span: "md:col-span-4",
                                 bg: "/value_innovation_bg.png"
                             },
-                            { 
-                                title: "Built for What’s Next", 
-                                num: "05", 
+                            {
+                                title: "Built for What’s Next",
+                                num: "05",
                                 desc: "The future rewards agility. We help organizations adapt, evolve, and lead in dynamic environments.",
                                 icon: <Sparkles size={24} />,
                                 span: "md:col-span-6",
@@ -514,7 +514,7 @@ const About = () => {
                                     </div>
                                     <h4 className="text-3xl font-black text-navy mb-4 tracking-tighter uppercase">{service.title}</h4>
                                     <p className="text-xl text-teal font-black mb-10 tracking-tight">{service.subtitle}</p>
-                                    
+
                                     <div className="space-y-8 mb-16">
                                         <div className="p-8 bg-white/60 rounded-[2rem] border border-navy/5">
                                             <h4 className="text-xs font-black text-navy uppercase tracking-[0.2em] mb-3">The Challenge:</h4>
@@ -556,16 +556,16 @@ const About = () => {
                         <p className="text-2xl md:text-3xl font-medium mb-16 text-white/90 leading-relaxed max-w-4xl mx-auto">
                             Our experiential methodologies create insight, accountability, and behavioral change — not just awareness.
                         </p>
-                        <div className="bg-navy/20 backdrop-blur-3xl p-12 md:p-16 rounded-[4rem] border border-white/10 mb-16">
-                            <p className="text-3xl md:text-4xl font-black mb-12 text-white tracking-tight">
+                        <div className="bg-navy/20 backdrop-blur-3xl p-8 md:p-16 rounded-[4rem] border border-white/10 mb-16">
+                            <p className="text-2xl md:text-4xl font-black mb-10 text-white tracking-tight leading-tight">
                                 Ready to design a high-impact development journey?
                             </p>
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center justify-center space-x-6 bg-white text-navy px-16 py-8 rounded-full font-black text-sm uppercase tracking-widest hover:bg-navy hover:text-white transition-all shadow-2xl"
+                                className="inline-flex items-center justify-center space-x-3 md:space-x-6 bg-white text-navy px-8 py-5 md:px-16 md:py-8 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest hover:bg-navy hover:text-white transition-all shadow-2xl w-full sm:w-auto"
                             >
                                 <span>Book a Strategy Conversation</span>
-                                <ArrowRight size={24} />
+                                <ArrowRight size={18} className="md:w-6 md:h-6" />
                             </Link>
                         </div>
                     </motion.div>

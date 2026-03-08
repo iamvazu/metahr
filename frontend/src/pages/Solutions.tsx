@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, Users, Settings, ShieldCheck, CheckCircle2, ArrowRight, BarChart3, Globe, Search, FileText, Briefcase, TrendingUp, Lightbulb, Award } from 'lucide-react';
+import { Users, Settings, ArrowRight, TrendingUp, Briefcase, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollIndicator from '../components/ScrollIndicator';
 
@@ -318,16 +318,16 @@ const Solutions = () => {
                             Ready to <br /><span className="text-teal font-serif italic leading-tight uppercase">elevate</span> your organization?
                         </h2>
                     </motion.div>
-                    <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-12">
+                    <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-12 w-full max-w-sm mx-auto sm:max-w-none px-4">
                         <Link
                             to="/contact"
-                            className="bg-navy text-white px-16 py-8 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-teal transition-all shadow-3xl shadow-navy/20 hover:scale-[1.03] active:scale-95"
+                            className="bg-navy text-white px-8 py-5 md:px-16 md:py-8 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-teal transition-all shadow-3xl shadow-navy/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-center"
                         >
                             Book Your Alignment Call
                         </Link>
                         <Link
                             to="/contact"
-                            className="text-navy font-mono font-bold text-[10px] uppercase tracking-widest border border-navy/10 px-16 py-8 rounded-full hover:bg-beige transition-all hover:scale-[1.03] active:scale-95"
+                            className="text-navy font-mono font-bold text-[10px] uppercase tracking-widest border border-navy/10 px-8 py-5 md:px-16 md:py-8 rounded-full hover:bg-beige transition-all hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-center"
                         >
                             [ Request_Diagnostic ]
                         </Link>
