@@ -244,14 +244,6 @@ const Home = () => {
 
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="max-w-4xl mx-auto text-center mb-32">
-                        <motion.span
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-[10px] font-mono font-bold tracking-[0.5em] text-teal uppercase mb-8 block"
-                        >
-                            Strategic_Ecosystem
-                        </motion.span>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -259,8 +251,8 @@ const Home = () => {
                             transition={{ delay: 0.1 }}
                             className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-12"
                         >
-                            We build systems that <br />
-                            <span className="text-teal font-serif italic">elevate performance.</span>
+                            We <span className="text-skyBlue font-serif italic text-gradient uppercase">elevate people</span> that <br />
+                            <span className="text-skyBlue font-serif italic text-gradient uppercase">impact performance.</span>
                         </motion.h2>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}

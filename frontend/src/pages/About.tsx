@@ -555,7 +555,13 @@ const About = () => {
                                 Real Growth <br /> Happens Through
                             </span>
                             <span className="block font-serif italic lowercase tracking-normal text-5xl md:text-8xl mt-2">
-                                <span className="text-skyBlue drop-shadow-[0_0_15px_rgba(200,217,230,0.6)]">experience,</span> <br />
+                                <motion.span 
+                                    className="text-skyBlue drop-shadow-[0_0_15px_rgba(200,217,230,0.6)] inline-block"
+                                    animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
+                                    transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
+                                >
+                                    experience,
+                                </motion.span> <br />
                                 <span className="text-white/60 text-4xl md:text-7xl">not information.</span>
                             </span>
                         </h2>
