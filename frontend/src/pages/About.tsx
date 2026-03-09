@@ -113,25 +113,33 @@ const About = () => {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8 }}
-                                className="bg-navy p-12 md:p-16 rounded-[4rem] text-white shadow-3xl border border-white/5 relative overflow-hidden"
+                                className="bg-navy p-12 md:p-16 rounded-[4rem] text-white shadow-3xl border border-white/5 relative overflow-hidden group"
                             >
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-teal/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
-                                <h3 className="text-2xl font-black mb-10 tracking-tight text-teal">MetaHR exists to:</h3>
-                                <ul className="space-y-6">
-                                    {[
-                                        "Unlock individual greatness",
-                                        "Elevate leadership capability",
-                                        "Strengthen teams",
-                                        "Align culture with performance",
-                                        "Build organizations that operate at a higher level"
-                                    ].map((item, i) => (
-                                        <li key={i} className="flex items-center space-x-4 group">
-                                            <div className="w-2 h-2 rounded-full bg-teal group-hover:scale-150 transition-transform"></div>
-                                            <span className="text-xl font-light text-beige/80 group-hover:text-white transition-colors">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                {/* Background Image Layer */}
+                                <div className="absolute inset-0 z-0">
+                                    <img src="/metahr_exists_bg.png" alt="" className="w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-navy/60"></div>
+                                </div>
+
+                                <div className="relative z-10">
+                                    <h3 className="text-2xl font-black mb-10 tracking-tight text-teal">MetaHR exists to:</h3>
+                                    <ul className="space-y-6">
+                                        {[
+                                            "Unlock individual greatness",
+                                            "Elevate leadership capability",
+                                            "Strengthen teams",
+                                            "Align culture with performance",
+                                            "Build organizations that operate at a higher level"
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-center space-x-4 group/item">
+                                                <div className="w-2 h-2 rounded-full bg-teal group-hover/item:scale-150 transition-transform"></div>
+                                                <span className="text-xl font-light text-beige/80 group-hover/item:text-white transition-colors">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </motion.div>
+
                         </div>
                     </div>
                 </div>

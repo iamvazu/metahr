@@ -7,17 +7,33 @@ import ScrollIndicator from '../components/ScrollIndicator';
 
 
 const FlipCard = ({ frontImage, backImage, alt }: { frontImage: string; backImage: string; alt: string }) => {
+    const cardVariants = {
+        idle: {
+            rotateY: [0, 5, 0],
+            transition: { 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+            }
+        },
+        hover: {
+            rotateY: 180,
+            transition: { 
+                duration: 0.8, 
+                ease: [0.22, 1, 0.36, 1] 
+            }
+        }
+    };
+
     return (
         <div className="relative w-full aspect-square perspective-1000 group hidden lg:block">
             <motion.div 
                 className="relative w-full h-full preserve-3d cursor-pointer"
-                animate={{ rotateY: [0, 5, 0] }}
-                whileHover={{ rotateY: 180 }}
-                transition={{ 
-                    rotateY: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-                    animate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                }}
+                variants={cardVariants}
+                animate="idle"
+                whileHover="hover"
             >
+
                 {/* Front Side */}
                 <div className="absolute inset-0 backface-hidden">
                     <div className="absolute inset-0 bg-teal/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10 rounded-[3rem]"></div>
