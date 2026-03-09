@@ -221,8 +221,8 @@ const Home = () => {
                                 </div>
                                 <p className="text-4xl md:text-6xl font-light leading-[1.1] tracking-tighter">
                                     The issue is <span className="text-white/40">not intent.</span> <br />
-                                    It is <span className="text-teal font-serif italic font-bold">leadership behavior</span> <br />
-                                    and <span className="text-teal font-serif italic font-bold">team dynamics.</span>
+                                    It is <span className="text-skyBlue font-serif italic font-bold drop-shadow-[0_0_10px_rgba(200,217,230,0.8)]">leadership behavior</span> <br />
+                                    and <span className="text-skyBlue font-serif italic font-bold drop-shadow-[0_0_10px_rgba(200,217,230,0.8)]">team dynamics.</span>
                                 </p>
                             </div>
                         </div>
