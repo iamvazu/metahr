@@ -22,12 +22,23 @@ const About = () => {
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-8xl font-black !text-white mb-8 tracking-tighter leading-none"
+                        initial={{ opacity: 0, y: 30, z: -200 }}
+                        animate={{ opacity: 1, y: 0, z: 0 }}
+                        transition={{
+                            duration: 1.2,
+                            delay: 0.2,
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
+                        className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-6 tracking-tighter leading-tight"
                     >
                         Maximize Potential. <br />
-                        <span className="text-teal font-serif italic">Elevate Organizations.</span>
+                        <motion.span 
+                            className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
+                            animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
+                            transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
+                        >
+                            Elevate Organizations.
+                        </motion.span>
                     </motion.h1>
 
                     <motion.p
