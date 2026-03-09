@@ -95,6 +95,7 @@ const Footer = () => {
                         <div className="flex space-x-6 items-center">
                             <Link to="/terms" className="hover:text-white transition-colors hover:-translate-y-[1px] transform">Terms_of_Service</Link>
                             <Link to="/privacy" className="hover:text-white transition-colors hover:-translate-y-[1px] transform">Privacy_Policy</Link>
+                            <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors hover:-translate-y-[1px] transform">Sitemap</a>
                         </div>
                     </div>
                     <div className="flex space-x-8 mt-6 md:mt-0">
