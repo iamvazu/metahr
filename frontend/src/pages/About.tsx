@@ -82,15 +82,24 @@ const About = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="bg-slate-50 p-12 lg:p-16 rounded-[4rem] border border-navy/5 shadow-2xl"
+                                className="bg-slate-50 p-12 lg:p-16 rounded-[4rem] border border-navy/5 shadow-2xl relative overflow-hidden group"
                             >
-                                <p className="text-xl md:text-2xl text-navy leading-relaxed font-light mb-8">
-                                    At MetaHR, we believe people are capable of far more than they realize. Within every individual and every organization lies untapped potential — strengths waiting to be activated, capabilities ready to be refined, and excellence ready to be expressed.
-                                </p>
-                                <p className="text-xl md:text-2xl font-bold text-navy italic">
-                                    Our objective is simple yet powerful: to help people and organizations go beyond the normal.
-                                </p>
+                                {/* Background Image Layer */}
+                                <div className="absolute inset-0 z-0">
+                                    <img src="/meta_meaning_bg.png" alt="" className="w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-slate-50/20"></div>
+                                </div>
+
+                                <div className="relative z-10">
+                                    <p className="text-xl md:text-2xl text-navy leading-relaxed font-light mb-8">
+                                        At MetaHR, we believe people are capable of far more than they realize. Within every individual and every organization lies untapped potential — strengths waiting to be activated, capabilities ready to be refined, and excellence ready to be expressed.
+                                    </p>
+                                    <p className="text-xl md:text-2xl font-bold text-navy italic">
+                                        Our objective is simple yet powerful: to help people and organizations go beyond the normal.
+                                    </p>
+                                </div>
                             </motion.div>
+
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-16 items-center">
