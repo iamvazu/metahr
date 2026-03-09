@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import FAQ from '../components/FAQ';
+import ScrollIndicator from '../components/ScrollIndicator';
 
 const FAQPage = () => {
     const faqItems = [
@@ -30,22 +31,39 @@ const FAQPage = () => {
     ];
 
     return (
-        <div className="bg-white pt-20">
+        <div className="bg-white">
             {/* Hero Section */}
-            <section className="bg-navy pt-32 pb-20 relative overflow-hidden text-white">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal/10 rounded-full blur-[100px] -mr-48 -mt-48"></div>
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Support // INTELLIGENCE_BASE</span>
-                    <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter">Frequently <span className="text-teal font-serif italic">Asked Questions</span></h1>
-                    <p className="text-xl text-white/50 font-light max-w-2xl mx-auto leading-relaxed">
-                        Find answers to common inquiries about our methodologies, delivery systems, and measurable impact models.
-                    </p>
+            <section className="bg-navy relative overflow-hidden min-h-[80vh] flex flex-col justify-center pt-32 pb-24">
+                {/* Background Image Layer */}
+                <div className="absolute inset-0 z-0">
+                    <img src="/faq_hero_bg.png" alt="" className="w-full h-full object-cover opacity-20 scale-105" />
+                    <div className="absolute inset-0 bg-navy/60 z-10"></div>
                 </div>
+
+                <div className="container mx-auto px-6 relative z-20 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Support // INTELLIGENCE_BASE</span>
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-8 tracking-tighter leading-tight">
+                            Frequently <br />
+                            <span className="text-skyBlue font-serif italic text-gradient uppercase block mt-2">Asked Questions.</span>
+                        </h1>
+                        <p className="text-xl text-beige/60 font-light max-w-2xl mx-auto leading-relaxed">
+                            Find answers to common inquiries about our methodologies, delivery systems, and measurable impact models.
+                        </p>
+                    </motion.div>
+                </div>
+
+                <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
             </section>
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
             >
                 <FAQ items={faqItems} title="MetaHR Operations & Philosophy" />
