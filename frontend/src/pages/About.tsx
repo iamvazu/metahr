@@ -550,15 +550,17 @@ const About = () => {
                         viewport={{ once: true }}
                         className="max-w-5xl mx-auto"
                     >
-                        <h2 className="text-5xl md:text-8xl font-black mb-10 tracking-tighter leading-none uppercase">
-                            Real Growth Happens Through <br /> <span className="font-serif italic text-navy lowercase tracking-normal">Experience, Not Information.</span>
+                        <h2 className="text-5xl md:text-9xl font-black mb-12 tracking-tighter leading-[0.85] uppercase text-white">
+                            Real Growth <br /> Happens Through <br /> 
+                            <span className="text-skyBlue drop-shadow-[0_0_15px_rgba(200,217,230,0.6)]">experience,</span> <br />
+                            <span className="font-serif italic text-white/40 lowercase tracking-normal text-4xl md:text-7xl">not information.</span>
                         </h2>
-                        <p className="text-2xl md:text-3xl font-medium mb-16 text-white/90 leading-relaxed max-w-4xl mx-auto">
+                        <p className="text-xl md:text-3xl font-medium mb-16 text-white/80 leading-relaxed max-w-4xl mx-auto">
                             Our experiential methodologies create insight, accountability, and behavioral change — not just awareness.
                         </p>
                         <div className="bg-navy/20 backdrop-blur-3xl p-8 md:p-16 rounded-[4rem] border border-white/10 mb-16">
                             <p className="text-2xl md:text-4xl font-black mb-10 text-white tracking-tight leading-tight">
-                                Ready to design a high-impact development journey?
+                                Ready to design a high impact development for your team?
                             </p>
                             <Link
                                 to="/contact"
