@@ -2,10 +2,11 @@
   RewriteEngine On
   RewriteBase /
   
-  # Ensure clean URLs work (don't 404 on sub-pages)
+  # Forward all requests that aren't real files or folders to index.html
+  RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule ^ /index.html [L]
+  RewriteRule . /index.html [L]
 </IfModule>
+
 

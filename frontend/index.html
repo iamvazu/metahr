@@ -48,43 +48,77 @@
   <!-- Favicon / Apple Touch Icon -->
   <link rel="apple-touch-icon" href="/logo.png">
 
-  <!-- Schema.org Markup for Organization & Local Business (GEO/AEO optimized) -->
+  <!-- Schema.org Markup for AI & Generative Search (AEO/GEO) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "MetaHR",
-      "alternateName": "MetaHR Consulting",
-      "url": "https://metahr.co.in",
-      "logo": "https://metahr.co.in/logo.png",
-      "image": "https://metahr.co.in/logo.png",
-      "description": "Premium HR consultancy specializing in leadership development, team alignment, and performance coaching using science-backed assessments.",
-      "telephone": "+91-91876-51277",
-      "email": "info@metahr.co.in",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mumbai",
-        "addressRegion": "Maharashtra",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 19.0760,
-        "longitude": 72.8777
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/ian-kishander-04007ba6/"
-      ],
-      "areaServed": ["Mumbai", "Delhi NCR", "Bangalore", "Hyderabad", "Pune", "Chennai"],
-      "serviceType": ["Leadership Development", "Team Coaching", "Executive Coaching", "Organizational Consulting"]
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://metahr.co.in/#website",
+          "url": "https://metahr.co.in/",
+          "name": "MetaHR",
+          "description": "Strategic HR & Leadership Performance Consulting",
+          "publisher": { "@id": "https://metahr.co.in/#organization" },
+          "potentialAction": [{
+            "@type": "SearchAction",
+            "target": "https://metahr.co.in/blog?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://metahr.co.in/#organization",
+          "name": "MetaHR",
+          "url": "https://metahr.co.in",
+          "logo": "https://metahr.co.in/logo.png",
+          "image": "https://metahr.co.in/logo.png",
+          "description": "Premium HR consultancy specializing in leadership development, team alignment, and performance coaching using science-backed assessments.",
+          "telephone": "+919187651277",
+          "email": "info@metahr.co.in",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 19.0760,
+            "longitude": 72.8777
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/ian-kishander-04007ba6/"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "HR & Leadership Services",
+            "itemListElement": [
+              {
+                "@type": "Service",
+                "name": "Leadership Development",
+                "description": "Strengthening the leadership pipeline across all levels using benchmarked methodologies.",
+                "url": "https://metahr.co.in/services/leadership-development"
+              },
+              {
+                "@type": "Service",
+                "name": "Team Development",
+                "description": "Building aligned, high-performing teams using The Five Behaviors framework.",
+                "url": "https://metahr.co.in/services/team-development"
+              },
+              {
+                "@type": "Service",
+                "name": "Executive Coaching",
+                "description": "Data-driven coaching sessions to unlock individual leader potential.",
+                "url": "https://metahr.co.in/services/executive-coaching"
+              }
+            ]
+          }
+        }
+      ]
     }
   </script>
+
 
 </head>
 
