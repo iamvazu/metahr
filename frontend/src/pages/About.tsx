@@ -550,10 +550,14 @@ const About = () => {
                         viewport={{ once: true }}
                         className="max-w-5xl mx-auto"
                     >
-                        <h2 className="text-5xl md:text-9xl font-black mb-12 tracking-tighter leading-[0.85] uppercase text-white">
-                            Real Growth <br /> Happens Through <br /> 
-                            <span className="text-skyBlue drop-shadow-[0_0_15px_rgba(200,217,230,0.6)]">experience,</span> <br />
-                            <span className="font-serif italic text-white/40 lowercase tracking-normal text-4xl md:text-7xl">not information.</span>
+                        <h2 className="mb-12 leading-tight">
+                            <span className="block text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-6">
+                                Real Growth <br /> Happens Through
+                            </span>
+                            <span className="block font-serif italic lowercase tracking-normal text-5xl md:text-8xl mt-2">
+                                <span className="text-skyBlue drop-shadow-[0_0_15px_rgba(200,217,230,0.6)]">experience,</span> <br />
+                                <span className="text-white/60 text-4xl md:text-7xl">not information.</span>
+                            </span>
                         </h2>
                         <p className="text-xl md:text-3xl font-medium mb-16 text-white/80 leading-relaxed max-w-4xl mx-auto">
                             Our experiential methodologies create insight, accountability, and behavioral change — not just awareness.
