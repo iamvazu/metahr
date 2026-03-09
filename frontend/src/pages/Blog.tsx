@@ -10,8 +10,14 @@ const Blog = () => {
     return (
         <div className="bg-white">
             {/* Blog Hero */}
-            <section className="bg-navy relative overflow-hidden pt-40 pb-24">
-                <div className="container mx-auto px-6 relative z-10 text-center">
+            <section className="bg-navy relative overflow-hidden min-h-[80vh] flex flex-col justify-center pt-32 pb-24">
+                {/* Background Image Layer */}
+                <div className="absolute inset-0 z-0 text-white">
+                    <img src="/blog_hero_bg.png" alt="" className="w-full h-full object-cover opacity-20 scale-105" />
+                    <div className="absolute inset-0 bg-navy/60 z-10"></div>
+                </div>
+
+                <div className="container mx-auto px-6 relative z-20 text-center">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -20,13 +26,13 @@ const Blog = () => {
                         Intelligence_Feed // LATEST_THINKING
                     </motion.span>
                     <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-7xl font-black !text-white mb-8 tracking-tighter leading-none"
+                        className="text-4xl md:text-7xl lg:text-8xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
                     >
                         Global Leadership <br />
-                        <span className="text-teal font-serif italic">Insights.</span>
+                        <span className="text-skyBlue font-serif italic text-gradient uppercase block mt-2">Insights.</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -39,10 +45,8 @@ const Blog = () => {
                 </div>
 
                 <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
-
-                {/* Decorative Laser Line */}
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
+
 
             <div className="container mx-auto px-6 py-32">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">

@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import FAQ from '../components/FAQ';
 import ScrollIndicator from '../components/ScrollIndicator';
+
 
 const FAQPage = () => {
     const faqItems = [
@@ -72,18 +75,33 @@ const FAQPage = () => {
             {/* Support CTA */}
             <section className="pb-32 bg-white">
                 <div className="container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto bg-navy rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-3xl">
-                        <div className="absolute inset-0 bg-teal/5 border-t border-white/10"></div>
-                        <h2 className="text-3xl md:text-4xl font-black text-white mb-8 tracking-tight relative z-10">Still have a <span className="text-teal font-serif italic">specific question?</span></h2>
-                        <p className="text-white/60 mb-12 max-w-xl mx-auto font-light leading-relaxed relative z-10">
-                            Our consultants are ready to discuss your specific organizational challenges and how our frameworks can be adapted to your reality.
-                        </p>
-                        <a href="/contact" className="inline-block bg-teal text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white hover:text-navy transition-all duration-300 relative z-10">
-                            Book a Strategy Call
-                        </a>
+                    <div className="max-w-5xl mx-auto bg-navy rounded-[4rem] p-12 md:p-20 text-center relative overflow-hidden shadow-3xl group">
+                        {/* Background Detail */}
+                        <div className="absolute inset-0 z-0">
+                            <img src="/business_reality_quote_bg.png" alt="" className="w-full h-full object-cover opacity-10 grayscale group-hover:scale-105 transition-transform duration-1000" />
+                            <div className="absolute inset-0 bg-navy/60"></div>
+                        </div>
+
+                        <div className="relative z-10">
+                            <h2 className="text-3xl md:text-5xl font-black !text-white mb-8 tracking-tighter uppercase">
+                                Still have a <br />
+                                <span className="text-skyBlue font-serif italic lowercase tracking-normal text-4xl md:text-6xl mt-2 block">specific question?</span>
+                            </h2>
+                            <p className="text-beige/60 mb-16 max-w-xl mx-auto font-light text-lg leading-relaxed">
+                                Our consultants are ready to discuss your specific organizational challenges and how our frameworks can be adapted to your reality.
+                            </p>
+                            <Link 
+                                to="/contact" 
+                                className="inline-flex items-center justify-center space-x-6 bg-teal text-white px-12 py-7 rounded-full font-black text-[11px] uppercase tracking-[0.3em] hover:bg-white hover:text-navy transition-all shadow-2xl active:scale-95 group/btn"
+                            >
+                                <span>Book a Strategy Call</span>
+                                <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
+
         </div>
     );
 };
