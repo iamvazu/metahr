@@ -76,7 +76,7 @@ const Solutions = () => {
                                 </div>
                             </div>
 
-                            <div className="grid lg:grid-cols-1 gap-12">
+                            <div className="grid lg:grid-cols-2 gap-12 items-center">
                                 <div>
                                     <h4 className="text-4xl md:text-6xl font-black text-navy mb-8 leading-none tracking-tighter">
                                         Develop Leaders Who Drive <br />
@@ -92,7 +92,7 @@ const Solutions = () => {
                                     </div>
 
                                     <div className="flex flex-wrap gap-4 mb-20">
-                                        {["Everything DiSC Work of Leaders", "Strengths-Based Leadership // Gallup", "MTa Insights Learning"].map((item, i) => (
+                                        {["Everything DiSC Work of Leaders", "MTa Leadership", "MTa Insights Learning"].map((item, i) => (
                                             <span key={i} className="px-6 py-3 bg-beige/30 border border-navy/5 rounded-full text-navy/60 font-bold text-[10px] uppercase tracking-widest">{item}</span>
                                         ))}
                                     </div>
@@ -105,6 +105,10 @@ const Solutions = () => {
                                             Schedule Conversation <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" />
                                         </Link>
                                     </div>
+                                </div>
+                                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl group border border-navy/5 hidden lg:block">
+                                    <div className="absolute inset-0 bg-teal/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
+                                    <img src="/images/training-1.jpg" alt="Leadership Training Session" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 aspect-square" />
                                 </div>
                             </div>
                         </motion.div>
@@ -127,33 +131,39 @@ const Solutions = () => {
                                 </div>
                             </div>
 
-                            <div>
-                                <h4 className="text-4xl md:text-6xl font-black text-navy mb-8 leading-none tracking-tighter">
-                                    Build Aligned, <br />
-                                    <span className="text-teal font-serif italic text-gradient uppercase">High-Performing Teams.</span>
-                                </h4>
-                                <div className="text-xl text-navy/60 leading-relaxed space-y-8 mb-16 font-light max-w-3xl">
-                                    <p>
-                                        Using <span className="text-navy font-bold">The Five Behaviors of a Cohesive Team</span> framework, we help teams build deep trust, engage in healthy conflict, and focus relentlessly on collective results.
-                                    </p>
-                                    <p className="border-l-2 border-navy/10 pl-8 text-lg font-medium italic">
-                                        We don’t stop at theory — we build teams that execute strategy with clarity and confidence.
-                                    </p>
-                                </div>
+                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                                <div>
+                                    <h4 className="text-4xl md:text-6xl font-black text-navy mb-8 leading-none tracking-tighter">
+                                        Build Aligned, <br />
+                                        <span className="text-teal font-serif italic text-gradient uppercase">High-Performing Teams.</span>
+                                    </h4>
+                                    <div className="text-xl text-navy/60 leading-relaxed space-y-8 mb-16 font-light max-w-3xl">
+                                        <p>
+                                            Using <span className="text-navy font-bold">The Five Behaviors of a Cohesive Team</span> framework, we help teams build deep trust, engage in healthy conflict, and focus relentlessly on collective results.
+                                        </p>
+                                        <p className="border-l-2 border-navy/10 pl-8 text-lg font-medium italic">
+                                            We don’t stop at theory — we build teams that execute strategy with clarity and confidence.
+                                        </p>
+                                    </div>
 
-                                <div className="flex flex-wrap gap-4 mb-20">
-                                    {["Everything DiSC", "Strengths-based Coaching", "Conflict Resolution Frameworks"].map((item, i) => (
-                                        <span key={i} className="px-6 py-3 bg-navy/5 border border-navy/5 rounded-full text-navy/40 font-bold text-[10px] uppercase tracking-widest">{item}</span>
-                                    ))}
-                                </div>
+                                    <div className="flex flex-wrap gap-4 mb-20">
+                                        {["Everything DiSC", "Strengths-based Coaching", "MTa Team work"].map((item, i) => (
+                                            <span key={i} className="px-6 py-3 bg-navy/5 border border-navy/5 rounded-full text-navy/40 font-bold text-[10px] uppercase tracking-widest">{item}</span>
+                                        ))}
+                                    </div>
 
-                                <div className="flex flex-col sm:flex-row gap-8">
-                                    <Link to="/services/team-development" className="inline-flex items-center px-12 py-6 bg-teal text-white rounded-full font-black text-[10px] uppercase tracking-[0.4em] hover:bg-navy transition-all group shadow-2xl shadow-teal/20">
-                                        Learn about Outcomes <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" />
-                                    </Link>
-                                    <Link to="/contact" className="inline-flex items-center px-12 py-6 border-2 border-navy/10 text-navy/40 rounded-full font-black text-[10px] uppercase tracking-[0.4em] hover:bg-beige transition-all group">
-                                        Schedule Conversation <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" />
-                                    </Link>
+                                    <div className="flex flex-col sm:flex-row gap-8">
+                                        <Link to="/services/team-development" className="inline-flex items-center px-12 py-6 bg-teal text-white rounded-full font-black text-[10px] uppercase tracking-[0.4em] hover:bg-navy transition-all group shadow-2xl shadow-teal/20">
+                                            Learn about Outcomes <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" />
+                                        </Link>
+                                        <Link to="/contact" className="inline-flex items-center px-12 py-6 border-2 border-navy/10 text-navy/40 rounded-full font-black text-[10px] uppercase tracking-[0.4em] hover:bg-beige transition-all group">
+                                            Schedule Conversation <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" />
+                                        </Link>
+                                    </div>
+                                </div>
+                                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl group border border-navy/5 lg:order-first hidden lg:block">
+                                    <div className="absolute inset-0 bg-navy/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
+                                    <img src="/images/training-2.jpg" alt="Team Development Session" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 aspect-square" />
                                 </div>
                             </div>
                         </motion.div>
@@ -183,7 +193,7 @@ const Solutions = () => {
                                 </h4>
                                 <div className="text-xl text-navy/60 leading-relaxed space-y-8 mb-16 font-light max-w-3xl">
                                     <p>
-                                        Our executive coaching is data-driven and insight-rich. We integrate strengths-based development powered by <span className="font-bold text-navy">Gallup</span> with science-backed insights from <span className="font-bold text-navy">Hogan Assessments</span>.
+                                        Our executive coaching is data-driven and insight-rich. We integrate strengths-based development powered by <span className="font-bold text-navy">Gallup CliftonStrengths</span> and <span className="font-bold text-navy">Everything DiSC</span> with science-backed insights from <span className="font-bold text-navy">Hogan Assessments</span>.
                                     </p>
                                     <p className="border-l-2 border-teal/20 pl-8 text-lg font-black text-navy uppercase tracking-widest text-[11px]">
                                         Insight alone doesn’t create transformation — application does.

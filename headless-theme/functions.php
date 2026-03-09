@@ -104,10 +104,16 @@ function metahr_handle_contact_submission( $request ) {
     update_post_meta( $lead_id, '_lead_company', $company );
 
     // Email Notifications (Using standard WP Mail)
-    $to = get_option( 'admin_email' );
-    $subject = "MetaHR Lead: $full_name";
-    $body = "New inquiry from $full_name at $company.\nEmail: $email\nMessage: $message";
-    wp_mail( $to, $subject, $body );
+    $to_admin = get_option( 'admin_email' );
+    $subject_admin = "MetaHR Lead: $full_name";
+    $body_admin = "New inquiry from $full_name at $company.\nEmail: $email\nPhone: $phone\nMessage: $message";
+    wp_mail( $to_admin, $subject_admin, $body_admin );
+
+    // Auto-Reply to the Lead
+    $subject_user = "Thank you for contacting MetaHR";
+    $body_user = "Hi $full_name,\n\nThank you for reaching out to MetaHR.\n\nWe have received your inquiry and our team will review your message shortly. We aim to respond within 24-48 hours to discuss how we can partner with you and $company.\n\nBest regards,\nThe MetaHR Team";
+    $headers_user = array('Content-Type: text/plain; charset=UTF-8', 'From: MetaHR <' . $to_admin . '>');
+    wp_mail( $email, $subject_user, $body_user, $headers_user );
 
     return array(
         'success' => true, 
