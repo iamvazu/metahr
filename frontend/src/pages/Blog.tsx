@@ -67,7 +67,8 @@ const Blog = () => {
                             </div>
                         ))
                     ) : (posts && posts.length > 0) ? (
-                        posts.map((post, i) => (
+                        posts.map((post) => (
+
                             <Link
                                 key={post.id}
                                 to={`/blog/${post.slug}`}
