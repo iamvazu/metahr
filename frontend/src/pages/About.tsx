@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Users, Globe, Zap, ArrowRight, Award, Lightbulb, TrendingUp, ShieldCheck, Heart, Sparkles, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollIndicator from '../components/ScrollIndicator';
 
 const About = () => {
+    useEffect(() => {
+        document.title = "About MetaHR | Leadership & Culture Transformation Experts";
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute("content", "Learn about MetaHR's mission to maximize potential and elevate organizations through strategic human capital development and behavioral science.");
+    }, []);
     return (
         <div className="bg-white">
             {/* 1. About Us (Hero) */}

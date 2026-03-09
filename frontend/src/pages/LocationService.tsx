@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, ArrowRight, CheckCircle, Globe } from 'lucide-react';
@@ -9,6 +10,12 @@ const LocationService = () => {
     // Capitalize and format city/service names
     const cityName = city?.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') || 'India';
     const serviceName = service?.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') || 'Leadership Development';
+
+    useEffect(() => {
+        document.title = `${serviceName} in ${cityName} | MetaHR ${cityName}`;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute("content", `Premium ${serviceName} solutions in ${cityName}. We help ${cityName} organizations transform their leadership and culture with data-driven HR interventions.`);
+    }, [cityName, serviceName]);
 
     const faqs = [
         {

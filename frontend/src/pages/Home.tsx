@@ -7,6 +7,12 @@ import { AnimatePresence } from 'framer-motion';
 import FAQ from '../components/FAQ';
 
 const Home = () => {
+    useEffect(() => {
+        document.title = "MetaHR | Strategic HR & Leadership Performance Consulting";
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute("content", "Moving beyond policies to strategic alignment. Specialized in leadership development, team coaching, and performance analytics for sustainable growth.");
+    }, []);
+
     const [ctaWordIndex, setCtaWordIndex] = useState(0);
     const ctaWords = [
         "Leadership Development",

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Settings, ArrowRight, TrendingUp, Briefcase, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -57,6 +58,11 @@ const FlipCard = ({ frontImage, backImage, alt }: { frontImage: string; backImag
 };
 
 const Solutions = () => {
+    useEffect(() => {
+        document.title = "HR Solutions & Services | Leadership, Teams, Performance | MetaHR";
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute("content", "Explore our premium HR solutions: Leadership Challenge, Five Behaviors of a Team, Executive Coaching, and High-Potential Development programs.");
+    }, []);
 
     return (
         <div className="relative overflow-x-hidden pt-0 bg-white">

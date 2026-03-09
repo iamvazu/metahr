@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, User, Zap, Share2 } from 'lucide-react';
@@ -6,6 +7,20 @@ import { usePost } from '../hooks/usePost';
 const BlogPost = () => {
     const { slug } = useParams<{ slug: string }>();
     const { post, loading, error } = usePost(slug);
+
+    useEffect(() => {
+        if (post) {
+            // Clean HTML tags from title for document.title
+            const cleanTitle = post.title.rendered.replace(/<\/?[^>]+(>|$)/g, "");
+            document.title = `${cleanTitle} | MetaHR Insights`;
+            
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                const cleanExcerpt = post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "");
+                metaDesc.setAttribute("content", cleanExcerpt.substring(0, 160));
+            }
+        }
+    }, [post]);
 
     if (loading) {
         return (
