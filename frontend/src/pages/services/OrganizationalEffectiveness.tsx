@@ -16,7 +16,14 @@ const OrganizationalEffectiveness = () => {
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Service // Organizational_Effectiveness</span>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-tight">
-                        Align Strategy. Activate Culture. <br /><span className="font-serif italic text-teal">Execute with Discipline.</span>
+                        Align Strategy. Activate Culture. <br />
+                        <motion.span
+                            className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
+                            animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
+                            transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
+                        >
+                            Execute with Discipline.
+                        </motion.span>
                     </h1>
                     <p className="text-xl md:text-2xl text-white/50 font-light max-w-4xl mx-auto leading-relaxed">
                         Strategy fails not because it is wrong — but because leadership behaviors, culture, and systems are misaligned.

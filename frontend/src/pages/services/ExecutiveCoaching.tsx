@@ -16,7 +16,14 @@ const ExecutiveCoaching = () => {
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Service // Executive_Coaching</span>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-tight">
-                        Unlock Leadership Potential <br /><span className="font-serif italic text-teal">at the Individual Level</span>
+                        Unlock Leadership Potential <br />
+                        <motion.span
+                            className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
+                            animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
+                            transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
+                        >
+                            at the Individual Level
+                        </motion.span>
                     </h1>
                     <p className="text-xl md:text-2xl text-white/50 font-light max-w-4xl mx-auto leading-relaxed">
                         Our executive coaching is data-driven, insight-rich, and performance-focused.
