@@ -31,7 +31,7 @@ const Solutions = () => {
                             delay: 0.2,
                             ease: [0.22, 1, 0.36, 1]
                         }}
-                        className="text-4xl md:text-7xl lg:text-8xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
+                        className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
                     >
                         Precision 
                         <motion.span 
