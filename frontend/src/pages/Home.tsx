@@ -115,7 +115,14 @@ const Home = () => {
                         }}
                         className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-6 tracking-tighter leading-tight"
                     >
-                        Maximize Potential. <span className="font-serif italic text-teal leading-tight inline-block">Elevate Organizations.</span>
+                        Maximize Potential. 
+                        <motion.span 
+                            className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
+                            animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
+                            transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
+                        >
+                            Elevate Organizations.
+                        </motion.span>
                     </motion.h1>
 
                     <motion.p
