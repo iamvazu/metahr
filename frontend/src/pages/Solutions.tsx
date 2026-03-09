@@ -3,14 +3,45 @@ import { Users, Settings, ArrowRight, TrendingUp, Briefcase, Award } from 'lucid
 import { Link } from 'react-router-dom';
 import ScrollIndicator from '../components/ScrollIndicator';
 
-// Import images to ensure they are processed by Vite and work on all platforms
-import training1 from '../assets/images/training-1.jpg';
-import training2 from '../assets/images/training-2.jpg';
-import execCoachingImg from '../assets/images/exec-coaching.jpg';
-import highPotentialImg from '../assets/images/high-potential.jpg';
-import orgEffectivenessImg from '../assets/images/org-effectiveness.jpg';
+
+
+
+const FlipCard = ({ frontImage, backImage, alt }: { frontImage: string; backImage: string; alt: string }) => {
+    return (
+        <div className="relative w-full aspect-square perspective-1000 group hidden lg:block">
+            <motion.div 
+                className="relative w-full h-full preserve-3d cursor-pointer"
+                animate={{ rotateY: [0, 5, 0] }}
+                whileHover={{ rotateY: 180 }}
+                transition={{ 
+                    rotateY: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+                    animate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                }}
+            >
+                {/* Front Side */}
+                <div className="absolute inset-0 backface-hidden">
+                    <div className="absolute inset-0 bg-teal/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10 rounded-[3rem]"></div>
+                    <img 
+                        src={frontImage} 
+                        alt={alt} 
+                        className="w-full h-full object-cover rounded-[3rem] shadow-2xl border border-navy/5" 
+                    />
+                </div>
+                {/* Back Side */}
+                <div className="absolute inset-0 backface-hidden [transform:rotateY(180deg)]">
+                    <img 
+                        src={backImage} 
+                        alt={`${alt} - Alternate View`} 
+                        className="w-full h-full object-cover rounded-[3rem] shadow-2xl border border-navy/5" 
+                    />
+                </div>
+            </motion.div>
+        </div>
+    );
+};
 
 const Solutions = () => {
+
     return (
         <div className="bg-white">
             {/* Solutions Hero */}
@@ -135,10 +166,13 @@ const Solutions = () => {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl group border border-navy/5 hidden lg:block">
-                                    <div className="absolute inset-0 bg-teal/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
-                                    <img src={training1} alt="Leadership Training Session" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 aspect-square" />
-                                </div>
+
+                                <FlipCard 
+                                    frontImage="/training-1.jpg" 
+                                    backImage="/leadership-2.jpg" 
+                                    alt="Leadership Training Session" 
+                                />
+
                             </div>
                         </motion.div>
 
@@ -190,10 +224,13 @@ const Solutions = () => {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl group border border-navy/5 lg:order-first hidden lg:block">
-                                    <div className="absolute inset-0 bg-navy/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
-                                    <img src={training2} alt="Team Development Session" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 aspect-square" />
-                                </div>
+
+                                <FlipCard 
+                                    frontImage="/training-2.jpg" 
+                                    backImage="/team-2.jpg" 
+                                    alt="Team Development Session" 
+                                />
+
                             </div>
                         </motion.div>
 
@@ -246,10 +283,13 @@ const Solutions = () => {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl group border border-navy/5 hidden lg:block">
-                                    <div className="absolute inset-0 bg-teal/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
-                                    <img src={execCoachingImg} alt="Executive Coaching Session" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 aspect-square" />
-                                </div>
+
+                                    <FlipCard 
+                                        frontImage="/exec-coaching.jpg" 
+                                        backImage="/coaching-2.jpg" 
+                                        alt="Executive Coaching Session" 
+                                    />
+
                             </div>
                             </div>
                         </motion.div>
@@ -303,10 +343,13 @@ const Solutions = () => {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl group border border-navy/5 lg:order-first hidden lg:block">
-                                    <div className="absolute inset-0 bg-navy/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
-                                    <img src={highPotentialImg} alt="High Potential Development Session" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 aspect-square" />
-                                </div>
+
+                                    <FlipCard 
+                                        frontImage="/high-potential.jpg" 
+                                        backImage="/high-potential-2.jpg" 
+                                        alt="High Potential Development Session" 
+                                    />
+
                             </div>
                             </div>
                         </motion.div>
@@ -360,10 +403,13 @@ const Solutions = () => {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl group border border-navy/5 hidden lg:block">
-                                    <div className="absolute inset-0 bg-teal/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10"></div>
-                                    <img src={orgEffectivenessImg} alt="Organizational Effectiveness Session" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 aspect-square" />
-                                </div>
+
+                                    <FlipCard 
+                                        frontImage="/org-effectiveness.jpg" 
+                                        backImage="/org-effectiveness-2.jpg" 
+                                        alt="Organizational Effectiveness Session" 
+                                    />
+
                             </div>
                             </div>
                         </motion.div>
