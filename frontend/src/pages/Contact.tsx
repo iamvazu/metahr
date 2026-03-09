@@ -59,7 +59,8 @@ const Contact = () => {
     };
 
     return (
-        <div className="bg-white">
+        <div className="relative overflow-x-hidden pt-0 bg-white">
+
             {/* Contact Hero */}
             <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
                 {/* Background Video Layer */}

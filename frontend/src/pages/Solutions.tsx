@@ -59,9 +59,10 @@ const FlipCard = ({ frontImage, backImage, alt }: { frontImage: string; backImag
 const Solutions = () => {
 
     return (
-        <div className="bg-white">
+        <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Solutions Hero */}
             <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
+
                 {/* Background Video Layer */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
                     <iframe

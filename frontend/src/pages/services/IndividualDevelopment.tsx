@@ -5,9 +5,10 @@ import ScrollIndicator from '../../components/ScrollIndicator';
 
 const IndividualDevelopment = () => {
     return (
-        <div className="bg-white pt-0">
+        <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Hero Section */}
-            <section className="bg-navy pt-40 pb-32 relative overflow-hidden text-white">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24 text-white">
+
                 <div className="absolute inset-0 z-0">
                     <img src="/individual_development_abstract.png" alt="" className="w-full h-full object-cover opacity-40" />
                     <div className="absolute inset-0 bg-navy/50"></div>
@@ -30,7 +31,11 @@ const IndividualDevelopment = () => {
                     </p>
                 </div>
                 <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
+                
+                {/* Decorative Laser Line */}
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
+
 
 
 

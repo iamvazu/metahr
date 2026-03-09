@@ -8,9 +8,10 @@ const Blog = () => {
     const { posts, loading: loadingPosts } = usePosts();
 
     return (
-        <div className="bg-white">
+        <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Blog Hero */}
-            <section className="bg-navy relative overflow-hidden min-h-[80vh] flex flex-col justify-center pt-32 pb-24">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
+
                 {/* Background Image Layer */}
                 <div className="absolute inset-0 z-0 text-white">
                     <img src="/blog_hero_bg.png" alt="" className="w-full h-full object-cover opacity-20 scale-105" />
@@ -29,11 +30,12 @@ const Blog = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-7xl lg:text-8xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
+                        className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-8 tracking-tighter leading-tight"
                     >
                         Global Leadership <br />
                         <span className="text-skyBlue font-serif italic text-gradient uppercase block mt-2">Insights.</span>
                     </motion.h1>
+
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -45,7 +47,11 @@ const Blog = () => {
                 </div>
 
                 <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
+
+                {/* Decorative Laser Line */}
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
+
 
 
             <div className="container mx-auto px-6 py-32">

@@ -34,9 +34,10 @@ const FAQPage = () => {
     ];
 
     return (
-        <div className="bg-white">
+        <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Hero Section */}
-            <section className="bg-navy relative overflow-hidden min-h-[80vh] flex flex-col justify-center pt-32 pb-24">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
+
                 {/* Background Image Layer */}
                 <div className="absolute inset-0 z-0">
                     <img src="/faq_hero_bg.png" alt="" className="w-full h-full object-cover opacity-20 scale-105" />
@@ -54,6 +55,7 @@ const FAQPage = () => {
                             Frequently <br />
                             <span className="text-skyBlue font-serif italic text-gradient uppercase block mt-2">Asked Questions.</span>
                         </h1>
+
                         <p className="text-xl text-beige/60 font-light max-w-2xl mx-auto leading-relaxed">
                             Find answers to common inquiries about our methodologies, delivery systems, and measurable impact models.
                         </p>
@@ -61,7 +63,11 @@ const FAQPage = () => {
                 </div>
 
                 <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
+                
+                {/* Decorative Laser Line */}
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
+
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -83,10 +89,11 @@ const FAQPage = () => {
                         </div>
 
                         <div className="relative z-10">
-                            <h2 className="text-3xl md:text-5xl font-black !text-white mb-8 tracking-tighter uppercase">
+                            <h2 className="text-3xl md:text-5xl font-black text-white mb-8 tracking-tighter leading-tight">
                                 Still have a <br />
                                 <span className="text-skyBlue font-serif italic lowercase tracking-normal text-4xl md:text-6xl mt-2 block">specific question?</span>
                             </h2>
+
                             <p className="text-beige/60 mb-16 max-w-xl mx-auto font-light text-lg leading-relaxed">
                                 Our consultants are ready to discuss your specific organizational challenges and how our frameworks can be adapted to your reality.
                             </p>
