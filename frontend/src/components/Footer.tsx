@@ -17,7 +17,7 @@ const Footer = () => {
                             <img src="/logo_white.png" alt="MetaHR" className="h-16 md:h-20 w-auto object-contain" />
                         </Link>
                         <p className="text-white/70 text-lg max-w-sm mb-10 leading-relaxed font-light">
-                            Beyond Policies. Beyond Processes. Strategically aligning people, culture, and business objectives for sustainable organizational excellence.
+                            HR Services Beyond Policies. Beyond Processes. Strategically aligning people, culture, and business objectives for sustainable organizational excellence.
                         </p>
                         <div className="flex items-center space-x-6">
                             <div className="flex items-center space-x-2 px-4 py-2 rounded-full border border-white/20 bg-white/10">

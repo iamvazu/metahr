@@ -32,7 +32,7 @@ const About = () => {
                         className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-6 tracking-tighter leading-tight"
                     >
                         Maximize Potential. <br />
-                        <motion.span 
+                        <motion.span
                             className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
                             animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
                             transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
@@ -566,7 +566,7 @@ const About = () => {
                                 Real Growth <br /> Happens Through
                             </span>
                             <span className="block font-serif italic lowercase tracking-normal text-5xl md:text-8xl mt-2">
-                                <motion.span 
+                                <motion.span
                                     className="text-skyBlue drop-shadow-[0_0_15px_rgba(200,217,230,0.6)] inline-block"
                                     animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
                                     transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
