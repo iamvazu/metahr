@@ -24,12 +24,31 @@ const Solutions = () => {
 
 
                     <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-7xl font-black !text-white mb-8 tracking-tighter leading-none"
+                        initial={{ opacity: 0, y: 30, z: -200 }}
+                        animate={{ opacity: 1, y: 0, z: 0 }}
+                        transition={{
+                            duration: 1.2,
+                            delay: 0.2,
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
+                        className="text-4xl md:text-7xl lg:text-8xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
                     >
-                        Precision <span className="text-teal font-serif italic">Solutions.</span><br />
-                        Sustainable <span className="text-teal font-serif italic">Performance.</span>
+                        Precision 
+                        <motion.span 
+                            className="text-skyBlue font-serif italic font-bold drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] inline-block ml-4"
+                            animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
+                            transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
+                        >
+                            Solutions.
+                        </motion.span><br />
+                        Sustainable 
+                        <motion.span 
+                            className="text-skyBlue font-serif italic font-bold drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] inline-block ml-4"
+                            animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
+                            transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2.2 }}
+                        >
+                            Performance.
+                        </motion.span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -53,7 +72,10 @@ const Solutions = () => {
                 <section className="container mx-auto px-6 py-40">
                     <div className="text-center mb-40">
                         <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Ecosystem.Module // Strategic_Offerings</span>
-                        <h2 className="text-4xl md:text-8xl font-black text-navy mb-8 tracking-tighter">Our Core Services.</h2>
+                        <h2 className="text-5xl md:text-8xl font-black text-navy mb-12 tracking-tighter leading-[0.9]">
+                            Our Core <br />
+                            <span className="text-skyBlue font-serif italic text-gradient uppercase">Services.</span>
+                        </h2>
                         <p className="text-navy/40 text-xl font-light max-w-2xl mx-auto leading-relaxed">Movement behind standard policies to ground your organizational excellence in behavioral science and strategic alignment.</p>
                     </div>
 
