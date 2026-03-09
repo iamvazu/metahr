@@ -18,39 +18,29 @@ const Resources = () => {
     return (
         <div className="bg-white">
             {/* Resources Hero */}
-            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
-                {/* Background Image with Zoom Animation */}
-                <motion.div
-                    initial={{ scale: 1.2 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="absolute inset-0 z-0 pointer-events-none"
-                >
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=2000" alt="Resources Background" className="w-full h-full object-cover opacity-60" />
-                    <div className="absolute inset-0 bg-navy/70"></div>
-                </motion.div>
+            <section className="bg-navy relative overflow-hidden min-h-[80vh] flex flex-col justify-center pt-32 pb-24">
+                {/* Background Image Layer */}
+                <div className="absolute inset-0 z-0 text-white">
+                    <img src="/resources_hero_bg.png" alt="" className="w-full h-full object-cover opacity-20 scale-105" />
+                    <div className="absolute inset-0 bg-navy/60 z-10"></div>
+                </div>
 
-                <div className="container mx-auto px-6 relative z-10 text-center">
-
-
+                <div className="container mx-auto px-6 relative z-20 text-center">
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block"
+                    >
+                        Intelligence_Feed // LEARNING_ASSETS
+                    </motion.span>
                     <motion.h1
-                        initial={{ opacity: 0, y: 30, z: -200 }}
-                        animate={{ opacity: 1, y: 0, z: 0 }}
-                        transition={{
-                            duration: 1.2,
-                            delay: 0.2,
-                            ease: [0.22, 1, 0.36, 1]
-                        }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-7xl lg:text-8xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
                     >
                         Globally Benchmarked <br />
-                        <motion.span 
-                            className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
-                            animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
-                            transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
-                        >
-                            Tools for Growth.
-                        </motion.span>
+                        <span className="text-skyBlue font-serif italic text-gradient uppercase block mt-2">Tools for Growth.</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -63,10 +53,8 @@ const Resources = () => {
                 </div>
 
                 <ScrollIndicator className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20" color="white" />
-
-                {/* Decorative Laser Line */}
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent"></div>
             </section>
+
 
             <div className="container mx-auto px-6 py-32">
 
