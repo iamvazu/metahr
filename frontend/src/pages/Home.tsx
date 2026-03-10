@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Quote, Globe, Award, Users, Target, Zap, CheckCircle, Lightbulb, XCircle } from 'lucide-react';
+import { ArrowRight, Quote, Globe, Users, Target, Zap, CheckCircle, Lightbulb, XCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
@@ -535,23 +535,23 @@ const Home = () => {
                 items={[
                     {
                         question: "What makes MetaHR different from other HR consultancies in India?",
-                        answer: "MetaHR combines globally recognized methodologies (The Leadership Challenge, Five Behaviors) with a deep understanding of the Indian corporate culture. We focus on 'Level 3 & 4' impact—measuring actual behavior change and business ROI rather than just training satisfaction."
+                        answer: "MetaHR combines globally recognized methodologies and tools with a deep understanding of Indian corporate culture. Our solutions are highly customizable and designed to deliver Level 3 & 4 impact—focusing on measurable behavior change and tangible business ROI, not just training satisfaction."
                     },
                     {
-                        question: "How do you measure the ROI of leadership development?",
-                        answer: "We use a multi-phase framework including pre-assessment benchmarking, specific KPIs (like turnover, decision speed, or engagement scores), and 180/360-degree post-intervention audits to provide clear evidence of growth."
+                        question: "How do you ensure the ROI of your programs?",
+                        answer: "We use a multi-phase framework that includes pre-assessment benchmarking, defined KPIs (such as turnover, decision speed, and engagement scores), and 180°/360° and post-intervention assessments to clearly measure 'Level 3 & 4' business impact."
                     },
                     {
-                        question: "Which industries do you serve?",
-                        answer: "We have deep expertise in the IT/ITES, Manufacturing, BFSI, and Retail sectors across India, tailoring our frameworks to the specific challenges of each industry's leadership pipeline."
+                        question: "What tools do you use for leadership assessment?",
+                        answer: "We are certified practitioners of CliftonStrengths, Everything DiSC, Leadership Preference Index (LPI) and Hogan Assessments. We select the tool that best aligns with your specific organizational goals."
                     },
                     {
-                        question: "Do you offer virtual interventions for global teams?",
-                        answer: "Yes, we utilize high-engagement digital platforms and virtual simulations to ensure that remote and hybrid teams receive the same high-impact development as in-person cohorts."
+                        question: "Which Industries do you serve?",
+                        answer: "MetaHR partners with mid-size organizations and large enterprises across industries where leadership capability and organizational effectiveness are critical to performance. Our experience spans Technology, Manufacturing, Financial Services, Consulting, GCCs, and high-growth organizations."
                     },
                     {
-                        question: "How do I get started with MetaHR?",
-                        answer: "Simply book a free 30-minute discovery call via our website. We'll discuss your organization's current business reality and identify potential leverage points for performance improvement."
+                        question: "Can these programs be delivered virtually?",
+                        answer: "Absolutely. We utilize high-engagement digital platforms and virtual simulations to ensure that remote and hybrid teams receive the same high-impact development and behavioral depth as in-person cohorts."
                     }
                 ]} />
 

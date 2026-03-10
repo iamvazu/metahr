@@ -8,28 +8,40 @@ import ScrollIndicator from '../components/ScrollIndicator';
 const FAQPage = () => {
     const faqItems = [
         {
-            question: "What is MetaHR's core methodology?",
-            answer: "Our methodology is centered on the 'Diagnose-Design-Deliver-Measure-Reinforce' loop. We leverage globally benchmarked wisdom from partners like The Leadership Challenge and Wiley to create custom, high-impact performance systems."
+            question: "What makes MetaHR different from other HR consultancies in India?",
+            answer: "MetaHR combines globally recognized methodologies and tools with a deep understanding of Indian corporate culture. Our solutions are highly customizable and designed to deliver Level 3 & 4 impact—focusing on measurable behavior change and tangible business ROI, not just training satisfaction."
+        },
+        {
+            question: "What is MetaHR's Core Methodology?",
+            answer: "Our methodology follows a Diagnose – Design – Deliver – Measure – Reinforce loop. We combine this with globally benchmarked adult learning practices to ensure our programs are practical, relevant, and drive measurable improvements in leadership effectiveness and business performance."
         },
         {
             question: "How long does a typical leadership development intervention take?",
-            answer: "A standard intervention ranges from 3 to 12 months, depending on the organizational scope. We believe transformation isn't an event, but a sustained process involving assessment, workshops, and ongoing reinforcement coaching."
+            answer: "While standard development journey interventions range from 3 to 12 months, depending on the organizational scope, we believe transformation isn't an event, but a sustained process involving assessment, workshops, and ongoing reinforcement coaching."
         },
         {
-            question: "What tools do you use for leadership assessment?",
-            answer: "We are certified practitioners of Everything DiSC, The Five Behaviors of a Cohesive Team, Hogan Assessments, and CliftonStrengths. We select the tool that best aligns with your specific organizational goals."
+            question: "Which Industries do you serve?",
+            answer: "MetaHR partners with mid-size organizations and large enterprises across industries where leadership capability and organizational effectiveness are critical to performance. Our experience spans Technology, Manufacturing, Financial Services, Consulting, Global Capability Centers (GCCs), and high-growth organizations."
         },
         {
             question: "Do you offer services across India?",
             answer: "Yes, we serve top-tier enterprises and global captive centers (GCCs) in major hubs including Mumbai, Bangalore, Delhi NCR, Hyderabad, Pune, and Chennai."
         },
         {
+            question: "What tools do you use for leadership assessment?",
+            answer: "We are certified practitioners of CliftonStrengths, Everything DiSC, Leadership Preference Index (LPI) and Hogan Assessments. We select the tool that best aligns with your specific organizational goals."
+        },
+        {
             question: "How do you ensure the ROI of your programs?",
-            answer: "We track 'Level 3 & 4' impact using pre-and-post behavior audits, peer feedback loops, and business KPI tracking to provide quantitative evidence of cultural and performance shifts."
+            answer: "We use a multi-phase framework that includes pre-assessment benchmarking, defined KPIs (such as turnover, decision speed, and engagement scores), and 180°/360° and post-intervention assessments to clearly measure 'Level 3 & 4' business impact."
         },
         {
             question: "Can these programs be delivered virtually?",
-            answer: "Absolutely. We utilize high-engagement interactive platforms for virtual facilitation, ensuring remote teams receive the same level of depth and behavioral impact as in-person groups."
+            answer: "Absolutely. We utilize high-engagement digital platforms and virtual simulations to ensure that remote and hybrid teams receive the same high-impact development and behavioral depth as in-person cohorts."
+        },
+        {
+            question: "How do I get started with MetaHR?",
+            answer: "Simply book a free 30-minute discovery call via our website. We'll discuss your organization's current business reality and identify potential leverage points for performance improvement."
         }
     ];
 

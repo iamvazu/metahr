@@ -99,15 +99,15 @@ const LeadershipDevelopment = () => {
                     <FAQ items={[
                         {
                             question: "What leadership frameworks do you utilize?",
-                            answer: "Our programs are grounded in 'The Leadership Challenge' by Kouzes and Posner, and integrated with psychometric tools like Everything DiSC, Hogan, and CliftonStrengths for a holistic development experience."
+                            answer: "Our programs are grounded in 'The Leadership Challenge' by Kouzes and Posner that demonstrates the five exemplary leadership practices, and integrated with psychometric tools like LPI, CliftonStrengths, DiSC Work of Leaders and Hogan for a holistic development experience."
                         },
                         {
-                            question: "Are your leadership programs suitable for CEOs and C-suite executives?",
-                            answer: "Absolutely. We offer high-level executive coaching and organizational strategy workshops specifically designed for the unique challenges of senior leadership in large-scale enterprises."
+                            question: "Are your leadership programs suitable for CEO's and C-Suite executives?",
+                            answer: "Absolutely. Our programs offer high-level leadership development programs, executive coaching and organizational strategy workshops specifically designed for the unique challenges of senior leadership in large-scale enterprises."
                         },
                         {
-                            question: "How do you track behavioral change after the program?",
-                            answer: "We use post-program follow-through sessions, peer-feedback audits, and ROI impact metrics tailored to the specific goals defined during the Diagnose phase."
+                            question: "How do you ensure the ROI of your programs?",
+                            answer: "We track 'Level 3 & 4' impact using pre-and-post behavior audits, peer feedback loops, and business KPI tracking to provide quantitative evidence of measurable leadership improvement and business performance shifts."
                         }
                     ]} />
 
