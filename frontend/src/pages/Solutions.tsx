@@ -1,92 +1,85 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Users, Settings, ArrowRight, TrendingUp, Briefcase, Award } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Users, Settings, ArrowRight, TrendingUp, Briefcase, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollIndicator from '../components/ScrollIndicator';
 
-
-
-
-
-// Premium Solution Gallery to handle 5 images in a mosaic layout
+// Rotating Carousel Gallery to show full images without cropping
 const SolutionGallery = ({ images }: { images: { src: string; alt: string }[] }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [images.length]);
+
+    const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+    const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+
     return (
-        <div className="w-full">
-            {/* Desktop Mascot Grid */}
-            <div className="hidden lg:grid grid-cols-12 grid-rows-12 gap-3 h-[650px] w-full">
-                {/* Top Left - Main Action */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="col-span-8 row-span-8 relative group overflow-hidden rounded-[2.5rem] shadow-2xl"
-                >
-                    <img src={images[2].src} alt={images[2].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
-                </motion.div>
+        <div className="w-full relative group">
+            <div className="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-[3rem] shadow-2xl bg-beige/10">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentIndex}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute inset-0"
+                    >
+                        <img 
+                            src={images[currentIndex].src} 
+                            alt={images[currentIndex].alt} 
+                            className="w-full h-full object-cover" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent"></div>
+                        
+                        {/* Caption overlay */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="absolute bottom-10 left-10 right-10"
+                        >
+                            <p className="text-white/60 text-[10px] tracking-[0.3em] font-black uppercase mb-2">Project Insight</p>
+                            <p className="text-white text-xl font-medium tracking-tight">{images[currentIndex].alt}</p>
+                        </motion.div>
+                    </motion.div>
+                </AnimatePresence>
 
-                {/* Top Right - Side View */}
-                <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="col-span-4 row-span-5 relative group overflow-hidden rounded-[2rem] shadow-xl"
-                >
-                    <img src={images[1].src} alt={images[1].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
-                </motion.div>
+                {/* Navigation Arrows */}
+                <div className="absolute inset-4 flex items-center justify-between pointer-events-none">
+                    <button 
+                        onClick={(e) => { e.preventDefault(); prev(); }}
+                        className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 pointer-events-auto"
+                    >
+                        <ChevronLeft size={20} />
+                    </button>
+                    <button 
+                        onClick={(e) => { e.preventDefault(); next(); }}
+                        className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 pointer-events-auto"
+                    >
+                        <ChevronRight size={20} />
+                    </button>
+                </div>
 
-                {/* Bottom Right - Small Detail */}
-                <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="col-span-4 row-span-7 relative group overflow-hidden rounded-[2rem] shadow-xl"
-                >
-                    <img src={images[3].src} alt={images[3].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
-                </motion.div>
-
-                {/* Bottom Left 1 - Wide Context */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                    className="col-span-5 row-span-4 relative group overflow-hidden rounded-[2rem] shadow-xl"
-                >
-                    <img src={images[4].src} alt={images[4].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
-                </motion.div>
-
-                {/* Bottom Left 2 - Collage Summary */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="col-span-3 row-span-4 relative group overflow-hidden rounded-[2rem] shadow-xl"
-                >
-                    <img src={images[0].src} alt={images[0].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
-                </motion.div>
-            </div>
-
-            {/* Mobile Stack / Carousel Alternative */}
-            <div className="lg:hidden flex flex-col gap-4">
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="col-span-2 aspect-video overflow-hidden rounded-3xl shadow-lg">
-                        <img src={images[2].src} alt={images[2].alt} className="w-full h-full object-cover" />
-                    </div>
-                    {images.filter((_, i) => i !== 2).map((img, i) => (
-                        <div key={i} className="aspect-square overflow-hidden rounded-2xl shadow-md">
-                            <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-                        </div>
+                {/* Dots */}
+                <div className="absolute bottom-6 right-10 flex space-x-2 z-20">
+                    {images.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setCurrentIndex(i)}
+                            className={`h-1.5 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-8 bg-teal shadow-[0_0_10px_rgba(45,212,191,0.5)]' : 'w-1.5 bg-white/30 hover:bg-white/50'}`}
+                        />
                     ))}
                 </div>
             </div>
+            
+            {/* Ambient Shadow Effect */}
+            <div className="absolute -inset-4 bg-teal/5 blur-3xl -z-10 rounded-full"></div>
         </div>
     );
 };
@@ -100,7 +93,6 @@ const Solutions = () => {
     }, []);
 
     const leadershipImages = [
-        { src: "/images/solutions/leadership_collage.png", alt: "Leadership Sessions Overview" },
         { src: "/images/solutions/leadership_room.png", alt: "Training Environment" },
         { src: "/images/solutions/leadership_presentation.png", alt: "Leadership Keynote" },
         { src: "/images/solutions/leadership_activity.png", alt: "Experiential Learning Activity" },
@@ -119,12 +111,10 @@ const Solutions = () => {
         { src: "/images/solutions/coaching_one_on_one.png", alt: "Executive One-on-One Coaching" },
         { src: "/images/solutions/coaching_cards.png", alt: "Leadership Assessment Discussion" },
         { src: "/images/solutions/coaching_group.png", alt: "Team Strategic Direction" },
-        { src: "/images/solutions/coaching_roleplay.png", alt: "Leadership Roleplay Session" },
-        { src: "/images/solutions/coaching_collage.png", alt: "Executive Coaching Overview" }
+        { src: "/images/solutions/coaching_roleplay.png", alt: "Leadership Roleplay Session" }
     ];
 
     const potentialImages = [
-        { src: "/images/solutions/potential_collage.png", alt: "High-Potential Development Overview" },
         { src: "/images/solutions/potential_clifton.png", alt: "CliftonStrengths Domain Map" },
         { src: "/images/solutions/potential_hogan.png", alt: "Hogan Assessment Insights" },
         { src: "/images/solutions/potential_pyramid.png", alt: "The Five Behaviors Assessment" },
@@ -212,7 +202,7 @@ const Solutions = () => {
                             Our Core <br />
                             <span className="text-skyBlue font-serif italic text-gradient uppercase">Services.</span>
                         </h2>
-                        <p className="text-navy/40 text-xl font-light max-w-2xl mx-auto leading-relaxed">Movement behind standard policies to ground your organizational excellence in behavioral science and strategic alignment.</p>
+                        <p className="text-navy/40 text-xl font-light max-w-2xl mx-auto leading-relaxed">Moving beyond standard policies to ground your organizational excellence in behavioral science and strategic alignment.</p>
                     </div>
 
                     <div className="space-y-40">
