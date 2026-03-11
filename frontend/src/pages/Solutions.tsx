@@ -7,55 +7,90 @@ import ScrollIndicator from '../components/ScrollIndicator';
 
 
 
-const FlipCard = ({ frontImage, backImage, alt }: { frontImage: string; backImage: string; alt: string }) => {
-    const cardVariants = {
-        idle: {
-            rotateY: [0, 5, 0],
-            transition: { 
-                duration: 4, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-            }
-        },
-        hover: {
-            rotateY: 180,
-            transition: { 
-                duration: 0.8, 
-                ease: [0.22, 1, 0.36, 1] 
-            }
-        }
-    };
 
+// Premium Solution Gallery to handle 5 images in a mosaic layout
+const SolutionGallery = ({ images }: { images: { src: string; alt: string }[] }) => {
     return (
-        <div className="relative w-full aspect-square perspective-1000 group hidden lg:block">
-            <motion.div 
-                className="relative w-full h-full preserve-3d cursor-pointer"
-                variants={cardVariants}
-                animate="idle"
-                whileHover="hover"
-            >
+        <div className="w-full">
+            {/* Desktop Mascot Grid */}
+            <div className="hidden lg:grid grid-cols-12 grid-rows-12 gap-3 h-[650px] w-full">
+                {/* Top Left - Main Action */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="col-span-8 row-span-8 relative group overflow-hidden rounded-[2.5rem] shadow-2xl"
+                >
+                    <img src={images[2].src} alt={images[2].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
+                </motion.div>
 
-                {/* Front Side */}
-                <div className="absolute inset-0 backface-hidden">
-                    <div className="absolute inset-0 bg-teal/20 mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700 z-10 rounded-[3rem]"></div>
-                    <img 
-                        src={frontImage} 
-                        alt={alt} 
-                        className="w-full h-full object-cover rounded-[3rem] shadow-2xl border border-navy/5" 
-                    />
+                {/* Top Right - Side View */}
+                <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="col-span-4 row-span-5 relative group overflow-hidden rounded-[2rem] shadow-xl"
+                >
+                    <img src={images[1].src} alt={images[1].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
+                </motion.div>
+
+                {/* Bottom Right - Small Detail */}
+                <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="col-span-4 row-span-7 relative group overflow-hidden rounded-[2rem] shadow-xl"
+                >
+                    <img src={images[3].src} alt={images[3].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
+                </motion.div>
+
+                {/* Bottom Left 1 - Wide Context */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="col-span-5 row-span-4 relative group overflow-hidden rounded-[2rem] shadow-xl"
+                >
+                    <img src={images[4].src} alt={images[4].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
+                </motion.div>
+
+                {/* Bottom Left 2 - Collage Summary */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="col-span-3 row-span-4 relative group overflow-hidden rounded-[2rem] shadow-xl"
+                >
+                    <img src={images[0].src} alt={images[0].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-300"></div>
+                </motion.div>
+            </div>
+
+            {/* Mobile Stack / Carousel Alternative */}
+            <div className="lg:hidden flex flex-col gap-4">
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="col-span-2 aspect-video overflow-hidden rounded-3xl shadow-lg">
+                        <img src={images[2].src} alt={images[2].alt} className="w-full h-full object-cover" />
+                    </div>
+                    {images.filter((_, i) => i !== 2).map((img, i) => (
+                        <div key={i} className="aspect-square overflow-hidden rounded-2xl shadow-md">
+                            <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+                        </div>
+                    ))}
                 </div>
-                {/* Back Side */}
-                <div className="absolute inset-0 backface-hidden [transform:rotateY(180deg)]">
-                    <img 
-                        src={backImage} 
-                        alt={`${alt} - Alternate View`} 
-                        className="w-full h-full object-cover rounded-[3rem] shadow-2xl border border-navy/5" 
-                    />
-                </div>
-            </motion.div>
+            </div>
         </div>
     );
 };
+
 
 const Solutions = () => {
     useEffect(() => {
@@ -63,6 +98,46 @@ const Solutions = () => {
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) metaDesc.setAttribute("content", "Explore our premium HR solutions: Leadership Challenge, Five Behaviors of a Team, Executive Coaching, and High-Potential Development programs.");
     }, []);
+
+    const leadershipImages = [
+        { src: "/images/solutions/leadership_collage.png", alt: "Leadership Sessions Overview" },
+        { src: "/images/solutions/leadership_room.png", alt: "Training Environment" },
+        { src: "/images/solutions/leadership_presentation.png", alt: "Leadership Keynote" },
+        { src: "/images/solutions/leadership_activity.png", alt: "Experiential Learning Activity" },
+        { src: "/images/solutions/leadership_whiteboard.jpg", alt: "Strategy Workshop" }
+    ];
+
+    const teamImages = [
+        { src: "/images/solutions/team_indoor_activity.png", alt: "Active Team Learning" },
+        { src: "/images/solutions/team_workshop.jpg", alt: "Team Synergy Workshop" },
+        { src: "/images/solutions/team_construction.jpg", alt: "Collaborative Construction Activity" },
+        { src: "/images/solutions/team_beach.jpg", alt: "Outdoor Team Cohesion" },
+        { src: "/images/solutions/team_outdoor_strings.jpg", alt: "Precision Team Alignment" }
+    ];
+
+    const coachingImages = [
+        { src: "/images/solutions/coaching_one_on_one.png", alt: "Executive One-on-One Coaching" },
+        { src: "/images/solutions/coaching_cards.png", alt: "Leadership Assessment Discussion" },
+        { src: "/images/solutions/coaching_group.png", alt: "Team Strategic Direction" },
+        { src: "/images/solutions/coaching_roleplay.png", alt: "Leadership Roleplay Session" },
+        { src: "/images/solutions/coaching_collage.png", alt: "Executive Coaching Overview" }
+    ];
+
+    const potentialImages = [
+        { src: "/images/solutions/potential_collage.png", alt: "High-Potential Development Overview" },
+        { src: "/images/solutions/potential_clifton.png", alt: "CliftonStrengths Domain Map" },
+        { src: "/images/solutions/potential_hogan.png", alt: "Hogan Assessment Insights" },
+        { src: "/images/solutions/potential_pyramid.png", alt: "The Five Behaviors Assessment" },
+        { src: "/images/solutions/potential_workshop.png", alt: "Experiential Leadership Workshop" }
+    ];
+
+    const orgImages = [
+        { src: "/images/solutions/org_blocks.png", alt: "Organizational Alignment Activity" },
+        { src: "/images/solutions/org_presentation.png", alt: "Strategic Culture Workshop" },
+        { src: "/images/solutions/org_workshop.png", alt: "Leadership Calibration Session" },
+        { src: "/org-effectiveness.jpg", alt: "Organizational Transformation Session" },
+        { src: "/org-effectiveness-2.jpg", alt: "Strategic Planning Workshop" }
+    ];
 
     return (
         <div className="relative overflow-x-hidden pt-0 bg-white">
@@ -147,7 +222,7 @@ const Solutions = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             id="leadership-development" 
-                            className="max-w-5xl mx-auto border-l-4 border-teal pl-12 md:pl-20 py-8 relative"
+                            className="max-w-7xl mx-auto border-l-4 border-teal pl-12 md:pl-20 py-8 relative"
                         >
                             <div className="flex items-center space-x-6 mb-12">
                                 <div className="w-20 h-20 rounded-3xl bg-teal flex items-center justify-center text-white shadow-2xl shadow-teal/20 relative z-10">
@@ -159,7 +234,7 @@ const Solutions = () => {
                                 </div>
                             </div>
 
-                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div className="grid lg:grid-cols-2 gap-20 items-center">
                                 <div>
                                     <h4 className="text-4xl md:text-6xl font-black text-navy mb-8 leading-none tracking-tighter">
                                         Develop Leaders Who Drive <br />
@@ -190,12 +265,9 @@ const Solutions = () => {
                                     </div>
                                 </div>
 
-                                <FlipCard 
-                                    frontImage="/training-1.jpg" 
-                                    backImage="/leadership-2.jpg" 
-                                    alt="Leadership Training Session" 
-                                />
-
+                                <div className="w-full">
+                                    <SolutionGallery images={leadershipImages} />
+                                </div>
                             </div>
                         </motion.div>
 
@@ -205,7 +277,7 @@ const Solutions = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             id="team-development" 
-                            className="max-w-5xl mx-auto border-l-4 border-navy/10 pl-12 md:pl-20 py-8 relative"
+                            className="max-w-7xl mx-auto border-l-4 border-navy/10 pl-12 md:pl-20 py-8 relative"
                         >
                             <div className="flex items-center space-x-6 mb-12">
                                 <div className="w-20 h-20 rounded-3xl bg-navy flex items-center justify-center text-white shadow-2xl shadow-navy/20 relative z-10">
@@ -217,7 +289,7 @@ const Solutions = () => {
                                 </div>
                             </div>
 
-                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div className="grid lg:grid-cols-2 gap-20 items-center">
                                 <div>
                                     <h4 className="text-4xl md:text-6xl font-black text-navy mb-8 leading-none tracking-tighter">
                                         Build Aligned, <br />
@@ -248,12 +320,9 @@ const Solutions = () => {
                                     </div>
                                 </div>
 
-                                <FlipCard 
-                                    frontImage="/training-2.jpg" 
-                                    backImage="/team-2.jpg" 
-                                    alt="Team Development Session" 
-                                />
-
+                                <div className="w-full">
+                                    <SolutionGallery images={teamImages} />
+                                </div>
                             </div>
                         </motion.div>
 
@@ -263,7 +332,7 @@ const Solutions = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             id="coaching" 
-                            className="max-w-5xl mx-auto border-l-4 border-teal pl-12 md:pl-20 py-8 relative"
+                            className="max-w-7xl mx-auto border-l-4 border-teal pl-12 md:pl-20 py-8 relative"
                         >
                             <div className="flex items-center space-x-6 mb-12">
                                 <div className="w-20 h-20 rounded-3xl bg-teal flex items-center justify-center text-white shadow-2xl shadow-teal/20 relative z-10">
@@ -275,8 +344,7 @@ const Solutions = () => {
                                 </div>
                             </div>
 
-                            <div>
-                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div className="grid lg:grid-cols-2 gap-20 items-center">
                                 <div>
                                     <h4 className="text-4xl md:text-6xl font-black text-navy mb-8 leading-none tracking-tighter">
                                         Unlock Potential <br />
@@ -307,23 +375,18 @@ const Solutions = () => {
                                     </div>
                                 </div>
 
-                                    <FlipCard 
-                                        frontImage="/exec-coaching.jpg" 
-                                        backImage="/coaching-2.jpg" 
-                                        alt="Executive Coaching Session" 
-                                    />
-
-                            </div>
+                                <div className="w-full">
+                                    <SolutionGallery images={coachingImages} />
+                                </div>
                             </div>
                         </motion.div>
 
-                        {/* 4. High-Potential Development */}
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             id="individual-development" 
-                            className="max-w-5xl mx-auto border-l-4 border-navy/10 pl-12 md:pl-20 py-8 relative"
+                            className="max-w-7xl mx-auto border-l-4 border-navy/10 pl-12 md:pl-20 py-8 relative"
                         >
                             <div className="flex items-center space-x-6 mb-12">
                                 <div className="w-20 h-20 rounded-3xl bg-navy flex items-center justify-center text-white shadow-2xl shadow-navy/20 relative z-10">
@@ -335,8 +398,7 @@ const Solutions = () => {
                                 </div>
                             </div>
 
-                            <div>
-                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div className="grid lg:grid-cols-2 gap-20 items-center">
                                 <div>
                                     <h4 className="text-4xl md:text-6xl font-black text-navy mb-8 leading-none tracking-tighter">
                                         Build the Leaders <br />
@@ -367,23 +429,18 @@ const Solutions = () => {
                                     </div>
                                 </div>
 
-                                    <FlipCard 
-                                        frontImage="/high-potential.jpg" 
-                                        backImage="/high-potential-2.jpg" 
-                                        alt="High Potential Development Session" 
-                                    />
-
-                            </div>
+                                <div className="w-full">
+                                    <SolutionGallery images={potentialImages} />
+                                </div>
                             </div>
                         </motion.div>
 
-                        {/* 5. Organizational Effectiveness */}
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             id="organizational-effectiveness" 
-                            className="max-w-5xl mx-auto border-l-4 border-teal pl-12 md:pl-20 py-8 relative"
+                            className="max-w-7xl mx-auto border-l-4 border-teal pl-12 md:pl-20 py-8 relative"
                         >
                             <div className="flex items-center space-x-6 mb-12">
                                 <div className="w-20 h-20 rounded-3xl bg-teal flex items-center justify-center text-white shadow-2xl shadow-teal/20 relative z-10">
@@ -395,8 +452,7 @@ const Solutions = () => {
                                 </div>
                             </div>
 
-                            <div>
-                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div className="grid lg:grid-cols-2 gap-20 items-center">
                                 <div>
                                     <h4 className="text-4xl md:text-6xl font-black text-navy mb-8 leading-none tracking-tighter">
                                         Align Strategy. <br />
@@ -427,13 +483,9 @@ const Solutions = () => {
                                     </div>
                                 </div>
 
-                                    <FlipCard 
-                                        frontImage="/org-effectiveness.jpg" 
-                                        backImage="/org-effectiveness-2.jpg" 
-                                        alt="Organizational Effectiveness Session" 
-                                    />
-
-                            </div>
+                                <div className="w-full">
+                                    <SolutionGallery images={orgImages} />
+                                </div>
                             </div>
                         </motion.div>
                     </div>
