@@ -37,16 +37,6 @@ const SolutionGallery = ({ images }: { images: { src: string; alt: string }[] })
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent"></div>
                         
-                        {/* Caption overlay */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                            className="absolute bottom-10 left-10 right-10"
-                        >
-                            <p className="text-white/60 text-[10px] tracking-[0.3em] font-black uppercase mb-2">Project Insight</p>
-                            <p className="text-white text-xl font-medium tracking-tight">{images[currentIndex].alt}</p>
-                        </motion.div>
                     </motion.div>
                 </AnimatePresence>
 
@@ -122,11 +112,7 @@ const Solutions = () => {
     ];
 
     const orgImages = [
-        { src: "/images/solutions/org_blocks.png", alt: "Organizational Alignment Activity" },
-        { src: "/images/solutions/org_presentation.png", alt: "Strategic Culture Workshop" },
-        { src: "/images/solutions/org_workshop.png", alt: "Leadership Calibration Session" },
-        { src: "/org-effectiveness.jpg", alt: "Organizational Transformation Session" },
-        { src: "/org-effectiveness-2.jpg", alt: "Strategic Planning Workshop" }
+        { src: "/images/solutions/org_blocks.png", alt: "Organizational Alignment Activity" }
     ];
 
     return (
