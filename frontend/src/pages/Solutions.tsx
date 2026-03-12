@@ -112,7 +112,8 @@ const Solutions = () => {
     ];
 
     const orgImages = [
-        { src: "/images/solutions/org_blocks.png", alt: "Organizational Alignment Activity" }
+        { src: "/images/solutions/org_blocks.png", alt: "Organizational Alignment Activity" },
+        { src: "/images/solutions/org_effectiveness_live.png", alt: "Strategic Planning Session" }
     ];
 
     return (
