@@ -150,11 +150,11 @@ export default function EeAnWidget() {
                   <Send size={18} />
                 </button>
               </div>
-              <div className="flex items-center justify-between mt-4">
-                <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">
-                  Powered by MetaHR AI
+              <div className="flex flex-col gap-2 mt-4 text-center">
+                <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest leading-tight">
+                  Ee-an is AI and can make mistakes.
                 </p>
-                <div className="flex gap-2">
+                <div className="flex gap-2 justify-center">
                   <div className="w-1 h-1 bg-green-500 rounded-full"></div>
                   <div className="w-1 h-1 bg-green-500 rounded-full"></div>
                   <div className="w-1 h-1 bg-green-500 rounded-full"></div>
