@@ -1,20 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Maximize2, Send, Paperclip } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useEeAnChat } from '../../hooks/useEeAnChat';
 
 export default function EeAnWidget() {
+  const { messages, sendMessage, isTyping } = useEeAnChat();
   const [isOpen, setIsOpen] = useState(false);
-  const [message, setMessage] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
+  const [inputText, setInputText] = useState('');
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
+  // Auto-scroll to bottom
   useEffect(() => {
-    if (isOpen) {
-      const timer = setTimeout(() => setIsTyping(false), 2000);
-      setIsTyping(true);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen]);
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isTyping]);
 
   // Listen for external toggle event from FloatingCTA
   useEffect(() => {
@@ -23,19 +22,23 @@ export default function EeAnWidget() {
     return () => window.removeEventListener('toggle-eean-chat', handleToggle);
   }, []);
 
-  // Toggle widget
+  const handleSend = () => {
+    if (!inputText.trim()) return;
+    sendMessage(inputText);
+    setInputText('');
+  };
+
   const toggleWidget = () => setIsOpen(!isOpen);
 
   return (
     <div className="fixed bottom-28 right-8 z-[90] flex flex-col items-end pointer-events-none">
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="mb-4 w-[380px] h-[550px] bg-white rounded-[2rem] shadow-[0_30px_100px_-15px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden border border-gray-100 pointer-events-auto"
+            className="mb-4 w-[380px] h-[600px] bg-white rounded-[2.5rem] shadow-[0_30px_100px_-15px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden border border-gray-100 pointer-events-auto"
           >
             {/* Header */}
             <div className="bg-[#1A2B4A] p-6 text-white flex items-center justify-between relative overflow-hidden">
@@ -54,7 +57,7 @@ export default function EeAnWidget() {
                 <div>
                   <h3 className="font-bold text-base tracking-tight">Ee-an</h3>
                   <div className="flex items-center gap-1.5 text-[10px] text-white/60 font-black uppercase tracking-widest mt-0.5">
-                    <span className="animate-pulse-soft">●</span> Active Now
+                    <span className="animate-pulse-soft text-green-400">●</span> Active Now
                   </div>
                 </div>
               </div>
@@ -78,6 +81,7 @@ export default function EeAnWidget() {
 
             {/* Chat Body */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50/50 hide-scrollbar">
+              {/* Initial Message */}
               <div className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-[#1A2B4A] flex items-center justify-center flex-shrink-0 shadow-md">
                   <img src="/eean-avatar.png" alt="" className="w-5 h-5 invert" />
@@ -86,6 +90,28 @@ export default function EeAnWidget() {
                   Hi, I'm Ee-an. I'm here to translate complex HR data into strategic results. How can I support your development today?
                 </div>
               </div>
+
+              {/* Message History */}
+              {messages.map((msg) => (
+                <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                   <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm ${
+                      msg.role === 'user' ? 'bg-[#0E7C7B]' : 'bg-[#1A2B4A]'
+                    }`}>
+                      {msg.role === 'user' ? (
+                        <div className="text-white text-[10px] font-bold">ME</div>
+                      ) : (
+                        <img src="/eean-avatar.png" alt="" className="w-5 h-5 invert" />
+                      )}
+                    </div>
+                    <div className={`p-4 rounded-2xl text-sm leading-relaxed max-w-[85%] ${
+                      msg.role === 'user' 
+                        ? 'bg-[#0E7C7B] text-white rounded-tr-none' 
+                        : 'bg-white text-[#2F4156] rounded-tl-none border border-gray-100 shadow-sm font-medium'
+                    }`}>
+                      {msg.content}
+                    </div>
+                </div>
+              ))}
 
               {isTyping && (
                 <div className="flex gap-3">
@@ -99,6 +125,7 @@ export default function EeAnWidget() {
                   </div>
                 </div>
               )}
+              <div ref={chatEndRef} />
             </div>
 
             {/* Input Footer */}
@@ -111,12 +138,14 @@ export default function EeAnWidget() {
                   type="text" 
                   placeholder="Ask me anything..."
                   className="flex-1 bg-transparent border-none focus:outline-none text-sm font-medium py-1"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 />
                 <button 
-                  className={`p-2.5 rounded-xl transition-all shadow-lg ${message.trim() ? 'bg-[#1A2B4A] text-white' : 'bg-gray-200 text-gray-400'}`}
-                  disabled={!message.trim()}
+                  onClick={handleSend}
+                  className={`p-2.5 rounded-xl transition-all shadow-lg ${inputText.trim() ? 'bg-[#1A2B4A] text-white active:scale-95' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
+                  disabled={!inputText.trim()}
                 >
                   <Send size={18} />
                 </button>
