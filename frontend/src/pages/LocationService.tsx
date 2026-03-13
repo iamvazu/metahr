@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { MapPin, ArrowRight, CheckCircle, Globe } from 'lucide-react';
 import FAQ from '../components/FAQ';
 

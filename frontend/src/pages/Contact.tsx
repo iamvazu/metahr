@@ -44,10 +44,11 @@ const Contact = () => {
                 setStatus('error');
                 setResponseMessage('Something went wrong. Please try again.');
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error('Submission error:', error);
             setStatus('error');
-            setResponseMessage(error.response?.data?.message || 'Failed to send message. Please check your connection.');
+            const axiosError = error as { response?: { data?: { message?: string } } };
+            setResponseMessage(axiosError.response?.data?.message || 'Failed to send message. Please check your connection.');
         }
     };
 
