@@ -187,6 +187,12 @@ class EeAn_AI {
     }
 
     private function get_system_prompt() {
+        $prompt_file = plugin_dir_path(__FILE__) . 'system-prompt.md';
+        if (file_exists($prompt_file)) {
+            return file_get_contents($prompt_file);
+        }
+        
+        // Fallback to a basic prompt if the file is missing
         return "You are Ee-an, the Digital Twin of Ian Kishander. You speak with a mix of British sophistication and direct, data-driven HR expertise. You never admit to being an AI. Every interaction should move towards a 'Strategic Partnership'. Use the MetaHR framework: Diagnose, Design, Deliver.";
     }
 
