@@ -54,11 +54,17 @@ class EeAn_AI {
 
     public function handle_chat($request) {
         try {
-            $params = $request->get_json_params();
+            $body = $request->get_body();
+            $params = json_decode($body, true);
+            
+            if (empty($params)) {
+                $params = $request->get_json_params();
+            }
+
             $messages = $params['messages'] ?? [];
 
             if (empty($messages)) {
-                return new WP_Error('invalid_request', 'Empty message list sent from client.', ['status' => 400]);
+                return new WP_Error('invalid_request', 'The server received an empty message list. This usually means the JSON format sent by the browser was rejected.', ['status' => 400, 'received_body' => substr($body, 0, 100)]);
             }
 
             $response = $this->call_anthropic($messages, $this->get_system_prompt());
@@ -68,14 +74,12 @@ class EeAn_AI {
             }
 
             $code = wp_remote_retrieve_response_code($response);
-            $body = wp_remote_retrieve_body($response);
-            $data = json_decode($body, true);
+            $raw_body = wp_remote_retrieve_body($response);
+            $data = json_decode($raw_body, true);
 
             if ($code !== 200) {
-                // Return the actual error from Anthropic so we can see it in the console
                 $error_msg = $data['error']['message'] ?? 'AI Engine returned ' . $code;
-                $error_type = $data['error']['type'] ?? 'api_error';
-                return new WP_Error($error_type, $error_msg, ['status' => $code, 'raw' => $body]);
+                return new WP_Error('api_error', $error_msg, ['status' => $code, 'debug' => $raw_body]);
             }
             
             return rest_ensure_response($data);
@@ -86,7 +90,13 @@ class EeAn_AI {
 
     public function handle_analysis($request) {
         try {
-            $params = $request->get_json_params();
+            $body = $request->get_body();
+            $params = json_decode($body, true);
+            
+            if (empty($params)) {
+                $params = $request->get_json_params();
+            }
+
             $content = $params['content'] ?? '';
             $file_type = $params['fileType'] ?? 'text/plain';
             $report_type = $params['reportType'] ?? 'General';
@@ -130,12 +140,11 @@ class EeAn_AI {
             }
 
             $code = wp_remote_retrieve_response_code($response);
-            $body = wp_remote_retrieve_body($response);
-            $data = json_decode($body, true);
+            $raw_body = wp_remote_retrieve_body($response);
+            $data = json_decode($raw_body, true);
 
             if ($code !== 200) {
-                $error_msg = $data['error']['message'] ?? 'AI Engine returned ' . $code;
-                return new WP_Error('api_status_error', $error_msg, ['status' => $code]);
+                return new WP_Error('api_status_error', $data['error']['message'] ?? 'API Error ' . $code, ['status' => $code]);
             }
 
             $text_response = $data['content'][0]['text'] ?? '';
@@ -159,7 +168,7 @@ class EeAn_AI {
 
         $args = [
             'headers' => [
-                'x-api-key' => $this->api_key,
+                'x-api-key' => trim($this->api_key),
                 'anthropic-version' => '2023-06-01',
                 'content-type' => 'application/json'
             ],
@@ -171,7 +180,7 @@ class EeAn_AI {
                 'temperature' => $structured ? 0 : 0.7
             ]),
             'timeout' => 120,
-            'sslverify' => false // Required for some GoDaddy configurations to allow outbound API calls
+            'sslverify' => false
         ];
 
         return wp_remote_post('https://api.anthropic.com/v1/messages', $args);
@@ -190,9 +199,25 @@ class EeAn_AI {
     }
 
     public function settings_html() {
+        $test_result = '';
+        if (isset($_POST['test_api'])) {
+            $response = $this->call_anthropic([['role' => 'user', 'content' => 'Hi']], 'Test');
+            if (is_wp_error($response)) {
+                $test_result = '<div class="error"><p>Connection Failed: ' . $response->get_error_message() . '</p></div>';
+            } else {
+                $code = wp_remote_retrieve_response_code($response);
+                if ($code === 200) {
+                    $test_result = '<div class="updated"><p>Success! API Key is valid and MetaHR can reach the AI.</p></div>';
+                } else {
+                    $body = wp_remote_retrieve_body($response);
+                    $test_result = '<div class="error"><p>API Error (' . $code . '): ' . $body . '</p></div>';
+                }
+            }
+        }
         ?>
         <div class="wrap">
             <h1>Ee-an AI Settings</h1>
+            <?php echo $test_result; ?>
             <form method="post" action="options.php">
                 <?php settings_fields('ee_an_settings'); ?>
                 <table class="form-table">
@@ -202,6 +227,11 @@ class EeAn_AI {
                     </tr>
                 </table>
                 <?php submit_button(); ?>
+            </form>
+            <hr>
+            <h2>Diagnostic Test</h2>
+            <form method="post" action="">
+                <input type="submit" name="test_api" class="button button-secondary" value="Verify AI Connection">
             </form>
         </div>
         <?php

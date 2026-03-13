@@ -9,11 +9,10 @@ export default defineConfig({
     assetsDir: '',
     rollupOptions: {
       output: {
-        entryFileNames: `meta-logic.js`,
-        chunkFileNames: `meta-logic.js`,
+        entryFileNames: `meta-logic-[hash].js`,
+        chunkFileNames: `meta-logic-[hash].js`,
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'index.css') return 'meta-styles.css';
-          return '[name].[ext]';
+          return '[name]-[hash].[ext]';
         }
       }
     }
