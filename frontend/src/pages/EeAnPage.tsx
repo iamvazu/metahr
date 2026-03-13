@@ -36,24 +36,26 @@ export default function EeAnPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col pt-32 pb-24">
-      {/* Simplified Header */}
-      <div className="container mx-auto px-6 mb-12">
-          <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl font-black text-navy tracking-tighter mb-4"
-          >
-              Ee-an <span className="text-teal font-serif italic">Digital Twin.</span>
-          </motion.h1>
-          <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-gray-500 text-xl font-medium max-w-2xl"
-          >
-              Upload your reports for a high-precision leadership prescription.
-          </motion.p>
+    <div className="min-h-screen bg-[#F8FAFC] flex flex-col pb-24">
+      {/* Navbar Visibility Guard */}
+      <div className="bg-navy pt-32 pb-12 mb-12">
+        <div className="container mx-auto px-6">
+            <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4"
+            >
+                Ee-an <span className="text-skyBlue font-serif italic">Digital Twin.</span>
+            </motion.h1>
+            <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-beige/60 text-xl font-medium max-w-2xl"
+            >
+                Upload your reports for a high-precision leadership prescription.
+            </motion.p>
+        </div>
       </div>
 
       <main className="flex-1 container mx-auto px-6 space-y-12">
