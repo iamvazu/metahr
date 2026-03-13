@@ -43,9 +43,10 @@ export default function EeAnPage() {
             <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4"
+                className="text-4xl md:text-6xl font-black tracking-tighter mb-4"
             >
-                <span className="text-skyBlue">Ee-an</span> <span className="font-serif italic">Digital Twin.</span>
+                <span className="text-skyBlue">Ee-an</span>{" "}
+                <span className="text-white font-serif italic">Digital Twin.</span>
             </motion.h1>
             <motion.p 
                 initial={{ opacity: 0, y: 20 }}
