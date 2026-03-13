@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as pdfjs from 'pdfjs-dist';
 
-// Configure PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+// Configure PDF.js worker - Use a reliable CDN with proper CORS headers
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 interface Message {
   id: string;
@@ -49,14 +49,22 @@ export function useEeAnChat() {
         sessionId
       });
 
+      // Safely extract text from response
+      const aiText = response.data?.content?.[0]?.text || "I'm sorry, I'm having trouble processing that right now. Could you try again?";
+
       const aiMsg: Message = { 
         id: (Date.now() + 1).toString(), 
         role: 'assistant', 
-        content: response.data.content[0].text 
+        content: aiText
       };
       setMessages(prev => [...prev, aiMsg]);
     } catch (error) {
       console.error('Chat Error:', error);
+      setMessages(prev => [...prev, {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: "I apologize, but I'm unable to connect to the brain right now. Please ensure the MetaHR plugin is active."
+      }]);
     } finally {
       setIsTyping(false);
     }

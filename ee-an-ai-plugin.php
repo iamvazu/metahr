@@ -36,9 +36,17 @@ class EeAn_AI {
     public function handle_chat($request) {
         $params = $request->get_json_params();
         $messages = $params['messages'] ?? [];
-        $session_id = $params['sessionId'] ?? uniqid();
 
-        return $this->call_anthropic($messages, $this->get_system_prompt());
+        $response = $this->call_anthropic($messages, $this->get_system_prompt());
+        
+        if (is_wp_error($response)) {
+            return new WP_Error('api_error', $response->get_error_message(), ['status' => 500]);
+        }
+
+        $raw_body = wp_remote_retrieve_body($response);
+        $data = json_decode($raw_body, true);
+        
+        return rest_ensure_response($data);
     }
 
     public function handle_analysis($request) {
