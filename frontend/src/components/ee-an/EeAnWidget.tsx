@@ -31,17 +31,17 @@ export default function EeAnWidget() {
   const toggleWidget = () => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed bottom-28 right-8 z-[90] flex flex-col items-end pointer-events-none">
+    <div className="fixed bottom-24 right-4 md:right-8 z-[90] flex flex-col items-end pointer-events-none">
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="mb-4 w-[380px] h-[600px] bg-white rounded-[2.5rem] shadow-[0_30px_100px_-15px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden border border-gray-100 pointer-events-auto"
+            className="mb-4 w-[350px] md:w-[380px] h-[520px] max-h-[80vh] bg-white rounded-[2rem] shadow-[0_30px_100px_-15px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden border border-gray-100 pointer-events-auto"
           >
             {/* Header */}
-            <div className="bg-[#1A2B4A] p-6 text-white flex items-center justify-between relative overflow-hidden">
+            <div className="bg-[#1A2B4A] p-4 text-white flex items-center justify-between relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -mr-12 -mt-12 blur-2xl"></div>
               <div className="flex items-center gap-4 relative z-10">
                 <div className="relative">
@@ -80,20 +80,20 @@ export default function EeAnWidget() {
             </div>
 
             {/* Chat Body */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50/50 hide-scrollbar">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50 hide-scrollbar">
               {/* Initial Message */}
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 <div className="w-8 h-8 rounded-full bg-[#1A2B4A] flex items-center justify-center flex-shrink-0 shadow-md">
                   <img src="/eean-avatar.png" alt="" className="w-5 h-5 invert" />
                 </div>
-                <div className="bg-white p-4 rounded-2xl rounded-tl-none border border-gray-100 shadow-sm text-sm text-[#2F4156] font-medium max-w-[85%] leading-relaxed">
+                <div className="bg-white p-3 rounded-2xl rounded-tl-none border border-gray-100 shadow-sm text-sm text-[#2F4156] font-medium max-w-[85%] leading-relaxed">
                   Hi, I'm Ee-an. I'm here to translate complex HR data into strategic results. How can I support your development today?
                 </div>
               </div>
 
               {/* Message History */}
               {messages.map((msg) => (
-                <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                <div key={msg.id} className={`flex gap-2 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm ${
                       msg.role === 'user' ? 'bg-[#0E7C7B]' : 'bg-[#1A2B4A]'
                     }`}>
@@ -103,7 +103,7 @@ export default function EeAnWidget() {
                         <img src="/eean-avatar.png" alt="" className="w-5 h-5 invert" />
                       )}
                     </div>
-                    <div className={`p-4 rounded-2xl text-sm leading-relaxed max-w-[85%] ${
+                    <div className={`p-3 rounded-2xl text-sm leading-relaxed max-w-[85%] ${
                       msg.role === 'user' 
                         ? 'bg-[#0E7C7B] text-white rounded-tr-none' 
                         : 'bg-white text-[#2F4156] rounded-tl-none border border-gray-100 shadow-sm font-medium'
@@ -114,11 +114,11 @@ export default function EeAnWidget() {
               ))}
 
               {isTyping && (
-                <div className="flex gap-3">
+                <div className="flex gap-2">
                   <div className="w-8 h-8 rounded-full bg-[#1A2B4A] flex items-center justify-center flex-shrink-0 animate-status-beat">
                     <img src="/eean-avatar.png" alt="" className="w-5 h-5 invert" />
                   </div>
-                  <div className="bg-white p-4 rounded-2xl rounded-tl-none border border-gray-100 shadow-sm flex gap-1.5 items-center">
+                  <div className="bg-white p-3 rounded-2xl rounded-tl-none border border-gray-100 shadow-sm flex gap-1.5 items-center">
                     <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1.5 h-1.5 bg-[#0E7C7B] rounded-full"></motion.div>
                     <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1.5 h-1.5 bg-[#0E7C7B] rounded-full"></motion.div>
                     <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1.5 h-1.5 bg-[#0E7C7B] rounded-full"></motion.div>
@@ -129,8 +129,8 @@ export default function EeAnWidget() {
             </div>
 
             {/* Input Footer */}
-            <div className="p-6 bg-white border-t border-gray-100">
-              <div className="flex items-center gap-2 p-2.5 bg-gray-50 rounded-2xl border-2 border-transparent focus-within:border-[#1A2B4A]/10 transition-all">
+            <div className="p-4 bg-white border-t border-gray-100">
+              <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-2xl border-2 border-transparent focus-within:border-[#1A2B4A]/10 transition-all">
                 <button className="p-2 text-gray-400 hover:text-[#0E7C7B] transition-colors">
                   <Paperclip size={20} />
                 </button>
