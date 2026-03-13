@@ -16,11 +16,18 @@ export default function EeAnWidget() {
     }
   }, [isOpen]);
 
+  // Listen for external toggle event from FloatingCTA
+  useEffect(() => {
+    const handleToggle = () => setIsOpen(true);
+    window.addEventListener('toggle-eean-chat', handleToggle);
+    return () => window.removeEventListener('toggle-eean-chat', handleToggle);
+  }, []);
+
   // Toggle widget
   const toggleWidget = () => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-28 right-8 z-[90] flex flex-col items-end pointer-events-none">
       {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
@@ -28,7 +35,7 @@ export default function EeAnWidget() {
             initial={{ opacity: 0, y: 20, scale: 0.9, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="mb-4 w-[380px] h-[550px] bg-white rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] flex flex-col overflow-hidden border border-gray-100"
+            className="mb-4 w-[380px] h-[550px] bg-white rounded-[2rem] shadow-[0_30px_100px_-15px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden border border-gray-100 pointer-events-auto"
           >
             {/* Header */}
             <div className="bg-[#1A2B4A] p-6 text-white flex items-center justify-between relative overflow-hidden">
@@ -54,6 +61,7 @@ export default function EeAnWidget() {
               <div className="flex items-center gap-1 relative z-10">
                 <Link 
                   to="/ee-an" 
+                  onClick={() => setIsOpen(false)}
                   className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white/80 hover:text-white"
                   title="Full screen experience"
                 >
@@ -127,25 +135,6 @@ export default function EeAnWidget() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Toggle Button */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={toggleWidget}
-        className={`w-16 h-16 rounded-full shadow-[0_10px_25px_-5px_rgba(26,43,74,0.4)] flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-white text-[#1A2B4A]' : 'bg-[#1A2B4A] text-white hover:bg-[#0E7C7B]'}`}
-      >
-        {isOpen ? <X size={28} /> : (
-          <div className="relative">
-            <MessageSquare size={30} fill="currentColor" />
-            <motion.div 
-              animate={{ scale: [1, 1.2, 1] }} 
-              transition={{ repeat: Infinity, duration: 2 }} 
-              className="absolute -top-1 -right-1 w-4 h-4 bg-[#0E7C7B] border-2 border-[#1A2B4A] rounded-full"
-            ></motion.div>
-          </div>
-        )}
-      </motion.button>
     </div>
   );
 }

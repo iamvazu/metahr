@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, X, MessageSquare, Calendar } from 'lucide-react';
+import { Phone, X, MessageSquare, Calendar, Bot } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const FloatingCTA = () => {
@@ -18,6 +18,11 @@ const FloatingCTA = () => {
         return () => window.removeEventListener('scroll', toggleVisibility);
     }, []);
 
+    const toggleEeAn = () => {
+        setIsExpanded(false);
+        window.dispatchEvent(new CustomEvent('toggle-eean-chat'));
+    };
+
     const actions = [
         {
             icon: <Calendar size={20} />,
@@ -31,6 +36,12 @@ const FloatingCTA = () => {
             href: "https://wa.me/919187651277",
             color: "bg-green-500",
             external: true
+        },
+        {
+            icon: <Bot size={20} />,
+            label: "Ee-an AI Chat",
+            onClick: toggleEeAn,
+            color: "bg-navy"
         }
     ];
 
@@ -49,16 +60,27 @@ const FloatingCTA = () => {
                                     className="flex flex-col items-end space-y-3 mb-2"
                                 >
                                     {actions.map((action, i) => (
-                                        <a
-                                            key={i}
-                                            href={action.href}
-                                            target={action.external ? "_blank" : "_self"}
-                                            rel={action.external ? "noopener noreferrer" : ""}
-                                            className={`flex items-center space-x-3 px-6 py-3 rounded-full text-white shadow-2xl transition-all hover:scale-110 active:scale-95 ${action.color}`}
-                                        >
-                                            <span className="text-xs font-black uppercase tracking-widest">{action.label}</span>
-                                            {action.icon}
-                                        </a>
+                                        action.href ? (
+                                            <a
+                                                key={i}
+                                                href={action.href}
+                                                target={action.external ? "_blank" : "_self"}
+                                                rel={action.external ? "noopener noreferrer" : ""}
+                                                className={`flex items-center space-x-3 px-6 py-3 rounded-full text-white shadow-2xl transition-all hover:scale-110 active:scale-95 ${action.color}`}
+                                            >
+                                                <span className="text-xs font-black uppercase tracking-widest">{action.label}</span>
+                                                {action.icon}
+                                            </a>
+                                        ) : (
+                                            <button
+                                                key={i}
+                                                onClick={action.onClick}
+                                                className={`flex items-center space-x-3 px-6 py-3 rounded-full text-white shadow-2xl transition-all hover:scale-110 active:scale-95 ${action.color}`}
+                                            >
+                                                <span className="text-xs font-black uppercase tracking-widest">{action.label}</span>
+                                                {action.icon}
+                                            </button>
+                                        )
                                     ))}
                                 </motion.div>
                             )}
