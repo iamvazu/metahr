@@ -69,7 +69,7 @@ const Navbar = () => {
                                     to={link.path}
                                     className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
                                         ? (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-navy')
-                                        : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-white/80')
+                                        : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-skyBlue' : 'text-white/80')
                                         }`}
                                 >
                                     {link.name}

@@ -55,7 +55,7 @@ export default function EeAnWidget() {
                   <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-[#1A2B4A] rounded-full"></div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-base tracking-tight">Ee-an</h3>
+                  <h3 className="font-bold text-base tracking-tight text-skyBlue">Ee-an</h3>
                   <div className="flex items-center gap-1.5 text-[10px] text-white/60 font-black uppercase tracking-widest mt-0.5">
                     <span className="animate-pulse-soft text-green-400">●</span> Active Now
                   </div>
