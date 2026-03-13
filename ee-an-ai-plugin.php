@@ -43,8 +43,14 @@ class EeAn_AI {
             return new WP_Error('api_error', $response->get_error_message(), ['status' => 500]);
         }
 
-        $raw_body = wp_remote_retrieve_body($response);
-        $data = json_decode($raw_body, true);
+        $code = wp_remote_retrieve_response_code($response);
+        $body = wp_remote_retrieve_body($response);
+        $data = json_decode($body, true);
+
+        if ($code !== 200) {
+            $error_msg = $data['error']['message'] ?? 'Anthropic API returned error ' . $code;
+            return new WP_Error('anthropic_error', $error_msg, ['status' => $code, 'raw' => $body]);
+        }
         
         return rest_ensure_response($data);
     }
@@ -69,7 +75,6 @@ class EeAn_AI {
 
         $messages = [];
         if (strpos($file_type, 'image/') !== false) {
-            // Handle Vision Input
             $base64_data = str_replace('data:' . $file_type . ';base64,', '', $content);
             $messages[] = [
                 'role' => 'user',
@@ -86,7 +91,6 @@ class EeAn_AI {
                 ]
             ];
         } else {
-            // Handle Text Input (Transcribed PDF)
             $messages[] = [
                 'role' => 'user',
                 'content' => $prompt . "\n\nReport Content:\n" . $content
@@ -95,14 +99,19 @@ class EeAn_AI {
 
         $response = $this->call_anthropic($messages, $this->get_system_prompt(), true);
         
-        if (is_wp_error($response)) return $response;
+        if (is_wp_error($response)) {
+            return new WP_Error('api_error', $response->get_error_message(), ['status' => 500]);
+        }
 
-        // Extract JSON from response
-        $raw_body = wp_remote_retrieve_body($response);
-        $data = json_decode($raw_body, true);
+        $code = wp_remote_retrieve_response_code($response);
+        $body = wp_remote_retrieve_body($response);
+        $data = json_decode($body, true);
+
+        if ($code !== 200) {
+            return new WP_Error('anthropic_error', $data['error']['message'] ?? 'API Error', ['status' => $code]);
+        }
+
         $text_response = $data['content'][0]['text'] ?? '';
-        
-        // Sanitize JSON result
         preg_match('/\{.*\}/s', $text_response, $matches);
         $json_res = json_decode($matches[0] ?? '{}', true);
 
