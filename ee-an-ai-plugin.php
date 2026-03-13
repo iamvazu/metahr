@@ -37,6 +37,19 @@ class EeAn_AI {
             'callback' => function() { return rest_ensure_response(['status' => 'online', 'key_configured' => !empty($this->api_key)]); },
             'permission_callback' => '__return_true'
         ]);
+
+        register_rest_route($this->namespace, '/debug-info', [
+            'methods' => 'GET',
+            'callback' => function() { 
+                return rest_ensure_response([
+                    'php_version' => PHP_VERSION,
+                    'is_ssl' => is_ssl(),
+                    'curl_version' => function_exists('curl_version') ? curl_version()['version'] : 'n/a',
+                    'wp_version' => $GLOBALS['wp_version']
+                ]); 
+            },
+            'permission_callback' => 'manage_options'
+        ]);
     }
 
     public function handle_chat($request) {
@@ -45,13 +58,13 @@ class EeAn_AI {
             $messages = $params['messages'] ?? [];
 
             if (empty($messages)) {
-                return new WP_Error('invalid_request', 'No messages provided', ['status' => 400]);
+                return new WP_Error('invalid_request', 'Empty message list sent from client.', ['status' => 400]);
             }
 
             $response = $this->call_anthropic($messages, $this->get_system_prompt());
             
             if (is_wp_error($response)) {
-                return new WP_Error('connection_failed', 'Outbound connection failed: ' . $response->get_error_message(), ['status' => 500]);
+                return new WP_Error('connection_failed', 'MetaHR server could not reach AI: ' . $response->get_error_message(), ['status' => 500]);
             }
 
             $code = wp_remote_retrieve_response_code($response);
@@ -59,13 +72,15 @@ class EeAn_AI {
             $data = json_decode($body, true);
 
             if ($code !== 200) {
-                $error_msg = $data['error']['message'] ?? 'Anthropic API error: ' . $code;
-                return new WP_Error('api_status_error', $error_msg, ['status' => $code]);
+                // Return the actual error from Anthropic so we can see it in the console
+                $error_msg = $data['error']['message'] ?? 'AI Engine returned ' . $code;
+                $error_type = $data['error']['type'] ?? 'api_error';
+                return new WP_Error($error_type, $error_msg, ['status' => $code, 'raw' => $body]);
             }
             
             return rest_ensure_response($data);
         } catch (Exception $e) {
-            return new WP_Error('server_error', $e->getMessage(), ['status' => 500]);
+            return new WP_Error('internal_error', 'Plugin crash: ' . $e->getMessage(), ['status' => 500]);
         }
     }
 
@@ -76,8 +91,8 @@ class EeAn_AI {
             $file_type = $params['fileType'] ?? 'text/plain';
             $report_type = $params['reportType'] ?? 'General';
 
-            if (empty($content)) {
-                return new WP_Error('invalid_content', 'No content provided for analysis', ['status' => 400]);
+            if (empty(trim($content))) {
+                return new WP_Error('empty_file', "The uploaded file appears to be empty or contains no readable text. If this is a scanned PDF, please try uploading a clear photo of the report instead.", ['status' => 400]);
             }
 
             $prompt = "Act as Ee-an, the CEO of MetaHR. Analyze this $report_type report. 
@@ -86,7 +101,7 @@ class EeAn_AI {
 
             $messages = [];
             if (strpos($file_type, 'image/') !== false) {
-                $base64_data = str_replace('data:' . $file_type . ';base64,', '', $content);
+                $base64_data = str_replace(['data:' . $file_type . ';base64,', ' '], ['', '+'], $content);
                 $messages[] = [
                     'role' => 'user',
                     'content' => [
@@ -104,14 +119,14 @@ class EeAn_AI {
             } else {
                 $messages[] = [
                     'role' => 'user',
-                    'content' => $prompt . "\n\nReport Content:\n" . substr($content, 0, 10000) // Truncate if extreme
+                    'content' => $prompt . "\n\nReport Content:\n" . substr($content, 0, 15000)
                 ];
             }
 
             $response = $this->call_anthropic($messages, $this->get_system_prompt(), true);
             
             if (is_wp_error($response)) {
-                return new WP_Error('api_error', $response->get_error_message(), ['status' => 500]);
+                return new WP_Error('connection_failed', 'MetaHR server could not reach AI: ' . $response->get_error_message(), ['status' => 500]);
             }
 
             $code = wp_remote_retrieve_response_code($response);
@@ -119,22 +134,27 @@ class EeAn_AI {
             $data = json_decode($body, true);
 
             if ($code !== 200) {
-                return new WP_Error('anthropic_error', $data['error']['message'] ?? 'API Error ' . $code, ['status' => $code]);
+                $error_msg = $data['error']['message'] ?? 'AI Engine returned ' . $code;
+                return new WP_Error('api_status_error', $error_msg, ['status' => $code]);
             }
 
             $text_response = $data['content'][0]['text'] ?? '';
             preg_match('/\{.*\}/s', $text_response, $matches);
             $json_res = json_decode($matches[0] ?? '{}', true);
 
+            if (empty($json_res) || count($json_res) < 2) {
+                 return new WP_Error('parsing_failed', "AI response could not be formatted correctly.", ['status' => 500, 'raw' => $text_response]);
+            }
+
             return rest_ensure_response(['status' => 'success', 'data' => $json_res]);
         } catch (Exception $e) {
-            return new WP_Error('processing_error', $e->getMessage(), ['status' => 500]);
+            return new WP_Error('internal_error', 'Plugin crash during analysis: ' . $e->getMessage(), ['status' => 500]);
         }
     }
 
     private function call_anthropic($messages, $system, $structured = false) {
         if (empty($this->api_key)) {
-            return new WP_Error('no_api_key', 'Anthropic API key not configured', ['status' => 500]);
+            return new WP_Error('no_api_key', 'Anthropic API key not configured in WordPress settings.', ['status' => 500]);
         }
 
         $args = [
@@ -144,13 +164,14 @@ class EeAn_AI {
                 'content-type' => 'application/json'
             ],
             'body' => json_encode([
-                'model' => 'claude-3-5-sonnet-latest',
+                'model' => 'claude-3-5-sonnet-20241022',
                 'max_tokens' => 4000,
                 'system' => $system,
                 'messages' => $messages,
                 'temperature' => $structured ? 0 : 0.7
             ]),
-            'timeout' => 120
+            'timeout' => 120,
+            'sslverify' => false // Required for some GoDaddy configurations to allow outbound API calls
         ];
 
         return wp_remote_post('https://api.anthropic.com/v1/messages', $args);

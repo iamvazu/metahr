@@ -67,12 +67,13 @@ export function useEeAnChat() {
         content: aiText
       };
       setMessages(prev => [...prev, aiMsg]);
-    } catch (error) {
-      console.error('Chat Error:', error);
+    } catch (error: any) {
+      console.error('Chat Error Details:', error.response?.data || error);
+      const serverMsg = error.response?.data?.message || "I apologize, but I'm unable to connect to the brain right now. The server might be blocking the connection.";
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
         role: 'assistant',
-        content: "I apologize, but I'm unable to connect to the brain right now. Please ensure the MetaHR plugin is active."
+        content: serverMsg
       }]);
     } finally {
       setIsTyping(false);
@@ -89,6 +90,10 @@ export function useEeAnChat() {
       if (file.type === 'application/pdf') {
         setUploadProgress(30);
         content = await extractTextFromPDF(file);
+        
+        if (!content.trim()) {
+           throw new Error("This PDF appears to be a scan or image. Ee-an needs a text-searchable PDF or a direct photo/screenshot of the report.");
+        }
       } else if (file.type.startsWith('image/')) {
         setUploadProgress(30);
         content = await fileToBase64(file);
@@ -110,11 +115,17 @@ export function useEeAnChat() {
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
         role: 'assistant',
-        content: `I've finished analyzing your ${type} report. You'll find my "Prescription" in the analysis workspace.`
+        content: `I've finished analyzing your ${type} report. You'll find my "Prescription" in the analysis workspace below.`
       }]);
 
-    } catch (error) {
-      console.error('File Processing Error:', error);
+    } catch (error: any) {
+      console.error('File Processing Error Details:', error.response?.data || error);
+      const errorMsg = error.response?.data?.message || error.message || "An unknown error occurred during synthesis.";
+      setMessages(prev => [...prev, {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: `Synthesis Interrupted: ${errorMsg}`
+      }]);
     } finally {
       setIsTyping(false);
       setUploadProgress(0);
@@ -122,20 +133,25 @@ export function useEeAnChat() {
   };
 
   const extractTextFromPDF = async (file: File): Promise<string> => {
-    const arrayBuffer = await file.arrayBuffer();
-    const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
-    let fullText = '';
-    
-    for (let i = 1; i <= pdf.numPages; i++) {
-      const page = await pdf.getPage(i);
-      const textContent = await page.getTextContent();
-      const pageText = (textContent.items as any[])
-        .map(item => (item.str || ''))
-        .join(' ');
-      fullText += pageText + '\n';
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
+      let fullText = '';
+      
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        const pageText = (textContent.items as any[])
+          .map(item => (item.str || ''))
+          .join(' ');
+        fullText += pageText + '\n';
+      }
+      
+      return fullText;
+    } catch (e) {
+      console.error("PDF Parsing failed:", e);
+      return "";
     }
-    
-    return fullText;
   };
 
   const fileToBase64 = (file: File): Promise<string> => {
