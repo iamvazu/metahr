@@ -31,91 +31,105 @@ class EeAn_AI {
             'callback' => [$this, 'handle_analysis'],
             'permission_callback' => '__return_true'
         ]);
+
+        register_rest_route($this->namespace, '/ping', [
+            'methods' => 'GET',
+            'callback' => function() { return rest_ensure_response(['status' => 'online', 'key_configured' => !empty($this->api_key)]); },
+            'permission_callback' => '__return_true'
+        ]);
     }
 
     public function handle_chat($request) {
-        $params = $request->get_json_params();
-        $messages = $params['messages'] ?? [];
+        try {
+            $params = $request->get_json_params();
+            $messages = $params['messages'] ?? [];
 
-        $response = $this->call_anthropic($messages, $this->get_system_prompt());
-        
-        if (is_wp_error($response)) {
-            return new WP_Error('api_error', $response->get_error_message(), ['status' => 500]);
+            if (empty($messages)) {
+                return new WP_Error('invalid_request', 'No messages provided', ['status' => 400]);
+            }
+
+            $response = $this->call_anthropic($messages, $this->get_system_prompt());
+            
+            if (is_wp_error($response)) {
+                return new WP_Error('connection_failed', 'Outbound connection failed: ' . $response->get_error_message(), ['status' => 500]);
+            }
+
+            $code = wp_remote_retrieve_response_code($response);
+            $body = wp_remote_retrieve_body($response);
+            $data = json_decode($body, true);
+
+            if ($code !== 200) {
+                $error_msg = $data['error']['message'] ?? 'Anthropic API error: ' . $code;
+                return new WP_Error('api_status_error', $error_msg, ['status' => $code]);
+            }
+            
+            return rest_ensure_response($data);
+        } catch (Exception $e) {
+            return new WP_Error('server_error', $e->getMessage(), ['status' => 500]);
         }
-
-        $code = wp_remote_retrieve_response_code($response);
-        $body = wp_remote_retrieve_body($response);
-        $data = json_decode($body, true);
-
-        if ($code !== 200) {
-            $error_msg = $data['error']['message'] ?? 'Anthropic API returned error ' . $code;
-            return new WP_Error('anthropic_error', $error_msg, ['status' => $code, 'raw' => $body]);
-        }
-        
-        return rest_ensure_response($data);
     }
 
     public function handle_analysis($request) {
-        $params = $request->get_json_params();
-        $content = $params['content'] ?? '';
-        $file_type = $params['fileType'] ?? 'text/plain';
-        $report_type = $params['reportType'] ?? 'General';
+        try {
+            $params = $request->get_json_params();
+            $content = $params['content'] ?? '';
+            $file_type = $params['fileType'] ?? 'text/plain';
+            $report_type = $params['reportType'] ?? 'General';
 
-        $prompt = "Act as Ee-an, the CEO of MetaHR. Analyze this $report_type report. 
-        Your goal is to provide a 'Strategic HR Prescription'. 
-        If the input is an image, describe the key charts and values.
-        Return ONLY a JSON object:
-        {
-            \"prescription\": \"Ian's high-level summary (2 sentences)\",
-            \"strength_zone\": \"One specific superpower found in the data\",
-            \"watch_out_zone\": \"One specific potential risk or derailer\",
-            \"next_actions\": [\"Immediate strategic action\", \"Tactical team adjustment\", \"Long-term KPI focus\"],
-            \"coaching_question\": \"One paradoxical question that forces a mindset shift\"
-        }";
+            if (empty($content)) {
+                return new WP_Error('invalid_content', 'No content provided for analysis', ['status' => 400]);
+            }
 
-        $messages = [];
-        if (strpos($file_type, 'image/') !== false) {
-            $base64_data = str_replace('data:' . $file_type . ';base64,', '', $content);
-            $messages[] = [
-                'role' => 'user',
-                'content' => [
-                    ['type' => 'text', 'text' => $prompt],
-                    [
-                        'type' => 'image',
-                        'source' => [
-                            'type' => 'base64',
-                            'media_type' => $file_type,
-                            'data' => $base64_data
+            $prompt = "Act as Ee-an, the CEO of MetaHR. Analyze this $report_type report. 
+            Your goal is to provide a 'Strategic HR Prescription'. 
+            Return ONLY a valid JSON object. No other text.";
+
+            $messages = [];
+            if (strpos($file_type, 'image/') !== false) {
+                $base64_data = str_replace('data:' . $file_type . ';base64,', '', $content);
+                $messages[] = [
+                    'role' => 'user',
+                    'content' => [
+                        ['type' => 'text', 'text' => $prompt],
+                        [
+                            'type' => 'image',
+                            'source' => [
+                                'type' => 'base64',
+                                'media_type' => $file_type,
+                                'data' => trim($base64_data)
+                            ]
                         ]
                     ]
-                ]
-            ];
-        } else {
-            $messages[] = [
-                'role' => 'user',
-                'content' => $prompt . "\n\nReport Content:\n" . $content
-            ];
+                ];
+            } else {
+                $messages[] = [
+                    'role' => 'user',
+                    'content' => $prompt . "\n\nReport Content:\n" . substr($content, 0, 10000) // Truncate if extreme
+                ];
+            }
+
+            $response = $this->call_anthropic($messages, $this->get_system_prompt(), true);
+            
+            if (is_wp_error($response)) {
+                return new WP_Error('api_error', $response->get_error_message(), ['status' => 500]);
+            }
+
+            $code = wp_remote_retrieve_response_code($response);
+            $body = wp_remote_retrieve_body($response);
+            $data = json_decode($body, true);
+
+            if ($code !== 200) {
+                return new WP_Error('anthropic_error', $data['error']['message'] ?? 'API Error ' . $code, ['status' => $code]);
+            }
+
+            $text_response = $data['content'][0]['text'] ?? '';
+            preg_match('/\{.*\}/s', $text_response, $matches);
+            $json_res = json_decode($matches[0] ?? '{}', true);
+
+            return rest_ensure_response(['status' => 'success', 'data' => $json_res]);
+        } catch (Exception $e) {
+            return new WP_Error('processing_error', $e->getMessage(), ['status' => 500]);
         }
-
-        $response = $this->call_anthropic($messages, $this->get_system_prompt(), true);
-        
-        if (is_wp_error($response)) {
-            return new WP_Error('api_error', $response->get_error_message(), ['status' => 500]);
-        }
-
-        $code = wp_remote_retrieve_response_code($response);
-        $body = wp_remote_retrieve_body($response);
-        $data = json_decode($body, true);
-
-        if ($code !== 200) {
-            return new WP_Error('anthropic_error', $data['error']['message'] ?? 'API Error', ['status' => $code]);
-        }
-
-        $text_response = $data['content'][0]['text'] ?? '';
-        preg_match('/\{.*\}/s', $text_response, $matches);
-        $json_res = json_decode($matches[0] ?? '{}', true);
-
-        return rest_ensure_response(['status' => 'success', 'data' => $json_res]);
     }
 
     private function call_anthropic($messages, $system, $structured = false) {
@@ -130,13 +144,13 @@ class EeAn_AI {
                 'content-type' => 'application/json'
             ],
             'body' => json_encode([
-                'model' => 'claude-3-5-sonnet-20240620',
+                'model' => 'claude-3-5-sonnet-latest',
                 'max_tokens' => 4000,
                 'system' => $system,
                 'messages' => $messages,
-                'temperature' => 0.2
+                'temperature' => $structured ? 0 : 0.7
             ]),
-            'timeout' => 60
+            'timeout' => 120
         ];
 
         return wp_remote_post('https://api.anthropic.com/v1/messages', $args);

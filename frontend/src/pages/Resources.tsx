@@ -37,7 +37,7 @@ const Resources = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-8 tracking-tighter leading-tight"
+                        className="text-4xl md:text-7xl font-black !text-white mb-10 tracking-tighter leading-tight drop-shadow-2xl"
                     >
                         Globally Benchmarked <br />
                         <span className="text-skyBlue font-serif italic text-gradient uppercase block mt-2">Tools for Growth.</span>
@@ -121,7 +121,7 @@ const Resources = () => {
                                         <h3 className="text-xl font-black text-navy mb-6 group-hover:text-teal transition-colors leading-tight" dangerouslySetInnerHTML={{ __html: post.title.rendered }}></h3>
                                         <div className="text-navy/50 text-sm leading-relaxed mb-8 font-medium line-clamp-3" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}></div>
                                         <div className="mt-auto pt-8 border-t border-navy/5 flex items-center justify-between">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-navy group-hover:translate-x-2 transition-transform duration-500">Read_Protocol »</span>
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-navy group-hover:translate-x-2 transition-transform duration-500">Read Article »</span>
                                             <Award size={18} className="text-navy/10 group-hover:text-teal transition-colors" />
                                         </div>
                                     </div>

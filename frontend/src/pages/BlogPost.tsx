@@ -89,7 +89,7 @@ const BlogPost = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-7xl font-black text-white mb-10 tracking-tighter leading-tight"
+                            className="text-4xl md:text-7xl font-black !text-white mb-10 tracking-tighter leading-tight drop-shadow-2xl"
                             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                         />
 

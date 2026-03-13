@@ -49,8 +49,17 @@ export function useEeAnChat() {
         sessionId
       });
 
-      // Safely extract text from response
-      const aiText = response.data?.content?.[0]?.text || "I'm sorry, I'm having trouble processing that right now. Could you try again?";
+      // Extremely safe extraction to prevent "reading property 0 of undefined"
+      let aiText = "I'm sorry, I encountered an unexpected response format.";
+      if (response.data && response.data.content && Array.isArray(response.data.content) && response.data.content.length > 0) {
+        // Safely access the first element and its 'text' property
+        const firstContent = response.data.content[0];
+        if (typeof firstContent === 'object' && firstContent !== null && 'text' in firstContent) {
+          aiText = (firstContent as { text: string }).text;
+        }
+      } else if (response.data && response.data.message) {
+        aiText = response.data.message; // Handle WP_Error message
+      }
 
       const aiMsg: Message = { 
         id: (Date.now() + 1).toString(), 
