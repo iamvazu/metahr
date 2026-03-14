@@ -1,10 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Paperclip, Shield, Download, ChevronRight, FileText, Target, Brain, Users, Sparkles, Search, Layout, ArrowRight } from 'lucide-react';
-import { useEeAnChat } from '../hooks/useEeAnChat';
+import { useEeInChat } from '../hooks/useEeInChat';
 
-export default function EeAnPage() {
-  const { messages, sendMessage, isTyping, analysis, handleFileUpload, uploadProgress, sessionId } = useEeAnChat();
+// Simple markdown bold renderer
+const renderMarkdown = (text: string) => {
+    return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            return <strong key={i}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+    });
+};
+
+export default function EeInPage() {
+  const { messages, sendMessage, isTyping, isAnalyzing, analysis, handleFileUpload, uploadProgress, sessionId } = useEeInChat();
   const [inputText, setInputText] = useState('');
   const [reportType, setReportType] = useState('DiSC');
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -45,7 +55,7 @@ export default function EeAnPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-4xl md:text-6xl font-black tracking-tighter mb-4"
             >
-                <span className="text-skyBlue">Ee-an</span>{" "}
+                <span className="text-skyBlue">Ee-in</span>{" "}
                 <span className="text-white font-serif italic">Digital Twin.</span>
             </motion.h1>
             <motion.p 
@@ -99,14 +109,14 @@ export default function EeAnPage() {
                         <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 border shadow-sm ${
                             msg.role === 'user' ? 'bg-teal border-teal text-white' : 'bg-navy border-navy text-white'
                         }`}>
-                            {msg.role === 'user' ? <Users size={16} /> : <img src="/eean-avatar.png" className="w-6 h-6 invert" alt="" />}
+                            {msg.role === 'user' ? <Users size={16} /> : <img src="/eein-avatar.png" className="w-6 h-6 invert" alt="" />}
                         </div>
                         <div className={`max-w-[85%] p-6 rounded-[2rem] text-[15px] leading-relaxed ${
                             msg.role === 'user' 
                                 ? 'bg-teal text-white rounded-tr-none shadow-xl' 
                                 : 'bg-white text-navy rounded-tl-none border border-gray-100 shadow-sm font-medium'
                         }`}>
-                            {msg.content}
+                            {renderMarkdown(msg.content)}
                         </div>
                     </motion.div>
                 ))}
@@ -114,12 +124,19 @@ export default function EeAnPage() {
                 {isTyping && (
                     <div className="flex gap-5">
                         <div className="w-10 h-10 rounded-2xl bg-navy border border-navy flex items-center justify-center flex-shrink-0 animate-status-beat">
-                            <img src="/eean-avatar.png" className="w-6 h-6 invert" alt="" />
+                            <img src="/eein-avatar.png" className="w-6 h-6 invert" alt="" />
                         </div>
-                        <div className="bg-white p-6 rounded-[2rem] rounded-tl-none border border-gray-100 shadow-sm flex gap-2 items-center">
-                            <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
-                            <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
-                            <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
+                        <div className="bg-white p-6 rounded-[2rem] rounded-tl-none border border-gray-100 shadow-sm flex flex-col gap-3">
+                            <div className="flex gap-2 items-center">
+                                <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
+                                <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
+                                <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
+                            </div>
+                            {isAnalyzing && (
+                                <p className="text-[10px] font-black uppercase tracking-widest text-teal mt-1">
+                                    Ee-in is analyzing and synthesizing the document...
+                                </p>
+                            )}
                         </div>
                     </div>
                 )}
@@ -150,7 +167,7 @@ export default function EeAnPage() {
                         <Paperclip size={24} />
                     </button>
                     <input 
-                        placeholder="Consult Ee-an..."
+                        placeholder="Consult Ee-in..."
                         className="flex-1 bg-transparent border-none focus:outline-none text-[15px] font-bold text-navy"
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}

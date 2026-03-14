@@ -14,8 +14,8 @@ import FAQPage from './pages/FAQPage';
 import Breadcrumbs from './components/Breadcrumbs';
 import FloatingCTA from './components/FloatingCTA';
 import ScrollToTop from './components/ScrollToTop';
-import EeAnPage from './pages/EeAnPage';
-import EeAnWidget from './components/ee-an/EeAnWidget';
+import EeInPage from './pages/EeInPage';
+import EeInWidget from './components/ee-an/EeInWidget';
 
 // Service Pages
 import LeadershipDevelopment from './pages/services/LeadershipDevelopment';
@@ -52,7 +52,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/ee-an" element={<EeAnPage />} />
+            <Route path="/ee-in" element={<EeInPage />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/faq" element={<FAQPage />} />
@@ -71,7 +71,7 @@ function App() {
         </main>
         <Footer />
         <FloatingCTA />
-        <EeAnWidget />
+        <EeInWidget />
       </div>
     </Router>
   );

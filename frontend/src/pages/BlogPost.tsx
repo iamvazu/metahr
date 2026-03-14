@@ -67,7 +67,8 @@ const BlogPost = () => {
                     ) : (
                         <div className="w-full h-full bg-navy/50"></div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy to-white/0"></div>
+                    <div className="absolute inset-0 bg-navy/60 z-0"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent z-0"></div>
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">

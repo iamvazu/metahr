@@ -31,7 +31,7 @@ const Navbar = () => {
             ]
         },
         { name: 'Resources', path: '/resources' },
-        { name: 'Ee-an', path: '/ee-an' },
+        { name: 'Ee-in', path: '/ee-in' },
         { name: 'Contact', path: '/contact' },
     ];
 

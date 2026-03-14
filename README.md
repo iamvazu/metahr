@@ -9,8 +9,8 @@ A state-of-the-art, premium corporate platform for **MetaHR**, built with a **He
 
 ## ✨ Primary Ecosystem Features
 
-### 🧠 Ee-an - The Digital Twin (AI)
-The centerpiece of the platform is **Ee-an**, a digital twin of Ian Kishander. 
+### 🧠 Ee-in - The Digital Twin (AI)
+The centerpiece of the platform is **Ee-in**, a digital twin of Ian Kishander. 
 - **Diagnosis Terminal**: A high-precision chat interface for executive consultation.
 - **Strategic Synthesis**: Users can upload reports (DiSC, Hogan, CliftonStrengths) via PDF or Image.
 - **Interactive Prescription**: A dedicated results engine that translates behavioral data into a "Strategic Roadmap," "Core Capabilities," and "Executive Reflection" questions.
@@ -29,10 +29,10 @@ The centerpiece of the platform is **Ee-an**, a digital twin of Ian Kishander.
 
 ## 🛠️ Technology Stack
 - **Frontend**: React 18, Vite, TypeScript, Framer Motion, Lucide React, PDF.js.
-- **AI Engine**: Anthropic Claude 3.5 Sonnet (Latest model).
+- **AI Engine**: Anthropic Claude (claude-sonnet-4-6).
 - **Backend Architecture**: 
   - **Headless WordPress**: Managed via GoDaddy.
-  - **Custom AI Plugin**: `ee-an-ai-plugin.php` handles all secure AI gateways.
+  - **Custom AI Plugin**: `ee-an-ai-plugin.php` (Internal class `EeIn_AI`) handles all secure AI gateways.
   - **Prompt Engineering**: Persona & Logic externalized in `system-prompt.md` for zero-code persona management.
 - **Assets**: Content-hashed filenames for automatic cache-busting.
 
@@ -40,17 +40,17 @@ The centerpiece of the platform is **Ee-an**, a digital twin of Ian Kishander.
 
 ## 📁 Architecture & Administration
 
-### Managing Ee-an’s Identity
+### Managing Ee-in’s Identity
 The "Digital Brain" of the site can be updated without touching any code:
 1. Open [`system-prompt.md`](./system-prompt.md).
 2. Edit the "Persona & Voice" or "Coaching Question Bank" sections.
-3. Upload the file to the plugin directory on the server. Ee-an will adopt the new logic instantly.
+3. Upload the file to the plugin directory on the server. Ee-in will adopt the new logic instantly.
 
 ### Deployment & Build
 1.  **Build**: Run `npm run build` in the `/frontend` directory.
 2.  **Output**: assets are generated with content hashes (e.g., `meta-logic-[hash].js`) to ensure users always see the latest version on GoDaddy.
-3.  **Plugin**: Ensure the `ee-an-ai-plugin.php` is active in the WordPress admin under **Plugins**.
-4.  **API Key**: Manage the Anthropic API key and test connections directly in **Settings > Ee-an AI**.
+3.  **Plugin**: Ensure the `ee-in-ai-plugin` (class `EeIn_AI`) is active in the WordPress admin under **Plugins**.
+4.  **API Key**: Manage the Anthropic API key and test connections directly in **Settings > Ee-in AI**.
 
 ---
 

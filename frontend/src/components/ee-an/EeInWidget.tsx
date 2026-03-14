@@ -2,10 +2,20 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Maximize2, Send, Paperclip } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useEeAnChat } from '../../hooks/useEeAnChat';
+import { useEeInChat } from '../../hooks/useEeInChat';
 
-export default function EeAnWidget() {
-  const { messages, sendMessage, isTyping } = useEeAnChat();
+// Simple markdown bold renderer
+const renderMarkdown = (text: string) => {
+    return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            return <strong key={i}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+    });
+};
+
+export default function EeInWidget() {
+  const { messages, sendMessage, isTyping } = useEeInChat();
   const [isOpen, setIsOpen] = useState(false);
   const [inputText, setInputText] = useState('');
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -18,8 +28,8 @@ export default function EeAnWidget() {
   // Listen for external toggle event from FloatingCTA
   useEffect(() => {
     const handleToggle = () => setIsOpen(true);
-    window.addEventListener('toggle-eean-chat', handleToggle);
-    return () => window.removeEventListener('toggle-eean-chat', handleToggle);
+    window.addEventListener('toggle-eein-chat', handleToggle);
+    return () => window.removeEventListener('toggle-eein-chat', handleToggle);
   }, []);
 
   const handleSend = () => {
@@ -47,15 +57,15 @@ export default function EeAnWidget() {
                 <div className="relative">
                   <div className="w-12 h-12 rounded-full bg-white/10 p-1.5 border border-white/20">
                     <img 
-                      src="/eean-avatar.png" 
-                      alt="Ee-an" 
+                      src="/eein-avatar.png" 
+                      alt="Ee-in" 
                       className="w-full h-full object-contain"
                     />
                   </div>
                   <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-[#1A2B4A] rounded-full"></div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-base tracking-tight text-skyBlue">Ee-an</h3>
+                  <h3 className="font-bold text-base tracking-tight text-skyBlue">Ee-in</h3>
                   <div className="flex items-center gap-1.5 text-[10px] text-white/60 font-black uppercase tracking-widest mt-0.5">
                     <span className="animate-pulse-soft text-green-400">●</span> Active Now
                   </div>
@@ -63,7 +73,7 @@ export default function EeAnWidget() {
               </div>
               <div className="flex items-center gap-1 relative z-10">
                 <Link 
-                  to="/ee-an" 
+                  to="/ee-in" 
                   onClick={() => setIsOpen(false)}
                   className="p-2 hover:bg-white/10 rounded-xl transition-colors text-white/80 hover:text-white"
                   title="Full screen experience"
@@ -84,10 +94,10 @@ export default function EeAnWidget() {
               {/* Initial Message */}
               <div className="flex gap-2">
                 <div className="w-8 h-8 rounded-full bg-[#1A2B4A] flex items-center justify-center flex-shrink-0 shadow-md">
-                  <img src="/eean-avatar.png" alt="" className="w-5 h-5 invert" />
+                  <img src="/eein-avatar.png" alt="" className="w-5 h-5 invert" />
                 </div>
                 <div className="bg-white p-3 rounded-2xl rounded-tl-none border border-gray-100 shadow-sm text-sm text-[#2F4156] font-medium max-w-[85%] leading-relaxed">
-                  Hi, I'm Ee-an. I'm here to translate complex HR data into strategic results. How can I support your development today?
+                  Hi, I'm Ee-in. I'm here to translate complex HR data into strategic results. How can I support your development today?
                 </div>
               </div>
 
@@ -100,7 +110,7 @@ export default function EeAnWidget() {
                       {msg.role === 'user' ? (
                         <div className="text-white text-[10px] font-bold">ME</div>
                       ) : (
-                        <img src="/eean-avatar.png" alt="" className="w-5 h-5 invert" />
+                        <img src="/eein-avatar.png" alt="" className="w-5 h-5 invert" />
                       )}
                     </div>
                     <div className={`p-3 rounded-2xl text-sm leading-relaxed max-w-[85%] ${
@@ -108,7 +118,7 @@ export default function EeAnWidget() {
                         ? 'bg-[#0E7C7B] text-white rounded-tr-none' 
                         : 'bg-white text-[#2F4156] rounded-tl-none border border-gray-100 shadow-sm font-medium'
                     }`}>
-                      {msg.content}
+                      {renderMarkdown(msg.content)}
                     </div>
                 </div>
               ))}
@@ -116,7 +126,7 @@ export default function EeAnWidget() {
               {isTyping && (
                 <div className="flex gap-2">
                   <div className="w-8 h-8 rounded-full bg-[#1A2B4A] flex items-center justify-center flex-shrink-0 animate-status-beat">
-                    <img src="/eean-avatar.png" alt="" className="w-5 h-5 invert" />
+                    <img src="/eein-avatar.png" alt="" className="w-5 h-5 invert" />
                   </div>
                   <div className="bg-white p-3 rounded-2xl rounded-tl-none border border-gray-100 shadow-sm flex gap-1.5 items-center">
                     <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1.5 h-1.5 bg-[#0E7C7B] rounded-full"></motion.div>
@@ -152,7 +162,7 @@ export default function EeAnWidget() {
               </div>
               <div className="flex flex-col gap-2 mt-4 text-center">
                 <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest leading-tight">
-                  Ee-an is AI and can make mistakes.
+                  Ee-in is AI and can make mistakes.
                 </p>
                 <div className="flex gap-2 justify-center">
                   <div className="w-1 h-1 bg-green-500 rounded-full"></div>

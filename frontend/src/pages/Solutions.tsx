@@ -184,8 +184,8 @@ const Solutions = () => {
             <div className="bg-white">
                 <section className="container mx-auto px-6 py-40">
                     <div className="text-center mb-40">
-                        <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Ecosystem.Module // Strategic_Offerings</span>
-                        <h2 className="text-5xl md:text-8xl font-black text-navy mb-12 tracking-tighter leading-[0.9]">
+                        {/* Ecosystem.Module // Strategic_Offerings removed */}
+                        <h2 className="text-5xl md:text-8xl font-black text-navy mb-12 tracking-tighter leading-none">
                             Our Core <br />
                             <span className="text-skyBlue font-serif italic text-gradient uppercase">Services.</span>
                         </h2>
@@ -206,7 +206,6 @@ const Solutions = () => {
                                     <Award size={40} />
                                 </div>
                                 <div>
-                                    <span className="text-teal font-black tracking-[0.4em] uppercase text-[10px] block mb-1">PROT_01</span>
                                     <h3 className="text-2xl font-black text-navy uppercase tracking-widest">Leadership Development</h3>
                                 </div>
                             </div>
@@ -261,7 +260,6 @@ const Solutions = () => {
                                     <Users size={40} />
                                 </div>
                                 <div>
-                                    <span className="text-navy/40 font-black tracking-[0.4em] uppercase text-[10px] block mb-1">PROT_02</span>
                                     <h3 className="text-2xl font-black text-navy uppercase tracking-widest">Team Development</h3>
                                 </div>
                             </div>
@@ -316,7 +314,6 @@ const Solutions = () => {
                                     <Briefcase size={40} />
                                 </div>
                                 <div>
-                                    <span className="text-teal font-black tracking-[0.4em] uppercase text-[10px] block mb-1">PROT_03</span>
                                     <h3 className="text-2xl font-black text-navy uppercase tracking-widest">Executive Coaching</h3>
                                 </div>
                             </div>
@@ -370,7 +367,6 @@ const Solutions = () => {
                                     <TrendingUp size={40} />
                                 </div>
                                 <div>
-                                    <span className="text-navy/40 font-black tracking-[0.4em] uppercase text-[10px] block mb-1">PROT_04</span>
                                     <h3 className="text-2xl font-black text-navy uppercase tracking-widest">High-Potential Development</h3>
                                 </div>
                             </div>
@@ -424,7 +420,6 @@ const Solutions = () => {
                                     <Settings size={40} />
                                 </div>
                                 <div>
-                                    <span className="text-teal font-black tracking-[0.4em] uppercase text-[10px] block mb-1">PROT_05</span>
                                     <h3 className="text-2xl font-black text-navy uppercase tracking-widest">Organizational Effectiveness</h3>
                                 </div>
                             </div>

@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name: MetaHR Ee-an AI
- * Description: Backend proxy for Ee-an (Ian Kishander's Digital Twin). Handles Anthropic API calls with Vision support.
+ * Plugin Name: MetaHR Ee-in AI
+ * Description: Backend proxy for Ee-in (Ian Kishander's Digital Twin). Handles Anthropic API calls with Vision support.
  * Version: 1.1.0
  * Author: MetaHR
  */
 
 if (!defined('ABSPATH')) exit;
 
-class EeAn_AI {
+class EeIn_AI {
     private $api_key;
-    private $namespace = 'ee-an/v1';
+    private $namespace = 'ee-in/v1';
 
     public function __construct() {
         $this->api_key = get_option('ee_an_anthropic_api_key');
@@ -105,13 +105,22 @@ class EeAn_AI {
                 return new WP_Error('empty_file', "The uploaded file appears to be empty or contains no readable text. If this is a scanned PDF, please try uploading a clear photo of the report instead.", ['status' => 400]);
             }
 
-            $prompt = "Act as Ee-an, the CEO of MetaHR. Analyze this $report_type report. 
-            Your goal is to provide a 'Strategic HR Prescription'. 
-            Return ONLY a valid JSON object. No other text.";
+            $prompt = "You are Ee-in, the digital twin of Ian Kishander. Analyze this {$report_type} report.
+            Synthesize the findings into Ian's 'Prescription' framework. 
+            Use Ian's signature terminology: bold, sharp, and transformative.
+            
+            You MUST return a JSON object with these EXACT keys (nothing else):
+            - personality_archetype: Ian's signature naming for their style
+            - primary_strength: The #1 thing they should leverage
+            - growth_trap: Their most dangerous blindspot or limitation
+            - coaching_question: One sharp, Ian-style question to trigger transformation
+            
+            Return ONLY the valid JSON object. No conversational filler or surrounding text.";
 
             $messages = [];
             if (strpos($file_type, 'image/') !== false) {
-                $base64_data = str_replace(['data:' . $file_type . ';base64,', ' '], ['', '+'], $content);
+                // Ensure base64 is clean
+                $base64_data = preg_replace('#^data:image/[^;]+;base64,#', '', $content);
                 $messages[] = [
                     'role' => 'user',
                     'content' => [
@@ -148,11 +157,20 @@ class EeAn_AI {
             }
 
             $text_response = $data['content'][0]['text'] ?? '';
-            preg_match('/\{.*\}/s', $text_response, $matches);
-            $json_res = json_decode($matches[0] ?? '{}', true);
+            
+            // Safer JSON extraction
+            $json_start = strpos($text_response, '{');
+            $json_end = strrpos($text_response, '}');
+            
+            if ($json_start !== false && $json_end !== false) {
+                $json_string = substr($text_response, $json_start, $json_end - $json_start + 1);
+                $json_res = json_decode($json_string, true);
+            } else {
+                $json_res = null;
+            }
 
-            if (empty($json_res) || count($json_res) < 2) {
-                 return new WP_Error('parsing_failed', "AI response could not be formatted correctly.", ['status' => 500, 'raw' => $text_response]);
+            if (!$json_res || !isset($json_res['personality_archetype'])) {
+                 return new WP_Error('parsing_failed', "Synthesis Interrupted: AI response could not be formatted into the Prescription framework. Raw: " . substr($text_response, 0, 100), ['status' => 500]);
             }
 
             return rest_ensure_response(['status' => 'success', 'data' => $json_res]);
@@ -197,7 +215,7 @@ class EeAn_AI {
     }
 
     public function add_settings_page() {
-        add_options_page('Ee-an AI Settings', 'Ee-an AI', 'manage_options', 'ee-an-ai', [$this, 'settings_html']);
+        add_options_page('Ee-in AI Settings', 'Ee-in AI', 'manage_options', 'ee-in-ai', [$this, 'settings_html']);
     }
 
     public function register_settings() {
@@ -233,7 +251,7 @@ class EeAn_AI {
         }
         ?>
         <div class="wrap">
-            <h1>Ee-an AI Settings</h1>
+            <h1>Ee-in AI Settings</h1>
             <?php echo $test_result; ?>
             <form method="post" action="options.php">
                 <?php settings_fields('ee_an_settings'); ?>
@@ -256,4 +274,4 @@ class EeAn_AI {
     }
 }
 
-new EeAn_AI();
+new EeIn_AI();

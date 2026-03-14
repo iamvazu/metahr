@@ -102,7 +102,7 @@ const Blog = () => {
                                     <h3 className="text-xl font-black text-navy mb-6 group-hover:text-teal transition-colors leading-tight" dangerouslySetInnerHTML={{ __html: post.title.rendered }}></h3>
                                     <div className="text-navy/50 text-sm leading-relaxed mb-8 font-medium line-clamp-3" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}></div>
                                     <div className="mt-auto pt-8 border-t border-navy/5 flex items-center justify-between">
-                                        <span className="text-[10px] font-black uppercase tracking-widest text-navy group-hover:translate-x-2 transition-transform duration-500">Read_Protocol »</span>
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-navy group-hover:translate-x-2 transition-transform duration-500">Read Article »</span>
                                         <Award size={18} className="text-navy/10 group-hover:text-teal transition-colors" />
                                     </div>
                                 </div>

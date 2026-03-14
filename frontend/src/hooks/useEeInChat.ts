@@ -19,20 +19,21 @@ interface AnalysisData {
   coaching_question: string;
 }
 
-const WP_API_BASE = 'https://metahr.co.in/wp-json/ee-an/v1';
+const WP_API_BASE = 'https://metahr.co.in/wp-json/ee-in/v1';
 
-export function useEeAnChat() {
+export function useEeInChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysis, setAnalysis] = useState<AnalysisData | null>(null);
   const [sessionId, setSessionId] = useState<string>('');
   const [uploadProgress, setUploadProgress] = useState(0);
 
   useEffect(() => {
-    let storedId = localStorage.getItem('eean_session_id');
+    let storedId = localStorage.getItem('eein_session_id');
     if (!storedId) {
       storedId = `sn_${Math.random().toString(36).substr(2, 9)}`;
-      localStorage.setItem('eean_session_id', storedId);
+      localStorage.setItem('eein_session_id', storedId);
     }
     setSessionId(storedId);
   }, []);
@@ -49,16 +50,14 @@ export function useEeAnChat() {
         sessionId
       });
 
-      // Extremely safe extraction to prevent "reading property 0 of undefined"
       let aiText = "I'm sorry, I encountered an unexpected response format.";
       if (response.data && response.data.content && Array.isArray(response.data.content) && response.data.content.length > 0) {
-        // Safely access the first element and its 'text' property
         const firstContent = response.data.content[0];
         if (typeof firstContent === 'object' && firstContent !== null && 'text' in firstContent) {
           aiText = (firstContent as { text: string }).text;
         }
       } else if (response.data && response.data.message) {
-        aiText = response.data.message; // Handle WP_Error message
+        aiText = response.data.message;
       }
 
       const aiMsg: Message = { 
@@ -81,7 +80,11 @@ export function useEeAnChat() {
   };
 
   const handleFileUpload = async (file: File, type: string) => {
+    const userMsg: Message = { id: Date.now().toString(), role: 'user', content: `[Uploaded ${type} Report: ${file.name}]` };
+    setMessages(prev => [...prev, userMsg]);
+    
     setIsTyping(true);
+    setIsAnalyzing(true);
     setUploadProgress(10);
 
     try {
@@ -92,7 +95,7 @@ export function useEeAnChat() {
         content = await extractTextFromPDF(file);
         
         if (!content.trim()) {
-           throw new Error("This PDF appears to be a scan or image. Ee-an needs a text-searchable PDF or a direct photo/screenshot of the report.");
+           throw new Error("This PDF appears to be a scan or image. Ee-in needs a text-searchable PDF or a direct photo/screenshot of the report.");
         }
       } else if (file.type.startsWith('image/')) {
         setUploadProgress(30);
@@ -111,7 +114,6 @@ export function useEeAnChat() {
       setUploadProgress(90);
       setAnalysis(response.data.data);
       
-      // Add a system-like message to the chat
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
         role: 'assistant',
@@ -128,6 +130,7 @@ export function useEeAnChat() {
       }]);
     } finally {
       setIsTyping(false);
+      setIsAnalyzing(false);
       setUploadProgress(0);
     }
   };
@@ -167,6 +170,7 @@ export function useEeAnChat() {
     messages,
     sendMessage,
     isTyping,
+    isAnalyzing,
     analysis,
     handleFileUpload,
     uploadProgress,

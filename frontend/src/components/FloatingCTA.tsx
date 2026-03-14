@@ -18,9 +18,9 @@ const FloatingCTA = () => {
         return () => window.removeEventListener('scroll', toggleVisibility);
     }, []);
 
-    const toggleEeAn = () => {
+    const toggleEeIn = () => {
         setIsExpanded(false);
-        window.dispatchEvent(new CustomEvent('toggle-eean-chat'));
+        window.dispatchEvent(new CustomEvent('toggle-eein-chat'));
     };
 
     const actions = [
@@ -39,8 +39,8 @@ const FloatingCTA = () => {
         },
         {
             icon: <Bot size={20} />,
-            label: "Ee-an AI Chat",
-            onClick: toggleEeAn,
+            label: "Ee-in AI Chat",
+            onClick: toggleEeIn,
             color: "bg-navy"
         }
     ];

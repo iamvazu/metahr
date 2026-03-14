@@ -26,13 +26,7 @@ const Resources = () => {
                 </div>
 
                 <div className="container mx-auto px-6 relative z-20 text-center">
-                    <motion.span
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block"
-                    >
-                        Intelligence_Feed // LEARNING_ASSETS
-                    </motion.span>
+                    {/* Intelligence_Feed // LEARNING_ASSETS removed */}
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -65,7 +59,7 @@ const Resources = () => {
                 <div className="mb-40">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                         <div>
-                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Intelligence_Feed // LATEST_THINKING</span>
+                            {/* Intelligence_Feed // LATEST_THINKING removed */}
                             <h2 className="text-4xl md:text-6xl font-black text-navy tracking-tighter leading-tight">Global Leadership <br /><span className="text-teal font-serif italic bg-gradient-to-r from-teal to-skyBlue bg-clip-text text-transparent uppercase">Insights.</span></h2>
                         </div>
                         <a href="https://9z4.7b6.myftpupload.com/wp-admin/edit.php" target="_blank" rel="noreferrer" className="inline-flex items-center space-x-3 text-navy/40 hover:text-teal transition-colors group">
@@ -139,7 +133,7 @@ const Resources = () => {
                 <div className="bg-navy rounded-[5rem] p-16 md:p-32 text-white relative overflow-hidden mb-40 ring-1 ring-white/10">
                     <div className="relative z-10 grid lg:grid-cols-2 gap-24 items-center">
                         <div>
-                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Partnership.Models // ENGAGEMENT_MATRIX</span>
+                            {/* Partnership.Models // ENGAGEMENT_MATRIX removed */}
                             <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-tighter leading-none">How We <br /><span className="text-teal font-serif italic uppercase">Partner.</span></h2>
                             <p className="text-white/40 text-xl font-light mb-16 max-w-xl leading-relaxed">
                                 We offer flexible engagement models designed to meet your team where they are, whether global or hyper-local.
@@ -185,7 +179,7 @@ const Resources = () => {
                 {/* Credentials Section */}
                 <div className="bg-white text-center">
                     <div className="max-w-5xl mx-auto">
-                        <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-10 block">Benchmarked_Wisdom // CREDENTIALS</span>
+                        {/* Benchmarked_Wisdom // CREDENTIALS removed */}
                         <h2 className="text-4xl md:text-7xl font-black text-navy mb-16 tracking-tighter leading-none">Professional <br /><span className="text-teal font-serif italic uppercase text-gradient">Accreditations.</span></h2>
                         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
                             {credentials.map((cred, i) => (
