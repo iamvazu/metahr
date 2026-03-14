@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Post } from './usePosts';
+import type { Post } from './usePosts';
 
 const WP_SINGLE_POST_API_URL = 'https://metahr.co.in/wp-json/wp/v2/posts?_embed&slug=';
 
