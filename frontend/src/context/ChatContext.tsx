@@ -27,6 +27,8 @@ interface ChatContextType {
   handleFileUpload: (file: File, type: string) => Promise<void>;
   uploadProgress: number;
   sessionId: string;
+  extractedText: string;
+  fileName: string;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -40,6 +42,8 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [analysis, setAnalysis] = useState<AnalysisData | null>(null);
   const [sessionId, setSessionId] = useState<string>('');
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [extractedText, setExtractedText] = useState('');
+  const [fileName, setFileName] = useState('');
 
   useEffect(() => {
     let storedId = localStorage.getItem('eein_session_id');
@@ -136,6 +140,8 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       setUploadProgress(90);
       setAnalysis(response.data.data);
+      setExtractedText(content);
+      setFileName(file.name);
       
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
@@ -198,7 +204,9 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
       analysis,
       handleFileUpload,
       uploadProgress,
-      sessionId
+      sessionId,
+      extractedText,
+      fileName
     }}>
       {children}
     </ChatContext.Provider>

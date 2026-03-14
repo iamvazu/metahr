@@ -6,6 +6,9 @@ import axios from 'axios';
 interface LeadCaptureProps {
   sessionId: string;
   analysis: any;
+  messages?: any[];
+  extractedText?: string;
+  fileName?: string;
   title?: string;
   subtitle?: string;
   onSuccess?: () => void;
@@ -17,6 +20,9 @@ const WP_API_BASE = 'https://metahr.co.in/wp-json/ee-in/v1';
 export const LeadCapture: React.FC<LeadCaptureProps> = ({ 
   sessionId, 
   analysis, 
+  messages,
+  extractedText,
+  fileName,
   title = "Partner_Logic_Initiation",
   subtitle = "Lock in your leadership roadmap.",
   onSuccess,
@@ -41,7 +47,10 @@ export const LeadCapture: React.FC<LeadCaptureProps> = ({
       await axios.post(`${WP_API_BASE}/save-lead`, {
         ...formData,
         sessionId,
-        analysis
+        analysis,
+        messages,
+        extractedText,
+        fileName
       });
       setStatus('success');
       localStorage.setItem(`lead_captured_${sessionId}`, 'true');

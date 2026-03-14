@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Paperclip, Shield, Download, ChevronRight, FileText, Target, Brain, Users, Sparkles, Search, Layout, Share2, Copy, Check, MessageSquare } from 'lucide-react';
+import { Send, Paperclip, Shield, Download, ChevronRight, FileText, Target, Brain, Users, Sparkles, Search, Layout, Share2, Copy, Check } from 'lucide-react';
 import { useEeInChat } from '../hooks/useEeInChat';
 import { LeadCapture } from '../components/leads/LeadCapture';
 import axios from 'axios';
@@ -20,7 +20,7 @@ const renderMarkdown = (text: string) => {
 
 export default function EeInPage() {
   const { sessionId: urlSessionId } = useParams();
-  const { messages, sendMessage, isTyping, isAnalyzing, analysis: liveAnalysis, handleFileUpload, uploadProgress, sessionId: currentSessionId } = useEeInChat();
+  const { messages, sendMessage, isTyping, isAnalyzing, analysis: liveAnalysis, handleFileUpload, uploadProgress, sessionId: currentSessionId, extractedText, fileName } = useEeInChat();
   
   const [inputText, setInputText] = useState('');
   const [reportType, setReportType] = useState('DiSC');
@@ -125,21 +125,30 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
       {/* Navbar Visibility Guard */}
       <div className="bg-navy pt-32 pb-12 mb-12">
         <div className="container mx-auto px-6">
-            <motion.h1 
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-4xl md:text-6xl font-black tracking-tighter mb-4"
+                className="flex flex-col gap-2 mb-8"
             >
-                <span className="text-skyBlue">Ee-in</span>{" "}
-                <span className="text-white font-serif italic">Digital Twin.</span>
-            </motion.h1>
+                <div className="flex items-center gap-4">
+                    <h1 className="text-4xl md:text-8xl font-black tracking-tighter text-skyBlue">
+                        Ee-in
+                    </h1>
+                    <span className="bg-skyBlue text-navy text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-md mb-2">
+                        BETA
+                    </span>
+                </div>
+                <h2 className="text-2xl md:text-5xl font-serif italic text-white leading-tight">
+                    Digital Twin of Ian Kishander
+                </h2>
+            </motion.div>
             <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-beige/60 text-xl font-medium max-w-2xl"
+                className="text-beige/60 text-lg md:text-xl font-medium max-w-3xl leading-relaxed"
             >
-                {urlSessionId ? "Shared Leadership Prescription Analysis." : "Upload your reports for a high-precision leadership prescription."}
+                High-fidelity leadership synthesis. Upload your DiSC, Hogan, or CliftonStrengths reports to receive a precision-engineered prescription for your leadership trajectory.
             </motion.p>
         </div>
       </div>
@@ -365,6 +374,9 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                                         <LeadCapture 
                                             sessionId={activeSessionId} 
                                             analysis={analysis}
+                                            messages={messages}
+                                            extractedText={extractedText}
+                                            fileName={fileName}
                                             title={unlockAction ? `Unlock_${unlockAction.toUpperCase()}_Access` : undefined}
                                             subtitle={unlockAction ? "Provide your details to capture high-yield results." : undefined}
                                             onSuccess={() => {

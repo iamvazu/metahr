@@ -22,6 +22,70 @@ class EeIn_AI {
         // Admin UI for Leads
         add_filter('manage_metahr_lead_posts_columns', [$this, 'set_lead_columns']);
         add_action('manage_metahr_lead_posts_custom_column', [$this, 'fill_lead_columns'], 10, 2);
+        add_action('add_meta_boxes', [$this, 'add_lead_meta_boxes']);
+    }
+
+    public function add_lead_meta_boxes() {
+        add_meta_box('metahr_lead_details', 'Lead Details', [$this, 'render_lead_details_box'], 'metahr_lead', 'normal', 'high');
+        add_meta_box('metahr_lead_chat', 'Chat History', [$this, 'render_chat_history_box'], 'metahr_lead', 'normal', 'default');
+        add_meta_box('metahr_lead_report', 'Extracted Report Content', [$this, 'render_report_content_box'], 'metahr_lead', 'normal', 'default');
+    }
+
+    public function render_lead_details_box($post) {
+        $phone = get_post_meta($post->ID, '_lead_phone', true);
+        $company = get_post_meta($post->ID, '_lead_company', true);
+        $message = get_post_meta($post->ID, '_lead_message', true);
+        $session = get_post_meta($post->ID, '_lead_session_id', true);
+        $analysis = json_decode(get_post_meta($post->ID, '_lead_analysis', true), true);
+
+        echo '<div style="padding:10px;">';
+        echo '<p><strong>Phone:</strong> ' . esc_html($phone) . '</p>';
+        echo '<p><strong>Company:</strong> ' . esc_html($company) . '</p>';
+        echo '<p><strong>User Message:</strong><br>' . nl2br(esc_html($message)) . '</p>';
+        echo '<p><strong>Session ID:</strong> ' . esc_html($session) . '</p>';
+        
+        if ($analysis) {
+            echo '<hr><h3>AI Prescription</h3>';
+            foreach ($analysis as $key => $val) {
+                echo '<p><strong>' . esc_html(ucwords(str_replace('_', ' ', $key))) . ':</strong><br>' . esc_html($val) . '</p>';
+            }
+        }
+        echo '</div>';
+    }
+
+    public function render_chat_history_box($post) {
+        $chat_json = get_post_meta($post->ID, '_lead_chat_history', true);
+        $messages = json_decode($chat_json, true);
+
+        if (!$messages) {
+            echo '<p>No chat history recorded.</p>';
+            return;
+        }
+
+        echo '<div style="max-height:400px; overflow-y:auto; background:#f9f9f9; padding:15px; border:1px solid #ddd; border-radius:5px;">';
+        foreach ($messages as $msg) {
+            $role = ucwords($msg['role']);
+            $bg = $msg['role'] === 'user' ? '#e1f5fe' : '#fff';
+            echo '<div style="margin-bottom:15px; padding:10px; background:' . $bg . '; border-radius:10px; border:1px solid #eee;">';
+            echo '<strong>' . $role . ':</strong><br>' . nl2br(esc_html($msg['content']));
+            echo '</div>';
+        }
+        echo '</div>';
+    }
+
+    public function render_report_content_box($post) {
+        $content = get_post_meta($post->ID, '_lead_raw_content', true);
+        $file_name = get_post_meta($post->ID, '_lead_file_name', true);
+
+        if (!$content) {
+            echo '<p>No document content uploaded.</p>';
+            return;
+        }
+
+        echo '<p><strong>Original Filename:</strong> ' . esc_html($file_name) . '</p>';
+        echo '<div style="max-height:400px; overflow-y:auto; background:#fff; padding:15px; border:1px solid #ccc; font-family:monospace; font-size:12px; white-space:pre-wrap;">';
+        echo esc_html($content);
+        echo '</div>';
     }
 
     public function register_lead_cpt() {
@@ -231,6 +295,9 @@ class EeIn_AI {
         $message_text = sanitize_textarea_field($params['message'] ?? '');
         $session_id = sanitize_text_field($params['sessionId'] ?? '');
         $analysis = $params['analysis'] ?? null;
+        $messages = $params['messages'] ?? null;
+        $extracted_text = $params['extractedText'] ?? '';
+        $file_name = sanitize_text_field($params['fileName'] ?? '');
 
         if (empty($name) || empty($email)) {
             return new WP_Error('missing_fields', 'Name and Email are required.', ['status' => 400]);
@@ -251,6 +318,13 @@ class EeIn_AI {
             if ($analysis) {
                 update_post_meta($lead_id, '_lead_analysis', json_encode($analysis));
             }
+            if ($messages) {
+                update_post_meta($lead_id, '_lead_chat_history', json_encode($messages));
+            }
+            if ($extracted_text) {
+                update_post_meta($lead_id, '_lead_raw_content', $extracted_text);
+                update_post_meta($lead_id, '_lead_file_name', $file_name);
+            }
 
             // Notification Email
             $admin_email = get_option('admin_email');
@@ -261,8 +335,9 @@ class EeIn_AI {
             $message .= "PHONE: $phone\n";
             $message .= "COMPANY: $company\n";
             $message .= "MESSAGE: $message_text\n";
-            $message .= "SESSION: $session_id\n\n";
-            $message .= "Check the WordPress dashboard for details: " . admin_url('edit.php?post_type=metahr_lead');
+            $message .= "SESSION: $session_id\n";
+            $message .= "FILE UPLOADED: $file_name\n\n";
+            $message .= "Check the WordPress dashboard for details: " . admin_url('post.php?post=' . $lead_id . '&action=edit');
             
             wp_mail($admin_email, $subject, $message);
 
