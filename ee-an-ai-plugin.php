@@ -173,7 +173,7 @@ class EeAn_AI {
                 'content-type' => 'application/json'
             ],
             'body' => json_encode([
-                'model' => 'claude-3-5-sonnet-20241022',
+                'model' => 'claude-3-5-sonnet-latest',
                 'max_tokens' => 4000,
                 'system' => $system,
                 'messages' => $messages,
