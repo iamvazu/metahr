@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Paperclip, Shield, Download, ChevronRight, FileText, Target, Brain, Users, Sparkles, Search, Layout } from 'lucide-react';
 import { useEeInChat } from '../hooks/useEeInChat';
+import { LeadCapture } from '../components/leads/LeadCapture';
 
 // Simple markdown bold renderer
 const renderMarkdown = (text: string) => {
@@ -17,6 +18,7 @@ export default function EeInPage() {
   const { messages, sendMessage, isTyping, isAnalyzing, analysis, handleFileUpload, uploadProgress, sessionId } = useEeInChat();
   const [inputText, setInputText] = useState('');
   const [reportType, setReportType] = useState('DiSC');
+  const [showLeadForm, setShowLeadForm] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -250,17 +252,34 @@ export default function EeInPage() {
                             </div>
                         </div>
 
-                        {/* Executive Reflection */}
+                        {/* Executive Reflection & Lead Capture */}
                         <div className="bg-navy rounded-[4rem] p-12 md:p-16 shadow-2xl text-white relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[120px] -mr-48 -mt-48"></div>
-                            <div className="max-w-4xl relative z-10 mx-auto text-center">
-                                <h4 className="text-[11px] font-black text-teal uppercase tracking-[0.5em] mb-12">Executive_Reflection</h4>
-                                <p className="text-3xl md:text-5xl font-black text-white leading-[1.1] italic tracking-tight mb-16">
-                                    "{analysis.coaching_question}"
-                                </p>
-                                <a href="/contact" className="inline-flex bg-white text-navy px-12 py-6 rounded-3xl font-black uppercase tracking-[0.3em] text-[11px] items-center justify-center gap-4 shadow-2xl hover:bg-teal hover:text-white transition-all transform hover:-translate-y-1">
-                                    Initiate Partner Logic <ChevronRight size={18} />
-                                </a>
+                            <div className="max-w-4xl relative z-10 mx-auto">
+                                {!showLeadForm ? (
+                                    <div className="text-center">
+                                        <h4 className="text-[11px] font-black text-teal uppercase tracking-[0.5em] mb-12">Executive_Reflection</h4>
+                                        <p className="text-3xl md:text-5xl font-black text-white leading-[1.1] italic tracking-tight mb-16">
+                                            "{analysis.coaching_question}"
+                                        </p>
+                                        <button 
+                                            onClick={() => setShowLeadForm(true)}
+                                            className="inline-flex bg-white text-navy px-12 py-6 rounded-3xl font-black uppercase tracking-[0.3em] text-[11px] items-center justify-center gap-4 shadow-2xl hover:bg-teal hover:text-white transition-all transform hover:-translate-y-1"
+                                        >
+                                            Initiate Partner Logic <ChevronRight size={18} />
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="max-w-xl mx-auto">
+                                        <LeadCapture 
+                                            sessionId={sessionId} 
+                                            analysis={analysis}
+                                            onSuccess={() => {
+                                                // Handle success if needed
+                                            }}
+                                        />
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </motion.div>

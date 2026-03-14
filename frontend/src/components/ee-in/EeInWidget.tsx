@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Maximize2, Send, Paperclip } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useEeInChat } from '../../hooks/useEeInChat';
+import { LeadCapture } from '../leads/LeadCapture';
+import { ChevronRight } from 'lucide-react';
 
 // Simple markdown bold renderer
 const renderMarkdown = (text: string) => {
@@ -15,9 +17,10 @@ const renderMarkdown = (text: string) => {
 };
 
 export default function EeInWidget() {
-  const { messages, sendMessage, isTyping } = useEeInChat();
+  const { messages, sendMessage, isTyping, analysis, sessionId } = useEeInChat();
   const [isOpen, setIsOpen] = useState(false);
   const [inputText, setInputText] = useState('');
+  const [showLeadForm, setShowLeadForm] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom
@@ -112,6 +115,38 @@ export default function EeInWidget() {
                     </div>
                 </div>
               ))}
+
+              {analysis && !showLeadForm && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-[#1A2B4A]/5 border border-[#1A2B4A]/10 rounded-2xl p-4 text-center mt-4"
+                >
+                  <p className="text-[10px] font-black text-[#1A2B4A] uppercase tracking-widest mb-3">Analysis_Ready // Next_Step</p>
+                  <button 
+                    onClick={() => setShowLeadForm(true)}
+                    className="w-full bg-[#1A2B4A] text-white py-3 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#0E7C7B] transition-all"
+                  >
+                    Initiate Partner Logic <ChevronRight size={14} />
+                  </button>
+                </motion.div>
+              )}
+
+              {showLeadForm && (
+                <div className="mt-4">
+                  <LeadCapture 
+                    sessionId={sessionId}
+                    analysis={analysis}
+                    onSuccess={() => setShowLeadForm(false)}
+                  />
+                  <button 
+                    onClick={() => setShowLeadForm(false)}
+                    className="w-full text-[9px] font-black text-gray-400 uppercase tracking-widest mt-3 hover:text-navy transition-colors"
+                  >
+                    Back to Chat
+                  </button>
+                </div>
+              )}
 
               {isTyping && (
                 <div className="flex gap-2">

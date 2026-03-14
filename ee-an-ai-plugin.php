@@ -14,9 +14,40 @@ class EeIn_AI {
 
     public function __construct() {
         $this->api_key = get_option('ee_an_anthropic_api_key');
+        add_action('init', [$this, 'register_lead_cpt']);
         add_action('rest_api_init', [$this, 'register_routes']);
         add_action('admin_menu', [$this, 'add_settings_page']);
         add_action('admin_init', [$this, 'register_settings']);
+        
+        // Admin UI for Leads
+        add_filter('manage_metahr_lead_posts_columns', [$this, 'set_lead_columns']);
+        add_action('manage_metahr_lead_posts_custom_column', [$this, 'fill_lead_columns'], 10, 2);
+    }
+
+    public function register_lead_cpt() {
+        register_post_type('metahr_lead', [
+            'labels' => [
+                'name' => 'Ee-in Leads',
+                'singular_name' => 'Lead',
+                'add_new' => 'Add New Lead',
+                'add_new_item' => 'Add New Lead',
+                'edit_item' => 'Edit Lead',
+                'new_item' => 'New Lead',
+                'view_item' => 'View Lead',
+                'search_items' => 'Search Leads',
+                'not_found' => 'No Leads found',
+                'all_items' => 'All Leads',
+            ],
+            'public' => false,
+            'show_ui' => true,
+            'capability_type' => 'post',
+            'hierarchical' => false,
+            'supports' => ['title', 'custom-fields'],
+            'menu_icon' => 'dashicons-id-alt',
+            'rewrite' => false,
+            'query_var' => true,
+            'show_in_rest' => false
+        ]);
     }
 
     public function register_routes() {
@@ -35,6 +66,12 @@ class EeIn_AI {
         register_rest_route($this->namespace, '/ping', [
             'methods' => 'GET',
             'callback' => function() { return rest_ensure_response(['status' => 'online', 'key_configured' => !empty($this->api_key)]); },
+            'permission_callback' => '__return_true'
+        ]);
+
+        register_rest_route($this->namespace, '/save-lead', [
+            'methods' => 'POST',
+            'callback' => [$this, 'handle_save_lead'],
             'permission_callback' => '__return_true'
         ]);
 
@@ -176,6 +213,66 @@ class EeIn_AI {
             return rest_ensure_response(['status' => 'success', 'data' => $json_res]);
         } catch (Exception $e) {
             return new WP_Error('internal_error', 'Plugin crash during analysis: ' . $e->getMessage(), ['status' => 500]);
+        }
+    }
+
+    public function handle_save_lead($request) {
+        $params = $request->get_json_params();
+        $name = sanitize_text_field($params['name'] ?? '');
+        $email = sanitize_email($params['email'] ?? '');
+        $session_id = sanitize_text_field($params['sessionId'] ?? '');
+        $analysis = $params['analysis'] ?? null;
+
+        if (empty($name) || empty($email)) {
+            return new WP_Error('missing_fields', 'Name and Email are required.', ['status' => 400]);
+        }
+
+        $lead_id = wp_insert_post([
+            'post_title' => $name . ' (' . $email . ')',
+            'post_type' => 'metahr_lead',
+            'post_status' => 'publish'
+        ]);
+
+        if ($lead_id) {
+            update_post_meta($lead_id, '_lead_email', $email);
+            update_post_meta($lead_id, '_lead_session_id', $session_id);
+            if ($analysis) {
+                update_post_meta($lead_id, '_lead_analysis', json_encode($analysis));
+            }
+
+            // Notification Email
+            $admin_email = get_option('admin_email');
+            $subject = "🔥 New Ee-in Lead: $name";
+            $message = "You have a new lead from Ee-in AI.\n\n";
+            $message .= "Name: $name\n";
+            $message .= "Email: $email\n";
+            $message .= "Session: $session_id\n\n";
+            $message .= "Check the WordPress dashboard for details: " . admin_url('edit.php?post_type=metahr_lead');
+            
+            wp_mail($admin_email, $subject, $message);
+
+            return rest_ensure_response(['status' => 'success', 'lead_id' => $lead_id]);
+        }
+
+        return new WP_Error('save_failed', 'Could not save lead to database.', ['status' => 500]);
+    }
+
+    public function set_lead_columns($columns) {
+        unset($columns['date']);
+        $columns['email'] = 'Email';
+        $columns['session_id'] = 'Session ID';
+        $columns['date'] = 'Date';
+        return $columns;
+    }
+
+    public function fill_lead_columns($column, $post_id) {
+        switch ($column) {
+            case 'email':
+                echo esc_html(get_post_meta($post_id, '_lead_email', true));
+                break;
+            case 'session_id':
+                echo esc_html(get_post_meta($post_id, '_lead_session_id', true));
+                break;
         }
     }
 
