@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Paperclip, Shield, Download, ChevronRight, FileText, Target, Brain, Users, Sparkles, Search, Layout, ArrowRight } from 'lucide-react';
+import { Send, Paperclip, Shield, Download, ChevronRight, FileText, Target, Brain, Users, Sparkles, Search, Layout } from 'lucide-react';
 import { useEeInChat } from '../hooks/useEeInChat';
 
 // Simple markdown bold renderer
@@ -226,56 +226,41 @@ export default function EeInPage() {
                                     <Download size={24} />
                                 </button>
                             </div>
-                            <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-10 italic leading-[0.9] text-navy">"The Strategic <span className="text-teal">Anchor.</span>"</h3>
-                            <p className="text-2xl md:text-3xl font-bold text-navy/90 leading-tight max-w-5xl border-l-[8px] border-teal pl-10 py-2">
-                                {analysis.prescription}
+                            <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 italic leading-[0.9] text-navy transition-all">
+                                "{analysis.personality_archetype}"
+                            </h3>
+                            <p className="text-xs font-mono font-bold text-teal uppercase tracking-[0.4em] mb-10 pl-1">
+                                Archetype // LEADERSHIP_DNA
                             </p>
                         </div>
 
                         {/* Impact Zones */}
                         <div className="grid md:grid-cols-2 gap-10">
-                            <div className="bg-[#EFFFFA] rounded-[3.5rem] p-10 border border-teal/10 shadow-lg shadow-teal/5">
-                                <h4 className="flex items-center gap-2 text-[11px] font-black text-teal uppercase tracking-[0.4em] mb-6">
-                                    <Target size={14} /> Core_Capability
+                            <div className="bg-[#EFFFFA] rounded-[3.5rem] p-12 border border-teal/10 shadow-lg shadow-teal/5">
+                                <h4 className="flex items-center gap-2 text-[11px] font-black text-teal uppercase tracking-[0.4em] mb-10">
+                                    <Target size={14} /> Strategic_Lever
                                 </h4>
-                                <p className="text-2xl font-black text-teal-900 leading-tight">{analysis.strength_zone}</p>
+                                <p className="text-2xl font-black text-navy leading-tight">{analysis.primary_strength}</p>
                             </div>
-                            <div className="bg-[#FFF9F2] rounded-[3.5rem] p-10 border border-amber-100 shadow-lg shadow-amber-500/5">
-                                <h4 className="flex items-center gap-2 text-[11px] font-black text-amber-600 uppercase tracking-[0.4em] mb-6">
-                                    <Shield size={14} /> Critical_Risk
+                            <div className="bg-[#FFF9F2] rounded-[3.5rem] p-12 border border-amber-100 shadow-lg shadow-amber-500/5">
+                                <h4 className="flex items-center gap-2 text-[11px] font-black text-amber-600 uppercase tracking-[0.4em] mb-10">
+                                    <Shield size={14} /> The_Growth_Trap
                                 </h4>
-                                <p className="text-2xl font-black text-amber-900 leading-tight">{analysis.watch_out_zone}</p>
+                                <p className="text-2xl font-black text-navy leading-tight">{analysis.growth_trap}</p>
                             </div>
                         </div>
 
-                        {/* Action Roadmap */}
+                        {/* Executive Reflection */}
                         <div className="bg-navy rounded-[4rem] p-12 md:p-16 shadow-2xl text-white relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[120px] -mr-48 -mt-48"></div>
-                            <div className="grid lg:grid-cols-2 gap-16 relative z-10">
-                                <div>
-                                    <h4 className="text-[11px] font-black text-white/30 uppercase tracking-[0.5em] mb-10">Evolution_Roadmap</h4>
-                                    <div className="space-y-6">
-                                        {analysis.next_actions.map((step, i) => (
-                                            <div key={i} className="flex gap-6 items-start">
-                                                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-teal font-black text-sm flex-shrink-0">
-                                                    {i+1}
-                                                </div>
-                                                <p className="text-lg font-bold text-white/90 leading-relaxed pt-2">{step}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="bg-white/5 backdrop-blur-3xl rounded-[3rem] p-10 border border-white/10 flex flex-col justify-between">
-                                    <div>
-                                        <h4 className="text-[11px] font-black text-teal uppercase tracking-[0.4em] mb-8">Executive_Reflection</h4>
-                                        <p className="text-3xl font-black text-white leading-tight italic tracking-tight">
-                                            "{analysis.coaching_question}"
-                                        </p>
-                                    </div>
-                                    <a href="/contact" className="mt-12 bg-white text-navy w-full py-6 rounded-3xl font-black uppercase tracking-[0.3em] text-[11px] flex items-center justify-center gap-4 shadow-2xl hover:bg-teal hover:text-white transition-all transform hover:-translate-y-1">
-                                        Initiate Partner Logic <ChevronRight size={18} />
-                                    </a>
-                                </div>
+                            <div className="max-w-4xl relative z-10 mx-auto text-center">
+                                <h4 className="text-[11px] font-black text-teal uppercase tracking-[0.5em] mb-12">Executive_Reflection</h4>
+                                <p className="text-3xl md:text-5xl font-black text-white leading-[1.1] italic tracking-tight mb-16">
+                                    "{analysis.coaching_question}"
+                                </p>
+                                <a href="/contact" className="inline-flex bg-white text-navy px-12 py-6 rounded-3xl font-black uppercase tracking-[0.3em] text-[11px] items-center justify-center gap-4 shadow-2xl hover:bg-teal hover:text-white transition-all transform hover:-translate-y-1">
+                                    Initiate Partner Logic <ChevronRight size={18} />
+                                </a>
                             </div>
                         </div>
                     </motion.div>

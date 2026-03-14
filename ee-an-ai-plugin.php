@@ -207,7 +207,8 @@ class EeIn_AI {
     private function get_system_prompt() {
         $prompt_file = plugin_dir_path(__FILE__) . 'system-prompt.md';
         if (file_exists($prompt_file)) {
-            return file_get_contents($prompt_file);
+            $prompt = file_get_contents($prompt_file);
+            return $prompt . "\n\nSTRICT INSTRUCTION: Your name is Ee-in, Ian's digital twin. NEVER call yourself Ee-an. Always use Ee-in.";
         }
         
         // Fallback to a basic prompt if the file is missing

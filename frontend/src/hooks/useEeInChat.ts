@@ -12,10 +12,9 @@ interface Message {
 }
 
 interface AnalysisData {
-  prescription: string;
-  strength_zone: string;
-  watch_out_zone: string;
-  next_actions: string[];
+  personality_archetype: string;
+  primary_strength: string;
+  growth_trap: string;
   coaching_question: string;
 }
 
@@ -36,6 +35,17 @@ export function useEeInChat() {
       localStorage.setItem('eein_session_id', storedId);
     }
     setSessionId(storedId);
+
+    // Initial Greeting
+    if (messages.length === 0) {
+      setMessages([
+        {
+          id: 'welcome',
+          role: 'assistant',
+          content: "Hey — good to have you here. I'm Ee-in, Ian Kishander's digital twin from MetaHR. Whether you're working through a leadership challenge, trying to unlock your team's potential, or just figuring out your next move as a leader — this is the right place to start that conversation. So tell me — **what's on your mind?**"
+        }
+      ]);
+    }
   }, []);
 
   const sendMessage = async (content: string) => {

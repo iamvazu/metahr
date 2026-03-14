@@ -15,7 +15,7 @@ import Breadcrumbs from './components/Breadcrumbs';
 import FloatingCTA from './components/FloatingCTA';
 import ScrollToTop from './components/ScrollToTop';
 import EeInPage from './pages/EeInPage';
-import EeInWidget from './components/ee-an/EeInWidget';
+import EeInWidget from './components/ee-in/EeInWidget';
 
 // Service Pages
 import LeadershipDevelopment from './pages/services/LeadershipDevelopment';
