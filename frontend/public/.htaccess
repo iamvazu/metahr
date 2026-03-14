@@ -14,5 +14,6 @@
   RewriteRule ^ - [L]
 
   # Otherwise, send everything else to index.html for React Router
-  RewriteRule ^ index.html [L]
+  # Note: Using /index.html with a leading slash is often required on GoDaddy
+  RewriteRule ^(.*)$ /index.html [L]
 </IfModule>
