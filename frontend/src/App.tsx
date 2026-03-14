@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -25,7 +26,7 @@ import ExecutiveCoaching from './pages/services/ExecutiveCoaching';
 import IndividualDevelopment from './pages/services/IndividualDevelopment';
 import OrganizationalEffectiveness from './pages/services/OrganizationalEffectiveness';
 
-import { useEffect } from 'react';
+import { ChatProvider } from './context/ChatContext';
 
 function App() {
   useEffect(() => {
@@ -38,42 +39,44 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-beige selection:bg-teal selection:text-white">
-        <Navbar />
-        <Breadcrumbs />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/solutions" element={<Solutions />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/ee-in" element={<EeInPage />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/faq" element={<FAQPage />} />
-            {/* Services Pages */}
-            <Route path="/services/leadership-development" element={<LeadershipDevelopment />} />
-            <Route path="/services/team-development" element={<TeamDevelopment />} />
-            <Route path="/services/executive-coaching" element={<ExecutiveCoaching />} />
-            <Route path="/services/individual-development" element={<IndividualDevelopment />} />
-            <Route path="/services/organizational-effectiveness" element={<OrganizationalEffectiveness />} />
-            {/* PSEO - Location Pages */}
-            <Route path="/locations/:city" element={<LocationService />} />
-            <Route path="/locations/:city/:service" element={<LocationService />} />
-            {/* Fallback for individual blog posts at root level */}
-            <Route path="/:slug" element={<BlogPost />} />
-          </Routes>
-        </main>
-        <Footer />
-        <FloatingCTA />
-        <EeInWidget />
-      </div>
-    </Router>
+    <ChatProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen bg-beige selection:bg-teal selection:text-white">
+          <Navbar />
+          <Breadcrumbs />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/solutions" element={<Solutions />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/ee-in" element={<EeInPage />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/faq" element={<FAQPage />} />
+              {/* Services Pages */}
+              <Route path="/services/leadership-development" element={<LeadershipDevelopment />} />
+              <Route path="/services/team-development" element={<TeamDevelopment />} />
+              <Route path="/services/executive-coaching" element={<ExecutiveCoaching />} />
+              <Route path="/services/individual-development" element={<IndividualDevelopment />} />
+              <Route path="/services/organizational-effectiveness" element={<OrganizationalEffectiveness />} />
+              {/* PSEO - Location Pages */}
+              <Route path="/locations/:city" element={<LocationService />} />
+              <Route path="/locations/:city/:service" element={<LocationService />} />
+              {/* Fallback for individual blog posts at root level */}
+              <Route path="/:slug" element={<BlogPost />} />
+            </Routes>
+          </main>
+          <Footer />
+          <FloatingCTA />
+          <EeInWidget />
+        </div>
+      </Router>
+    </ChatProvider>
   );
 }
 

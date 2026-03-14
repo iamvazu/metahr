@@ -91,16 +91,6 @@ export default function EeInWidget() {
 
             {/* Chat Body */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50 hide-scrollbar">
-              {/* Initial Message */}
-              <div className="flex gap-2">
-                <div className="w-8 h-8 rounded-full bg-[#1A2B4A] flex items-center justify-center flex-shrink-0 shadow-md">
-                  <img src="/eein-avatar.png" alt="" className="w-5 h-5 invert" />
-                </div>
-                <div className="bg-white p-3 rounded-2xl rounded-tl-none border border-gray-100 shadow-sm text-sm text-[#2F4156] font-medium max-w-[85%] leading-relaxed">
-                  Hi, I'm Ee-in. I'm here to translate complex HR data into strategic results. How can I support your development today?
-                </div>
-              </div>
-
               {/* Message History */}
               {messages.map((msg) => (
                 <div key={msg.id} className={`flex gap-2 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
