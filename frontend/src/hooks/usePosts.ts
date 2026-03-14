@@ -37,12 +37,19 @@ export const usePosts = () => {
         const fetchPosts = async () => {
             try {
                 const response = await axios.get(WP_POSTS_API_URL);
-                setPosts(response.data);
+                if (Array.isArray(response.data)) {
+                    setPosts(response.data);
+                } else {
+                    console.error('API did not return an array:', response.data);
+                    setPosts([]);
+                    setError('Invalid data received from server');
+                }
                 setLoading(false);
             } catch (err) {
                 console.error('Error fetching posts:', err);
                 setError('Failed to fetch posts');
                 setLoading(false);
+                setPosts([]); // Ensure posts is still an array
             }
         };
 

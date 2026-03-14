@@ -66,7 +66,7 @@ const Blog = () => {
                                 <div className="bg-navy/5 w-1/2 h-4 rounded-full"></div>
                             </div>
                         ))
-                    ) : (posts && posts.length > 0) ? (
+                    ) : (Array.isArray(posts) && posts.length > 0) ? (
                         posts.map((post) => (
 
                             <Link
