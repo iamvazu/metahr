@@ -77,36 +77,50 @@ add_action( 'rest_api_init', function() {
 function metahr_handle_contact_submission( $request ) {
     $params = $request->get_params();
     
-    $full_name = sanitize_text_field( $params['name'] );
-    $email     = sanitize_email( $params['email'] );
-    $company   = sanitize_text_field( $params['company'] );
-    $phone     = sanitize_text_field( $params['phone'] );
-    $message   = sanitize_textarea_field( $params['message'] );
+    $full_name         = sanitize_text_field( $params['name'] );
+    $email             = sanitize_email( $params['email'] );
+    $company           = sanitize_text_field( $params['company'] );
+    $phone             = sanitize_text_field( $params['phone'] );
+    $solution          = sanitize_text_field( $params['solution'] );
+    $preferred_contact = sanitize_text_field( $params['preferredContact'] );
+    $preferred_time    = sanitize_text_field( $params['preferredTime'] );
+    $message           = sanitize_textarea_field( $params['message'] );
 
     if ( empty( $full_name ) || empty( $email ) ) {
         return array( 'success' => false, 'message' => 'Validation failed: Name and Email are required.' );
     }
+
+    // Prepare content string
+    $content = "COMPANY: $company\n";
+    $content .= "EMAIL: $email\n";
+    $content .= "PHONE: $phone\n";
+    $content .= "SOLUTION INTEREST: $solution\n";
+    $content .= "PREFERRED CONTACT: $preferred_contact\n";
+    $content .= "PROPOSED TIME: $preferred_time\n\n";
+    $content .= "MESSAGE: $message";
 
     // Save Lead to DB
     $lead_id = wp_insert_post( array(
         'post_title'   => "New Lead: " . $full_name,
         'post_type'    => 'leads',
         'post_status'  => 'publish',
-        'post_content' => "Company: $company\nEmail: $email\nPhone: $phone\n\nNotes: $message",
+        'post_content' => $content,
     ));
 
     if ( is_wp_error( $lead_id ) ) {
          return array( 'success' => false, 'message' => 'Database error.' );
     }
 
-    // Meta Data
+    // Meta Data for easy filtering/sorting
     update_post_meta( $lead_id, '_lead_email', $email );
     update_post_meta( $lead_id, '_lead_company', $company );
+    update_post_meta( $lead_id, '_lead_solution', $solution );
+    update_post_meta( $lead_id, '_lead_preferred_time', $preferred_time );
 
     // Email Notifications (Using standard WP Mail)
     $to_admin = get_option( 'admin_email' );
-    $subject_admin = "MetaHR Lead: $full_name";
-    $body_admin = "New inquiry from $full_name at $company.\nEmail: $email\nPhone: $phone\nMessage: $message";
+    $subject_admin = "🔥 New MetaHR Lead: $full_name ($company)";
+    $body_admin = "You have a new strategic inquiry.\n\n" . $content;
     wp_mail( $to_admin, $subject_admin, $body_admin );
 
     // Auto-Reply to the Lead

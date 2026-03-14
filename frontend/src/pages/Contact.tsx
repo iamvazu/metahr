@@ -11,6 +11,8 @@ const Contact = () => {
         company: '',
         phone: '',
         solution: '',
+        preferredContact: 'Email',
+        preferredTime: '',
         message: ''
     });
 
@@ -39,7 +41,7 @@ const Contact = () => {
             if (response.data.success) {
                 setStatus('success');
                 setResponseMessage(response.data.message);
-                setFormData({ name: '', email: '', company: '', phone: '', solution: '', message: '' });
+                setFormData({ name: '', email: '', company: '', phone: '', solution: '', preferredContact: 'Email', preferredTime: '', message: '' });
             } else {
                 setStatus('error');
                 setResponseMessage('Something went wrong. Please try again.');
@@ -122,7 +124,6 @@ const Contact = () => {
                         viewport={{ once: true }}
                     >
                         <div className="mb-24">
-                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-8 block">Engaging_Models // PROTOCOLS</span>
                             <h2 className="text-4xl font-black text-navy mb-12 tracking-tight">Flexible Engagement <span className="text-teal font-serif italic">Formats.</span></h2>
                             <div className="grid gap-6">
                                 {engagementFormats.map((format, i) => (
@@ -141,7 +142,6 @@ const Contact = () => {
                         </div>
 
                         <div>
-                            <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-8 block">Data.Connections // TERMINALS</span>
                             <h2 className="text-4xl font-black text-navy mb-12 tracking-tight">Connect <span className="text-teal font-serif italic">Directly.</span></h2>
                             <div className="grid sm:grid-cols-2 gap-6">
                                 {contactInfo.map((info, i) => (
@@ -259,8 +259,36 @@ const Contact = () => {
                                                 />
                                             </div>
                                         </div>
+                                        <div className="grid md:grid-cols-2 gap-8">
+                                            <div className="space-y-3">
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Preferred Communication</label>
+                                                <select
+                                                    name="preferredContact"
+                                                    required
+                                                    value={formData.preferredContact}
+                                                    onChange={handleChange}
+                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-navy transition-all text-white font-medium appearance-none cursor-pointer"
+                                                >
+                                                    <option value="Email" className="bg-navy">Email</option>
+                                                    <option value="Text / WhatsApp" className="bg-navy">Text / WhatsApp</option>
+                                                </select>
+                                            </div>
+                                            <div className="space-y-3">
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Preferred Date & Time</label>
+                                                <input
+                                                    type="datetime-local"
+                                                    name="preferredTime"
+                                                    required
+                                                    value={formData.preferredTime}
+                                                    onChange={handleChange}
+                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/30 font-medium color-scheme-dark"
+                                                    style={{ colorScheme: 'dark' }}
+                                                />
+                                            </div>
+                                        </div>
+
                                         <div className="space-y-3">
-                                            <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Solution_Inquiry</label>
+                                            <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Solution Inquiry</label>
                                             <select
                                                 name="solution"
                                                 required

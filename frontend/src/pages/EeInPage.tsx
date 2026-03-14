@@ -51,11 +51,11 @@ export default function EeInPage() {
     }
   }, [urlSessionId]);
 
-  // Auto-scroll to bottom of chat — only when there are actual messages
+  // Auto-scroll to bottom of chat — only when there are actual user interactions (length > 1)
   useEffect(() => {
-    if (messages.length === 0) return;
+    if (messages.length <= 1) return;
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isTyping]);
+  }, [messages.length, isTyping]);
 
   const handleSend = () => {
     if (!inputText.trim()) return;
@@ -140,18 +140,18 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
             >
                 <div className="flex items-center gap-4">
                     <motion.h1
-                        className="text-5xl md:text-8xl font-serif italic font-bold mb-2 drop-shadow-2xl text-skyBlue drop-shadow-[0_0_20px_rgba(135,206,235,0.85)] leading-tight"
+                        className="text-5xl md:text-8xl font-serif italic font-bold mb-2 text-[#87CEEB] drop-shadow-[0_0_25px_rgba(135,206,235,0.95)] leading-tight"
                         animate={{ scale: [1, 1.04, 1, 1.04, 1] }}
                         transition={{ duration: 1.5, ease: 'easeInOut', repeat: Infinity, repeatDelay: 2.5 }}
                     >
-                        Ee-in <Sparkles className="inline-block text-skyBlue animate-pulse ml-2 md:ml-4 drop-shadow-[0_0_12px_rgba(135,206,235,0.9)]" size={48} />
+                        Ee-in <Sparkles className="inline-block text-[#87CEEB] animate-pulse ml-2 md:ml-4 drop-shadow-[0_0_15px_rgba(135,206,235,0.9)]" size={48} />
                     </motion.h1>
                     <span className="bg-skyBlue text-navy text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-md mb-4 self-center shadow-[0_0_16px_rgba(135,206,235,0.7)]">
                         BETA
                     </span>
                 </div>
                 <motion.h2
-                    className="text-2xl md:text-4xl font-serif italic leading-tight text-skyBlue drop-shadow-[0_0_12px_rgba(135,206,235,0.7)]"
+                    className="text-2xl md:text-4xl font-serif italic leading-tight text-[#87CEEB]/90 drop-shadow-[0_0_15px_rgba(135,206,235,0.8)]"
                     animate={{ opacity: [0.8, 1, 0.8] }}
                     transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
                 >
