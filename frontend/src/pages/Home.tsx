@@ -174,7 +174,7 @@ const Home = () => {
                                     transition={{ duration: 2, repeat: Infinity }}
                                     className="flex items-center gap-2"
                                 >
-                                    Launch AI Analysis <Sparkles size={16} className="text-teal group-hover/ai:text-white" />
+                                    Launch Ee-in AI Analysis <Sparkles size={16} className="text-teal group-hover/ai:text-white" />
                                 </motion.span>
                             </Link>
                         </motion.div>

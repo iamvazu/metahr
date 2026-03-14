@@ -123,7 +123,21 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col pb-24">
       {/* Navbar Visibility Guard */}
-      <div className="bg-navy pt-32 pb-12 mb-12 relative overflow-hidden">
+      {/* Heartbeat pulsating border around hero */}
+      <div className="bg-navy pt-32 pb-12 mb-12 relative overflow-hidden animate-hero-heartbeat">
+        {/* Pulsating border overlay */}
+        <motion.div
+          className="absolute inset-0 z-10 pointer-events-none rounded-none"
+          animate={{
+            boxShadow: [
+              'inset 0 0 0 2px rgba(135, 206, 235, 0.0), 0 0 0 0px rgba(135, 206, 235, 0)',
+              'inset 0 0 0 3px rgba(135, 206, 235, 0.7), 0 0 40px 8px rgba(135, 206, 235, 0.15)',
+              'inset 0 0 0 2px rgba(135, 206, 235, 0.0), 0 0 0 0px rgba(135, 206, 235, 0)',
+            ]
+          }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+        />
+
         {/* Abstract Background for Depth */}
         <div className="absolute inset-0 z-0 opacity-20">
           <img src="/eein_hero_bg.png" alt="" className="w-full h-full object-cover" />
@@ -137,16 +151,24 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                 className="flex flex-col gap-2 mb-8"
             >
                 <div className="flex items-center gap-4">
-                    <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white mb-2 drop-shadow-2xl">
-                        Ee-in <Sparkles className="inline-block text-teal animate-pulse ml-2 md:ml-4" size={48} />
-                    </h1>
-                    <span className="bg-skyBlue text-navy text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-md mb-4 self-center">
+                    <motion.h1
+                        className="text-5xl md:text-8xl font-black tracking-tight mb-2 drop-shadow-2xl text-skyBlue drop-shadow-[0_0_30px_rgba(135,206,235,0.9)]"
+                        animate={{ scale: [1, 1.03, 1, 1.03, 1] }}
+                        transition={{ duration: 1.5, ease: 'easeInOut', repeat: Infinity, repeatDelay: 2 }}
+                    >
+                        Ee-in <Sparkles className="inline-block text-skyBlue animate-pulse ml-2 md:ml-4 drop-shadow-[0_0_12px_rgba(135,206,235,0.9)]" size={48} />
+                    </motion.h1>
+                    <span className="bg-skyBlue text-navy text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-md mb-4 self-center shadow-[0_0_16px_rgba(135,206,235,0.7)]">
                         BETA
                     </span>
                 </div>
-                <h2 className="text-2xl md:text-5xl font-serif italic text-white/90 leading-tight drop-shadow-xl">
+                <motion.h2
+                    className="text-2xl md:text-5xl font-serif italic leading-tight text-skyBlue drop-shadow-[0_0_16px_rgba(135,206,235,0.7)]"
+                    animate={{ opacity: [0.85, 1, 0.85] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                >
                     Digital Twin of Ian Kishander
-                </h2>
+                </motion.h2>
             </motion.div>
             <motion.p 
                 initial={{ opacity: 0, y: 20 }}
