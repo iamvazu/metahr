@@ -167,15 +167,25 @@ const Home = () => {
                         >
                             <Link 
                                 to="/ee-in" 
-                                className="text-white bg-white/10 backdrop-blur-md px-8 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] hover:bg-teal hover:text-white transition-all shadow-2xl border border-white/20 text-center w-full sm:w-auto flex justify-center items-center group/ai"
+                                className="relative overflow-hidden px-8 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] text-white text-center w-full sm:w-auto flex justify-center items-center group/ai shadow-2xl"
+                                style={{ background: 'linear-gradient(135deg, #C9922A 0%, #e8a83a 50%, #C9922A 100%)', boxShadow: '0 0 24px rgba(201,146,42,0.45), 0 8px 32px rgba(201,146,42,0.25)' }}
                             >
-                                <motion.span
-                                    animate={{ opacity: [0.7, 1, 0.7] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                    className="flex items-center gap-2"
-                                >
-                                    Launch Ee-in AI Analysis <Sparkles size={16} className="text-teal group-hover/ai:text-white" />
-                                </motion.span>
+                                {/* Shimmer sweep */}
+                                <motion.div
+                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
+                                    animate={{ x: ['-120%', '120%'] }}
+                                    transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: 'easeInOut' }}
+                                />
+                                {/* Glow pulse */}
+                                <motion.div
+                                    className="absolute inset-0 rounded-full pointer-events-none"
+                                    animate={{ boxShadow: ['0 0 0px rgba(201,146,42,0)', '0 0 28px rgba(201,146,42,0.6)', '0 0 0px rgba(201,146,42,0)'] }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                                />
+                                <span className="relative z-10 flex items-center gap-2">
+                                    <Sparkles size={16} className="text-white/90" />
+                                    Launch Ee-in AI Analysis
+                                </span>
                             </Link>
                         </motion.div>
                     </motion.div>

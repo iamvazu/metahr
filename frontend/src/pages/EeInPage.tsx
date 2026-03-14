@@ -140,9 +140,9 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
             >
                 <div className="flex items-center gap-4">
                     <motion.h1
-                        className="text-5xl md:text-8xl font-black tracking-tight mb-2 drop-shadow-2xl text-skyBlue drop-shadow-[0_0_30px_rgba(135,206,235,0.9)]"
-                        animate={{ scale: [1, 1.03, 1, 1.03, 1] }}
-                        transition={{ duration: 1.5, ease: 'easeInOut', repeat: Infinity, repeatDelay: 2 }}
+                        className="text-5xl md:text-8xl font-serif italic font-bold mb-2 drop-shadow-2xl text-skyBlue drop-shadow-[0_0_20px_rgba(135,206,235,0.85)] leading-tight"
+                        animate={{ scale: [1, 1.04, 1, 1.04, 1] }}
+                        transition={{ duration: 1.5, ease: 'easeInOut', repeat: Infinity, repeatDelay: 2.5 }}
                     >
                         Ee-in <Sparkles className="inline-block text-skyBlue animate-pulse ml-2 md:ml-4 drop-shadow-[0_0_12px_rgba(135,206,235,0.9)]" size={48} />
                     </motion.h1>
@@ -151,8 +151,8 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                     </span>
                 </div>
                 <motion.h2
-                    className="text-2xl md:text-5xl font-serif italic leading-tight text-skyBlue drop-shadow-[0_0_16px_rgba(135,206,235,0.7)]"
-                    animate={{ opacity: [0.85, 1, 0.85] }}
+                    className="text-2xl md:text-4xl font-serif italic leading-tight text-skyBlue drop-shadow-[0_0_12px_rgba(135,206,235,0.7)]"
+                    animate={{ opacity: [0.8, 1, 0.8] }}
                     transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
                 >
                     Digital Twin of Ian Kishander
@@ -173,8 +173,9 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
         
         {/* TOP: Diagnosis Terminal (Only show if not a shared link) */}
         {!urlSessionId && (
-            <section className="bg-white rounded-[3rem] shadow-xl shadow-navy/5 border border-gray-100 overflow-hidden flex flex-col h-[650px]">
-                <div className="p-8 border-b border-gray-50 flex items-center justify-between">
+            <section className="bg-white rounded-[2.5rem] shadow-xl shadow-navy/8 border-2 border-navy/10 overflow-hidden flex flex-col h-[680px]">
+                {/* Terminal Header */}
+                <div className="px-8 py-5 border-b-2 border-navy/8 bg-navy/[0.03] flex items-center justify-between">
                     <h2 className="font-black text-navy text-[11px] uppercase tracking-[0.3em] flex items-center gap-3">
                     <Layout size={18} className="text-teal" /> Diagnosis_Terminal
                     </h2>
@@ -191,7 +192,8 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                     )}
                 </div>
 
-                <div className="flex-1 overflow-y-auto p-10 space-y-10 bg-gray-50/20 hide-scrollbar">
+                {/* Chat Messages Area */}
+                <div className="flex-1 overflow-y-auto p-8 space-y-8 bg-gray-50/30 hide-scrollbar">
                     {messages.length === 0 && (
                         <div className="h-full flex flex-col items-center justify-center text-center px-6 opacity-40">
                             <Sparkles size={40} className="text-teal mb-6" />
@@ -243,44 +245,54 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                     <div ref={chatEndRef} />
                 </div>
 
-                <div className="p-8 bg-white border-t border-gray-50">
-                    <div className="flex flex-wrap gap-2 mb-6">
-                        {reportTypes.map((type) => (
-                            <button
-                                key={type.id}
-                                onClick={() => setReportType(type.id)}
-                                className={`flex items-center gap-3 px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all border shadow-sm ${
-                                    reportType === type.id 
-                                        ? 'bg-navy text-white' 
-                                        : 'bg-white text-gray-400 border-gray-100 hover:border-teal/30'
+                {/* Input Zone — clearly bordered */}
+                <div className="border-t-2 border-navy/8 bg-white">
+                    {/* Upload row */}
+                    <div className="px-8 pt-5 pb-3 flex items-center gap-3 border-b border-gray-100">
+                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-400">Upload Report</span>
+                        <div className="flex flex-wrap gap-2">
+                            {reportTypes.map((type) => (
+                                <button
+                                    key={type.id}
+                                    onClick={() => setReportType(type.id)}
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.15em] transition-all border ${
+                                        reportType === type.id 
+                                            ? 'bg-navy text-white border-navy shadow-lg' 
+                                            : 'bg-white text-gray-400 border-gray-200 hover:border-teal/40 hover:text-teal'
+                                    }`}
+                                >
+                                    {type.icon} {type.label}
+                                </button>
+                            ))}
+                        </div>
+                        <input type="file" ref={fileInputRef} onChange={onFileChange} className="hidden" accept=".pdf,image/*" />
+                        <button 
+                            onClick={() => fileInputRef.current?.click()} 
+                            className="ml-auto flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-dashed border-teal/30 text-teal hover:border-teal hover:bg-teal/5 transition-all text-[9px] font-black uppercase tracking-widest"
+                        >
+                            <Paperclip size={14} /> Attach File
+                        </button>
+                    </div>
+                    {/* Text input row */}
+                    <div className="px-8 py-5">
+                        <div className="flex items-center gap-3 px-5 py-3 bg-gray-50 rounded-2xl border-2 border-gray-200 focus-within:border-teal transition-all focus-within:shadow-[0_0_0_3px_rgba(14,124,123,0.1)]">
+                            <input 
+                                placeholder="Ask Ee-in anything about leadership..."
+                                className="flex-1 bg-transparent border-none focus:outline-none text-[14px] font-semibold text-navy placeholder:text-gray-400"
+                                value={inputText}
+                                onChange={(e) => setInputText(e.target.value)}
+                                onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                            />
+                            <button 
+                                onClick={handleSend}
+                                disabled={!inputText.trim()}
+                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 flex items-center gap-2 ${
+                                    inputText.trim() ? 'bg-teal text-white shadow-lg shadow-teal/20 hover:bg-navy' : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                 }`}
                             >
-                                {type.icon} {type.label}
+                                <Send size={14} /> Send
                             </button>
-                        ))}
-                    </div>
-
-                    <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-3xl border-2 border-transparent focus-within:border-teal/20 transition-all">
-                        <input type="file" ref={fileInputRef} onChange={onFileChange} className="hidden" accept=".pdf,image/*" />
-                        <button onClick={() => fileInputRef.current?.click()} className="p-3 text-gray-400 hover:text-teal transition-colors rounded-xl hover:bg-white">
-                            <Paperclip size={24} />
-                        </button>
-                        <input 
-                            placeholder="Consult Ee-in..."
-                            className="flex-1 bg-transparent border-none focus:outline-none text-[15px] font-bold text-navy"
-                            value={inputText}
-                            onChange={(e) => setInputText(e.target.value)}
-                            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                        />
-                        <button 
-                            onClick={handleSend}
-                            disabled={!inputText.trim()}
-                            className={`p-4 rounded-xl shadow-xl transition-all active:scale-95 ${
-                                inputText.trim() ? 'bg-teal text-white' : 'bg-gray-200 text-white cursor-not-allowed'
-                            }`}
-                        >
-                            <Send size={20} />
-                        </button>
+                        </div>
                     </div>
                 </div>
             </section>
