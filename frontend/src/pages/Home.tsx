@@ -167,23 +167,33 @@ const Home = () => {
                         >
                             <Link 
                                 to="/ee-in" 
-                                className="relative overflow-hidden px-8 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] text-white text-center w-full sm:w-auto flex justify-center items-center group/ai shadow-2xl"
-                                style={{ background: 'linear-gradient(135deg, #C9922A 0%, #e8a83a 50%, #C9922A 100%)', boxShadow: '0 0 24px rgba(201,146,42,0.45), 0 8px 32px rgba(201,146,42,0.25)' }}
+                                className="relative group/ai overflow-hidden px-8 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] text-white text-center w-full sm:w-auto flex justify-center items-center shadow-2xl"
                             >
-                                {/* Shimmer sweep */}
+                                {/* Liquid Glass Background */}
+                                <div className="absolute inset-0 bg-[#0A1F2F]/80 backdrop-blur-xl group-hover/ai:bg-teal transition-colors duration-500" />
+                                
+                                {/* Animated Glow Border */}
                                 <motion.div
-                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
-                                    animate={{ x: ['-120%', '120%'] }}
-                                    transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: 'easeInOut' }}
+                                    className="absolute inset-0 rounded-full border border-skyBlue/50"
+                                    animate={{ 
+                                        boxShadow: [
+                                            'inset 0 0 0px rgba(135,206,235,0), 0 0 10px rgba(135,206,235,0.2)',
+                                            'inset 0 0 15px rgba(135,206,235,0.3), 0 0 25px rgba(135,206,235,0.5)',
+                                            'inset 0 0 0px rgba(135,206,235,0), 0 0 10px rgba(135,206,235,0.2)'
+                                        ]
+                                    }}
+                                    transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                                 />
-                                {/* Glow pulse */}
+
+                                {/* Moving Scanner Light */}
                                 <motion.div
-                                    className="absolute inset-0 rounded-full pointer-events-none"
-                                    animate={{ boxShadow: ['0 0 0px rgba(201,146,42,0)', '0 0 28px rgba(201,146,42,0.6)', '0 0 0px rgba(201,146,42,0)'] }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-skyBlue/20 to-transparent -skew-x-12 pointer-events-none"
+                                    animate={{ x: ['-150%', '150%'] }}
+                                    transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1, ease: 'easeInOut' }}
                                 />
-                                <span className="relative z-10 flex items-center gap-2">
-                                    <Sparkles size={16} className="text-white/90" />
+
+                                <span className="relative z-10 flex items-center gap-2 drop-shadow-[0_0_8px_rgba(135,206,235,0.8)]">
+                                    <Sparkles size={16} className="text-skyBlue group-hover/ai:text-white group-hover/ai:rotate-12 transition-all" />
                                     Launch Ee-in AI Analysis
                                 </span>
                             </Link>
