@@ -51,8 +51,9 @@ export default function EeInPage() {
     }
   }, [urlSessionId]);
 
-  // Auto-scroll to bottom of chat
+  // Auto-scroll to bottom of chat — only when there are actual messages
   useEffect(() => {
+    if (messages.length === 0) return;
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
@@ -123,21 +124,8 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col pb-24">
       {/* Navbar Visibility Guard */}
-      {/* Heartbeat pulsating border around hero */}
-      <div className="bg-navy pt-32 pb-12 mb-12 relative overflow-hidden animate-hero-heartbeat">
-        {/* Pulsating border overlay */}
-        <motion.div
-          className="absolute inset-0 z-10 pointer-events-none rounded-none"
-          animate={{
-            boxShadow: [
-              'inset 0 0 0 2px rgba(135, 206, 235, 0.0), 0 0 0 0px rgba(135, 206, 235, 0)',
-              'inset 0 0 0 3px rgba(135, 206, 235, 0.7), 0 0 40px 8px rgba(135, 206, 235, 0.15)',
-              'inset 0 0 0 2px rgba(135, 206, 235, 0.0), 0 0 0 0px rgba(135, 206, 235, 0)',
-            ]
-          }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-        />
-
+      {/* Hero Section */}
+      <div className="bg-navy pt-32 pb-12 mb-12 relative overflow-hidden">
         {/* Abstract Background for Depth */}
         <div className="absolute inset-0 z-0 opacity-20">
           <img src="/eein_hero_bg.png" alt="" className="w-full h-full object-cover" />

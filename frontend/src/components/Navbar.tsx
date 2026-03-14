@@ -70,17 +70,26 @@ const Navbar = () => {
                                         to={link.path}
                                         className={`relative px-4 py-2 rounded-lg border-2 flex items-center gap-2 group overflow-hidden transition-all duration-500
                                             ${scrolled 
-                                                ? 'border-teal/30 bg-teal/5 text-navy hover:bg-teal hover:text-white' 
-                                                : 'border-white/20 bg-white/5 text-white hover:bg-white hover:text-navy'
+                                                ? 'border-[rgba(135,206,235,0.6)] bg-transparent text-[rgb(135,206,235)] hover:bg-[rgba(135,206,235,0.12)] hover:text-[rgb(135,206,235)]' 
+                                                : 'border-[rgba(135,206,235,0.35)] bg-transparent text-[rgb(135,206,235)] hover:bg-[rgba(135,206,235,0.1)] hover:text-white'
                                             }`}
+                                        style={scrolled ? { boxShadow: undefined } : {}}
                                     >
+                                        {/* Sky blue heartbeat glow pulse */}
                                         <motion.div
-                                            animate={{ opacity: [0, 0.4, 0] }}
-                                            transition={{ duration: 2, repeat: Infinity }}
-                                            className="absolute inset-0 bg-teal pointer-events-none"
+                                            animate={{
+                                                boxShadow: [
+                                                    '0 0 0px 0px rgba(135,206,235,0)',
+                                                    '0 0 10px 3px rgba(135,206,235,0.35)',
+                                                    '0 0 0px 0px rgba(135,206,235,0)',
+                                                ],
+                                                opacity: [0, 1, 0],
+                                            }}
+                                            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+                                            className="absolute inset-0 rounded-lg pointer-events-none"
                                         />
-                                        <span className="relative z-10 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
-                                            {link.name} <Sparkles size={12} className="animate-pulse text-skyBlue group-hover:text-current" />
+                                        <span className="relative z-10 text-[10px] font-black uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_6px_rgba(135,206,235,0.9)]">
+                                            {link.name} <Sparkles size={12} className="animate-pulse text-[rgb(135,206,235)]" />
                                         </span>
                                     </Link>
                                 ) : (
