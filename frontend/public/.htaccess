@@ -2,18 +2,20 @@
   RewriteEngine On
   RewriteBase /
 
-  # 1. Capture Shared Results for Bots/Crawlers
-  # If the request is for a results page, send it to the meta-tag injector
+  # 1. Capture Shared Results for Bots/Crawlers (SEO Gateway)
   RewriteCond %{REQUEST_URI} ^/ee-in/results/([a-zA-Z0-9_-]+)$
+  RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|LinkedInBot|WhatsApp|Twitterbot|Slackbot|Discordbot|TelegramBot|Googlebot|Bingbot) [NC]
   RewriteRule ^ee-in/results/([a-zA-Z0-9_-]+)$ results-meta.php?sessionId=$1 [L,QSA]
 
-  # 2. Standard SPA Routing
-  # If the file or directory exists, serve it directly
+  # 2. If the file exists on the server, serve it directly
+  # This covers all JS, CSS, and Image files
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Otherwise, send everything else to index.html for React Router
-  # Note: Using /index.html with a leading slash is often required on GoDaddy
+  # 3. SPA Fallback (React Router)
+  # IMPORTANT: We only fallback to index.html for "Navigation" paths.
+  # We EXCLUDE actual files (like .js or .css) to prevent "MIME type" errors.
+  RewriteCond %{REQUEST_URI} !^.*\.(js|css|png|jpg|jpeg|gif|svg|ico|json|txt|xml|php)$ [NC]
   RewriteRule ^(.*)$ /index.html [L]
 </IfModule>
