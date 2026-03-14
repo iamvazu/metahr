@@ -1,12 +1,19 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowLeft, Calendar, User, Zap, Share2 } from 'lucide-react';
 import { usePost } from '../hooks/usePost';
 
 const BlogPost = () => {
     const { slug } = useParams<{ slug: string }>();
     const { post, loading, error } = usePost(slug);
+
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
 
     useEffect(() => {
         if (post) {
@@ -55,6 +62,10 @@ const BlogPost = () => {
 
     return (
         <div className="bg-white min-h-screen">
+            <motion.div 
+                className="fixed top-0 left-0 right-0 h-1 bg-teal z-[100]"
+                style={{ scaleX, transformOrigin: "0%" }}
+            />
             {/* Post Hero */}
             <section className="bg-navy pt-40 pb-24 relative overflow-hidden">
                 <div className="absolute inset-0 z-0">
@@ -80,17 +91,15 @@ const BlogPost = () => {
                         >
                             <Link to="/blog" className="text-teal hover:text-white transition-colors flex items-center space-x-2 group">
                                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                                <span className="text-[10px] font-mono font-bold tracking-widest uppercase">Back_to_Feed</span>
+                                <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-white/80">Back_to_Feed</span>
                             </Link>
-                            <span className="w-8 h-px bg-white/20"></span>
-                            <span className="text-white/40 text-[10px] font-mono font-bold tracking-widest uppercase">Post_ID.{post.id}</span>
                         </motion.div>
 
                         <motion.h1 
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-7xl font-black !text-white mb-10 tracking-tighter leading-tight drop-shadow-2xl"
+                            className="text-3xl md:text-5xl font-black !text-white mb-10 tracking-tighter leading-[1.1] drop-shadow-2xl line-clamp-2"
                             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                         />
 
@@ -135,12 +144,12 @@ const BlogPost = () => {
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-beige/30 border border-navy/5 p-10 md:p-12 rounded-[3rem] mb-20 relative overflow-hidden"
+                            className="bg-slate-50 border-l-4 border-teal p-10 md:p-12 rounded-2xl mb-20 relative overflow-hidden shadow-sm"
                         >
-                            <Zap className="text-teal/20 absolute -top-4 -right-4 size-32 rotate-12" />
-                            <h2 className="text-xs font-mono font-bold text-teal uppercase tracking-[0.3em] mb-6 relative z-10">Abstract // EXECUTIVE_SUMMARY</h2>
+                            <Zap className="text-teal/5 absolute -top-4 -right-4 size-32 rotate-12" />
+                            <h2 className="text-[10px] font-mono font-bold text-teal/60 uppercase tracking-[0.3em] mb-6 relative z-10">Abstract // EXECUTIVE_SUMMARY</h2>
                             <div 
-                                className="text-xl md:text-2xl text-navy/70 leading-relaxed font-medium relative z-10 italic font-serif"
+                                className="text-xl md:text-2xl text-navy/80 leading-relaxed font-semibold relative z-10 italic font-serif"
                                 dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                             />
                         </motion.div>

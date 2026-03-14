@@ -122,9 +122,31 @@ function metahr_handle_contact_submission( $request ) {
     );
 }
 
-// 5. Theme Support
+// 5. Theme Support & Media Options
 function metahr_theme_setup() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' ) );
+    add_theme_support( 'customize-selective-refresh-widgets' );
+    add_theme_support( 'responsive-embeds' );
+    add_theme_support( 'editor-styles' );
+    add_theme_support( 'wp-block-styles' );
+    add_theme_support( 'align-wide' );
+    add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 }
 add_action( 'after_setup_theme', 'metahr_theme_setup' );
+
+// 6. Enable SVG Uploads
+function metahr_enable_svg_upload( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter( 'upload_mimes', 'metahr_enable_svg_upload' );
+
+function metahr_fix_svg_display() {
+    echo '<style type="text/css">
+        .attachment-266x266, .thumbnail img { width: 100% !important; height: auto !important; }
+    </style>';
+}
+add_action( 'admin_head', 'metahr_fix_svg_display' );

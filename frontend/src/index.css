@@ -103,3 +103,49 @@ h6 {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
+
+/* Blog Content Custom Typography */
+.blog-content {
+  color: #1A2B4A;
+  line-height: 1.8;
+  font-size: 1.125rem;
+}
+
+.blog-content h1, .blog-content h2, .blog-content h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+  color: #1A2B4A;
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+}
+
+.blog-content strong {
+  color: #1A2B4A;
+  font-weight: 800;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid #567C8D;
+  padding-left: 1.5rem;
+  font-style: italic;
+  color: rgba(47, 65, 86, 0.7);
+  margin: 2rem 0;
+}
+
+.blog-content img {
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  margin: 3rem 0;
+}
+
+.blog-content ul, .blog-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
