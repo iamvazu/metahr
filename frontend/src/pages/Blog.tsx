@@ -86,11 +86,7 @@ const Blog = () => {
                                             <Zap size={48} />
                                         </div>
                                     )}
-                                    <div className="absolute top-6 left-6">
-                                        <span className="px-4 py-1.5 bg-black/60 backdrop-blur-md text-teal text-[9px] font-mono font-bold tracking-widest uppercase rounded-full">
-                                            POST_ID.{post.id}
-                                        </span>
-                                    </div>
+
                                 </div>
                                 <div className="p-10 flex flex-col flex-grow">
                                     <div className="flex items-center space-x-3 mb-6">

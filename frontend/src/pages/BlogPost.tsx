@@ -75,7 +75,7 @@ const BlogPost = () => {
                         <img 
                             src={featuredImage} 
                             alt={post.title.rendered} 
-                            className="w-full h-full object-cover opacity-20 blur-sm scale-110"
+                            className="w-full h-full object-cover opacity-60 scale-105"
                         />
                     ) : (
                         <div className="w-full h-full bg-navy/50"></div>

@@ -36,7 +36,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="fixed w-full z-50 transition-all duration-500 pt-6">
+        <nav className="fixed w-full z-50 transition-all duration-500">
             <div className="container mx-auto px-6 flex justify-center">
                 <motion.div
                     initial={false}

@@ -131,14 +131,14 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                 className="flex flex-col gap-2 mb-8"
             >
                 <div className="flex items-center gap-4">
-                    <h1 className="text-4xl md:text-8xl font-black tracking-tighter text-skyBlue">
+                    <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white mb-2">
                         Ee-in
                     </h1>
-                    <span className="bg-skyBlue text-navy text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-md mb-2">
+                    <span className="bg-skyBlue text-navy text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-md mb-4 self-center">
                         BETA
                     </span>
                 </div>
-                <h2 className="text-2xl md:text-5xl font-serif italic text-white leading-tight">
+                <h2 className="text-2xl md:text-5xl font-serif italic text-white/90 leading-tight">
                     Digital Twin of Ian Kishander
                 </h2>
             </motion.div>
