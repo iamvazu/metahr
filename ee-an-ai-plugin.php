@@ -212,13 +212,24 @@ class EeAn_AI {
                 $test_result = '<div class="error"><p>Connection Failed: ' . $response->get_error_message() . '</p></div>';
             } else {
                 $code = wp_remote_retrieve_response_code($response);
+                $body = wp_remote_retrieve_body($response);
                 if ($code === 200) {
                     $test_result = '<div class="updated"><p>Success! API Key is valid and MetaHR can reach the AI.</p></div>';
                 } else {
-                    $body = wp_remote_retrieve_body($response);
                     $test_result = '<div class="error"><p>API Error (' . $code . '): ' . $body . '</p></div>';
                 }
             }
+        }
+
+        if (isset($_POST['list_models'])) {
+            $response = wp_remote_get('https://api.anthropic.com/v1/models', [
+                'headers' => [
+                    'x-api-key' => trim(get_option('ee_an_anthropic_api_key')),
+                    'anthropic-version' => '2023-06-01'
+                ]
+            ]);
+            $body = wp_remote_retrieve_body($response);
+            $test_result .= '<div class="updated" style="background: #f0f0f0;"><p><strong>Available Models:</strong></p><pre>' . esc_html($body) . '</pre></div>';
         }
         ?>
         <div class="wrap">
@@ -236,8 +247,9 @@ class EeAn_AI {
             </form>
             <hr>
             <h2>Diagnostic Test</h2>
-            <form method="post" action="">
+            <form method="post" action="" style="display: flex; gap: 10px;">
                 <input type="submit" name="test_api" class="button button-secondary" value="Verify AI Connection">
+                <input type="submit" name="list_models" class="button" value="List Available Models">
             </form>
         </div>
         <?php
