@@ -16,15 +16,17 @@ const BlogPost = () => {
     });
 
     useEffect(() => {
-        if (post) {
+        if (post?.title?.rendered) {
             // Clean HTML tags from title for document.title
             const cleanTitle = post.title.rendered.replace(/<\/?[^>]+(>|$)/g, "");
             document.title = `${cleanTitle} | MetaHR Insights`;
             
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) {
-                const cleanExcerpt = post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "");
-                metaDesc.setAttribute("content", cleanExcerpt.substring(0, 160));
+            if (post?.excerpt?.rendered) {
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) {
+                    const cleanExcerpt = post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "");
+                    metaDesc.setAttribute("content", cleanExcerpt.substring(0, 160));
+                }
             }
         }
     }, [post]);
@@ -100,7 +102,7 @@ const BlogPost = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
                             className="text-3xl md:text-5xl font-black !text-white mb-10 tracking-tighter leading-[1.1] drop-shadow-2xl line-clamp-2"
-                            dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                            dangerouslySetInnerHTML={{ __html: post?.title?.rendered || 'Insight' }}
                         />
 
                         <motion.div 
@@ -150,7 +152,7 @@ const BlogPost = () => {
                             <h2 className="text-[10px] font-mono font-bold text-teal/60 uppercase tracking-[0.3em] mb-6 relative z-10">Abstract // EXECUTIVE_SUMMARY</h2>
                             <div 
                                 className="text-xl md:text-2xl text-navy/80 leading-relaxed font-semibold relative z-10 italic font-serif"
-                                dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+                                dangerouslySetInnerHTML={{ __html: post?.excerpt?.rendered || '' }}
                             />
                         </motion.div>
 
@@ -166,7 +168,7 @@ const BlogPost = () => {
                                 prose-a:text-teal prose-a:no-underline hover:prose-a:underline
                                 prose-img:rounded-[2.5rem] prose-img:shadow-2xl
                                 prose-blockquote:border-l-4 prose-blockquote:border-teal prose-blockquote:bg-slate-50 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:font-serif prose-blockquote:text-navy/60"
-                            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+                            dangerouslySetInnerHTML={{ __html: post?.content?.rendered || 'Content not found.' }}
                         />
 
                         {/* Share & Support */}

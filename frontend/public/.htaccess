@@ -14,8 +14,8 @@
   RewriteRule ^ - [L]
 
   # 3. SPA Fallback (React Router)
-  # IMPORTANT: We only fallback to index.html for "Navigation" paths.
-  # We EXCLUDE actual files (like .js or .css) to prevent "MIME type" errors.
+  # EXCLUDE actual files, PHP, and WordPress core paths
+  RewriteCond %{REQUEST_URI} !^/wp-(admin|content|includes|json|login|signup) [NC]
   RewriteCond %{REQUEST_URI} !^.*\.(js|css|png|jpg|jpeg|gif|svg|ico|json|txt|xml|php)$ [NC]
   RewriteRule ^(.*)$ /index.html [L]
 </IfModule>
