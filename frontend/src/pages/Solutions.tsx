@@ -119,7 +119,7 @@ const Solutions = () => {
     return (
         <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Solutions Hero */}
-            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-40 md:pt-32 pb-24">
 
                 {/* Background Video Layer */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -144,7 +144,7 @@ const Solutions = () => {
                             delay: 0.2,
                             ease: [0.22, 1, 0.36, 1]
                         }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-8 tracking-tighter leading-[0.85]"
+                        className="text-3xl md:text-6xl lg:text-7xl font-black !text-white mb-6 tracking-tighter leading-tight"
                     >
                         Precision 
                         <motion.span 
@@ -182,8 +182,8 @@ const Solutions = () => {
 
             {/* Service Flow - Core Services Redesigned */}
             <div className="bg-white">
-                <section className="container mx-auto px-6 py-40">
-                    <div className="text-center mb-40">
+                <section className="container mx-auto px-6 py-20 md:py-40">
+                    <div className="text-center mb-20 md:mb-40">
                         {/* Ecosystem.Module // Strategic_Offerings removed */}
                         <h2 className="text-5xl md:text-8xl font-black text-navy mb-12 tracking-tighter leading-none">
                             Our Core <br />
@@ -192,7 +192,7 @@ const Solutions = () => {
                         <p className="text-navy/40 text-xl font-light max-w-2xl mx-auto leading-relaxed">Moving beyond standard policies to ground your organizational excellence in behavioral science and strategic alignment.</p>
                     </div>
 
-                    <div className="space-y-40">
+                    <div className="space-y-24 md:space-y-40">
                         {/* 1. Leadership Development */}
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
@@ -470,7 +470,7 @@ const Solutions = () => {
             <section className="py-40 bg-white relative">
                 <div className="container mx-auto px-6 text-center">
                     <motion.div className="inline-block">
-                        <h2 className="text-4xl md:text-8xl font-black text-navy mb-16 tracking-tighter leading-none">
+                        <h2 className="text-4xl md:text-8xl font-black text-navy mb-12 md:mb-16 tracking-tighter leading-tight md:leading-none px-4">
                             Ready to <br /><span className="text-teal font-serif italic leading-tight uppercase">elevate</span> your organization?
                         </h2>
                     </motion.div>

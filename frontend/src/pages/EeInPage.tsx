@@ -173,10 +173,10 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
         
         {/* TOP: Diagnosis Terminal (Only show if not a shared link) */}
         {!urlSessionId && (
-            <section className="bg-white rounded-[2.5rem] shadow-xl shadow-navy/8 border-2 border-navy/10 overflow-hidden flex flex-col h-[680px]">
+            <section className="bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-navy/8 border-2 border-navy/10 overflow-hidden flex flex-col h-[600px] md:h-[680px]">
                 {/* Terminal Header */}
-                <div className="px-8 py-5 border-b-2 border-navy/8 bg-navy/[0.03] flex items-center justify-between">
-                    <h2 className="font-black text-navy text-[11px] uppercase tracking-[0.3em] flex items-center gap-3">
+                <div className="px-6 md:px-8 py-4 md:py-5 border-b-2 border-navy/8 bg-navy/[0.03] flex items-center justify-between">
+                    <h2 className="font-black text-navy text-[10px] md:text-[11px] uppercase tracking-[0.3em] flex items-center gap-3">
                     <Layout size={18} className="text-teal" /> Diagnosis_Terminal
                     </h2>
                     {uploadProgress > 0 && (
@@ -193,7 +193,7 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                 </div>
 
                 {/* Chat Messages Area */}
-                <div className="flex-1 overflow-y-auto p-8 space-y-8 bg-gray-50/30 hide-scrollbar">
+                <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6 md:space-y-8 bg-gray-50/10 hide-scrollbar">
                     {messages.length === 0 && (
                         <div className="h-full flex flex-col items-center justify-center text-center px-6 opacity-40">
                             <Sparkles size={40} className="text-teal mb-6" />
@@ -246,52 +246,57 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                 </div>
 
                 {/* Input Zone — clearly bordered */}
-                <div className="border-t-2 border-navy/8 bg-white">
+                <div className="border-t-2 border-navy/8 bg-white p-4 md:p-0">
+                    <div className="md:p-0 md:border-none rounded-2xl border border-gray-100 shadow-sm md:shadow-none">
                     {/* Upload row */}
-                    <div className="px-8 pt-5 pb-3 flex items-center gap-3 border-b border-gray-100">
-                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-400">Upload Report</span>
-                        <div className="flex flex-wrap gap-2">
-                            {reportTypes.map((type) => (
-                                <button
-                                    key={type.id}
-                                    onClick={() => setReportType(type.id)}
-                                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.15em] transition-all border ${
-                                        reportType === type.id 
-                                            ? 'bg-navy text-white border-navy shadow-lg' 
-                                            : 'bg-white text-gray-400 border-gray-200 hover:border-teal/40 hover:text-teal'
+                        <div className="px-4 md:px-8 pt-5 pb-3 flex flex-col md:flex-row md:items-center gap-4 border-b border-gray-100">
+                            <div className="flex items-center gap-3">
+                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-400">Upload Report</span>
+                                <div className="flex flex-wrap gap-2">
+                                    {reportTypes.map((type) => (
+                                        <button
+                                            key={type.id}
+                                            onClick={() => setReportType(type.id)}
+                                            className={`flex items-center gap-2 px-3 md:px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.15em] transition-all border ${
+                                                reportType === type.id 
+                                                    ? 'bg-navy text-white border-navy shadow-lg' 
+                                                    : 'bg-white text-gray-400 border-gray-200 hover:border-teal/40 hover:text-teal'
+                                            }`}
+                                        >
+                                            {type.icon} {type.label}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                            <input type="file" ref={fileInputRef} onChange={onFileChange} className="hidden" accept=".pdf,image/*" />
+                            <button 
+                                onClick={() => fileInputRef.current?.click()} 
+                                className="md:ml-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-teal/40 text-teal hover:border-teal hover:bg-teal/5 transition-all text-[9px] font-black uppercase tracking-widest w-full md:w-auto"
+                            >
+                                <Paperclip size={14} /> Attach File
+                            </button>
+                        </div>
+                    {/* Text input row */}
+                        <div className="px-4 md:px-8 py-5">
+                            <div className="flex items-center gap-3 px-4 md:px-5 py-3 bg-gray-50 rounded-2xl border-2 border-gray-200 focus-within:border-teal transition-all focus-within:shadow-[0_0_0_3px_rgba(14,124,123,0.1)]">
+                                <input 
+                                    placeholder="Ask Ee-in about your leadership DNA..."
+                                    className="flex-1 bg-transparent border-none focus:outline-none text-[13px] md:text-[14px] font-semibold text-navy placeholder:text-gray-400"
+                                    value={inputText}
+                                    onChange={(e) => setInputText(e.target.value)}
+                                    onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                                />
+                                <button 
+                                    onClick={handleSend}
+                                    disabled={!inputText.trim()}
+                                    className={`p-2.5 md:px-5 md:py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 flex items-center gap-2 ${
+                                        inputText.trim() ? 'bg-teal text-white shadow-lg shadow-teal/20 hover:bg-navy' : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                     }`}
                                 >
-                                    {type.icon} {type.label}
+                                    <Send size={14} className="md:block" />
+                                    <span className="hidden md:inline">Send</span>
                                 </button>
-                            ))}
-                        </div>
-                        <input type="file" ref={fileInputRef} onChange={onFileChange} className="hidden" accept=".pdf,image/*" />
-                        <button 
-                            onClick={() => fileInputRef.current?.click()} 
-                            className="ml-auto flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-dashed border-teal/30 text-teal hover:border-teal hover:bg-teal/5 transition-all text-[9px] font-black uppercase tracking-widest"
-                        >
-                            <Paperclip size={14} /> Attach File
-                        </button>
-                    </div>
-                    {/* Text input row */}
-                    <div className="px-8 py-5">
-                        <div className="flex items-center gap-3 px-5 py-3 bg-gray-50 rounded-2xl border-2 border-gray-200 focus-within:border-teal transition-all focus-within:shadow-[0_0_0_3px_rgba(14,124,123,0.1)]">
-                            <input 
-                                placeholder="Ask Ee-in anything about leadership..."
-                                className="flex-1 bg-transparent border-none focus:outline-none text-[14px] font-semibold text-navy placeholder:text-gray-400"
-                                value={inputText}
-                                onChange={(e) => setInputText(e.target.value)}
-                                onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                            />
-                            <button 
-                                onClick={handleSend}
-                                disabled={!inputText.trim()}
-                                className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 flex items-center gap-2 ${
-                                    inputText.trim() ? 'bg-teal text-white shadow-lg shadow-teal/20 hover:bg-navy' : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                }`}
-                            >
-                                <Send size={14} /> Send
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -357,7 +362,7 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                         className="space-y-12"
                     >
                         {/* Prescription Card */}
-                        <div className="bg-white rounded-[4rem] p-12 md:p-16 text-navy relative overflow-hidden shadow-2xl shadow-navy/5 border border-gray-100">
+                        <div className="bg-white rounded-[3rem] md:rounded-[4rem] p-8 md:p-16 text-navy relative overflow-hidden shadow-2xl shadow-navy/5 border border-gray-100">
                             <div className="absolute top-0 right-0 w-80 h-80 bg-teal/5 rounded-full blur-[100px] -mr-40 -mt-40"></div>
                             <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
                                 <div className="space-y-4">
@@ -385,10 +390,10 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                                     </button>
                                 </div>
                             </div>
-                            <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 italic leading-[0.9] text-navy transition-all">
+                            <h3 className="text-3xl md:text-6xl font-black tracking-tighter mb-4 italic leading-[1.1] md:leading-[0.9] text-navy transition-all">
                                 "{analysis.personality_archetype}"
                             </h3>
-                            <p className="text-xs font-mono font-bold text-teal uppercase tracking-[0.4em] mb-10 pl-1">
+                            <p className="text-[10px] font-mono font-bold text-teal uppercase tracking-[0.4em] mb-10 pl-1">
                                 Archetype // LEADERSHIP_DNA
                             </p>
                         </div>
@@ -410,13 +415,13 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                         </div>
 
                         {/* Executive Reflection & Lead Capture */}
-                        <div className="bg-navy rounded-[4rem] p-12 md:p-16 shadow-2xl text-white relative overflow-hidden">
+                        <div className="bg-navy rounded-[3rem] md:rounded-[4rem] p-8 md:p-16 shadow-2xl text-white relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[120px] -mr-48 -mt-48"></div>
                             <div className="max-w-4xl relative z-10 mx-auto">
                                 {!showLeadForm ? (
                                     <div className="text-center">
                                         <h4 className="text-[11px] font-black text-teal uppercase tracking-[0.5em] mb-12">Executive_Reflection</h4>
-                                        <p className="text-3xl md:text-5xl font-black text-white leading-[1.1] italic tracking-tight mb-16">
+                                        <p className="text-2xl md:text-5xl font-black text-white leading-[1.2] md:leading-[1.1] italic tracking-tight mb-16 px-4 md:px-0">
                                             "{analysis.coaching_question}"
                                         </p>
                                         <button 

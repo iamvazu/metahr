@@ -108,7 +108,7 @@ const Home = () => {
                         z: textZ,
                         opacity: opacityHero
                     }}
-                    className="container mx-auto px-6 text-center z-10 flex flex-col items-center justify-center pt-8"
+                    className="container mx-auto px-4 text-center z-10 flex flex-col items-center justify-center pt-8"
                 >
 
                     <motion.h1
@@ -119,11 +119,11 @@ const Home = () => {
                             delay: 0.2,
                             ease: [0.22, 1, 0.36, 1]
                         }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-6 tracking-tighter leading-tight"
+                        className="text-3xl md:text-6xl lg:text-7xl font-black !text-white mb-6 tracking-tighter leading-[1.1] md:leading-tight"
                     >
                         Maximize Potential. 
                         <motion.span 
-                            className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
+                            className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block md:ml-2"
                             animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
                             transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
                         >
@@ -135,7 +135,7 @@ const Home = () => {
                         initial={{ opacity: 0, y: 20, z: -50 }}
                         animate={{ opacity: 1, y: 0, z: 0 }}
                         transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-                        className="text-sm md:text-xl lg:text-2xl !text-beige/60 max-w-4xl mx-auto mb-12 font-light leading-relaxed"
+                        className="text-base md:text-xl lg:text-2xl !text-beige/60 max-w-4xl mx-auto mb-12 font-light leading-relaxed px-4"
                     >
                         We strengthen leadership capability, build cohesive teams, and align culture with strategy to accelerate measurable business performance.
                     </motion.p>
@@ -144,7 +144,7 @@ const Home = () => {
                         initial={{ opacity: 0, y: 20, z: -30 }}
                         animate={{ opacity: 1, y: 0, z: 0 }}
                         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-                        className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 w-full max-w-lg mx-auto sm:max-w-none px-4"
+                        className="flex flex-col sm:flex-row items-center justify-center space-y-8 sm:space-y-0 sm:space-x-8 w-full max-w-lg mx-auto sm:max-w-none px-4"
                     >
                         <motion.div 
                             whileHover={{ scale: 1.05 }} 
@@ -167,7 +167,7 @@ const Home = () => {
                         >
                             <Link 
                                 to="/ee-in" 
-                                className="relative group/ai overflow-hidden px-8 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] text-white text-center w-full sm:w-auto flex justify-center items-center shadow-2xl"
+                                className="relative group/ai overflow-hidden px-6 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] text-white text-center w-full sm:w-auto flex justify-center items-center shadow-2xl"
                             >
                                 {/* Liquid Glass Background */}
                                 <div className="absolute inset-0 bg-[#0A1F2F]/80 backdrop-blur-xl group-hover/ai:bg-teal transition-colors duration-500" />

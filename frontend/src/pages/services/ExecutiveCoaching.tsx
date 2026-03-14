@@ -7,7 +7,7 @@ const ExecutiveCoaching = () => {
     return (
         <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Hero Section */}
-            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24 text-white">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-40 md:pt-32 pb-24 text-white">
 
                 <div className="absolute inset-0 z-0">
                     <img src="/executive_coaching_abstract.png" alt="" className="w-full h-full object-cover opacity-40" />
@@ -16,7 +16,7 @@ const ExecutiveCoaching = () => {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Service // Executive_Coaching</span>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-tight">
+                    <h1 className="text-3xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-tight">
                         Unlock Leadership Potential <br />
                         <motion.span
                             className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
@@ -26,7 +26,7 @@ const ExecutiveCoaching = () => {
                             at the Individual Level
                         </motion.span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-white/50 font-light max-w-4xl mx-auto leading-relaxed">
+                    <p className="text-base md:text-2xl text-white/50 font-light max-w-4xl mx-auto leading-relaxed">
                         Our executive coaching is data-driven, insight-rich, and performance-focused.
                     </p>
                 </div>
@@ -42,7 +42,7 @@ const ExecutiveCoaching = () => {
             {/* Main Content */}
             <section className="py-24 bg-beige/30">
                 <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="bg-white p-12 md:p-16 rounded-[4rem] shadow-2xl border border-navy/5 relative overflow-hidden mb-20">
+                    <div className="bg-white p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] shadow-2xl border border-navy/5 relative overflow-hidden mb-20">
                         {/* Decorative image placeholder */}
                         <div className="w-full h-80 rounded-[3rem] overflow-hidden mb-12 shadow-xl bg-navy/5 relative">
                             <span className="absolute top-4 left-6 z-10 px-4 py-1.5 bg-black/40 backdrop-blur-md text-white text-[9px] font-mono font-bold tracking-widest uppercase rounded-full">Image Placement Area</span>
@@ -53,7 +53,7 @@ const ExecutiveCoaching = () => {
                             We integrate strengths-based development powered by Gallup with science-backed insights from Hogan Assessments to accelerate leadership growth at both conscious and unconscious levels.
                         </p>
 
-                        <h2 className="text-3xl md:text-5xl font-black text-navy mb-8 tracking-tighter">But insight alone doesn’t create transformation <span className="text-teal font-serif italic">— application does.</span></h2>
+                        <h2 className="text-2xl md:text-5xl font-black text-navy mb-8 tracking-tighter">Executive coaching is not <span className="text-teal font-serif italic">about advice.</span></h2>
                         <p className="text-xl text-navy/60 leading-relaxed font-light mb-10">Our coaching methodology includes:</p>
 
                         <ul className="space-y-6 mb-16">

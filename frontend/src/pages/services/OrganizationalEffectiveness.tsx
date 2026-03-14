@@ -7,7 +7,7 @@ const OrganizationalEffectiveness = () => {
     return (
         <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Hero Section */}
-            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24 text-white">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-40 md:pt-32 pb-24 text-white">
 
                 <div className="absolute inset-0 z-0">
                     <img src="/org_effectiveness_abstract.png" alt="" className="w-full h-full object-cover opacity-40" />
@@ -16,7 +16,7 @@ const OrganizationalEffectiveness = () => {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Service // Organizational_Effectiveness</span>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-tight">
+                    <h1 className="text-3xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-tight">
                         Align Strategy. Activate Culture. <br />
                         <motion.span
                             className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
@@ -26,7 +26,7 @@ const OrganizationalEffectiveness = () => {
                             Execute with Discipline.
                         </motion.span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-white/50 font-light max-w-4xl mx-auto leading-relaxed">
+                    <p className="text-base md:text-2xl text-white/50 font-light max-w-4xl mx-auto leading-relaxed">
                         Strategy fails not because it is wrong — but because leadership behaviors, culture, and systems are misaligned.
                     </p>
                 </div>
@@ -42,7 +42,7 @@ const OrganizationalEffectiveness = () => {
             {/* Main Content */}
             <section className="py-24 bg-beige/30">
                 <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="bg-white p-12 md:p-16 rounded-[4rem] shadow-2xl border border-navy/5 relative overflow-hidden mb-20">
+                    <div className="bg-white p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] shadow-2xl border border-navy/5 relative overflow-hidden mb-20">
                         {/* Decorative image placeholder */}
                         <div className="w-full h-80 rounded-[3rem] overflow-hidden mb-12 shadow-xl bg-navy/5 relative">
                             <span className="absolute top-4 left-6 z-10 px-4 py-1.5 bg-black/40 backdrop-blur-md text-white text-[9px] font-mono font-bold tracking-widest uppercase rounded-full">Image Placement Area</span>
@@ -53,7 +53,7 @@ const OrganizationalEffectiveness = () => {
                             At MetaHR, we help organizations close the gap between intent and execution by aligning leadership capability, team dynamics, performance systems, and cultural behaviors with strategic priorities.
                         </p>
 
-                        <h2 className="text-3xl md:text-5xl font-black text-navy mb-4 tracking-tighter">Organizational effectiveness is <span className="text-teal font-serif italic">not a workshop.</span></h2>
+                        <h2 className="text-2xl md:text-5xl font-black text-navy mb-4 tracking-tighter">Organizational effectiveness is <span className="text-teal font-serif italic">not a workshop.</span></h2>
                         <p className="text-xl text-teal font-medium mb-16">It is an integrated transformation journey.</p>
 
                         <h3 className="text-2xl font-black uppercase text-navy/40 tracking-[0.3em] mb-12 border-b border-navy/10 pb-4">Our Approach</h3>
@@ -64,7 +64,7 @@ const OrganizationalEffectiveness = () => {
                                 <div className="w-16 h-16 bg-navy text-white rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-navy/20">
                                     <Target size={28} />
                                 </div>
-                                <h4 className="text-2xl md:text-3xl font-black text-navy tracking-tight">1. Strategic Alignment & Leadership Calibration</h4>
+                                <h4 className="text-xl md:text-3xl font-black text-navy tracking-tight">1. Strategic Alignment & Leadership Calibration</h4>
                             </div>
                             <p className="text-navy/60 leading-relaxed font-light text-lg mb-6">We work with senior leadership teams to clarify:</p>
                             <ul className="grid md:grid-cols-2 gap-4 mb-8">

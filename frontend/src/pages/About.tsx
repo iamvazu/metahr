@@ -13,7 +13,7 @@ const About = () => {
     return (
         <div className="bg-white">
             {/* 1. About Us (Hero) */}
-            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-40 md:pt-32 pb-24">
                 {/* Background Video Layer */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
                     <iframe
@@ -35,7 +35,7 @@ const About = () => {
                             delay: 0.2,
                             ease: [0.22, 1, 0.36, 1]
                         }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-black !text-white mb-6 tracking-tighter leading-tight"
+                        className="text-3xl md:text-6xl lg:text-7xl font-black !text-white mb-6 tracking-tighter leading-tight"
                     >
                         Maximize Potential. <br />
                         <motion.span

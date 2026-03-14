@@ -172,7 +172,7 @@ const Contact = () => {
                         viewport={{ once: true }}
                         className="relative lg:sticky lg:top-32"
                     >
-                        <div className="bg-navy rounded-[4rem] p-12 md:p-20 text-white relative z-10 shadow-[0_50px_100px_-20px_rgba(2,12,27,0.5)] ring-1 ring-white/10">
+                        <div className="bg-navy rounded-[3rem] p-8 md:p-16 relative overflow-hidden ring-1 ring-white/10 shadow-3xl">
                             <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-8 block">Booking.System // PARAMETERS</span>
                             <h3 className="text-4xl font-black mb-6 tracking-tight leading-none">Consultation <span className="text-teal font-serif italic text-gradient uppercase">Booking.</span></h3>
                             <p className="text-white/40 mb-12 leading-relaxed font-light text-lg">Schedule a discovery call to discuss your organizational challenges and desired outcomes.</p>
@@ -207,61 +207,61 @@ const Contact = () => {
                                         onSubmit={handleSubmit}
                                         className="space-y-8"
                                     >
-                                        <div className="grid md:grid-cols-2 gap-8">
+                                        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Full Name</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 ml-2">Full Name</label>
                                                 <input
                                                     type="text"
                                                     name="name"
                                                     required
                                                     value={formData.name}
                                                     onChange={handleChange}
-                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/10 font-medium"
+                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/20 font-medium"
                                                     placeholder="John Doe"
                                                 />
                                             </div>
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Work Email</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 ml-2">Email Identity</label>
                                                 <input
                                                     type="email"
                                                     name="email"
                                                     required
                                                     value={formData.email}
                                                     onChange={handleChange}
-                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/10 font-medium"
+                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/20 font-medium"
                                                     placeholder="john@company.com"
                                                 />
                                             </div>
                                         </div>
-                                        <div className="grid md:grid-cols-2 gap-8">
+                                        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Company</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 ml-2">Company Name</label>
                                                 <input
                                                     type="text"
                                                     name="company"
                                                     required
                                                     value={formData.company}
                                                     onChange={handleChange}
-                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/10 font-medium"
-                                                    placeholder="MetaHR"
+                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/20 font-medium"
+                                                    placeholder="Organization Ltd."
                                                 />
                                             </div>
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Phone Number</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 ml-2">Phone Number</label>
                                                 <input
                                                     type="tel"
                                                     name="phone"
                                                     required
                                                     value={formData.phone}
                                                     onChange={handleChange}
-                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/10 font-medium"
+                                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-white placeholder:text-white/20 font-medium"
                                                     placeholder="+91 XXXX XXXX"
                                                 />
                                             </div>
                                         </div>
-                                        <div className="grid md:grid-cols-2 gap-8">
+                                        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Preferred Communication</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 ml-2">Preferred Communication</label>
                                                 <select
                                                     name="preferredContact"
                                                     required
@@ -274,7 +274,7 @@ const Contact = () => {
                                                 </select>
                                             </div>
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white ml-2">Preferred Date & Time</label>
+                                                <label className="text-[10px] font-mono font-bold uppercase tracking-widest text-white/70 ml-2">Initial Call Request (Date & Time)</label>
                                                 <input
                                                     type="datetime-local"
                                                     name="preferredTime"
@@ -327,17 +327,17 @@ const Contact = () => {
                                         <button
                                             type="submit"
                                             disabled={status === 'loading'}
-                                            className="w-full bg-teal hover:bg-white hover:text-navy text-white font-black py-6 rounded-2xl transition-all duration-500 flex items-center justify-center group text-sm uppercase tracking-[0.2em] shadow-xl shadow-teal/10 disabled:opacity-50 disabled:cursor-not-allowed"
+                                            className="w-full bg-teal hover:bg-white hover:text-navy text-white font-black py-5 md:py-6 rounded-2xl transition-all duration-500 flex items-center justify-center group text-[11px] md:text-sm uppercase tracking-[0.1em] md:tracking-[0.2em] shadow-xl shadow-teal/10 disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             {status === 'loading' ? (
                                                 <>
                                                     Transmitting_Data
-                                                    <Loader2 className="ml-4 animate-spin" size={18} />
+                                                    <Loader2 className="ml-3 animate-spin" size={18} />
                                                 </>
                                             ) : (
                                                 <>
                                                     Schedule Discovery Call
-                                                    <Send className="ml-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
+                                                    <Send className="ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={18} />
                                                 </>
                                             )}
                                         </button>

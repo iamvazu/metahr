@@ -18,7 +18,7 @@ const Resources = () => {
     return (
         <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Resources Hero */}
-            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-40 md:pt-32 pb-24">
                 {/* Background Image Layer */}
                 <div className="absolute inset-0 z-0 text-white">
                     <img src="/resources_hero_bg.png" alt="" className="w-full h-full object-cover opacity-20 scale-105" />
@@ -31,7 +31,7 @@ const Resources = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-7xl font-black !text-white mb-10 tracking-tighter leading-tight drop-shadow-2xl"
+                        className="text-3xl md:text-7xl font-black !text-white mb-10 tracking-tighter leading-tight drop-shadow-2xl"
                     >
                         Globally Benchmarked <br />
                         <span className="text-skyBlue font-serif italic text-gradient uppercase block mt-2">Tools for Growth.</span>
@@ -60,7 +60,7 @@ const Resources = () => {
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                         <div>
                             {/* Intelligence_Feed // LATEST_THINKING removed */}
-                            <h2 className="text-4xl md:text-6xl font-black text-navy tracking-tighter leading-tight">Global Leadership <br /><span className="text-teal font-serif italic bg-gradient-to-r from-teal to-skyBlue bg-clip-text text-transparent uppercase">Insights.</span></h2>
+                            <h2 className="text-3xl md:text-6xl font-black text-navy tracking-tighter leading-tight">Global Leadership <br /><span className="text-teal font-serif italic bg-gradient-to-r from-teal to-skyBlue bg-clip-text text-transparent uppercase">Insights.</span></h2>
                         </div>
 
                     </div>
@@ -123,11 +123,11 @@ const Resources = () => {
                 </div>
 
                 {/* Engagement Formats */}
-                <div className="bg-navy rounded-[5rem] p-16 md:p-32 text-white relative overflow-hidden mb-40 ring-1 ring-white/10">
+                <div className="bg-navy rounded-[3rem] md:rounded-[5rem] p-8 md:p-32 text-white relative overflow-hidden mb-40 ring-1 ring-white/10">
                     <div className="relative z-10 grid lg:grid-cols-2 gap-24 items-center">
                         <div>
                             {/* Partnership.Models // ENGAGEMENT_MATRIX removed */}
-                            <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-tighter leading-none">How We <br /><span className="text-teal font-serif italic uppercase">Partner.</span></h2>
+                            <h2 className="text-3xl md:text-6xl font-black mb-10 tracking-tighter leading-none">How We <br /><span className="text-teal font-serif italic uppercase">Partner.</span></h2>
                             <p className="text-white/40 text-xl font-light mb-16 max-w-xl leading-relaxed">
                                 We offer flexible engagement models designed to meet your team where they are, whether global or hyper-local.
                             </p>
@@ -149,7 +149,7 @@ const Resources = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="bg-white p-12 md:p-20 rounded-[4rem] text-center shadow-3xl text-navy relative group overflow-hidden">
+                        <div className="bg-white p-8 md:p-20 rounded-[3rem] md:rounded-[4rem] text-center shadow-3xl text-navy relative group overflow-hidden">
                             <div className="absolute top-0 right-0 p-8">
                                 <motion.div
                                     animate={{ opacity: [0.3, 1, 0.3] }}
@@ -173,7 +173,7 @@ const Resources = () => {
                 <div className="bg-white text-center">
                     <div className="max-w-5xl mx-auto">
                         {/* Benchmarked_Wisdom // CREDENTIALS removed */}
-                        <h2 className="text-4xl md:text-7xl font-black text-navy mb-16 tracking-tighter leading-none">Professional <br /><span className="text-teal font-serif italic uppercase text-gradient">Accreditations.</span></h2>
+                        <h2 className="text-3xl md:text-7xl font-black text-navy mb-16 tracking-tighter leading-none">Professional <br /><span className="text-teal font-serif italic uppercase text-gradient">Accreditations.</span></h2>
                         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
                             {credentials.map((cred, i) => (
                                 <motion.div

@@ -7,7 +7,7 @@ const TeamDevelopment = () => {
     return (
         <div className="relative overflow-x-hidden pt-0 bg-white">
             {/* Hero Section */}
-            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-24 text-white">
+            <section className="bg-navy relative overflow-hidden min-h-screen flex flex-col justify-center pt-40 md:pt-32 pb-24 text-white">
 
                 <div className="absolute inset-0 z-0">
                     <img src="/team_development_abstract.png" alt="" className="w-full h-full object-cover opacity-40" />
@@ -16,7 +16,7 @@ const TeamDevelopment = () => {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-teal uppercase mb-6 block">Service // Team_Development</span>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-tight">
+                    <h1 className="text-3xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-tight">
                         Build Aligned, <br />
                         <motion.span
                             className="font-serif italic font-bold text-skyBlue drop-shadow-[0_0_10px_rgba(200,217,230,0.8)] leading-tight inline-block"
@@ -26,7 +26,7 @@ const TeamDevelopment = () => {
                             High-Performing Teams
                         </motion.span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-white/50 font-light max-w-4xl mx-auto leading-relaxed">
+                    <p className="text-base md:text-2xl text-white/50 font-light max-w-4xl mx-auto leading-relaxed">
                         Using The Five Behaviors of a Cohesive Team framework, we help teams build deep trust, engage in healthy conflict, commit to clear decisions, hold one another accountable, and focus relentlessly on collective results.
                     </p>
                 </div>
@@ -42,14 +42,15 @@ const TeamDevelopment = () => {
             {/* Main Content */}
             <section className="py-24 bg-beige/30">
                 <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="bg-white p-12 md:p-16 rounded-[4rem] shadow-2xl border border-navy/5 relative overflow-hidden mb-20">
+                    <div className="bg-white p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] shadow-2xl border border-navy/5 relative overflow-hidden mb-20">
                         {/* Decorative image placeholder */}
                         <div className="w-full h-80 rounded-[3rem] overflow-hidden mb-12 shadow-xl bg-navy/5 relative">
                             <span className="absolute top-4 left-6 z-10 px-4 py-1.5 bg-black/40 backdrop-blur-md text-white text-[9px] font-mono font-bold tracking-widest uppercase rounded-full">Image Placement Area</span>
                             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600" alt="Team Collaboration" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl font-black text-navy mb-8 tracking-tighter">But we don’t stop <span className="text-teal font-serif italic">at theory.</span></h2>
+                        <h2 className="text-2xl md:text-5xl font-black text-navy mb-8 tracking-tighter">
+But we don’t stop <span className="text-teal font-serif italic">at theory.</span></h2>
                         <p className="text-xl text-navy/60 leading-relaxed font-light mb-10">We integrate:</p>
 
                         <ul className="space-y-6 mb-12">

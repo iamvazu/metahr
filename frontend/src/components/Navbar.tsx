@@ -165,10 +165,11 @@ const Navbar = () => {
                                 <div key={link.path} className="flex flex-col border-b border-navy/5 pb-6 last:border-0">
                                     <Link
                                         to={link.path}
-                                        className={`text-2xl font-black tracking-tight ${location.pathname === link.path ? 'text-teal' : 'text-navy'}`}
+                                        className={`text-2xl font-black tracking-tight flex items-center gap-2 ${location.pathname === link.path ? 'text-teal' : 'text-navy'} ${link.name === 'Ee-in' ? 'text-skyBlue drop-shadow-[0_0_8px_rgba(135,206,235,0.8)]' : ''}`}
                                         onClick={() => !link.dropdown && setIsOpen(false)}
                                     >
                                         {link.name}
+                                        {link.name === 'Ee-in' && <Sparkles size={20} className="animate-pulse" />}
                                     </Link>
 
                                     {link.dropdown && (
