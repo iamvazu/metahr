@@ -38,9 +38,24 @@ export const LeadCapture: React.FC<LeadCaptureProps> = ({
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const isProfessionalEmail = (email: string) => {
+    const consumerDomains = [
+      'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 
+      'aol.com', 'live.com', 'msn.com', 'yandex.com', 'protonmail.com', 'zoho.com'
+    ];
+    const domain = email.split('@')[1]?.toLowerCase();
+    return domain && !consumerDomains.includes(domain);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
+
+    if (!isProfessionalEmail(formData.email)) {
+        setStatus('error');
+        setErrorMessage('Corporate identity required. Please use a professional/business email.');
+        return;
+    }
 
     setStatus('submitting');
     try {
@@ -188,9 +203,18 @@ export const LeadCapture: React.FC<LeadCaptureProps> = ({
               </button>
 
               {status === 'error' && (
-                <p className="text-center text-[10px] font-bold text-red-500 uppercase tracking-widest mt-2">
-                  {errorMessage}
-                </p>
+                <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="bg-red-50 border border-red-100 p-4 rounded-xl"
+                >
+                    <p className="text-[10px] font-black text-red-500 uppercase tracking-widest text-center">
+                        Logic_Error // Verification_Failed
+                    </p>
+                    <p className="text-xs font-bold text-red-400 text-center mt-1">
+                        {errorMessage}
+                    </p>
+                </motion.div>
               )}
             </form>
           </motion.div>

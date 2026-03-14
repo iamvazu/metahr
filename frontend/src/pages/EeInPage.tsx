@@ -270,6 +270,35 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
             </section>
         )}
 
+        {/* Mobile Result Jump Bridge */}
+        <AnimatePresence>
+            {analysis && !urlSessionId && (
+                <motion.div 
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 100, opacity: 0 }}
+                    className="fixed bottom-6 left-6 right-6 z-50 md:hidden"
+                >
+                    <button 
+                        onClick={() => document.getElementById('strategic-results')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="w-full bg-teal text-white p-6 rounded-[2rem] shadow-2xl flex items-center justify-between group overflow-hidden relative"
+                    >
+                        <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                        <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                                <Sparkles size={18} className="animate-pulse" />
+                            </div>
+                            <div className="text-left">
+                                <p className="text-[9px] font-black uppercase tracking-[0.2em] opacity-60">Synthesis_Ready</p>
+                                <p className="text-sm font-bold tracking-tight">View Your Prescription</p>
+                            </div>
+                        </div>
+                        <ChevronRight size={20} />
+                    </button>
+                </motion.div>
+            )}
+        </AnimatePresence>
+
         {/* BOTTOM: Strategic Results */}
         <section id="strategic-results">
             <AnimatePresence mode="wait">

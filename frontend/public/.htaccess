@@ -1,12 +1,18 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  
-  # Forward all requests that aren't real files or folders to index.html
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+
+  # 1. Capture Shared Results for Bots/Crawlers
+  # If the request is for a results page, send it to the meta-tag injector
+  RewriteCond %{REQUEST_URI} ^/ee-in/results/([a-zA-Z0-9_-]+)$
+  RewriteRule ^ee-in/results/([a-zA-Z0-9_-]+)$ results-meta.php?sessionId=$1 [L,QSA]
+
+  # 2. Standard SPA Routing
+  # If the file or directory exists, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise, send everything else to index.html for React Router
+  RewriteRule ^ index.html [L]
 </IfModule>
-
-

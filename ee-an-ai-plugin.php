@@ -286,10 +286,29 @@ class EeIn_AI {
         }
     }
 
+    public function is_professional_email($email) {
+        $consumer_domains = [
+            'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 
+            'aol.com', 'live.com', 'msn.com', 'yandex.com', 'protonmail.com', 'zoho.com'
+        ];
+        $parts = explode('@', $email);
+        $domain = strtolower(end($parts));
+        return !in_array($domain, $consumer_domains);
+    }
+
     public function handle_save_lead($request) {
         $params = $request->get_json_params();
         $name = sanitize_text_field($params['name'] ?? '');
         $email = sanitize_email($params['email'] ?? '');
+        
+        if (empty($name) || empty($email)) {
+            return new WP_Error('missing_fields', 'Name and Email are required.', ['status' => 400]);
+        }
+
+        if (!$this->is_professional_email($email)) {
+            return new WP_Error('invalid_email', 'A professional/business email is required for leadership synthesis.', ['status' => 400]);
+        }
+
         $phone = sanitize_text_field($params['phone'] ?? '');
         $company = sanitize_text_field($params['company'] ?? '');
         $message_text = sanitize_textarea_field($params['message'] ?? '');
