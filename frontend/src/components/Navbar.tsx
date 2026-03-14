@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -65,15 +65,35 @@ const Navbar = () => {
                     <div className="flex max-md:hidden space-x-8 items-center px-8">
                         {navLinks.map((link) => (
                             <div key={link.path} className="relative group">
-                                <Link
-                                    to={link.path}
-                                    className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
-                                        ? (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-navy')
-                                        : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-skyBlue' : 'text-white/80')
-                                        }`}
-                                >
-                                    {link.name}
-                                </Link>
+                                {link.name === 'Ee-in' ? (
+                                    <Link
+                                        to={link.path}
+                                        className={`relative px-4 py-2 rounded-lg border-2 flex items-center gap-2 group overflow-hidden transition-all duration-500
+                                            ${scrolled 
+                                                ? 'border-teal/30 bg-teal/5 text-navy hover:bg-teal hover:text-white' 
+                                                : 'border-white/20 bg-white/5 text-white hover:bg-white hover:text-navy'
+                                            }`}
+                                    >
+                                        <motion.div
+                                            animate={{ opacity: [0, 0.4, 0] }}
+                                            transition={{ duration: 2, repeat: Infinity }}
+                                            className="absolute inset-0 bg-teal pointer-events-none"
+                                        />
+                                        <span className="relative z-10 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                                            {link.name} <Sparkles size={12} className="animate-pulse text-skyBlue group-hover:text-current" />
+                                        </span>
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        to={link.path}
+                                        className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
+                                            ? (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-navy')
+                                            : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-skyBlue' : 'text-white/80')
+                                            }`}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                )}
 
                                 {/* Dropdown Menu */}
                                 {link.dropdown && (

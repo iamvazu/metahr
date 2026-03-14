@@ -166,10 +166,16 @@ const Home = () => {
                             className="w-full sm:w-auto flex justify-center"
                         >
                             <Link 
-                                to="/contact" 
-                                className="text-white bg-teal/20 backdrop-blur-md px-8 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] hover:bg-teal hover:text-white transition-all shadow-2xl border border-teal/30 text-center w-full sm:w-auto flex justify-center items-center"
+                                to="/ee-in" 
+                                className="text-white bg-white/10 backdrop-blur-md px-8 py-4 md:px-10 md:py-5 rounded-full font-black text-[10px] md:text-sm uppercase tracking-widest sm:tracking-[0.2em] hover:bg-teal hover:text-white transition-all shadow-2xl border border-white/20 text-center w-full sm:w-auto flex justify-center items-center group/ai"
                             >
-                                Book Free Discovery Call
+                                <motion.span
+                                    animate={{ opacity: [0.7, 1, 0.7] }}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                    className="flex items-center gap-2"
+                                >
+                                    Launch AI Analysis <Sparkles size={16} className="text-teal group-hover/ai:text-white" />
+                                </motion.span>
                             </Link>
                         </motion.div>
                     </motion.div>

@@ -123,22 +123,28 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col pb-24">
       {/* Navbar Visibility Guard */}
-      <div className="bg-navy pt-32 pb-12 mb-12">
-        <div className="container mx-auto px-6">
+      <div className="bg-navy pt-32 pb-12 mb-12 relative overflow-hidden">
+        {/* Abstract Background for Depth */}
+        <div className="absolute inset-0 z-0 opacity-20">
+          <img src="/eein_hero_bg.png" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-navy/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-30">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="flex flex-col gap-2 mb-8"
             >
                 <div className="flex items-center gap-4">
-                    <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white mb-2">
-                        Ee-in
+                    <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white mb-2 drop-shadow-2xl">
+                        Ee-in <Sparkles className="inline-block text-teal animate-pulse ml-2 md:ml-4" size={48} />
                     </h1>
                     <span className="bg-skyBlue text-navy text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-md mb-4 self-center">
                         BETA
                     </span>
                 </div>
-                <h2 className="text-2xl md:text-5xl font-serif italic text-white/90 leading-tight">
+                <h2 className="text-2xl md:text-5xl font-serif italic text-white/90 leading-tight drop-shadow-xl">
                     Digital Twin of Ian Kishander
                 </h2>
             </motion.div>
@@ -146,7 +152,7 @@ EXECUTIVE REFLECTION: ${analysis.coaching_question}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-beige/60 text-lg md:text-xl font-medium max-w-3xl leading-relaxed"
+                className="text-beige/60 text-lg md:text-xl font-medium max-w-3xl leading-relaxed drop-shadow-lg"
             >
                 High-fidelity leadership synthesis. Upload your DiSC, Hogan, or CliftonStrengths reports to receive a precision-engineered prescription for your leadership trajectory.
             </motion.p>

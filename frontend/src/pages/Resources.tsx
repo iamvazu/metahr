@@ -62,10 +62,7 @@ const Resources = () => {
                             {/* Intelligence_Feed // LATEST_THINKING removed */}
                             <h2 className="text-4xl md:text-6xl font-black text-navy tracking-tighter leading-tight">Global Leadership <br /><span className="text-teal font-serif italic bg-gradient-to-r from-teal to-skyBlue bg-clip-text text-transparent uppercase">Insights.</span></h2>
                         </div>
-                        <a href="https://9z4.7b6.myftpupload.com/wp-admin/edit.php" target="_blank" rel="noreferrer" className="inline-flex items-center space-x-3 text-navy/40 hover:text-teal transition-colors group">
-                            <span className="text-[10px] font-mono font-bold tracking-widest uppercase">Admin: Manage_Posts</span>
-                            <Zap size={14} className="group-hover:animate-pulse" />
-                        </a>
+
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -99,11 +96,7 @@ const Resources = () => {
                                                 <Zap size={48} />
                                             </div>
                                         )}
-                                        <div className="absolute top-6 left-6">
-                                            <span className="px-4 py-1.5 bg-black/60 backdrop-blur-md text-teal text-[9px] font-mono font-bold tracking-widest uppercase rounded-full">
-                                                POST_ID.{post.id}
-                                            </span>
-                                        </div>
+
                                     </div>
                                     <div className="p-10 flex flex-col flex-grow">
                                         <div className="flex items-center space-x-3 mb-6">
