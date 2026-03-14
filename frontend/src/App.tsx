@@ -55,6 +55,7 @@ function App() {
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/ee-in" element={<EeInPage />} />
+              <Route path="/ee-in/results/:sessionId" element={<EeInPage />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/faq" element={<FAQPage />} />

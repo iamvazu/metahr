@@ -75,6 +75,12 @@ class EeIn_AI {
             'permission_callback' => '__return_true'
         ]);
 
+        register_rest_route($this->namespace, '/fetch-analysis', [
+            'methods' => 'POST',
+            'callback' => [$this, 'handle_fetch_analysis'],
+            'permission_callback' => '__return_true'
+        ]);
+
         register_rest_route($this->namespace, '/debug-info', [
             'methods' => 'GET',
             'callback' => function() { 
@@ -220,6 +226,9 @@ class EeIn_AI {
         $params = $request->get_json_params();
         $name = sanitize_text_field($params['name'] ?? '');
         $email = sanitize_email($params['email'] ?? '');
+        $phone = sanitize_text_field($params['phone'] ?? '');
+        $company = sanitize_text_field($params['company'] ?? '');
+        $message_text = sanitize_textarea_field($params['message'] ?? '');
         $session_id = sanitize_text_field($params['sessionId'] ?? '');
         $analysis = $params['analysis'] ?? null;
 
@@ -235,6 +244,9 @@ class EeIn_AI {
 
         if ($lead_id) {
             update_post_meta($lead_id, '_lead_email', $email);
+            update_post_meta($lead_id, '_lead_phone', $phone);
+            update_post_meta($lead_id, '_lead_company', $company);
+            update_post_meta($lead_id, '_lead_message', $message_text);
             update_post_meta($lead_id, '_lead_session_id', $session_id);
             if ($analysis) {
                 update_post_meta($lead_id, '_lead_analysis', json_encode($analysis));
@@ -242,11 +254,14 @@ class EeIn_AI {
 
             // Notification Email
             $admin_email = get_option('admin_email');
-            $subject = "🔥 New Ee-in Lead: $name";
-            $message = "You have a new lead from Ee-in AI.\n\n";
-            $message .= "Name: $name\n";
-            $message .= "Email: $email\n";
-            $message .= "Session: $session_id\n\n";
+            $subject = "🔥 High-Intensity Lead: $name ($company)";
+            $message = "You have a new strategic lead from Ee-in AI.\n\n";
+            $message .= "NAME: $name\n";
+            $message .= "EMAIL: $email\n";
+            $message .= "PHONE: $phone\n";
+            $message .= "COMPANY: $company\n";
+            $message .= "MESSAGE: $message_text\n";
+            $message .= "SESSION: $session_id\n\n";
             $message .= "Check the WordPress dashboard for details: " . admin_url('edit.php?post_type=metahr_lead');
             
             wp_mail($admin_email, $subject, $message);
@@ -257,9 +272,47 @@ class EeIn_AI {
         return new WP_Error('save_failed', 'Could not save lead to database.', ['status' => 500]);
     }
 
+    public function handle_fetch_analysis($request) {
+        $params = $request->get_json_params();
+        $session_id = sanitize_text_field($params['sessionId'] ?? '');
+
+        if (empty($session_id)) {
+            return new WP_Error('missing_id', 'Session ID is required.', ['status' => 400]);
+        }
+
+        $args = [
+            'post_type' => 'metahr_lead',
+            'meta_query' => [
+                [
+                    'key' => '_lead_session_id',
+                    'value' => $session_id,
+                    'compare' => '='
+                ]
+            ],
+            'posts_per_page' => 1
+        ];
+
+        $query = new WP_Query($args);
+        if ($query->have_posts()) {
+            $post = $query->posts[0];
+            $analysis_json = get_post_meta($post->ID, '_lead_analysis', true);
+            $analysis = json_decode($analysis_json, true);
+            
+            return rest_ensure_response([
+                'status' => 'success',
+                'name' => get_the_title($post->ID),
+                'analysis' => $analysis
+            ]);
+        }
+
+        return new WP_Error('not_found', 'No recorded analysis found for this ID.', ['status' => 404]);
+    }
+
     public function set_lead_columns($columns) {
         unset($columns['date']);
         $columns['email'] = 'Email';
+        $columns['company'] = 'Company';
+        $columns['phone'] = 'Phone';
         $columns['session_id'] = 'Session ID';
         $columns['date'] = 'Date';
         return $columns;
@@ -269,6 +322,12 @@ class EeIn_AI {
         switch ($column) {
             case 'email':
                 echo esc_html(get_post_meta($post_id, '_lead_email', true));
+                break;
+            case 'company':
+                echo esc_html(get_post_meta($post_id, '_lead_company', true));
+                break;
+            case 'phone':
+                echo esc_html(get_post_meta($post_id, '_lead_phone', true));
                 break;
             case 'session_id':
                 echo esc_html(get_post_meta($post_id, '_lead_session_id', true));

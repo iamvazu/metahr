@@ -1,8 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Paperclip, Shield, Download, ChevronRight, FileText, Target, Brain, Users, Sparkles, Search, Layout } from 'lucide-react';
+import { Send, Paperclip, Shield, Download, ChevronRight, FileText, Target, Brain, Users, Sparkles, Search, Layout, Share2, Copy, Check, MessageSquare } from 'lucide-react';
 import { useEeInChat } from '../hooks/useEeInChat';
 import { LeadCapture } from '../components/leads/LeadCapture';
+import axios from 'axios';
+
+const WP_API_BASE = 'https://metahr.co.in/wp-json/ee-in/v1';
 
 // Simple markdown bold renderer
 const renderMarkdown = (text: string) => {
@@ -15,12 +19,37 @@ const renderMarkdown = (text: string) => {
 };
 
 export default function EeInPage() {
-  const { messages, sendMessage, isTyping, isAnalyzing, analysis, handleFileUpload, uploadProgress, sessionId } = useEeInChat();
+  const { sessionId: urlSessionId } = useParams();
+  const { messages, sendMessage, isTyping, isAnalyzing, analysis: liveAnalysis, handleFileUpload, uploadProgress, sessionId: currentSessionId } = useEeInChat();
+  
   const [inputText, setInputText] = useState('');
   const [reportType, setReportType] = useState('DiSC');
   const [showLeadForm, setShowLeadForm] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [sharedAnalysis, setSharedAnalysis] = useState<any>(null);
+  const [isLoadingShared, setIsLoadingShared] = useState(false);
+  const [unlockAction, setUnlockAction] = useState<'download' | 'share' | null>(null);
+
   const chatEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const activeSessionId = urlSessionId || currentSessionId;
+  const analysis = urlSessionId ? sharedAnalysis : liveAnalysis;
+  const isLeadCaptured = localStorage.getItem(`lead_captured_${activeSessionId}`) === 'true';
+
+  // Fetch shared analysis if URL has sessionId
+  useEffect(() => {
+    if (urlSessionId) {
+      setIsLoadingShared(true);
+      axios.post(`${WP_API_BASE}/fetch-analysis`, { sessionId: urlSessionId })
+        .then(res => {
+          setSharedAnalysis(res.data.analysis);
+        })
+        .catch(err => console.error("Failed to fetch shared analysis", err))
+        .finally(() => setIsLoadingShared(false));
+    }
+  }, [urlSessionId]);
 
   // Auto-scroll to bottom of chat
   useEffect(() => {
@@ -38,6 +67,50 @@ export default function EeInPage() {
     if (file) {
       handleFileUpload(file, reportType);
     }
+  };
+
+  const handleDownload = () => {
+    if (!analysis) return;
+    if (!isLeadCaptured) {
+      setUnlockAction('download');
+      setShowLeadForm(true);
+      return;
+    }
+
+    const content = `
+METAHR // EE-IN LEADERSHIP PRESCRIPTION
+---------------------------------------
+SESSION ID: ${activeSessionId}
+ARCHETYPE: ${analysis.personality_archetype}
+STRATEGIC LEVER: ${analysis.primary_strength}
+GROWTH TRAP: ${analysis.growth_trap}
+EXECUTIVE REFLECTION: ${analysis.coaching_question}
+
+© ${new Date().getFullYear()} MetaHR. All rights reserved.
+    `;
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `MetaHR_Prescription_${activeSessionId}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleShare = () => {
+    if (!isLeadCaptured) {
+      setUnlockAction('share');
+      setShowLeadForm(true);
+      return;
+    }
+    setShowShareModal(true);
+  };
+
+  const copyToClipboard = () => {
+    const url = `${window.location.origin}/ee-in/results/${activeSessionId}`;
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const reportTypes = [
@@ -66,132 +139,137 @@ export default function EeInPage() {
                 transition={{ delay: 0.1 }}
                 className="text-beige/60 text-xl font-medium max-w-2xl"
             >
-                Upload your reports for a high-precision leadership prescription.
+                {urlSessionId ? "Shared Leadership Prescription Analysis." : "Upload your reports for a high-precision leadership prescription."}
             </motion.p>
         </div>
       </div>
 
       <main className="flex-1 container mx-auto px-6 space-y-12">
         
-        {/* TOP: Diagnosis Terminal (Chat/Upload) */}
-        <section className="bg-white rounded-[3rem] shadow-xl shadow-navy/5 border border-gray-100 overflow-hidden flex flex-col h-[650px]">
-            <div className="p-8 border-b border-gray-50 flex items-center justify-between">
-                <h2 className="font-black text-navy text-[11px] uppercase tracking-[0.3em] flex items-center gap-3">
-                   <Layout size={18} className="text-teal" /> Diagnosis_Terminal
-                </h2>
-                {uploadProgress > 0 && (
-                    <div className="flex items-center gap-3">
-                        <div className="w-24 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                            <motion.div 
-                                animate={{ width: `${uploadProgress}%` }}
-                                className="h-full bg-teal"
-                            />
-                        </div>
-                        <span className="text-[10px] font-black text-teal">{uploadProgress}%</span>
-                    </div>
-                )}
-            </div>
-
-            {/* Chat Messages */}
-            <div className="flex-1 overflow-y-auto p-10 space-y-10 bg-gray-50/20 hide-scrollbar">
-                {messages.length === 0 && (
-                    <div className="h-full flex flex-col items-center justify-center text-center px-6 opacity-40">
-                        <Sparkles size={40} className="text-teal mb-6" />
-                        <p className="text-base font-bold text-navy max-w-[280px]">Upload a DiSC, Hogan, or Strengths report to begin the synthesis.</p>
-                    </div>
-                )}
-                
-                {messages.map((msg) => (
-                    <motion.div 
-                        key={msg.id}
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className={`flex gap-5 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
-                    >
-                        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 border shadow-sm ${
-                            msg.role === 'user' ? 'bg-teal border-teal text-white' : 'bg-navy border-navy text-white'
-                        }`}>
-                            {msg.role === 'user' ? <Users size={16} /> : <img src="/eein-avatar.png" className="w-6 h-6 invert" alt="" />}
-                        </div>
-                        <div className={`max-w-[85%] p-6 rounded-[2rem] text-[15px] leading-relaxed ${
-                            msg.role === 'user' 
-                                ? 'bg-teal text-white rounded-tr-none shadow-xl' 
-                                : 'bg-white text-navy rounded-tl-none border border-gray-100 shadow-sm font-medium'
-                        }`}>
-                            {renderMarkdown(msg.content)}
-                        </div>
-                    </motion.div>
-                ))}
-
-                {isTyping && (
-                    <div className="flex gap-5">
-                        <div className="w-10 h-10 rounded-2xl bg-navy border border-navy flex items-center justify-center flex-shrink-0 animate-status-beat">
-                            <img src="/eein-avatar.png" className="w-6 h-6 invert" alt="" />
-                        </div>
-                        <div className="bg-white p-6 rounded-[2rem] rounded-tl-none border border-gray-100 shadow-sm flex flex-col gap-3">
-                            <div className="flex gap-2 items-center">
-                                <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
-                                <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
-                                <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
+        {/* TOP: Diagnosis Terminal (Only show if not a shared link) */}
+        {!urlSessionId && (
+            <section className="bg-white rounded-[3rem] shadow-xl shadow-navy/5 border border-gray-100 overflow-hidden flex flex-col h-[650px]">
+                <div className="p-8 border-b border-gray-50 flex items-center justify-between">
+                    <h2 className="font-black text-navy text-[11px] uppercase tracking-[0.3em] flex items-center gap-3">
+                    <Layout size={18} className="text-teal" /> Diagnosis_Terminal
+                    </h2>
+                    {uploadProgress > 0 && (
+                        <div className="flex items-center gap-3">
+                            <div className="w-24 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                <motion.div 
+                                    animate={{ width: `${uploadProgress}%` }}
+                                    className="h-full bg-teal"
+                                />
                             </div>
-                            {isAnalyzing && (
-                                <p className="text-[10px] font-black uppercase tracking-widest text-teal mt-1">
-                                    Ee-in is analyzing and synthesizing the document...
-                                </p>
-                            )}
+                            <span className="text-[10px] font-black text-teal">{uploadProgress}%</span>
                         </div>
-                    </div>
-                )}
-                <div ref={chatEndRef} />
-            </div>
+                    )}
+                </div>
 
-            {/* Terminal Footer */}
-            <div className="p-8 bg-white border-t border-gray-50">
-                <div className="flex flex-wrap gap-2 mb-6">
-                    {reportTypes.map((type) => (
-                        <button
-                            key={type.id}
-                            onClick={() => setReportType(type.id)}
-                            className={`flex items-center gap-3 px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all border shadow-sm ${
-                                reportType === type.id 
-                                    ? 'bg-navy text-white' 
-                                    : 'bg-white text-gray-400 border-gray-100 hover:border-teal/30'
+                <div className="flex-1 overflow-y-auto p-10 space-y-10 bg-gray-50/20 hide-scrollbar">
+                    {messages.length === 0 && (
+                        <div className="h-full flex flex-col items-center justify-center text-center px-6 opacity-40">
+                            <Sparkles size={40} className="text-teal mb-6" />
+                            <p className="text-base font-bold text-navy max-w-[280px]">Upload a DiSC, Hogan, or Strengths report to begin the synthesis.</p>
+                        </div>
+                    )}
+                    
+                    {messages.map((msg) => (
+                        <motion.div 
+                            key={msg.id}
+                            initial={{ opacity: 0, scale: 0.98 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className={`flex gap-5 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
+                        >
+                            <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 border shadow-sm ${
+                                msg.role === 'user' ? 'bg-teal border-teal text-white' : 'bg-navy border-navy text-white'
+                            }`}>
+                                {msg.role === 'user' ? <Users size={16} /> : <img src="/eein-avatar.png" className="w-6 h-6 invert" alt="" />}
+                            </div>
+                            <div className={`max-w-[85%] p-6 rounded-[2rem] text-[15px] leading-relaxed ${
+                                msg.role === 'user' 
+                                    ? 'bg-teal text-white rounded-tr-none shadow-xl' 
+                                    : 'bg-white text-navy rounded-tl-none border border-gray-100 shadow-sm font-medium'
+                            }`}>
+                                {renderMarkdown(msg.content)}
+                            </div>
+                        </motion.div>
+                    ))}
+
+                    {isTyping && (
+                        <div className="flex gap-5">
+                            <div className="w-10 h-10 rounded-2xl bg-navy border border-navy flex items-center justify-center flex-shrink-0 animate-status-beat">
+                                <img src="/eein-avatar.png" className="w-6 h-6 invert" alt="" />
+                            </div>
+                            <div className="bg-white p-6 rounded-[2rem] rounded-tl-none border border-gray-100 shadow-sm flex flex-col gap-3">
+                                <div className="flex gap-2 items-center">
+                                    <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
+                                    <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
+                                    <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-2 h-2 bg-teal rounded-full"></motion.div>
+                                </div>
+                                {isAnalyzing && (
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-teal mt-1">
+                                        Ee-in is analyzing and synthesizing the document...
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                    <div ref={chatEndRef} />
+                </div>
+
+                <div className="p-8 bg-white border-t border-gray-50">
+                    <div className="flex flex-wrap gap-2 mb-6">
+                        {reportTypes.map((type) => (
+                            <button
+                                key={type.id}
+                                onClick={() => setReportType(type.id)}
+                                className={`flex items-center gap-3 px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all border shadow-sm ${
+                                    reportType === type.id 
+                                        ? 'bg-navy text-white' 
+                                        : 'bg-white text-gray-400 border-gray-100 hover:border-teal/30'
+                                }`}
+                            >
+                                {type.icon} {type.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-3xl border-2 border-transparent focus-within:border-teal/20 transition-all">
+                        <input type="file" ref={fileInputRef} onChange={onFileChange} className="hidden" accept=".pdf,image/*" />
+                        <button onClick={() => fileInputRef.current?.click()} className="p-3 text-gray-400 hover:text-teal transition-colors rounded-xl hover:bg-white">
+                            <Paperclip size={24} />
+                        </button>
+                        <input 
+                            placeholder="Consult Ee-in..."
+                            className="flex-1 bg-transparent border-none focus:outline-none text-[15px] font-bold text-navy"
+                            value={inputText}
+                            onChange={(e) => setInputText(e.target.value)}
+                            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                        />
+                        <button 
+                            onClick={handleSend}
+                            disabled={!inputText.trim()}
+                            className={`p-4 rounded-xl shadow-xl transition-all active:scale-95 ${
+                                inputText.trim() ? 'bg-teal text-white' : 'bg-gray-200 text-white cursor-not-allowed'
                             }`}
                         >
-                            {type.icon} {type.label}
+                            <Send size={20} />
                         </button>
-                    ))}
+                    </div>
                 </div>
-
-                <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-3xl border-2 border-transparent focus-within:border-teal/20 transition-all">
-                    <input type="file" ref={fileInputRef} onChange={onFileChange} className="hidden" accept=".pdf,image/*" />
-                    <button onClick={() => fileInputRef.current?.click()} className="p-3 text-gray-400 hover:text-teal transition-colors rounded-xl hover:bg-white">
-                        <Paperclip size={24} />
-                    </button>
-                    <input 
-                        placeholder="Consult Ee-in..."
-                        className="flex-1 bg-transparent border-none focus:outline-none text-[15px] font-bold text-navy"
-                        value={inputText}
-                        onChange={(e) => setInputText(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                    />
-                    <button 
-                        onClick={handleSend}
-                        disabled={!inputText.trim()}
-                        className={`p-4 rounded-xl shadow-xl transition-all active:scale-95 ${
-                            inputText.trim() ? 'bg-teal text-white' : 'bg-gray-200 text-white cursor-not-allowed'
-                        }`}
-                    >
-                        <Send size={20} />
-                    </button>
-                </div>
-            </div>
-        </section>
+            </section>
+        )}
 
         {/* BOTTOM: Strategic Results */}
-        <section>
+        <section id="strategic-results">
             <AnimatePresence mode="wait">
-                {!analysis ? (
+                {isLoadingShared ? (
+                    <motion.div key="loading" className="py-20 flex flex-col items-center">
+                        <Loader2 className="animate-spin text-teal mb-4" size={40} />
+                        <p className="text-navy font-bold">Unlocking Recorded Logic...</p>
+                    </motion.div>
+                ) : !analysis ? (
                     <motion.div 
                         key="empty"
                         initial={{ opacity: 0 }}
@@ -221,12 +299,25 @@ export default function EeInPage() {
                                         Ian's Prescription
                                     </span>
                                     <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest pl-2">
-                                        ID: {sessionId.split('_')[1]?.toUpperCase() || 'SESSION'}
+                                        ID: {activeSessionId.split('_')[1]?.toUpperCase() || 'SESSION'}
                                     </p>
                                 </div>
-                                <button className="w-14 h-14 rounded-2xl bg-gray-50 hover:bg-teal hover:text-white transition-all flex items-center justify-center border border-gray-100 text-gray-400">
-                                    <Download size={24} />
-                                </button>
+                                <div className="flex gap-3">
+                                    <button 
+                                        onClick={handleShare}
+                                        className="w-14 h-14 rounded-2xl bg-gray-50 hover:bg-navy hover:text-white transition-all flex items-center justify-center border border-gray-100 text-gray-400"
+                                        title="Share results"
+                                    >
+                                        <Share2 size={24} />
+                                    </button>
+                                    <button 
+                                        onClick={handleDownload}
+                                        className="w-14 h-14 rounded-2xl bg-gray-50 hover:bg-teal hover:text-white transition-all flex items-center justify-center border border-gray-100 text-gray-400"
+                                        title="Download report"
+                                    >
+                                        <Download size={24} />
+                                    </button>
+                                </div>
                             </div>
                             <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 italic leading-[0.9] text-navy transition-all">
                                 "{analysis.personality_archetype}"
@@ -272,10 +363,23 @@ export default function EeInPage() {
                                 ) : (
                                     <div className="max-w-xl mx-auto">
                                         <LeadCapture 
-                                            sessionId={sessionId} 
+                                            sessionId={activeSessionId} 
                                             analysis={analysis}
+                                            title={unlockAction ? `Unlock_${unlockAction.toUpperCase()}_Access` : undefined}
+                                            subtitle={unlockAction ? "Provide your details to capture high-yield results." : undefined}
                                             onSuccess={() => {
-                                                // Handle success if needed
+                                                setShowLeadForm(false);
+                                                if (unlockAction === 'download') {
+                                                    setUnlockAction(null);
+                                                    setTimeout(handleDownload, 500);
+                                                } else if (unlockAction === 'share') {
+                                                    setUnlockAction(null);
+                                                    setTimeout(() => setShowShareModal(true), 500);
+                                                }
+                                            }}
+                                            onCancel={() => {
+                                              setShowLeadForm(false);
+                                              setUnlockAction(null);
                                             }}
                                         />
                                     </div>
@@ -287,6 +391,68 @@ export default function EeInPage() {
             </AnimatePresence>
         </section>
       </main>
+
+      {/* Share Modal */}
+      <AnimatePresence>
+        {showShareModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowShareModal(false)}
+              className="absolute inset-0 bg-navy/80 backdrop-blur-md"
+            ></motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="w-full max-w-lg bg-white rounded-[3rem] p-10 relative z-10 shadow-2xl border border-gray-100"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 bg-teal rounded-2xl flex items-center justify-center text-white">
+                  <Share2 size={24} />
+                </div>
+                <div>
+                  <h4 className="font-black text-navy uppercase tracking-widest text-xs">Share_Logic_Access</h4>
+                  <p className="text-xl font-bold text-navy/70 tracking-tight">Generate a unique link for this report.</p>
+                </div>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-center justify-between gap-4 mb-8">
+                <p className="text-sm font-bold text-navy/40 truncate">
+                  {`${window.location.origin}/ee-in/results/${activeSessionId}`}
+                </p>
+                <button 
+                  onClick={copyToClipboard}
+                  className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
+                    copied ? 'bg-green-500 text-white' : 'bg-white text-navy shadow-sm hover:shadow-md'
+                  }`}
+                >
+                  {copied ? <Check size={20} /> : <Copy size={20} />}
+                </button>
+              </div>
+
+              <button 
+                onClick={() => setShowShareModal(false)}
+                className="w-full py-5 bg-navy text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-teal transition-all"
+              >
+                Close Gateway
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+
+const Loader2 = ({ className, size }: { className?: string, size?: number }) => (
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+    className={className}
+  >
+    <Brain size={size} />
+  </motion.div>
+);
