@@ -15,8 +15,6 @@ import FAQPage from './pages/FAQPage';
 import Breadcrumbs from './components/Breadcrumbs';
 import FloatingCTA from './components/FloatingCTA';
 import ScrollToTop from './components/ScrollToTop';
-import EeInPage from './pages/EeInPage';
-import EeInWidget from './components/ee-in/EeInWidget';
 
 // Service Pages
 import LeadershipDevelopment from './pages/services/LeadershipDevelopment';
@@ -25,8 +23,6 @@ import LocationService from './pages/LocationService';
 import ExecutiveCoaching from './pages/services/ExecutiveCoaching';
 import IndividualDevelopment from './pages/services/IndividualDevelopment';
 import OrganizationalEffectiveness from './pages/services/OrganizationalEffectiveness';
-
-import { ChatProvider } from './context/ChatContext';
 
 function App() {
   useEffect(() => {
@@ -39,8 +35,7 @@ function App() {
   }, []);
 
   return (
-    <ChatProvider>
-      <Router>
+    <Router>
         <ScrollToTop />
         <div className="min-h-screen bg-beige selection:bg-teal selection:text-white">
           <Navbar />
@@ -54,8 +49,6 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/ee-in" element={<EeInPage />} />
-              <Route path="/ee-in/results/:sessionId" element={<EeInPage />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/faq" element={<FAQPage />} />
@@ -73,11 +66,8 @@ function App() {
             </Routes>
           </main>
           <Footer />
-          <FloatingCTA />
-          <EeInWidget />
         </div>
       </Router>
-    </ChatProvider>
   );
 }
 

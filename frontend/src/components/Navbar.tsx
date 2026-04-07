@@ -32,7 +32,6 @@ const Navbar = () => {
         },
         { name: 'Resources', path: '/resources' },
         { name: 'Contact', path: '/contact' },
-        { name: 'Ee-in', path: '/ee-in' },
     ];
 
     return (
@@ -65,44 +64,15 @@ const Navbar = () => {
                     <div className="flex max-md:hidden space-x-8 items-center px-8">
                         {navLinks.map((link) => (
                             <div key={link.path} className="relative group">
-                                {link.name === 'Ee-in' ? (
-                                    <Link
-                                        to={link.path}
-                                        className={`relative px-4 py-2 rounded-lg border-2 flex items-center gap-2 group overflow-hidden transition-all duration-500
-                                            ${scrolled 
-                                                ? 'border-[rgba(135,206,235,0.6)] bg-transparent text-[rgb(135,206,235)] hover:bg-[rgba(135,206,235,0.12)] hover:text-[rgb(135,206,235)]' 
-                                                : 'border-[rgba(135,206,235,0.35)] bg-transparent text-[rgb(135,206,235)] hover:bg-[rgba(135,206,235,0.1)] hover:text-white'
-                                            }`}
-                                        style={scrolled ? { boxShadow: undefined } : {}}
-                                    >
-                                        {/* Sky blue heartbeat glow pulse */}
-                                        <motion.div
-                                            animate={{
-                                                boxShadow: [
-                                                    '0 0 0px 0px rgba(135,206,235,0)',
-                                                    '0 0 10px 3px rgba(135,206,235,0.35)',
-                                                    '0 0 0px 0px rgba(135,206,235,0)',
-                                                ],
-                                                opacity: [0, 1, 0],
-                                            }}
-                                            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-                                            className="absolute inset-0 rounded-lg pointer-events-none"
-                                        />
-                                        <span className="relative z-10 text-[10px] font-black uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_6px_rgba(135,206,235,0.9)]">
-                                            {link.name} <Sparkles size={12} className="animate-pulse text-[rgb(135,206,235)]" />
-                                        </span>
-                                    </Link>
-                                ) : (
-                                    <Link
-                                        to={link.path}
-                                        className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
-                                            ? (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-navy')
-                                            : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-skyBlue' : 'text-white/80')
-                                            }`}
-                                    >
-                                        {link.name}
-                                    </Link>
-                                )}
+                                <Link
+                                    to={link.path}
+                                    className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:text-teal hover:-translate-y-[1px] whitespace-nowrap py-4 block ${scrolled
+                                        ? (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-teal' : 'text-navy')
+                                        : (location.pathname.startsWith(link.path) && link.path !== '/' || location.pathname === '/' && link.path === '/' ? 'text-skyBlue' : 'text-white/80')
+                                        }`}
+                                >
+                                    {link.name}
+                                </Link>
 
                                 {/* Dropdown Menu */}
                                 {link.dropdown && (
@@ -165,11 +135,10 @@ const Navbar = () => {
                                 <div key={link.path} className="flex flex-col border-b border-navy/5 pb-6 last:border-0">
                                     <Link
                                         to={link.path}
-                                        className={`text-2xl font-black tracking-tight flex items-center gap-2 ${location.pathname === link.path ? 'text-teal' : 'text-navy'} ${link.name === 'Ee-in' ? 'text-skyBlue drop-shadow-[0_0_8px_rgba(135,206,235,0.8)]' : ''}`}
+                                        className={`text-2xl font-black tracking-tight flex items-center gap-2 ${location.pathname === link.path ? 'text-teal' : 'text-navy'}`}
                                         onClick={() => !link.dropdown && setIsOpen(false)}
                                     >
                                         {link.name}
-                                        {link.name === 'Ee-in' && <Sparkles size={20} className="animate-pulse" />}
                                     </Link>
 
                                     {link.dropdown && (
